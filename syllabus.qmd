@@ -4,6 +4,8 @@ subtitle: "Data Science and Public Policy, McCourt School for Public Polcy, Geor
 format: html
 ---
 
+**[Download a PDF Version here](_syllabus.pdf)**
+
 ## Course Description
 
 In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we'll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.
@@ -46,9 +48,9 @@ Note that this class is scheduled to meet weekly for 2.5 hours. I will do my bes
 
 ## Course Infrastructure
 
-**Class Website**: A class website <TBD> will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.
+**Class Website**: A class website  will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.
 
-**Class Slack Channel**: The class also has a dedicated slack channel (TBD). The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor and TA the means of answering the question so that all can see the response. If you're unfamiliar with, please consult the following start-up tutorial (https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members). Please follow the [***invite link***](https://join.slack.com/t/ppol5203fall2023/shared_invite/zt-2159njh4n-S4u1yonz4dA7Zxyo2n3bjA) to be added to the Slack channel.
+**Class Slack Channel**: The class also has a dedicated [slack channel](https://join.slack.com/t/ppol68012024/shared_invite/zt-2a4ofec2d-KH8YDtoiJ3gHRWTNhuBPcQ). The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor and TA the means of answering the question so that all can see the response. If you're unfamiliar with, please consult the following start-up tutorial (https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members).
 
 **Canvas**: A Canvas site (http://canvas.georgetown.edu) will be used throughout the course and should be checked on a regular basis for announcements and assignments. All announcements for the assignments and classes will be posted on Canvas; they will not be distributed in class or by e-mail. Support for Canvas is available at (202) 687-4949
 

@@ -1,6 +1,6 @@
 ---
 title: "PPOL 6801: Text as Data - Computational Linguistics"
-subtitle: "McCourt School for Public Polcy, Georgetown University"
+subtitle: "McCourt School for Public Policy, Georgetown University"
 ---
 
 ## Course Description
