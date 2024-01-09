@@ -1,0 +1,67 @@
+---
+title: "Week 08"
+subtitle: "Word Embeddings: What are they and how to estimate?"
+description: ""
+author: "Tiago Ventura"
+date: "03/13/2024"
+#listing:
+  # - id: slides
+  #   contents:
+  #     - ../slides/week-01/*.qmd
+  #   type: table
+  #   fields: [title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     title: "Topic"
+  #     date: "Date"
+  #   sort: [filename]
+  #   sort-ui: false
+  #   filter-ui: false
+  # - id: assignments
+  #   contents:
+  #     - ../hw/w1-*.qmd
+  #     - ../labs/w1-*.qmd
+  #   type: table
+  #   fields: [categories, title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     categories: "Assignment"
+  #     title: "Title"
+  #     date: "Due"
+  #   sort: [date]
+  #   sort-ui: false
+  #   filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+
+# Topics
+
+- What are word-embeddings? 
+
+- When and how can we use them? 
+
+- What? Topic models again?
+
+- Is this still a bag of words?
+
+# Readings
+
+
+**Required Readings**
+
+
+- [GMB] - Chapter 8.
+
+- [SLP] Chapter 6, “Vector Semantics and Embeddings.”
+
+- Meyer, David. How Exactly Does Word2Vec Work?
+
+- Spirling and Rodriguez, Word embedding: What works, what doesn’t, and how to tell the difference for applied research.
+
+**Coding Materials**
+
+- [TBD]()
+
+# Slides
+
+- [TBD]()

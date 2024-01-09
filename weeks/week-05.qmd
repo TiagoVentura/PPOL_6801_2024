@@ -1,0 +1,66 @@
+---
+title: "Week 05"
+subtitle: "Supervised Learning II: Training your own classifiers"
+description: ""
+author: "Tiago Ventura"
+date: "02/14/2024"
+#listing:
+  # - id: slides
+  #   contents:
+  #     - ../slides/week-01/*.qmd
+  #   type: table
+  #   fields: [title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     title: "Topic"
+  #     date: "Date"
+  #   sort: [filename]
+  #   sort-ui: false
+  #   filter-ui: false
+  # - id: assignments
+  #   contents:
+  #     - ../hw/w1-*.qmd
+  #     - ../labs/w1-*.qmd
+  #   type: table
+  #   fields: [categories, title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     categories: "Assignment"
+  #     title: "Title"
+  #     date: "Due"
+  #   sort: [date]
+  #   sort-ui: false
+  #   filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+
+# Topics
+
+We will study the framework to train our own supervised models, and when to use them. 
+
+
+# Readings
+
+**Required Readings**
+
+- [GMB] - Chapters 17, 18, 19, and 20.
+
+
+- **Applied Papers**: 
+
+    - Barberá, Pablo, Amber E. Boydstun, Suzanna Linn, Ryan McMahon, and Jonathan Nagler. "Automated text classification of news articles: A practical guide." Political Analysis 29, no. 1 (2021): 19-42.
+    
+    - Siegel, Alexandra, et al. “Trumping Hate on Twitter? Online Hate Speech in the 2016 US Election Campaign and its Aftermath.”
+
+    - Theocharis, Y., Barberá, P., Fazekas, Z., & Popa, S. A. (2020). [The dynamics of political incivility on Twitter](https://journals.sagepub.com/doi/pdf/10.1177/2158244020919447). Sage Open, 10(2), 2158244020919447.
+
+    - Mitts, T., Phillips, G., & Walter, B. (2021). [Studying the Impact of ISIS Propaganda Campaigns](https://www.journals.uchicago.edu/doi/abs/10.1086/716281). Journal of Politics 
+
+
+**Coding Materials**
+
+- [TBD]()
+
+# Slides
+
+- [TBD]()

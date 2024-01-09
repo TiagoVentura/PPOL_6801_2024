@@ -1,0 +1,58 @@
+---
+title: "Week 13"
+subtitle: "Large Language Models: Outsourcing Applications"
+description: ""
+author: "Tiago Ventura"
+date: "04/17/2023"
+#listing:
+  # - id: slides
+  #   contents:
+  #     - ../slides/week-01/*.qmd
+  #   type: table
+  #   fields: [title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     title: "Topic"
+  #     date: "Date"
+  #   sort: [filename]
+  #   sort-ui: false
+  #   filter-ui: false
+  # - id: assignments
+  #   contents:
+  #     - ../hw/w1-*.qmd
+  #     - ../labs/w1-*.qmd
+  #   type: table
+  #   fields: [categories, title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     categories: "Assignment"
+  #     title: "Title"
+  #     date: "Due"
+  #   sort: [date]
+  #   sort-ui: false
+  #   filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+
+# Topics
+
+# Readings
+
+**Required Readings**
+
+   - [Wu, Patrick Y., Joshua A. Tucker, Jonathan Nagler, and Solomon Messing. "Large language models can be used to estimate the ideologies of politicians in a zero-shot learning setting." arXiv preprint arXiv:2303.12057 (2023)](https://arxiv.org/abs/2303.12057).
+
+    - [Rathje, Steve, Dan-Mircea Mirea, Ilia Sucholutsky, Raja Marjieh, Claire Robertson, and Jay J. Van Bavel. GPT is an effective tool for multilingual psychological text analysis. (2023)](https://osf.io/preprints/psyarxiv/sekf5).
+
+    - [Davidson, Thomas: Start Generating: Harnessing Generative Artificial Intelligence for Sociological Research, PrePrint](https://osf.io/preprints/socarxiv/u9nft)
+    
+    - [Bisbee, James, Joshua Clinton, Cassy Dorff, Brenton Kenkel, and Jennifer Larson. 2023. “Synthetic Replacements for Human Survey Data? the Perils of Large Language Models.” SocArXiv. May 4.](https://osf.io/preprints/socarxiv/5ecfa) 
+  
+
+**Coding Materials**
+
+- [TBD]()
+
+# Slides
+
+- [TBD]()

@@ -1,0 +1,60 @@
+---
+title: "Week 12"
+subtitle: "Large Language Models: Theory and Fine-tuning a Transformers-based model (Invited Speaker Dr. Sebastian Vallejo)"
+description: ""
+author: "Tiago Ventura"
+date: "04/10/2024"
+#listing:
+  # - id: slides
+  #   contents:
+  #     - ../slides/week-01/*.qmd
+  #   type: table
+  #   fields: [title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     title: "Topic"
+  #     date: "Date"
+  #   sort: [filename]
+  #   sort-ui: false
+  #   filter-ui: false
+  # - id: assignments
+  #   contents:
+  #     - ../hw/w1-*.qmd
+  #     - ../labs/w1-*.qmd
+  #   type: table
+  #   fields: [categories, title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     categories: "Assignment"
+  #     title: "Title"
+  #     date: "Due"
+  #   sort: [date]
+  #   sort-ui: false
+  #   filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+
+# Topics
+
+- We will learn about the Transformers architecture, attention, and the encoder-coder infrastructure.
+
+# Readings
+
+**Required Readings**
+
+- [SLP] - Chapter 10. 
+
+- Jay Alammar. 2018. “The Illustrated Transformer.” https://jalammar.github.io/illustratedtransformer/
+
+- Vaswani, A., et al. (2017). Attention is all you need. Advances in neural information processing systems, 30;
+
+- Timoneda and Vera, BERT, RoBERTa or DeBERTa? Comparing Performance Across Transformer Models in Political Science Text, Forthcoming Journal of Politics.
+
+
+**Coding Materials**
+
+- [TBD]()
+
+# Slides
+
+- [TBD]()

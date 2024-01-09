@@ -1,0 +1,24 @@
+---
+title: "Schedule"
+listing:
+  - id: schedule
+    contents:
+      - weeks/week-*.qmd
+    type: table
+    fields: [title, subtitle, date]
+    field-display-names:
+      title: "Week"
+      description: "Dates"
+      subtitle: "Topic"
+    date-format: "MMMM DD, YYYY"
+    sort: [filename]
+    sort-ui: false
+    filter-ui: false
+ #tbl-colwidths: [10,50,50,25]
+editor: visual
+---
+
+## Weekly Schedule
+
+::: {#schedule}
+:::

@@ -1,0 +1,64 @@
+---
+title: "Week 02"
+subtitle: "From Text to Matrices: Representing Text as Data"
+description: ""
+#author: "Tiago Ventura"
+date: "01/24/2024"
+#listing:
+  # - id: slides
+  #   contents:
+  #     - ../slides/week-01/*.qmd
+  #   type: table
+  #   fields: [title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     title: "Topic"
+  #     date: "Date"
+  #   sort: [filename]
+  #   sort-ui: false
+  #   filter-ui: false
+  # - id: assignments
+  #   contents:
+  #     - ../hw/w1-*.qmd
+  #     - ../labs/w1-*.qmd
+  #   type: table
+  #   fields: [categories, title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     categories: "Assignment"
+  #     title: "Title"
+  #     date: "Due"
+  #   sort: [date]
+  #   sort-ui: false
+  #   filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+# Topics
+
+- How to represent text as data? 
+- What is a Bag of Words?
+- What are tokens? 
+- Why should we care about tokens?
+
+# Readings
+
+**Required Readings**
+
+-[GMB] -  Chapters 3-5
+
+- **Applied Papers**: 
+
+    - Denny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.
+
+    - Ban, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. "How newspapers reveal political power." Political Science Research and Methods 7, no. 4 (2019): 661-678.
+    
+    - Michel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644;
+
+
+**Coding Materials**
+
+- [TBD]
+
+# Slides
+
+- [TBD]

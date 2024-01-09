@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Tiago Ventura">
+<meta name="dcterms.date" content="2024-04-10">
 
-<title>PPOL 6801 - Text as Data - Computational Linguistics - PPOL 6801: Text as Data - Computational Linguistics</title>
+<title>PPOL 6801 - Text as Data - Computational Linguistics - Week 12</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,21 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -60,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.scss">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -72,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 12</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -86,8 +88,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -99,38 +101,25 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1: Intro</span></a>
-  </div>
-</li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Materials</span></span>
   </li>
     </ul>
     </div>
@@ -142,10 +131,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link active" data-scroll-target="#course-description">Course Description</a></li>
-  <li><a href="#class-website" id="toc-class-website" class="nav-link" data-scroll-target="#class-website">Class Website</a></li>
-  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
-  <li><a href="#course-infra-structure" id="toc-course-infra-structure" class="nav-link" data-scroll-target="#course-infra-structure">Course Infra-structure</a></li>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
   </ul>
 </nav>
     </div>
@@ -154,15 +142,27 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PPOL 6801: Text as Data - Computational Linguistics</h1>
-<p class="subtitle lead">McCourt School for Public Polcy, Georgetown University</p>
+<h1 class="title">Week 12</h1>
+<p class="subtitle lead">Large Language Models: Theory and Fine-tuning a Transformers-based model (Invited Speaker Dr.&nbsp;Sebastian Vallejo)</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tiago Ventura </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 10, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -170,52 +170,31 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="course-description" class="level2">
-<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
-<p>In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we’ll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.</p>
-<p>While the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture.</p>
-<p>I assume students taking this class have taken, at minimum, an introductory class in statistics and have basic knowledge of probability, distributions, hypothesis testing, and linear models. The core language and software environment of this course is R. If you are not familiar with R, you will struggle with the assigned exercises. We will also provide some code in Python, but no prior knowledge here is assumed since this will be additional material.</p>
-</section>
-<section id="class-website" class="level2">
-<h2 class="anchored" data-anchor-id="class-website">Class Website</h2>
-<p><a href="https://tiagoventura.github.io/PPOL_6801_2024/">https://tiagoventura.github.io/PPOL_6801_2024/</a></p>
-</section>
-<section id="instructor" class="level2">
-<h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
-<p><a href="https://www.venturatiago.com/">Professor Tiago Ventura</a></p>
+<section id="topics" class="level1">
+<h1>Topics</h1>
 <ul>
-<li>Pronouns: He/Him</li>
-<li>Email: <a href="mailto:tv186@georgetown.edu">tv186@georgetown.edu</a></li>
-<li>Office hours: Every Tuesday, 4pm - 6pm</li>
-<li>Location: Old north, 312</li>
+<li>We will learn about the Transformers architecture, attention, and the encoder-coder infrastructure.</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-When should I go to your office hours?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<p><strong>You are all welcome to the office hours.</strong> You can come to the office hours to:</p>
-<ul>
-<li><p>drink some coffee;</p></li>
-<li><p>talk about soccer;</p></li>
-<li><p>Ask what I am doing research at;</p></li>
-<li><p>Ask any question about our class.</p></li>
-</ul>
-<p>All are valid options! And no need to schedule time with me!</p>
 </section>
-<section id="course-infra-structure" class="level2">
-<h2 class="anchored" data-anchor-id="course-infra-structure">Course Infra-structure</h2>
-<p><strong>Class Website:</strong> This class website will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.</p>
-<p><strong>Class Slack Channel:</strong> The class also has a dedicated <a href="https://join.slack.com/t/ppol68012024/shared_invite/zt-2a4ofec2d-KH8YDtoiJ3gHRWTNhuBPcQ">slack channel</a>. The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor the means of answering the question so that all can see the response. If you’re unfamiliar with, please consult the following start-up tutorial <a href="https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members" class="uri">https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members</a>. Please follow the <a href="https://join.slack.com/t/ppol5203fall2023/shared_invite/zt-2159njh4n-S4u1yonz4dA7Zxyo2n3bjA">invite link</a> to be added to the Slack channel.</p>
-<p><strong>Canvas:</strong> A Canvas site <a href="http://canvas.georgetown.edu" class="uri">http://canvas.georgetown.edu</a> will be used throughout the course and should be checked on a regular basis for announcements. Materials will be posted here, and not on canvas, or distributed in class or by e-mail. Support for Canvas is available at (202) 687-4949</p>
+<section id="readings" class="level1">
+<h1>Readings</h1>
+<p><strong>Required Readings</strong></p>
+<ul>
+<li><p>[SLP] - Chapter 10.</p></li>
+<li><p>Jay Alammar. 2018. “The Illustrated Transformer.” https://jalammar.github.io/illustratedtransformer/</p></li>
+<li><p>Vaswani, A., et al.&nbsp;(2017). Attention is all you need. Advances in neural information processing systems, 30;</p></li>
+<li><p>Timoneda and Vera, BERT, RoBERTa or DeBERTa? Comparing Performance Across Transformer Models in Political Science Text, Forthcoming Journal of Politics.</p></li>
+</ul>
+<p><strong>Coding Materials</strong></p>
+<ul>
+<li><a href="">TBD</a></li>
+</ul>
+</section>
+<section id="slides" class="level1">
+<h1>Slides</h1>
+<ul>
+<li><a href="">TBD</a></li>
+</ul>
 
 
 </section>

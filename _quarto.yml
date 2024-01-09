@@ -1,19 +1,68 @@
 project:
   type: website
   output-dir: docs
+  
 
 website:
-  title: "ppol_6801_2024"
-  navbar:
-    left:
+  title: "PPOL 6801 - Text as Data - Computational Linguistics"
+  sidebar:
+    background: light
+    logo: "logo.png"
+    pinned: true
+    align: center
+    # tools:
+    #   - icon: github
+    #     href: https://github.com/TiagoVentura/ppol5203_fall_2023
+    #     text: GitHub
+    style: docked
+    contents:
       - href: index.qmd
         text: Home
-      - about.qmd
-
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: schedule.qmd
+        text: Schedule
+      #- href: problemset.qmd
+      #  text: Problem Sets
+      # - href: finalproject.qmd
+      #  text: Final Project
+      - section: "Materials"
+        contents: 
+          - href: weeks/week-01.qmd
+            text: "Week 1: Intro"
+          #- href: weeks/week-02.qmd
+          #  text: "Week 2: Version Control"
+          #- href: weeks/week-03.qmd
+          #  text: "Week 3: Intro to Python "
+          #- href: weeks/week-04.qmd
+          #  text: "Week 4: From Nested Collectors to DataFrames"
+          #- href: weeks/week-05.qmd
+          #  text: "Week 5: Intro to Pandas"
+          #- href: weeks/week-06.qmd
+          #  text: "Week 6: Pandas II"
+          #- href: weeks/week-07.qmd
+          #  text: "Week 7: Joinining, Tidying and Visualizing Data"
+          #- href: weeks/week-08.qmd
+          #  text: "Week 8: Scraping"
+          #- href: weeks/week-09.qmd
+          #  text: "Week 9: APIs + Selenium"
+          #- href: weeks/week-10.qmd
+          #  text: "Week 10: Statistical Learning"
+          #- href: weeks/week-11.qmd
+          #  text: "Week 11: Text as Data I"
+          #- href: weeks/week-12.qmd
+          #  text: "Week 12: Text as Data II"
+          #- href: weeks/week-13.qmd
+          #  text: "Week 13: SQL"
+          #- href: weeks/week-14.qmd
+          #  text: "Week 14: Project Presentation"
+          
+          
+      
 format:
   html:
     theme: cosmo
-    css: styles.css
+    css: styles.scss
     toc: true
 
 editor: visual

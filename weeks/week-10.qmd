@@ -1,0 +1,64 @@
+---
+title: "Week 10"
+subtitle: "Using Text to Measure Ideology - Scaling"
+description: ""
+author: "Tiago Ventura"
+date: "03/27/2024"
+#listing:
+  # - id: slides
+  #   contents:
+  #     - ../slides/week-01/*.qmd
+  #   type: table
+  #   fields: [title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     title: "Topic"
+  #     date: "Date"
+  #   sort: [filename]
+  #   sort-ui: false
+  #   filter-ui: false
+  # - id: assignments
+  #   contents:
+  #     - ../hw/w1-*.qmd
+  #     - ../labs/w1-*.qmd
+  #   type: table
+  #   fields: [categories, title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     categories: "Assignment"
+  #     title: "Title"
+  #     date: "Due"
+  #   sort: [date]
+  #   sort-ui: false
+  #   filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+
+# Topics
+
+- What are scaling models and what can they tell us? 
+- Can we represent politicians/users ideology using text?
+
+# Readings
+
+**Required Readings**
+
+   -  Laver, Michael, Kenneth Benoit, and John Garry. 2003. “Extracting Policy Positions from Political Texts Using Words as Data”. American Political Science Review. 97, 2, 311-331
+   
+   - Slapin, Jonathan and Sven-Oliver Prokschk. 2008. “A Scaling Model for Estimating Time-Series
+Party Positions from Texts.” American Journal of Political Science. 52, 3 705-722
+
+    - Rheault, Ludovic, and Christopher Cochrane. "Word embeddings for the analysis of ideological placement in parliamentary corpora." Political Analysis 28, no. 1 (2020): 112-133.
+    
+    - Aruguete, Natalia, Ernesto Calvo, and Tiago Ventura. "News by popular demand: Ideological congruence, issue salience, and media reputation in news sharing." The International Journal of Press/Politics 28, no. 3 (2023): 558-579.
+
+    - Izumi, Mauricio Y., and Danilo B. Medeiros. "Government and opposition in legislative speechmaking: using text-as-data to estimate Brazilian political parties’ policy positions." Latin American Politics and Society 63, no. 1 (2021): 145-164.
+
+
+**Coding Materials**
+
+- [TBD]()
+
+# Slides
+
+- [TBD]()

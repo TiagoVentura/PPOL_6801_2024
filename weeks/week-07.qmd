@@ -1,0 +1,68 @@
+---
+title: "Week 07"
+subtitle: "Unsupervised Learning: Topic Models"
+description: ""
+author: "Tiago Ventura"
+date: "02/28/2024"
+#listing:
+  # - id: slides
+  #   contents:
+  #     - ../slides/week-01/*.qmd
+  #   type: table
+  #   fields: [title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     title: "Topic"
+  #     date: "Date"
+  #   sort: [filename]
+  #   sort-ui: false
+  #   filter-ui: false
+  # - id: assignments
+  #   contents:
+  #     - ../hw/w1-*.qmd
+  #     - ../labs/w1-*.qmd
+  #   type: table
+  #   fields: [categories, title, date]
+  #   date-format: "ddd, MMM DD"
+  #   field-display-names:
+  #     categories: "Assignment"
+  #     title: "Title"
+  #     date: "Due"
+  #   sort: [date]
+  #   sort-ui: false
+  #   filter-ui: false
+tbl-colwidths: [10,50,40]
+---
+
+# Topics
+
+-what if we do not have an outcome to predict? - can we cluster the text in groups? - what are topics? - how to decide between different topics?
+
+# Readings
+
+**Required Readings**
+
+-   \[GMB\] - Chapters 12-14.
+
+-   David M. Blei . 2012. "Probabilistic Topic Models." http://www.cs.columbia.edu/\~blei/papers/ Blei2012.pdf
+
+-   **Applied Papers**:
+
+    -   Motolinia, Lucia. [Electoral accountability and particularistic legislation: evidence from an electoral reform in Mexico.](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/electoral-accountability-and-particularistic-legislation-evidence-from-an-electoral-reform-in-mexico/BCFD6B0C73B041C8C410594BDB232DB1) American Political Science Review 115, no. 1 (2021): 97-113.
+
+    -   Barberá, P., Casas, A., Nagler, J., Egan, P. J., Bonneau, R., Jost, J. T., & Tucker, J. A. (2019). [Who leads? Who follows? Measuring issue attention and agenda setting by legislators and the mass public using social media data](https://www.cambridge.org/core/journals/american-political-science-review/article/who-leads-who-follows-measuring-issue-attention-and-agenda-setting-by-legislators-and-the-mass-public-using-social-media-data/D855849CE288A241529E9EC2E4FBD3A8). American Political Science Review, 113(4), 883-901.
+
+    -   Eshima, Shusei, Kosuke Imai, and Tomoya Sasaki. "Keyword‐Assisted Topic Models." American Journal of Political Science (2020).
+
+**Coding Materials**
+
+-   [TBD]()
+
+
+# Problem Set 2
+
+- [TBD]()
+
+# Slides
+
+-   [TBD]()
