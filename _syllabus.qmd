@@ -111,8 +111,7 @@ How do we evaluate similarity in text? Why is this useful?
 
 - **Applied Papers**: 
 
-    - Lori Young and Stuart Soroka 2012 “Affective News: The Automated Coding of Sentiment in
-Political Texts.” Political Communication, 29:2, 205-231.
+    - Lori Young and Stuart Soroka 2012 “Affective News: The Automated Coding of Sentiment in Political Texts.” Political Communication, 29:2, 205-231.
 
     - Rathje, Steve, Jay J. Van Bavel, and Sander Van Der Linden. "Out-group animosity drives engagement on social media." Proceedings of the National Academy of Sciences 118, no. 26 (2021): e2024292118.
 
@@ -177,8 +176,7 @@ Blei2012.pdf
 
 - **Applied Papers**: 
 
-    -  Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts
-with Word Vectors. Political Analysis, 28(1), pp.87-111.
+    -  Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.
 
     - Gennaro, Gloria, and Elliott Ash. "Emotion and reason in political language." The Economic Journal 132, no. 643 (2022): 1037-1059.
 
@@ -244,12 +242,12 @@ with Word Vectors. Political Analysis, 28(1), pp.87-111.
 
 | **Assignment**           | **Percentage of Grade** |
 |--------------------------|:-----------------------:|
-| Participation/Attendance |           5%          |
-| Problem Sets             |           15%          |
+| Participation/Attendance |           10%          |
+| Problem Sets             |           20%          |
 | Replication Exercises    |           30%           |
 | Final Project            |           40%           |
 
-**Participation and Attendance** (5%):
+**Participation and Attendance** (10%):
 
 Data science is an cooperative endeavor, and it's crucial to view your fellow classmates as valuable assets rather than rivals. Your performance in the following aspects will be considered when assessing this part of your grade:
 
@@ -261,7 +259,7 @@ Data science is an cooperative endeavor, and it's crucial to view your fellow cl
 
 -   Assisting classmates with slack questions, sharing interesting materials on slack, asking question, and anything that provides healthy contributtions to the course.
 
-**Problem Sets** (5%):
+**Problem Sets** (20%):
 
 **You will have a week to complete your assignments**
 
@@ -312,7 +310,8 @@ You will work in pairs for this assignment. Your partner will be randomly assign
 
 - **Step 1**: finding a paper to replicate
 
-   - By the end of the week 2 and week 7, you should select an article from the syllabus to be replicated by you.
+   - By the end of the week 2 and week 7, you should select an article from the syllabus to be replicated by your team
+   
    - The first replication exercise should consider articles from weeks 2 to week 5, and the second from the remaining of the class. 
 
 
@@ -331,7 +330,7 @@ You will work in pairs for this assignment. Your partner will be randomly assign
      - Methods: data used in the article
      - Results: the results you were able to replicate
      - Differences: any differences between your results and the authors'
-     - Autopsy of the replication: what worked and what did not work
+     - Autopsy of the replication: what did work and what did not work
      - Extension: what would you do different if you were to write this article today? Where would you innovate? 
 
 - **Step 4**: Replication Repository

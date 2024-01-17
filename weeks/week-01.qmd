@@ -61,4 +61,4 @@ Or one of the three below:
 
 # Slides
 
--   \[TBD\]
+-   [Week 1 - Introduction](/slides/week_01_intro.html)

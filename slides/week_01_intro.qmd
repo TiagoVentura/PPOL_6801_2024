@@ -1,0 +1,473 @@
+---
+title: "PPOL 6801 - Text as Data - Computational Linguistics"
+subtitle: "<span style = 'font-size: 200%;'> <br> Week 1: Introduction and Logistics </span>"
+author: "<span style = 'font-size: 200%;'> Professor: Tiago Ventura </span>"
+execute: 
+  echo: false
+  error: true
+format:
+  revealjs: 
+    transition: slide
+    background-transition: fade
+    code-line-numbers: false
+    width: 1600
+    height: 800
+    center: false
+    slide-number: true
+    incremental: false
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: "Text-as-Data"
+    theme: [simple, custom.scss]
+---
+
+# Welcome to Text-as-Data! {background-image="https://www.georgetown.edu/wp-content/uploads/archive/squarespace/436-image-asset.jpeg" background-color="black" .larger-font background-opacity=.8}
+
+## Outline
+
+:::{.nonincremental}
+
+-   Introduction (me)
+
+-   Motivation for Computational Linguistics
+
+    -   Digital information age
+
+    -   Principles of Computational Linguistics.
+
+    -   What this course is not.
+
+    -   Examples of models and applications for this course
+
+-   Introductions (you)
+
+-   Class Logistics ( + 10 min for you to read through the syllabus)
+
+-   Q&A
+
+-   Acquiring text in the web (Jupyter notebooks for scrapping)
+:::
+
+## Introduction
+
+::: columns
+::: {.column width="40%"}
+<br>
+
+```{r  echo=FALSE, out.width = "100%", fig.align="center"}
+knitr::include_graphics("me.jpg") 
+```
+:::
+
+::: {.column width="60%"}
+:::{.nonincremental}
+
+**Professor Tiago Ventura (he/him)**
+
+  -   Assistant Professor at McCourt School.
+  -   Political Science Ph.D.
+  -   Postdoc at Center for Social Media and Politics - NYU.
+  -   Researcher at Twitter.
+
+**Some Projects I am involved**
+
+  -   Global Social Media Deactivation.
+  -   Effects of WhatsApp on Elections in the Global South.
+  -   AI and Misinformation in 2024 elections.
+  -   Panels of voter files and twitter users.
+
+**Outside of work, I enjoy [watching soccer, reading sci-fi and running]{.red}**
+:::
+:::
+:::
+
+# Motivation
+
+## Rise of the digital information age
+
+```{r fig.align="center"}
+knitr::include_graphics("week1_figs/digital.jpeg") 
+```
+
+## Official Documents: Congressional Speeches, Bills, Press Releases, Transcripts, from all over the world!!
+
+```{r  echo=FALSE, out.width = "70%", fig.align="center"}
+knitr::include_graphics("https://www.brookings.edu/wp-content/uploads/2018/11/RTS10VM4.jpg") 
+```
+
+## Social Media
+
+```{r  echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics("week1_figs/redes.png") 
+```
+
+## The internet: News, Comments, Blogs, etc...
+
+```{r  echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics("https://miro.medium.com/v2/resize:fit:1400/1*t2u_0FHoQSpBK8i7j1NOBg.png") 
+```
+
+
+## What is this class about?
+
+-   For many years, social scientists use text in their analysis
+   - Mostly through [in-depth]{.red} reading of documents. 
+   - [Close Reading]{.red}. Humans are great at this!
+
+-   Digital Revolution: 
+    - Production of text increased 
+    - The capacity to analyze them at scale as well. 
+
+- This class covers methods (and many applications) of using text as data to [answer social science problems]{.red} and [test social science theories]{.red}
+
+-   Computational Linguistics \~ [Distant Reading]{.red}. Computers are better at understanding patterns, classify and describe content across millions of documents. 
+
+
+<!-- ## Text as the new scientific frontier
+
+[**Data:**]{.red}
+
+-   lots of it on the web + archives + ocr methods to process them
+
+[**Methods:**]{.red}
+
+-   unstructured data needs to be harvested and modeled.
+
+[**Social science:**]{.red}
+
+-   politicians give speeches, thinkers write articles, nations sign treaties, users connect on Facebook etc.
+
+[**Focus on applications of computational linguistics to social science problems**]{.red} -->
+
+## Principles of Text Analysis (GMB Textbook)
+
+-   [**Principle 1:**]{.red} Social science theories and substantive knowledge are essential for research design
+
+-   [**Principle 2:**]{.red} Text analysis does not replace humans—it augments them.
+
+-   [**Principle 3:**]{.red} Building, refining, and testing social science theories requires iteration and cumulation.
+
+-   [**Principle 4:**]{.red} Text analysis methods distill generalizations from language. (all models are wrong!)
+
+-   [**Principle 5:**]{.red} The best method depends on the task. (Qualitative knowledge)
+
+- [**Principle 6:**]{.red}  Validations are essential and depend on the theory and the task
+
+
+## Challenges I: Text is an unstructure data source
+
+```{r}
+knitr::include_graphics("https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/advancing-text-mining/figures/dfm.png")
+```
+
+
+## Challenge II: Text is High dimensionality
+
+From [Gentzkow et al 2017](https://web.stanford.edu/~gentzkow/research/text-as-data.pdf):
+
+- sample of documents, each $n_L$ words long, drawn from vocabulary of $n_V$ words.
+
+- The unique representation of each document has dimension $n_{V}^{n_L}$ .
+   - e.g., a sample of 30-word ($n_L$) Twitter messages using only the one thousand most common words in the English language
+   - Dimensionality = $1000^{30}$ 
+   - As a matrix: $M^{1000}_{n_tweets}$
+
+- Most of what you learned in statistics so far does not equip you to deal with this curse of dimensionality. 
+
+## Text-as-Data Workflow
+
+:::{.nonincremental}
+[**Acquire textual data:**]{.red}
+
+  -   Existing corpora; scraped data; digitized text
+:::
+
+## Text-as-Data Workflow
+:::{.nonincremental}
+
+[**Map Documents to a numerical representation _M_**]{.red}
+
+  -   Bag-of-words (sparse vectors)
+  -   Embeddings (dense vectors)
+  -   Reduce noise, capture signal
+:::
+
+## Text-as-Data Workflow
+
+:::{.nonincremental}
+
+[**Map _M_ to predicted values $V^{*}$ of unknown outcomes V**]{.red}
+
+  -   Descriptive Analysis
+  -   Classify documents into unknown categories
+      -   Topic models
+  -   Classify documents into known categories
+      -   Dictionary methods
+      -   Supervised machine learning
+      -   Transfer-Learning - use models trained in text for other purposes
+  -   Scale documents on latent dimension:
+:::      
+
+## Text-as-Data Workflow
+:::{.nonincremental}
+
+[**Use $V^{*}$ in subsequent analysis with other data sources**]{.red}
+    
+  - This is where social science happens! 
+:::        
+
+## Assume you already did it!
+
+-   [**Acquire textual data:**]{.red} Existing corpora; scraped data; digitized text
+
+## Overview of TAD Methods
+
+- [**Descriptive inference:**]{.red} how to convert text to matrices, vector space model, bag-of-words, dissimilarity measures, diversity, complexity, style.
+
+- [**Supervised techniques:**]{.red} dictionaries, classication, scaling, machine learning approaches.
+
+- [**Unsupervised techniques:**]{.red} clustering, topic models, embeddings.
+
+- [**Special topics:**]{.red} Word embeddings and Large Language Models.
+
+## Some cool applications
+
+-   [Measure text-reuse across thousands of bills from U.S. state legislatures](https://onlinelibrary.wiley.com/doi/abs/10.1111/psj.12257)
+
+-   [Estimate levels of toxicity of comments from stremming chats platforms during political debates](https://journalqd.org/article/view/2573)
+
+-   [Measure how out-group negative makes things go viral on social media](https://www.pnas.org/doi/abs/10.1073/pnas.2024292118?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed)
+
+-   [Measure the policy target of bills proposals in Mexico](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/electoral-accountability-and-particularistic-legislation-evidence-from-an-electoral-reform-in-mexico/BCFD6B0C73B041C8C410594BDB232DB1)
+
+-   Estimate ideological positions using [who a user follows on Twitter](https://www.cambridge.org/core/journals/political-analysis/article/birds-of-the-same-feather-tweet-together-bayesian-ideal-point-estimation-using-twitter-data/91E37205F69AEA32EF27F12563DC2A0A), [what a user share on social media](https://journals.sagepub.com/doi/abs/10.1177/19401612211057068), [political manifestos](https://www.cambridge.org/core/journals/political-analysis/article/abs/word-embeddings-for-the-analysis-of-ideological-placement-in-parliamentary-corpora/017F0CEA9B3DB6E1B94AC36A509A8A7B), or [just asking ChatGPT to pair-wise compare politicians](https://arxiv.org/abs/2303.12057)
+
+## What this class in not about it...
+
+-   Data acquisition: [no scrapping in class]{.red}. Assume you have learned already.
+
+-   Regular expressions and basic text manipulation.
+
+-   [CS Stuff]{.red}: machine translation, OCR, POS, entity recognition. 
+     - Most NLP/CS will focus on developing new algorithms, information retrievel and purely better measurements. 
+     - in a productive dialogue with NLP, we will focus on using text for social science research 
+        - theoretically driven discovery and measurement
+        - integration with social science problems + tabular data. 
+
+## Your turn! 
+::: columns
+::: {.column width="40%"}
+
+```{r  echo=FALSE, out.width = "100%", fig.align="center"}
+knitr::include_graphics("https://media.giphy.com/media/eKDp7xvUdbCrC/giphy.gif") 
+```
+
+:::
+
+::: {.column width="60%"}
+:::{.nonincremental}
+
+<br>
+<br>
+<br>
+
+-   Name & pronouns
+
+-   Why are you taking this course?
+
+-   Your experience (if any) working with text
+
+-   The most interesting thing you learned in the DSPP so far
+
+:::
+:::
+:::
+
+# Let's take a break!
+
+## Read the syllabus!
+
+```{r}
+library(countdown)
+countdown(minutes = 10, seconds = 0, 
+          left = 0, right = 0,
+          top=0,
+          padding = "100px",
+          margin = "10%",
+          font_size = "6em")
+```
+
+# Class Logistics
+
+## 
+
+```{r  echo=FALSE, out.width = "100%", fig.align="center"}
+
+knitr::include_graphics("week1_figs/schedule_.png")
+```
+
+## Class Requirements
+
+-   Assume you all have a intro course in statistics and probability ([**which I know you do**]{.red})
+
+-   [**Math:**]{.red} Basic knowledge of calculus, probability, densities, distributions, statistical tests, hypothesis testing, the linear model, maximum likelihood and generalized linear models is assumed.
+
+-   [**Programming:**]{.red} Functional knowledge of R - main programming language of the course. Some Python at the end.
+
+    -   R is excellent for text analysis, and for some social science applications, better than Python
+
+    -   Free, and massive online community writing packages and extending modeling capabilities.
+
+    -   We will divide our learning between using `tidytext` and `quanteda` for text analysis.
+
+    -   [Download RStudio IDE]{.red}!
+
+
+## How to do well in the class?
+
+I designed this course as [PhD style seminar]{.red}:
+
+-   So far, you learned a lot of DS techniques (DS I, DS II, DS III)
+
+-   You haven't dig deep enough in a particular field. [That's what electives are for!]{.red}
+
+-   [**Heavy on readings**]{.red} - Lot's of applied and technical readings.
+
+-   [Do the readings before class]{.red}
+
+-   Substantive readings are [especially important]{.red}, because they'll help you understand what an interesting question looks like  -- [in social science/public policy]{.red}.
+
+-   Plan ahead -- [particularly for the replication exercise]{.red}
+
+-   If you have a corpus you want work with, please bring it to class!
+
+## What our classes will look like.
+
+This is a one meeting per week class. You should expect: 
+
+- Between [1h-1.5h]{.red} of lecture based on this week topics + readings
+
+- [Your participation in the lecture is expected]{.red} I will ask your insights about the readings. 
+
+- Break (10min)
+
+- Coding. 
+   - Mix of [you]{.red} working through some code I prepared.
+   - And I [live-coding]{.red} for you.
+
+## Textbook {.centered}
+
+```{r fig.align="center"}
+knitr::include_graphics("week1_figs/tad.avif")
+```
+
+
+## Logistics {.center}
+
+-   **Communication**: via slack. Join the [channel!](https://join.slack.com/t/ppol68012024/shared_invite/zt-2a4ofec2d-KH8YDtoiJ3gHRWTNhuBPcQ)
+
+-   **All materials**: hosted on the class website: <https://tiagoventura.github.io/PPOL_6801_2024//>
+
+-   **Syllabus**: also on the website.
+
+-   **My Office Hours**: Every Tuesday from 4 to 6pm. Just stop by!
+
+-   **Canvas**: Only for communication! Materials will be hosted in the website!
+
+## Evalutation
+
+| **Assignment**           | **Percentage of Grade** |
+|--------------------------|:-----------------------:|
+| Participation/Attendance |           10%            |
+| Problem Sets             |           20%           |
+| Replication Exercises    |           30%           |
+| Final Project            |           40%           |
+
+## Participation
+
+-   Active involvement during class sessions, fostering a dynamic learning environment.
+
+-   Contributions made to your group's ultimate project.
+
+-   Assisting classmates with slack questions, sharing interesting materials on slack, asking question, and anything that provides healthy contributions to the course.
+
+## Problem Sets
+
+| Assignment | Date Assigned |           Date Due            |
+|:----------:|:-------------:|:-----------------------------:|
+|   No. 1    |    Week 4     | Before EOD of Week 5's class  |
+|   No. 2    |    Week 7     | Before EOD of Week 8's class  |
+|   No. 3    |    Week 9     | Before EOD of Week 10's class |
+
+-   You will have a week to complete your assignments
+
+-   individual assignment
+
+-   distributed through github
+
+## Replication Exercises
+
+[Opportunity to learn how science is made!]{.red}
+
+Work in randomly assigned pairs I will post on Slack.
+
+-   **Step 1**: finding a paper to replicate (from the syllabus)
+
+    -   By the end of the week 2 and week 7, you should select an article from the syllabus to be replicated by your team.
+
+    -   Inform the class on slack
+
+    -   "first come, first served"
+
+-   **Step 2**: Acquiring the Data
+
+    -   if you fail to get the data, pick another article.
+
+-   **Step 3**: Presentation (weeks 6 and 11)
+
+-   **Step 4**: Replication Repository on Github
+
+## Final Project
+
+The project is composed of three parts:
+
+-   a 2 page project proposal: (which should be discussed and approved by me)
+-   an in-class presentation,
+-   A 10-page project report.
+
+| **Requirement**  | **Due**           | **Length**    | **Percentage** |
+|------------------|-------------------|---------------|----------------|
+| Project Proposal | EOD Friday Week 9 | 2 pages       | 5%             |
+| Presentation     | Week 14           | 10-15 minutes | 10%            |
+| Project Report   | Wednesday Week 15 | 10 pages      | 25%            |
+
+## ChatGPT
+
+:::{.nonincremental}
+You are allowed to use ChatGPT as you would use google in this class. This means:
+
+-   Do not copy the responses from chatgpt -- a lot of them are wrong or will just not run on your computer
+
+-   Use chatgpt as a auxiliary source.
+
+-   If your entire homework comes straight from chatgpt, I will consider it plagiarism.
+
+-   If you use chatgpt, I ask you to mention on your code how chatgpt worked for you.
+:::
+
+
+# Questions?
+
+
+## Acquiring text:
+
+:::{.nonincremental}
+As a review, here are some notebooks I developed for Data Science I introducing a full toolkit for acquiring data in the web:
+
+- [Static Websites](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-08/_week-07_scraping_static.ipynb)
+
+- [APIs](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-09/_week-08_apis.ipynb)
+
+- [Selenium for Dynamics Websites](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-09/_week-08_selenium.ipynb)
+:::
