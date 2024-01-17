@@ -10,10 +10,10 @@ website:
     logo: "logo.png"
     pinned: true
     align: center
-    # tools:
-    #   - icon: github
-    #     href: https://github.com/TiagoVentura/ppol5203_fall_2023
-    #     text: GitHub
+    tools:
+       - icon: github
+         href: https://github.com/TiagoVentura/PPOL_6801_2024
+         text: GitHub
     style: docked
     contents:
       - href: index.qmd
