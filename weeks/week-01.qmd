@@ -45,7 +45,7 @@ tbl-colwidths: [10,50,40]
 
 **Required Readings**
 
--   \[GMB\] - Chapter 2.
+-   Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapter 2.
 
 Or one of the three below:
 
