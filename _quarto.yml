@@ -30,8 +30,8 @@ website:
         contents: 
           - href: weeks/week-01.qmd
             text: "Week 1: Intro"
-          #- href: weeks/week-02.qmd
-          #  text: "Week 2: Version Control"
+          - href: weeks/week-02.qmd
+            text: "Week 2: Text to Matrices"
           #- href: weeks/week-03.qmd
           #  text: "Week 3: Intro to Python "
           #- href: weeks/week-04.qmd

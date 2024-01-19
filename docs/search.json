@@ -67,7 +67,7 @@
     "href": "weeks/week-02.html",
     "title": "Week 02",
     "section": "",
-    "text": "Topics\n\nHow to represent text as data?\nWhat is a Bag of Words?\nWhat are tokens?\nWhy should we care about tokens?\n\n\n\nReadings\nRequired Readings\n-[GMB] - Chapters 3-5\n\nApplied Papers:\n\nDenny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.\nBan, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. “How newspapers reveal political power.” Political Science Research and Methods 7, no. 4 (2019): 661-678.\nMichel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644;\n\n\nCoding Materials\n\n[TBD]\n\n\n\nSlides\n\n[TBD]"
+    "text": "Topics\n\nHow to represent text as data?\nWhat is a Bag of Words?\nWhat are tokens?\nWhy should we care about tokens?\n\n\n\nReadings\nRequired Readings\n\nGrimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapters 3-5\nApplied Papers:\nDenny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.\nBan, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. “How newspapers reveal political power.” Political Science Research and Methods 7, no. 4 (2019): 661-678.\nMichel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644\n\nCoding Materials\n\n[TBD]\n\n\n\nSlides\n\n[TBD]"
   },
   {
     "objectID": "weeks/week-13.html",
@@ -136,15 +136,15 @@
     "objectID": "slides/week_01_intro.html#outline",
     "href": "slides/week_01_intro.html#outline",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Outline",
-    "text": "Outline\n\n\nIntroduction (me)\nMotivation for Computational Linguistics\n\nDigital information age\nPrinciples of Computational Linguistics.\nWhat this course is not.\nExamples of models and applications for this course\n\nIntroductions (you)\nClass Logistics ( + 10 min for you to read through the syllabus)\nQ&A\nAcquiring text in the web (Jupyter notebooks for scrapping)"
+    "section": "",
+    "text": "Introduction (me)\nMotivation for Computational Linguistics\n\nDigital information age\nPrinciples of Computational Linguistics.\nWhat this course is not.\nExamples of models and applications for this course\n\nIntroductions (you)\nClass Logistics ( + 10 min for you to read through the syllabus)\nQ&A\nAcquiring text in the web (Jupyter notebooks for scrapping)"
   },
   {
     "objectID": "slides/week_01_intro.html#introduction",
     "href": "slides/week_01_intro.html#introduction",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Introduction",
-    "text": "Introduction\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProfessor Tiago Ventura (he/him)\n\nAssistant Professor at McCourt School.\nPolitical Science Ph.D.\nPostdoc at Center for Social Media and Politics - NYU.\nResearcher at Twitter.\n\nSome Projects I am involved\n\nGlobal Social Media Deactivation.\nEffects of WhatsApp on Elections in the Global South.\nAI and Misinformation in 2024 elections.\nPanels of voter files and twitter users.\n\nOutside of work, I enjoy watching soccer, reading sci-fi and running"
+    "section": "",
+    "text": "Professor Tiago Ventura (he/him)\n\nAssistant Professor at McCourt School.\nPolitical Science Ph.D.\nPostdoc at Center for Social Media and Politics - NYU.\nResearcher at Twitter.\n\nSome Projects I am involved\n\nGlobal Social Media Deactivation.\nEffects of WhatsApp on Elections in the Global South.\nAI and Misinformation in 2024 elections.\nPanels of voter files and twitter users.\n\nOutside of work, I enjoy watching soccer, reading sci-fi and running"
   },
   {
     "objectID": "slides/week_01_intro.html#rise-of-the-digital-information-age",
@@ -347,7 +347,7 @@
     "href": "slides/week_01_intro.html#acquiring-text",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Acquiring text:",
-    "text": "Acquiring text:\n\nAs a review, here are some notebooks I developed for Data Science I introducing a full toolkit for acquiring data in the web:\n\nStatic Websites\nAPIs\nSelenium for Dynamics Websites\n\n\n\n\nText-as-Data"
+    "text": "Acquiring text:\n\nAs a review, here are some notebooks I developed for Data Science I introducing a full toolkit for acquiring data in the web:\n\nStatic Websites\nAPIs\nSelenium for Dynamics Websites"
   },
   {
     "objectID": "syllabus.html",
@@ -425,5 +425,12 @@
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Overview of TAD Methods",
     "text": "Overview of TAD Methods\n\nDescriptive inference: how to convert text to matrices, vector space model, bag-of-words, dissimilarity measures, diversity, complexity, style.\nSupervised techniques: dictionaries, classication, scaling, machine learning approaches.\nUnsupervised techniques: clustering, topic models, embeddings.\nSpecial topics: Word embeddings and Large Language Models."
+  },
+  {
+    "objectID": "slides/week_01_intro.html",
+    "href": "slides/week_01_intro.html",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Introduction (me)\nMotivation for Computational Linguistics\n\nDigital information age\nPrinciples of Computational Linguistics.\nWhat this course is not.\nExamples of models and applications for this course\n\nIntroductions (you)\nClass Logistics ( + 10 min for you to read through the syllabus)\nQ&A\nAcquiring text in the web (Jupyter notebooks for scrapping)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProfessor Tiago Ventura (he/him)\n\nAssistant Professor at McCourt School.\nPolitical Science Ph.D.\nPostdoc at Center for Social Media and Politics - NYU.\nResearcher at Twitter.\n\nSome Projects I am involved\n\nGlobal Social Media Deactivation.\nEffects of WhatsApp on Elections in the Global South.\nAI and Misinformation in 2024 elections.\nPanels of voter files and twitter users.\n\nOutside of work, I enjoy watching soccer, reading sci-fi and running"
   }
 ]

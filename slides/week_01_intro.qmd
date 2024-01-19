@@ -22,12 +22,11 @@ format:
     theme: [simple, custom.scss]
 ---
 
-# Welcome to Text-as-Data! {background-image="https://www.georgetown.edu/wp-content/uploads/archive/squarespace/436-image-asset.jpeg" background-color="black" .larger-font background-opacity=.8}
+# Welcome to Text-as-Data! {.larger-font background-image="https://www.georgetown.edu/wp-content/uploads/archive/squarespace/436-image-asset.jpeg" background-color="black" background-opacity=".8"}
 
 ## Outline
 
-:::{.nonincremental}
-
+::: nonincremental
 -   Introduction (me)
 
 -   Motivation for Computational Linguistics
@@ -61,21 +60,20 @@ knitr::include_graphics("me.jpg")
 :::
 
 ::: {.column width="60%"}
-:::{.nonincremental}
-
+::: nonincremental
 **Professor Tiago Ventura (he/him)**
 
-  -   Assistant Professor at McCourt School.
-  -   Political Science Ph.D.
-  -   Postdoc at Center for Social Media and Politics - NYU.
-  -   Researcher at Twitter.
+-   Assistant Professor at McCourt School.
+-   Political Science Ph.D.
+-   Postdoc at Center for Social Media and Politics - NYU.
+-   Researcher at Twitter.
 
 **Some Projects I am involved**
 
-  -   Global Social Media Deactivation.
-  -   Effects of WhatsApp on Elections in the Global South.
-  -   AI and Misinformation in 2024 elections.
-  -   Panels of voter files and twitter users.
+-   Global Social Media Deactivation.
+-   Effects of WhatsApp on Elections in the Global South.
+-   AI and Misinformation in 2024 elections.
+-   Panels of voter files and twitter users.
 
 **Outside of work, I enjoy [watching soccer, reading sci-fi and running]{.red}**
 :::
@@ -108,22 +106,24 @@ knitr::include_graphics("week1_figs/redes.png")
 knitr::include_graphics("https://miro.medium.com/v2/resize:fit:1400/1*t2u_0FHoQSpBK8i7j1NOBg.png") 
 ```
 
-
 ## What is this class about?
 
 -   For many years, social scientists use text in their analysis
-   - Mostly through [in-depth]{.red} reading of documents. 
-   - [Close Reading]{.red}. Humans are great at this!
 
--   Digital Revolution: 
-    - Production of text increased 
-    - The capacity to analyze them at scale as well. 
+-   Mostly through [in-depth]{.red} reading of documents.
 
-- This class covers methods (and many applications) of using text as data to [answer social science problems]{.red} and [test social science theories]{.red}
+-   [Close Reading]{.red}. Humans are great at this!
 
--   Computational Linguistics \~ [Distant Reading]{.red}. Computers are better at understanding patterns, classify and describe content across millions of documents. 
+-   Digital Revolution:
 
+    -   Production of text increased
+    -   The capacity to analyze them at scale as well.
 
+-   This class covers methods (and many applications) of using text as data to [answer social science problems]{.red} and [test social science theories]{.red}
+
+-   Computational Linguistics \~ [Distant Reading]{.red}. Computers are better at understanding patterns, classify and describe content across millions of documents.
+
+```{=html}
 <!-- ## Text as the new scientific frontier
 
 [**Data:**]{.red}
@@ -139,12 +139,12 @@ knitr::include_graphics("https://miro.medium.com/v2/resize:fit:1400/1*t2u_0FHoQS
 -   politicians give speeches, thinkers write articles, nations sign treaties, users connect on Facebook etc.
 
 [**Focus on applications of computational linguistics to social science problems**]{.red} -->
-
+```
 ## Principles of Text Analysis (GMB Textbook)
 
 -   [**Principle 1:**]{.red} Social science theories and substantive knowledge are essential for research design
 
--   [**Principle 2:**]{.red} Text analysis does not replace humans—it augments them.
+-   [**Principle 2:**]{.red} Text analysis does not replace humans---it augments them.
 
 -   [**Principle 3:**]{.red} Building, refining, and testing social science theories requires iteration and cumulation.
 
@@ -152,8 +152,7 @@ knitr::include_graphics("https://miro.medium.com/v2/resize:fit:1400/1*t2u_0FHoQS
 
 -   [**Principle 5:**]{.red} The best method depends on the task. (Qualitative knowledge)
 
-- [**Principle 6:**]{.red}  Validations are essential and depend on the theory and the task
-
+-   [**Principle 6:**]{.red} Validations are essential and depend on the theory and the task
 
 ## Challenges I: Text is an unstructure data source
 
@@ -161,61 +160,60 @@ knitr::include_graphics("https://miro.medium.com/v2/resize:fit:1400/1*t2u_0FHoQS
 knitr::include_graphics("https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/advancing-text-mining/figures/dfm.png")
 ```
 
-
 ## Challenge II: Text is High dimensionality
 
 From [Gentzkow et al 2017](https://web.stanford.edu/~gentzkow/research/text-as-data.pdf):
 
-- sample of documents, each $n_L$ words long, drawn from vocabulary of $n_V$ words.
+-   sample of documents, each $n_L$ words long, drawn from vocabulary of $n_V$ words.
 
-- The unique representation of each document has dimension $n_{V}^{n_L}$ .
-   - e.g., a sample of 30-word ($n_L$) Twitter messages using only the one thousand most common words in the English language
-   - Dimensionality = $1000^{30}$ 
-   - As a matrix: $M^{1000}_{n_tweets}$
+-   The unique representation of each document has dimension $n_{V}^{n_L}$ .
 
-- Most of what you learned in statistics so far does not equip you to deal with this curse of dimensionality. 
+    -   e.g., a sample of 30-word ($n_L$) Twitter messages using only the one thousand most common words in the English language
+    -   Dimensionality = $1000^{30}$
+    -   As a matrix: $M^{1000}_{n_tweets}$
+
+-   Most of what you learned in statistics so far does not equip you to deal with this curse of dimensionality.
 
 ## Text-as-Data Workflow
 
-:::{.nonincremental}
+::: nonincremental
 [**Acquire textual data:**]{.red}
 
-  -   Existing corpora; scraped data; digitized text
-:::
-
-## Text-as-Data Workflow
-:::{.nonincremental}
-
-[**Map Documents to a numerical representation _M_**]{.red}
-
-  -   Bag-of-words (sparse vectors)
-  -   Embeddings (dense vectors)
-  -   Reduce noise, capture signal
+-   Existing corpora; scraped data; digitized text
 :::
 
 ## Text-as-Data Workflow
 
-:::{.nonincremental}
+::: nonincremental
+[**Map Documents to a numerical representation *M***]{.red}
 
-[**Map _M_ to predicted values $V^{*}$ of unknown outcomes V**]{.red}
-
-  -   Descriptive Analysis
-  -   Classify documents into unknown categories
-      -   Topic models
-  -   Classify documents into known categories
-      -   Dictionary methods
-      -   Supervised machine learning
-      -   Transfer-Learning - use models trained in text for other purposes
-  -   Scale documents on latent dimension:
-:::      
+-   Bag-of-words (sparse vectors)
+-   Embeddings (dense vectors)
+-   Reduce noise, capture signal
+:::
 
 ## Text-as-Data Workflow
-:::{.nonincremental}
 
-[**Use $V^{*}$ in subsequent analysis with other data sources**]{.red}
-    
-  - This is where social science happens! 
-:::        
+::: nonincremental
+[**Map *M* to predicted values** $V^{*}$ of unknown outcomes V]{.red}
+
+-   Descriptive Analysis
+-   Classify documents into unknown categories
+    -   Topic models
+-   Classify documents into known categories
+    -   Dictionary methods
+    -   Supervised machine learning
+    -   Transfer-Learning - use models trained in text for other purposes
+-   Scale documents on latent dimension:
+:::
+
+## Text-as-Data Workflow
+
+::: nonincremental
+[**Use** $V^{*}$ in subsequent analysis with other data sources]{.red}
+
+-   This is where social science happens!
+:::
 
 ## Assume you already did it!
 
@@ -223,13 +221,13 @@ From [Gentzkow et al 2017](https://web.stanford.edu/~gentzkow/research/text-as-d
 
 ## Overview of TAD Methods
 
-- [**Descriptive inference:**]{.red} how to convert text to matrices, vector space model, bag-of-words, dissimilarity measures, diversity, complexity, style.
+-   [**Descriptive inference:**]{.red} how to convert text to matrices, vector space model, bag-of-words, dissimilarity measures, diversity, complexity, style.
 
-- [**Supervised techniques:**]{.red} dictionaries, classication, scaling, machine learning approaches.
+-   [**Supervised techniques:**]{.red} dictionaries, classication, scaling, machine learning approaches.
 
-- [**Unsupervised techniques:**]{.red} clustering, topic models, embeddings.
+-   [**Unsupervised techniques:**]{.red} clustering, topic models, embeddings.
 
-- [**Special topics:**]{.red} Word embeddings and Large Language Models.
+-   [**Special topics:**]{.red} Word embeddings and Large Language Models.
 
 ## Some cool applications
 
@@ -249,28 +247,25 @@ From [Gentzkow et al 2017](https://web.stanford.edu/~gentzkow/research/text-as-d
 
 -   Regular expressions and basic text manipulation.
 
--   [CS Stuff]{.red}: machine translation, OCR, POS, entity recognition. 
-     - Most NLP/CS will focus on developing new algorithms, information retrievel and purely better measurements. 
-     - in a productive dialogue with NLP, we will focus on using text for social science research 
-        - theoretically driven discovery and measurement
-        - integration with social science problems + tabular data. 
+-   [CS Stuff]{.red}: machine translation, OCR, POS, entity recognition.
 
-## Your turn! 
+    -   Most NLP/CS will focus on developing new algorithms, information retrievel and purely better measurements.
+    -   in a productive dialogue with NLP, we will focus on using text for social science research
+        -   theoretically driven discovery and measurement
+        -   integration with social science problems + tabular data.
+
+## Your turn!
+
 ::: columns
 ::: {.column width="40%"}
-
 ```{r  echo=FALSE, out.width = "100%", fig.align="center"}
 knitr::include_graphics("https://media.giphy.com/media/eKDp7xvUdbCrC/giphy.gif") 
 ```
-
 :::
 
 ::: {.column width="60%"}
-:::{.nonincremental}
-
-<br>
-<br>
-<br>
+::: nonincremental
+<br> <br> <br>
 
 -   Name & pronouns
 
@@ -279,7 +274,6 @@ knitr::include_graphics("https://media.giphy.com/media/eKDp7xvUdbCrC/giphy.gif")
 -   Your experience (if any) working with text
 
 -   The most interesting thing you learned in the DSPP so far
-
 :::
 :::
 :::
@@ -323,7 +317,6 @@ knitr::include_graphics("week1_figs/schedule_.png")
 
     -   [Download RStudio IDE]{.red}!
 
-
 ## How to do well in the class?
 
 I designed this course as [PhD style seminar]{.red}:
@@ -336,7 +329,7 @@ I designed this course as [PhD style seminar]{.red}:
 
 -   [Do the readings before class]{.red}
 
--   Substantive readings are [especially important]{.red}, because they'll help you understand what an interesting question looks like  -- [in social science/public policy]{.red}.
+-   Substantive readings are [especially important]{.red}, because they'll help you understand what an interesting question looks like -- [in social science/public policy]{.red}.
 
 -   Plan ahead -- [particularly for the replication exercise]{.red}
 
@@ -344,24 +337,24 @@ I designed this course as [PhD style seminar]{.red}:
 
 ## What our classes will look like.
 
-This is a one meeting per week class. You should expect: 
+This is a one meeting per week class. You should expect:
 
-- Between [1h-1.5h]{.red} of lecture based on this week topics + readings
+-   Between [1h-1.5h]{.red} of lecture based on this week topics + readings
 
-- [Your participation in the lecture is expected]{.red} I will ask your insights about the readings. 
+-   [Your participation in the lecture is expected]{.red} I will ask your insights about the readings.
 
-- Break (10min)
+-   Break (10min)
 
-- Coding. 
-   - Mix of [you]{.red} working through some code I prepared.
-   - And I [live-coding]{.red} for you.
+-   Coding.
+
+    -   Mix of [you]{.red} working through some code I prepared.
+    -   And I [live-coding]{.red} for you.
 
 ## Textbook {.centered}
 
 ```{r fig.align="center"}
 knitr::include_graphics("week1_figs/tad.avif")
 ```
-
 
 ## Logistics {.center}
 
@@ -379,7 +372,7 @@ knitr::include_graphics("week1_figs/tad.avif")
 
 | **Assignment**           | **Percentage of Grade** |
 |--------------------------|:-----------------------:|
-| Participation/Attendance |           10%            |
+| Participation/Attendance |           10%           |
 | Problem Sets             |           20%           |
 | Replication Exercises    |           30%           |
 | Final Project            |           40%           |
@@ -444,7 +437,7 @@ The project is composed of three parts:
 
 ## ChatGPT
 
-:::{.nonincremental}
+::: nonincremental
 You are allowed to use ChatGPT as you would use google in this class. This means:
 
 -   Do not copy the responses from chatgpt -- a lot of them are wrong or will just not run on your computer
@@ -456,18 +449,16 @@ You are allowed to use ChatGPT as you would use google in this class. This means
 -   If you use chatgpt, I ask you to mention on your code how chatgpt worked for you.
 :::
 
-
 # Questions?
-
 
 ## Acquiring text:
 
-:::{.nonincremental}
+::: nonincremental
 As a review, here are some notebooks I developed for Data Science I introducing a full toolkit for acquiring data in the web:
 
-- [Static Websites](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-08/_week-07_scraping_static.ipynb)
+-   [Static Websites](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-08/_week-07_scraping_static.ipynb)
 
-- [APIs](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-09/_week-08_apis.ipynb)
+-   [APIs](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-09/_week-08_apis.ipynb)
 
-- [Selenium for Dynamics Websites](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-09/_week-08_selenium.ipynb)
+-   [Selenium for Dynamics Websites](https://tiagoventura.github.io/ppol5203_fall_2023/lecture_notes/week-09/_week-08_selenium.ipynb)
 :::
