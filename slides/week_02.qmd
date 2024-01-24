@@ -327,6 +327,20 @@ knitr::include_graphics("week2_figs/DA_wordfish.png")
 
 -   What is their solution? (no math needed!)
 
+::: {.notes}
+- calculate the distance for every pair of documents, and rank the distances
+
+- compared to no pre processing, do the pair wise distances again, and get which document pair changed kth position, where k=1 for the pair that changed the most. 
+
+- Build vector Vm_i^ with the position of the pairwise distance k affected in every other m combination. So Vm_1_1 contains the position of the changes in parwise distance on every other combination other than m=1 for the most changed document in m_1. 
+
+- their words: vmk = the rank difference for pair k between specification i and all others. 
+
+- Another example with 3 documents,  Vm1_1 = (1m2, 1m3), indicates that the document the changed the most in m1 is also the same in m2 and m3. 
+
+- pretext score: mean over k (mean of V_m_k)
+:::
+
 -   Too much work? Substantive knowledge out of the table?
 :::
 :::

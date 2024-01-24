@@ -529,7 +529,7 @@
     "href": "slides/week_02.html#denny-spirling-2018",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Denny & Spirling, 2018",
-    "text": "Denny & Spirling, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nStarting point: No rigorous way to compare results across different pre-processing steps. Adapting recommendations from supervised learning tasks.\n\nUnsupervised vs Supervised Learning?\nWhat is their solution? (no math needed!)\nToo much work? Substantive knowledge out of the table?"
+    "text": "Denny & Spirling, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nStarting point: No rigorous way to compare results across different pre-processing steps. Adapting recommendations from supervised learning tasks.\n\nUnsupervised vs Supervised Learning?\nWhat is their solution? (no math needed!)\n\n\n\ncalculate the distance for every pair of documents, and rank the distances\ncompared to no pre processing, do the pair wise distances again, and get which document pair changed kth position, where k=1 for the pair that changed the most.\nBuild vector Vm_i^ with the position of the pairwise distance k affected in every other m combination. So Vm_1_1 contains the position of the changes in parwise distance on every other combination other than m=1 for the most changed document in m_1.\ntheir words: vmk = the rank difference for pair k between specification i and all others.\nAnother example with 3 documents, Vm1_1 = (1m2, 1m3), indicates that the document the changed the most in m1 is also the same in m2 and m3.\npretext score: mean over k (mean of V_m_k)\n\n\n\nToo much work? Substantive knowledge out of the table?"
   },
   {
     "objectID": "slides/week_02.html#document-feature-matrix",

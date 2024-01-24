@@ -653,7 +653,29 @@
 <ul>
 <li class="fragment"><p>Unsupervised vs Supervised Learning?</p></li>
 <li class="fragment"><p>What is their solution? (no math needed!)</p></li>
-<li class="fragment"><p>Too much work? Substantive knowledge out of the table?</p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li><p>calculate the distance for every pair of documents, and rank the distances</p></li>
+<li><p>compared to no pre processing, do the pair wise distances again, and get which document pair changed kth position, where k=1 for the pair that changed the most.</p></li>
+<li><p>Build vector Vm_i^ with the position of the pairwise distance k affected in every other m combination. So Vm_1_1 contains the position of the changes in parwise distance on every other combination other than m=1 for the most changed document in m_1.</p></li>
+<li><p>their words: vmk = the rank difference for pair k between specification i and all others.</p></li>
+<li><p>Another example with 3 documents, Vm1_1 = (1m2, 1m3), indicates that the document the changed the most in m1 is also the same in m2 and m3.</p></li>
+<li><p>pretext score: mean over k (mean of V_m_k)</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<ul>
+<li class="fragment">Too much work? Substantive knowledge out of the table?</li>
 </ul>
 </div>
 </div>
