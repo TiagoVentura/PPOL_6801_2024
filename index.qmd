@@ -13,7 +13,7 @@ I assume students taking this class have taken, at minimum, an introductory clas
 
 ## Class Website
 
-[https://tiagoventura.github.io/PPOL_6801_2024/](https://tiagoventura.github.io/PPOL_6801_2024/)
+<https://tiagoventura.github.io/PPOL_6801_2024/>
 
 ## Instructor
 
@@ -40,7 +40,6 @@ I assume students taking this class have taken, at minimum, an introductory clas
 
 All are valid options! And no need to schedule time with me!
 
-
 ## Course Infra-structure
 
 **Class Website:** This class website will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.
@@ -49,3 +48,6 @@ All are valid options! And no need to schedule time with me!
 
 **Canvas:** A Canvas site <http://canvas.georgetown.edu> will be used throughout the course and should be checked on a regular basis for announcements. Materials will be posted here, and not on canvas, or distributed in class or by e-mail. Support for Canvas is available at (202) 687-4949
 
+## Credits
+
+To build this course, I used materials from Arthur Spirling [Text-as-Data](https://github.com/ArthurSpirling/text-as-data-class-spring2021) Class at NYU, and lab materials from various TA's for his course, Pablo Barbera's [Computational Social Science Seminar](http://pablobarbera.com/POIR613/index.html) seminar, [Brandon Stewart](https://bstewart.scholar.princeton.edu/), [Alex Siegel](https://aasiegel.github.io/website/website-main/), [Chris Bail](https://www.chrisbail.net/), [Sebastian Vallejo](https://www.svallejovera.com/), among others. Their lessons and inspiration are spread throughout all the materials of the course. Thanks!

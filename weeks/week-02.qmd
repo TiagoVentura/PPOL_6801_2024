@@ -45,20 +45,21 @@ tbl-colwidths: [10,50,40]
 
 **Required Readings**
 
--  Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022  - Chapters 3-5
+-   Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapters 3-5
 
 -   **Applied Papers**:
 
-  -   [Denny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189](https://www.cambridge.org/core/journals/political-analysis/article/text-preprocessing-for-unsupervised-learning-why-it-matters-when-it-misleads-and-what-to-do-about-it/AA7D4DE0AA6AB208502515AE3EC6989E).
+-   [Denny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189](https://www.cambridge.org/core/journals/political-analysis/article/text-preprocessing-for-unsupervised-learning-why-it-matters-when-it-misleads-and-what-to-do-about-it/AA7D4DE0AA6AB208502515AE3EC6989E).
 
-  -   [Ban, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. "How newspapers reveal political power." Political Science Research and Methods 7, no. 4 (2019): 661-678.](https://www.cambridge.org/core/journals/political-science-research-and-methods/article/how-newspapers-reveal-political-power/683B2D970E88A25239276D6FA071632B)
+-   [Ban, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. "How newspapers reveal political power." Political Science Research and Methods 7, no. 4 (2019): 661-678.](https://www.cambridge.org/core/journals/political-science-research-and-methods/article/how-newspapers-reveal-political-power/683B2D970E88A25239276D6FA071632B)
 
-  - [Michel, J.B., et al. 2011. "Quantitative Analysis of Culture Using Millions of Digitized Books." Science 331 (6014): 176--82. https://doi.org/10.1126/science.1199644](https://www.science.org/doi/10.1126/science.1199644)
+-   [Michel, J.B., et al. 2011. "Quantitative Analysis of Culture Using Millions of Digitized Books." Science 331 (6014): 176--82. https://doi.org/10.1126/science.1199644](https://www.science.org/doi/10.1126/science.1199644)
 
 **Coding Materials**
 
--   \[TBD\]
+- <a href="/code/week2_introduction_to_text_analysis.R" download> Week 2 - Text Data Processing </a> 
 
 # Slides
 
--   \[TBD\]
+-   [Week 2 - From Text to Matrices: Representing Text as Data](/slides/week_02.html)
+

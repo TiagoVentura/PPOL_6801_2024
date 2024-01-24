@@ -1,0 +1,482 @@
+---
+title: "PPOL 6801 - Text as Data - Computational Linguistics"
+subtitle: "<span style = 'font-size: 180%;'> <br> Week 2: From Text to Matrices: Representing Text as Data </span>"
+author: "<span style = 'font-size: 180%;'> Professor: Tiago Ventura </span>"
+execute: 
+  echo: false
+  error: true
+  cache: true
+format:
+  revealjs: 
+    transition: slide
+    background-transition: fade
+    code-line-numbers: false
+    width: 1200 #1050
+    height: 800 #700
+    center: false
+    slide-number: true
+    incremental: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: "Text-as-Data"
+    theme: [simple, custom.scss]
+editor_options: 
+  chunk_output_type: console
+---
+
+## Outline
+
+::: nonincremental
+- Challenges of working with text
+- Defining a corpus and selecting documents
+- Unit of analysis
+- Reducing complexity (Denny & Spirling's article)
+- Bag-of-Word, Vector model representation and Document-Feature Matrix
+- Application (Ban et. al.'s paper)
+:::
+
+
+<!-- ## Text Analysis Workflow
+
+[**Acquire textual data:**]{.red}
+
+-   Existing corpora; scraped data; digitized text
+
+::: fragment
+[**Map Documents to a numerical representation *M***]{.red}
+
+-   Bag-of-words (sparse vectors)
+-   Embeddings (dense vectors)
+-   Reduce noise, capture signal
+:::
+
+::: fragment
+[**Map *M* to predicted values** $V^{*}$ of unknown outcomes V]{.red}
+
+-   Descriptive Analysis
+-   Classify documents into unknown categories \~ unsupervised/discovery
+-   Classify documents into known categories \~ supervised learning
+-   Scale documents on latent dimension:
+:::
+
+::: fragment
+[**Use** $V^{*}$ in subsequent analysis with other data sources]{.red}
+
+-   This is where social science happens!
+::: 
+-->
+
+## Challenge I: Text is High-Dimensional
+
+From [Gentzkow et al 2017](https://web.stanford.edu/~gentzkow/research/text-as-data.pdf):
+
+-   sample of documents, each $n_L$ words long, drawn from vocabulary of $n_V$ words.
+
+-   The unique representation of each document has dimension $n_{V}^{n_L}$ .
+
+    -   e.g., a sample of 30-word ($n_L$) Twitter messages using only the one thousand most common words in the English language
+    -   Dimensionality = $1000^{30}$
+    -   As a matrix: $M^{1000}_{n_tweets}$
+
+## Challenge II: Text is an unstructure data source
+
+```{r}
+knitr::include_graphics("https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/advancing-text-mining/figures/dfm.png")
+```
+
+## Challenges III: Outcomes live in the Latent Space
+
+In most social science applications of text as data, we are trying to make an inference about a [latent variable]{.red}
+
+-   [Latent variable]{.red}: we cannot observe directly but try to identify with statistical and theorethical assumptions.
+-   Examples: ideology, sentiment, political stance, propensity of someone to turnout
+
+::: fragment
+
+[Traditional social science]{.red}: mapping between observed and latent/theoretical concepts is easier.
+
+-   We observe/measure country macroeconomic variables, collect survey responses, see how politicians vote.
+
+-   In text, we only observe the words. [Much harder to identify the latent concepts.]{.red}
+:::
+
+## Learning goals
+
+### Today:
+
+-   Cover techniques to reduce complexity from text data using a set of pre-processing steps \~ [Challenge I]{.red}
+
+-   How to represent text as numbers using the vector space model \~ [Challenge II]{.red}
+
+-   Starting next week we will deal more with inference and modeling [latent parameters]{.red} using text \~ [Challenge III]{.red}
+
+## 1. Corpus and selecting documents
+
+-   A *corpus* is (typically) a large set of texts or documents which we wish to analyze.
+
+    - [if you can read them in an small amount of time, you should just do it, not TAD]{.midgray}
+  
+-   When selecting a corpus, we should consider how the corpus relates to our research question in two aspects:
+
+    -   [Population of interest]{.red}: does the corpus allows us to make inferences about them?
+
+    -   [Quantity of interest]{.red}: can we measure what we plan to?
+
+    -   [Sampling Bias]{.red}: documents are often sampled from a larger population. Are there concerns about sample selection bias?
+
+-   Most often we use these documents because they were available to us ([custom made data]{.red}). In these cases, considering the three questions above is even more important.
+
+## Ventura et. al., Streaming Chats, 2021
+
+::: columns
+::: {.column width="50%"}
+![](week2_figs/ventura_jqd.png){fig-align="left" width="600px"}
+:::
+
+::: {.column width="50%"}
+### Key components
+
+::: nonincremental
+-   RQ: Measure quality of comments on streaming chat platforms during political debates
+
+-   Population of interest?
+
+-   Quantity of interest?
+
+-   Source of bias?
+:::
+:::
+:::
+
+## 2. Unit of Analysis
+
+After selecting your documents and converting them to a computer-friendly format, we must decide our [unit of analysis]{.red}
+
+- entire document? sentence? paragraph? a larger group of documents?
+
+::: fragment
+
+[Three things]{.red} to consider in making this decision: 
+
+- Features of your data and model fit
+
+- Your research question
+
+- Iterative model 
+
+  - switching through different units of analysis has a low cost
+  - allows you to look at the data from a different angle
+  - provide new insights to your research
+
+:::
+
+## 3. Reducing complexity
+
+Language is extraordinarily [complex]{.red}, and involves great [subtlety and nuanced interpretation]{.red}.
+
+-   We simplify documents so that we can analyze/compared them:
+    -   makes the modeling problem much more tractable.
+    -   complexity makes not much difference in topic identification or simple prediction tasks (sentiment analysis, for example)
+-   the degree to which one simplifees is dependent on the particular task at hand.
+    -   Denny and Spirling (2019) \~ check sensitivity.
+
+## Reducing complexity: steps
+
+-   [Tokenization]{.red}: What does constitute a feature?
+
+-   [Remove \`superfulous' material]{.red}: HTML tags, punctuation, numbers, lower case and stop words
+
+-   [Map words to equivalence forms]{.red}: stemming and lemmatization
+
+-   [Discard less useful features for your task at hand]{.red}: functional words, highly frequent or rare words
+
+-   [Discard word order]{.red}: Bag-of-Words Assumption
+
+## Tokenization
+
+-   A first step in any text analysis task is to break documents in meaningful units of analysis (tokens)
+
+-   [Tokens]{.red} are often words for most tasks. A simple tokenizer uses white space marks to split documents in tokens.
+
+-   Tokenizer may vary \[across tasks\]{.red}:
+
+    -   Twiter specific tokenizer \~ keep hashtags, for example.
+
+-   May also vary [across languages]{.red}, in which white space is not a good marker to split text into tokens
+
+    -   chinese and japanese
+
+-   Certain tokens, even in english, make more sense together than separate ("White House", "United States"). These are collocations
+
+    -   statistical testing for collocations \~ [PMI(a, b) = log(p(a,b)/p(a)\*p(b))]{.red}
+
+## Stop Words
+
+-   There are certain words that serve as [linguistic connectors (\`function words')]{.red} which we can remove.
+
+    -   ( *the, it, if, a, for, from, at, on, in, be* )
+
+-   Add noise to the document. [Discard them]{.red}, focus on signal, meaningful words.
+
+-   Most TAD packages have a pre-selected list of stopwords. You can add more given you substantive knowledge (more about this later)
+
+-   Usually not important for unsupervised and mostly supervised tasks, but might matter for authorship detection.
+
+    -   Federalist Papers, example. Stop words give away writing styles.
+
+## Equivalence mapping
+
+#### Reduce dimensionality even further!
+
+-   Different forms of words ([family, families, familial]{.midgray}), or words which are similar in concept ([bureaucratic, bureaucrat, bureaucratization]{.midgray}) that refer to same basic token/concept.
+
+-   use algorithms to map these variation to a equivalent form:
+
+    -   stemming: chop the end of the words: *family, families, familiar* \~ *famili*
+    -   lemmatization: condition on part of speech
+        -   better (adj) \~ good
+        -   leaves (noun) \~ leaf
+        -   leaves (verb) \~ leave
+
+-   All [TAD/NLP packages[{.red}] offer easy applications for these algorithms.
+
+## Other steps: functional words, highly frequent or rare words
+
+Some other commons steps, which are highly dependent on your contextual knowledge, are:
+
+-   [discard functional words]{.red}: for example, when working with congressional speeches, remove `representative, congress, session, etc...`
+
+-   [remove highly frequent words]{.red}: words that appear in all documents carry very little meaning for most supervised and unsupervised tasks \~ no clustering and not discrimination.
+
+-   [remove rare frequent words]{.red}: same logic as above, no signal. Commong practice, words appear less 5% fo documents.
+
+## 4. Bag-of-Words Assumption
+
+Now we have [pre-processed]{.red} our data. So we simplify it even further:
+
+-   [Bag-of-Words Assumption:]{.red} the order in which words appear does not matter.
+
+    -   Ignore order
+
+    -   [But]{.red} keep multiplicity, we still consider frequency of words
+
+::: fragment
+[How could this possible work:]{.red}
+
+-   **it might note:** you need validation
+
+-   **central tendency in text:** some words are enough to topic detection, classificaiton, measures of similarity, and distance, for example.
+
+-   **humans in the loop:** expertise knowledge help you figure it out subtle relationships between words and outcomes
+:::
+
+## Can we preserve the word order? (another pre-processing decision)
+
+### Yes
+
+-  we might retaining word order using n-grams.
+ 
+   - [White House, Bill Gates, State Department, Middle East]{.midgray}
+   -  we think some important subtlety of expression is lost: negation
+perhaps 
+       - _I want coffee, not tea_ might be interpreted very diferently without word order.
+
+-  can use [n-grams], which are (sometimes contiguous) sequences of two (bigrams) or three (trigrams) tokens. 
+
+- This makes computations considerably more complex. We can pick some n-grams to keep but not all: 
+
+    - $PMI_{a,b} = log \frac{p_{a,b}}{p_a \cdot p_b}$
+    
+        - if p(a,b)=0 ~  log (0) = -inf 
+        - if p(a,b)=p(a)p(b) ~ log(1) = 0
+        - if p(a,b)<p(a)p(b) ~ log(0<x<1) < 0
+        - if p(a,b)>p(a)p(b) ~ log(x>1) > 0
+
+
+
+## Complete Example
+
+::: {.callout-note icon="false"}
+## Text
+
+*We use a new dataset containing nearly 50 million historical newspaper pages from 2,700 local US newspapers over the years 1877--1977. We define and discuss a measure of power we develop based on observed word frequencies, and we validate it through a series of analyses. Overall, we find that the relative coverage of political actors and of political offices is a strong indicator of political power for the cases we study*
+:::
+
+::: fragment
+::: {.callout-note icon="false"}
+## After pre-processing
+
+*use new dataset contain near 50 million historical newspaper pag 2700 local u newspaper year 18771977 define discus measure power develop bas observ word frequenc validate ser analys overall find relat coverage political actor political offic strong indicator political power cas study*
+:::
+:::
+
+## Denny & Spirling, 2018
+
+::: columns
+::: {.column width="50%"}
+```{r fig.align="center"}
+knitr::include_graphics("week2_figs/DA_wordfish.png")
+```
+:::
+
+::: {.column width="50%"}
+[**Starting point**]{.red}: No rigorous way to compare results across different pre-processing steps. Adapting recommendations from supervised learning tasks.
+
+-   Unsupervised vs Supervised Learning?
+
+-   What is their solution? (no math needed!)
+
+-   Too much work? Substantive knowledge out of the table?
+:::
+:::
+
+## 5. Vector Space Model
+
+To represent documents as numbers, we will the [vector space model representation]{.red}:
+
+-   a document $D_i$ is represented as a collection of features $W$ (words, tokens, n-grams..)
+
+-   Each feature $w_i$ can be place in a real line, then a document $D_i$ is a point in a $W$ dimensional space
+
+::: fragment
+Imagine the sentence below: *"If that is a joke, I love it. If not, can't wait to unpack that with you later."*
+
+-   **Sorted Vocabulary** =(a, can't, i, if, is, it, joke, later, love, not, that, to, unpack, wait, with, you")
+
+-   **Feature Representation** = (1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1)
+
+-   Features will typically be the n-gram (mostly unigram) [frequencies]{.red} of the tokens in the document, or some [function]{.red} of those frequencies
+:::
+
+::: fragment
+Now each document is now a vector (vector space model)
+
+-   stacking these vectors will give you our workhose representation for text: [**Document Feature Matrix**]{.red}
+:::
+
+## Visualizing Vector Space Model
+
+::: {.callout-note icon="false"}
+## Doocuments
+
+Document 1 = "yes yes yes no no no"
+
+Document 2 = "no no yes no no no"
+:::
+
+```{r echo=FALSE, fig.align="center",fig.width=8}
+# Load necessary libraries
+pacman::p_load(ggplot, tidyverse)
+
+# Define a simple vocabulary of two words
+
+# Sample texts using only words from the vocabulary
+document1 <- c("yes", "yes", "yes", "no", "no", "no")
+document2 <- c("no", "no", "no", "no", "no", "no")
+
+# Convert the documents to a dataframe to a data frame for ggplot
+df <- tibble(document1, document2) %>% 
+       pivot_longer(cols=contains("document"), names_to = "document", values_to = "word") %>%
+       group_by(document, word) %>%
+       count() %>%
+       pivot_wider(names_from=word, values_from=n, values_fill = 0)
+
+# Plot the documents in 2D space using ggplot
+ggplot(df, aes(x = no, y = yes, label = document)) +
+  geom_label(nudge_y =.5) +
+  geom_segment(aes(x = 0, y = 0, xend = 3, yend = 3), 
+               arrow = arrow(), 
+               size=1, color="navy") +
+  geom_segment(aes(x = 0, y = 0, xend = 6, yend = 0),  
+               arrow = arrow(), 
+               size=1, color="navy") +
+ geom_segment(aes(x = 3, y = 3, xend = 6, yend = 0),  
+               linetype=2, 
+               size=1, color="tomato", alpha=.2) +
+  
+  xlim(0, 7) +
+  xlab("Frequency of 'yes'") +
+  ylab("Frequency of 'no'") +
+  ggtitle("Vector Representation of Texts") +
+  theme_minimal()
+```
+
+## Visualizing Vector Space Model
+
+In the vector space, we can use geometry to build well-defined comparison measures between the documents (more about this next week)
+
+```{r echo=FALSE, fig.align="center",fig.width=8}
+
+# Plot the documents in 2D space using ggplot
+ggplot(df, aes(x = no, y = yes, label = document)) +
+  geom_point(size=2) +
+  geom_segment(aes(x = 0, y = 0, xend = 3, yend = 3), 
+               arrow = arrow(), 
+               size=1, color="navy", alpha=.2) +
+  geom_segment(aes(x = 0, y = 0, xend = 6, yend = 0),  
+               arrow = arrow(), 
+               size=1, color="navy", alpha=.3) +
+ geom_segment(aes(x = 3, y = 3, xend = 6, yend = 0),  
+               linetype=2, 
+               size=1, color="tomato", alpha=1) +
+annotate(geom="label", x=5, y=1, label="Distance",
+              color="black")  +
+  xlim(0, 7) +
+  xlab("Frequency of 'yes'") +
+  ylab("Frequency of 'no'") +
+  ggtitle("Vector Representation of Texts") +
+  theme_minimal()
+```
+
+## 6. Document-Feature Matrix
+
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics("week2_figs/DTM.png") 
+```
+
+::: aside
+Source: [Arthur Spirling TAD Class](https://github.com/ArthurSpirling/text-as-data-class-spring2021)
+:::
+
+## Quick Exercise
+
+What is the vector representation of this sentence? Give me the vocabulary and the feature representation. Remove any punctuation.
+
+<br> <br>
+
+*"That's just what translation is, I think. That's all speaking is. Listening to the other and trying to see past your own biases to glimpse what they're trying to say."*
+
+## If you are curious ...
+
+```{r fig.align="center",fig.width=12}
+knitr::include_graphics("https://m.media-amazon.com/images/I/A1lv97-jJoL._SL1500_.jpg")
+```
+
+# Application
+
+## Ban et. al. 2019, How Newspapers Reveal Political Power.
+
+::: columns
+::: {.column width="50%"}
+```{r fig.width=12}
+knitr::include_graphics("week2_figs/ban_.png")
+```
+:::
+
+::: {.column width="50%"}
+<br> <br>
+
+-   Purely descriptive
+
+-   Simple measure just by counting words.
+
+-   Theorethically-driven: measure that capture a theorethically relevant concept.
+
+::: fragment
+$$
+\small \text{Coverage of Mayor}_{it} = \frac{\text{Mayor}_{it}}{\text{Mayor}_{it} + \text{City Manager}_{it} + \text{City Council}_{it}}
+$$
+:::
+:::
+:::
