@@ -2,7 +2,7 @@
 # File-Name: week2_introduction_to_text_analysis.r
 # Date: January 22, 2024
 # author: Tiago Ventura
-# course: ppol 6801 - text as data
+# course: PPOL 6801 - text as data
 # topics: basic introduction to text analysis using quanteda and tidy text
 # Machine: MacOS High Sierra
 ##############################################################################
@@ -31,8 +31,7 @@
 ## to load packages in R, I strongly suggest you to use the `pacman` as package management tool (https://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html)
 ## the pacman combines the install.package and library steps in a single function, basically. 
 
-install.packages(pacman)
-
+install.packages("pacman")
 # Install the latest stable version of quanteda from CRAN
 
 # the `::` allows you to access the function of a package without loading it
