@@ -494,7 +494,7 @@
     "href": "slides/week_02.html#vector-space-model",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "5. Vector Space Model",
-    "text": "5. Vector Space Model\nTo represent documents as numbers, we will the vector space model representation:\n\na document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space\n\n\nImagine the sentence below: “If that is a joke, I love it. If not, can’t wait to unpack that with you later.”\n\nSorted Vocabulary =(a, can’t, i, if, is, it, joke, later, love, not, that, to, unpack, wait, with, you”)\nFeature Representation = (1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1)\nFeatures will typically be the n-gram (mostly unigram) frequencies of the tokens in the document, or some function of those frequencies\n\n\n\nNow each document is now a vector (vector space model)\n\nstacking these vectors will give you our workhose representation for text: Document Feature Matrix"
+    "text": "5. Vector Space Model\nTo represent documents as numbers, we will use the vector space model representation:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space\n\n\nImagine the sentence below: “If that is a joke, I love it. If not, can’t wait to unpack that with you later.”\n\nSorted Vocabulary =(a, can’t, i, if, is, it, joke, later, love, not, that, to, unpack, wait, with, you”)\nFeature Representation = (1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1)\nFeatures will typically be the n-gram (mostly unigram) frequencies of the tokens in the document, or some function of those frequencies\n\n\n\nNow each document is now a vector (vector space model)\n\nstacking these vectors will give you our workhose representation for text: Document Feature Matrix"
   },
   {
     "objectID": "slides/week_02.html#from-text-to-numbers-document-feature-matrix",
@@ -536,7 +536,7 @@
     "href": "slides/week_02.html#document-feature-matrix",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "6. Document-Feature Matrix",
-    "text": "6. Document-Feature Matrix\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
+    "text": "6. Document-Feature Matrix\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
   },
   {
     "objectID": "slides/week_02.html#challenge-i-text-is-high-dimensional",

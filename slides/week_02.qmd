@@ -347,9 +347,9 @@ knitr::include_graphics("week2_figs/DA_wordfish.png")
 
 ## 5. Vector Space Model
 
-To represent documents as numbers, we will the [vector space model representation]{.red}:
+To represent documents as numbers, we will use the [vector space model representation]{.red}:
 
--   a document $D_i$ is represented as a collection of features $W$ (words, tokens, n-grams..)
+-   A document $D_i$ is represented as a collection of features $W$ (words, tokens, n-grams..)
 
 -   Each feature $w_i$ can be place in a real line, then a document $D_i$ is a point in a $W$ dimensional space
 
@@ -405,10 +405,6 @@ ggplot(df, aes(x = no, y = yes, label = document)) +
   geom_segment(aes(x = 0, y = 0, xend = 6, yend = 0),  
                arrow = arrow(), 
                size=1, color="navy") +
- geom_segment(aes(x = 3, y = 3, xend = 6, yend = 0),  
-               linetype=2, 
-               size=1, color="tomato", alpha=.2) +
-  
   xlim(0, 7) +
   xlab("Frequency of 'yes'") +
   ylab("Frequency of 'no'") +
@@ -453,7 +449,7 @@ knitr::include_graphics("week2_figs/DTM.png")
 Source: [Arthur Spirling TAD Class](https://github.com/ArthurSpirling/text-as-data-class-spring2021)
 :::
 
-## Quick Exercise
+<!-- ## Quick Exercise
 
 What is the vector representation of this sentence? Give me the vocabulary and the feature representation. Remove any punctuation.
 
@@ -466,6 +462,7 @@ What is the vector representation of this sentence? Give me the vocabulary and t
 ```{r fig.align="center",fig.width=12}
 knitr::include_graphics("https://m.media-amazon.com/images/I/A1lv97-jJoL._SL1500_.jpg")
 ```
+-->
 
 # Application
 
