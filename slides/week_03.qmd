@@ -1,0 +1,598 @@
+---
+title: "PPOL 6801 - Text as Data - Computational Linguistics"
+subtitle: "<span style = 'font-size: 140%;'> <br> Week 3: Descriptive Inference - Comparing Documents </span>"
+author: "<span style = 'font-size: 120%;'> Professor: Tiago Ventura </span>"
+execute: 
+  echo: false
+  error: true
+  cache: true
+format:
+  revealjs: 
+    transition: slide
+    background-transition: fade
+    code-line-numbers: false
+    width: 1200 #1050
+    height: 800 #700
+    center: false
+    slide-number: true
+    incremental: false
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: "Text-as-Data"
+    theme: [simple, custom.scss]
+editor_options: 
+  chunk_output_type: console
+---
+
+## Housekeeping
+
+Thanks for selecting the articles for replication exercise! [Next steps]{.red}:
+
+:::incremental
+-   Get access to the data and code ASAP
+
+    -   Harvard Dataverse, see footnotes in the papers, contact the authors
+    -   any issue, please, talk to me!
+
+-   If the data is too big for your laptop, use a sample of the data.
+
+-   If the paper has much more than the text analysis, ignore it, just focus on the TAD component.
+
+-   [Any questions?]{.red}
+:::
+
+## Where are we?
+
+Three primary challenges dealing with text as data:
+
+-   [Challenge I:]{.red} Text is high dimensional
+
+-   [Challenge II:]{.red} Text is unstructured data source
+
+-   [Challenge III:]{.red} Outcomes live in the latent space
+
+:::fragment
+[Last week:]{.red}
+
+-   Pre-processing text + bag of words \~\> reduces greatly text complexity (dimensions)
+
+-   Text representation using vectors of numbers \~\> document feature matrix (text to numbers)
+
+:::
+
+## Plans for today
+
+We will start thinking about latent outcomes. Our first approach will focus on [descriptive inference]{.red} about documents:
+
+-   Comparing documents
+
+-   Using similarity to measure text-reuse
+
+-   Evaluating complexity in text
+
+-   Weighting (TF-iDF)
+
+## Recall: Vector space model
+
+To represent documents as numbers, we will use the [vector space model representation]{.red}:
+
+::: incremental
+
+-   A document $D_i$ is represented as a collection of features $W$ (words, tokens, n-grams, etc...)
+
+-   Each feature $w_i$ can be placed in a real line
+
+-   A document $D_i$ is a point in a $\mathbb{R}^W$
+
+    -   Each document is now a [vector]{.red},
+    -   Each entry represents the [frequency of a particular token or feature]{.red}.
+    -   Stacking those vectors on top of each other gives the [document feature matrix (DFM)]{.red}.
+    
+:::    
+
+## Document-Feature Matrix: fundamental unit of TAD
+
+```{r echo=FALSE, out.width = "100%", fig.align="center"}
+knitr::include_graphics("week2_figs/DTM.png") 
+```
+
+::: aside
+Source: [Arthur Spirling TAD Class](https://github.com/ArthurSpirling/text-as-data-class-spring2021)
+:::
+
+## In a two dimensional space
+
+::: {.callout-note icon="false"}
+## Documents, W=2
+
+Document 1 = "yes yes yes no no no"
+
+Document 2 = "yes yes yes yes yes yes"
+:::
+
+```{r echo=FALSE, fig.align="center",fig.width=8}
+# Load necessary libraries
+pacman::p_load(ggplot, tidyverse)
+
+# Define a simple vocabulary of two words
+
+# Sample texts using only words from the vocabulary
+document1 <- c("yes", "yes", "yes", "no", "no", "no")
+document2 <- c("no", "no", "no", "no", "no", "no")
+
+# Convert the documents to a dataframe to a data frame for ggplot
+df <- tibble(document1, document2) %>% 
+       pivot_longer(cols=contains("document"), names_to = "document", values_to = "word") %>%
+       group_by(document, word) %>%
+       count() %>%
+       pivot_wider(names_from=word, values_from=n, values_fill = 0)
+
+# Plot the documents in 2D space using ggplot
+ggplot(df, aes(x = no, y = yes, label = document)) +
+  geom_label(nudge_y =.5) +
+  geom_segment(aes(x = 0, y = 0, xend = 3, yend = 3), 
+               arrow = arrow(), 
+               size=1, color="navy") +
+  geom_segment(aes(x = 0, y = 0, xend = 6, yend = 0),  
+               arrow = arrow(), 
+               size=1, color="navy") +
+  xlim(0, 7) +
+  xlab("Frequency of 'yes'") +
+  ylab("Frequency of 'no'") +
+  ggtitle("Vector Representation of Texts") +
+  theme_minimal()
+```
+
+# Comparing Documents
+
+## How \`far' is document a from document b?
+
+Using the vector space, we can use notions of geometry to build well-defined [comparison/similarity]{.red} measures between the documents. 
+
+:::incremental
+- [in multiple dimensions!!]{.red}
+
+:::fragment 
+```{r echo=FALSE, fig.align="center",fig.width=8}
+
+# Plot the documents in 2D space using ggplot
+ggplot(df, aes(x = no, y = yes, label = document)) +
+  geom_point(size=2) +
+  geom_segment(aes(x = 0, y = 0, xend = 3, yend = 3), 
+               arrow = arrow(), 
+               size=1, color="navy", alpha=.2) +
+  geom_segment(aes(x = 0, y = 0, xend = 6, yend = 0),  
+               arrow = arrow(), 
+               size=1, color="navy", alpha=.3) +
+ geom_segment(aes(x = 3, y = 3, xend = 6, yend = 0),  
+               linetype=2, 
+               size=1, color="tomato", alpha=1) +
+annotate(geom="label", x=5, y=1, label="Distance",
+              color="black")  +
+  xlim(0, 7) +
+  xlab("Frequency of 'yes'") +
+  ylab("Frequency of 'no'") +
+  ggtitle("Euclidean Distance Between Documents") +
+  theme_minimal()
+```
+:::
+:::
+
+```{=html}
+<!-- ## Properties for Similarity Metrics
+
+For vectors i and j, with distance $s_{ij}$:
+
+- 1. no negative distances: $s_{ij}  \ge 0$
+
+- 2. when distance between documents is zero ~ documents are identical
+
+- 3. distance between documents is symmetric: sij = sji
+
+- 4 measures satisfy triangle inequality. sik > sij + sjk 
+-->
+```
+## Euclidean Distance
+
+The *ordinary*, *straight line* distance between two points in space. Using document vectors $y_a$ and $y_b$ with $j$ dimensions
+
+::: {.callout-note icon="false"}
+## Euclidean Distance
+
+$$
+||y_a - y_b|| = \sqrt{\sum^{j}(y_{aj} - y_{bj})^2}
+$$
+:::
+
+#### Can be performed for any number of features J \~ has nice mathematical properties
+
+
+::: notes
+no negative distances: sij   0 2 distance between documents is zero () documents are identical 3 distance between documents is symmetric: sij = sji 4 measures satisfy triangle inequality. sik   sij + sjk
+:::
+
+## Euclidean Distance, w=2
+
+::: {.callout-note icon="false"}
+## Euclidean Distance
+
+$$
+||y_a - y_b|| = \sqrt{\sum^{j}(y_{aj} - y_{bj})^2}
+$$
+:::
+
+-   $y_a$ = \[0, 2.51, 3.6, 0\] and $y_b$ = \[0, 2.3, 3.1, 9.2\]
+
+-   $\sum_{j=1}^j (y_a - y_b)^2$ = $(0-0)^2 + (2.51-2.3)^2 + (3.6-3.1)^2 + (9-0)^2$ = $84.9341$
+
+-   $\sqrt{\sum_{j=1}^j (y_a - y_b)^2}$ = 9.21
+
+```{r  echo=FALSE, eval=FALSE}
+a = c(0, 2.51, 3.6, 0)
+b = c(0, 2.3, 3.1, 9.2)
+sqrt(sum((a-b)^2))
+
+```
+
+## Exercise
+
+::: {.callout-note icon="false"}
+## Documents, W=3 {yes, no}
+
+Document 1 = "yes yes yes no no no" (3, 3)
+
+Document 2 = "yes yes yes yes yes yes" (6,0)
+
+Document 3= "yes yes yes no no no yes yes yes no no no yes yes yes no no no yes yes yes no no no" (12, 12)
+:::
+
+::: columns
+::: {.column width="50%"}
+```{r echo=FALSE, fig.align="center",fig.width=8}
+# Load necessary libraries
+pacman::p_load(tidyverse)
+
+# Define a simple vocabulary of two words
+
+# Sample texts using only words from the vocabulary
+document1 <- tibble(yes=3, no=3)
+document2 <- tibble(yes=6, no=0)
+document3 <- tibble(yes=12, no=12)
+
+# Convert the documents to a dataframe to a data frame for ggplot
+df <- bind_rows(document1, document2, document3) %>%
+      mutate(document=c("Doc A", "Doc B", "Doc C"))
+
+
+
+# Plot the documents in 2D space using ggplot
+ggplot(df, aes(x = yes, y = no, label = document)) +
+  geom_label(nudge_y =.5) +
+  geom_point(shape=21, fill="tomato", size=4) +
+  geom_segment(aes(x = 0, y = 0, xend = 3, yend = 3), 
+               arrow = arrow(), 
+               size=1, color="navy") +
+  geom_segment(aes(x = 0, y = 0, xend = 6, yend = 0),  
+               arrow = arrow(), 
+               size=1, color="navy") +
+  geom_segment(aes(x = 0, y = 0, xend = 12, yend = 12),  
+               arrow = arrow(), 
+               size=1, color="navy") +
+  xlab("Frequency of 'yes'") +
+  ylab("Frequency of 'no'") +
+  ggtitle("Vector Representation of Texts") +
+  theme_minimal()
+
+```
+:::
+
+::: {.column width="50%"}
+<br><br>
+
+-   Which documents will the euclidean distance place closer together?
+-   Does it look like a good measure for similarity?
+    -   Doc C = Doc A \* 3
+:::
+:::
+
+## Cosine Similarity
+
+Euclidean distance rewards [magnitude]{.red}, rather than [direction]{.red}
+
+$$
+\text{cosine similarity}(\mathbf{y_a}, \mathbf{y_b}) = \frac{\mathbf{y_a} \cdot \mathbf{y_b}}{\|\mathbf{y_a}\| \|\mathbf{y_b}\|}
+$$
+
+[Unpacking the formula]{.red}:
+
+-   $\mathbf{y_a} \cdot \mathbf{y_b}$ \~ dot product between vectors
+
+    -   projecting common magnitudes
+    -   measure of similarity (see textbook)
+    -   $\sum_j{y_{aj}*y_{bj}}$
+
+-   $||\mathbf{y_a}||$ \~ vector magnitude, length \~ $\sqrt{\sum{y_{aj}^2}}$
+
+-   normalizes similarity by documents' length \~ independent of document length be because it deals only with the [angle of the vectors]{.red}
+
+-   cosine similarity captures some notion of relative *direction* (e.g. style or topics in the document)
+
+## Cosine Similarity
+
+Cosine function has a range between -1 and 1.
+
+-   Consider: cos (0) = 1, cos (90) = 0, cos (180) = -1
+
+```{r}
+# Load necessary libraries
+pacman::p_load(ggplot, tidyverse)
+
+# Define a simple vocabulary of two words
+
+# Sample texts using only words from the vocabulary
+document1 <- tibble(yes=3, no=3)
+document2 <- tibble(yes=6, no=0)
+document3 <- tibble(yes=12, no=12)
+
+# Convert the documents to a dataframe to a data frame for ggplot
+df <- bind_rows(document1, document2, document3) %>%
+      mutate(document=c("Doc A", "Doc B", "Doc C"))
+
+# Function to calculate the angle between two vectors
+calculate_angle <- function(x1, y1, x2, y2) {
+  dot_product <- x1 * x2 + y1 * y2
+  magnitudes <- sqrt(x1^2 + y1^2) * sqrt(x2^2 + y2^2)
+  angle <- acos(dot_product / magnitudes)
+  return(angle * (180 / pi)) # Convert from radians to degrees
+}
+
+# Calculate angles between vectors
+angle1_2 <- calculate_angle(3, 3, 6, 0)
+angle1_3 <- calculate_angle(3, 3, 12, 12)
+angle2_3 <- calculate_angle(6, 0, 12, 12)
+
+# Plot the documents in 2D space using ggplot
+ggplot(df, aes(x = yes, y = no, label = document)) +
+  geom_label(nudge_y =.5) +
+  geom_point(shape=21, fill="tomato", size=4) +
+  geom_segment(aes(x = 0, y = 0, xend = 3, yend = 3), 
+               arrow = arrow(), 
+               size=1, color="navy", alpha=0.05) +
+  geom_segment(aes(x = 0, y = 0, xend = 6, yend = 0),  
+               arrow = arrow(), 
+               size=1, color="navy", alpha=.05) +
+  geom_segment(aes(x = 0, y = 0, xend = 12, yend = 12),  
+               arrow = arrow(), 
+               size=1, color="navy", alpha=.05) +
+geom_curve(aes(x =1.5, y = 1.5, xend = 2, yend = 0), curvature = -0.5, 
+           linetype="dashed", color="tomato") +
+annotate("text", x = 2.5, y = 1.0, label = paste("θ"), size=5) +
+  xlab("Frequency of 'yes'") +
+  ylab("Frequency of 'no'") +
+  ggtitle("Vector Representation of Texts with Angles") +
+  theme_minimal()
+
+```
+
+## Exercise
+
+The cosine function can range from \[-1, 1\]. When thinking about document vectors, cosine similarity is actually constrained to vary only from 0 - 1.
+
+-   Why does cosine similarity for document vectors can never be lower than zero? Think about the vector representation and the document feature matrix.
+
+## More metrics
+
+There are a large number of distance/similarity metrics out there, just to name a few:
+
+-   **Jaccard Similarity:** overlap between documents
+
+-   **Manhattan Distance:** absolute distance between documents
+
+-   **Canberra Distance:** Weighted version of Manhattan Distance
+
+-   **Minowski**: generalized version of Euclidean
+
+No single best measure, depends on your research question.
+
+## Mozer et al, 2020 'Matching with Text Data'
+
+But some recent research show Document Feature Matrix (DTM) + Cosine similarity works well to perceived similarity on documents
+
+```{r echo=FALSE, out.width = "100%", fig.align="center"}
+knitr::include_graphics("week3_figs/mozer_pa.png") 
+```
+
+# Application: Text-Reuse
+
+## Linder et. al, 2020 - Text as Policy
+
+::: columns
+::: {.column width="50%"}
+```{r fig.align="center"}
+knitr::include_graphics("week3_figs/text_reuse_wf.png")
+```
+:::
+
+::: {.column width="50%"}
+#### How is cosine similarity used in the application?
+
+<br> <br> <br>
+
+```{r fig.align="center"}
+knitr::include_graphics("week3_figs/inverse_cosine.png")
+```
+:::
+:::
+
+::: notes
+-   Main assumption: text reuse serves as a summary measure of the greatest overlap observed across all relevant policy dimensions represented in legislative text.
+
+-   How? Identifying large segments of equivalent or highly similar text.
+
+-   Smith-Waterman local alignment algorithm
+
+    -   longest sequence of overlap allowing for gaps and mismatches
+
+-   The SW algorithm amounts to a systematic procedure for scoring similar sequences of text, and efficiently finding the highest scoring sequences in two documents.
+
+-   Analysis:
+
+    -   Selection: Elastic search for 500 candidates
+    -   Smith Waterman alignment algorithm
+    -   Downeight give average cosine dissimilarity between allignment and a random sample of 1000 other alignments. If the alignment is everywhere, downweight.
+:::
+
+# Text Complexity
+
+## Lexical Diversity
+
+-   [Length]{.red} refers to the size in terms of: characters, words, lines, sentences, paragraphs, pages, sections, chapters, etc.
+
+-   [Tokens]{.red} are generally words \~ useful semantic unit for processing
+
+-   [Types]{.red} are unique tokens.
+
+-   Typically $N_{tokens}$ \>\>\>\> $N_{types}$
+
+::: fragment
+[Type-to-Token ratio]{.red}
+
+$$ TTR: \frac{\text{total type}}{\text{total tokens}} $$
+
+[So...]{.red} [authors with limited vocabularies will have a low lexical diversity]{.midgray}
+:::
+
+## Issues with TTR and Extensions
+
+-   TTR is very sensitive to overall [document length]{.red},
+    -   [shorter texts may exhibit fewer word repetitions]{.midgray}
+-   Length also correlates with topic variation \~ [more types being added to the document]{.red}
+
+::: fragment
+
+#### Other Measures
+
+-   [Guiraud]{.red}: $\frac{\text{total type}}{\sqrt{\text{total tokens}}}$
+
+-   [S Summer's Index]{.red}: $\frac{\text{log(total type)}}{\text{log(total tokens)}}}$
+
+-   [MTTR]{.red}: the Moving-Average Type-Token Ratio (Covington and McFall, 2010)
+:::
+
+## Readability
+
+Another way to think about textual complexity is to consider [readability]{.red}.
+
+[Readability]{.red}: _ease with which reader (especially of given education) can comprehend a text_
+
+:::incremental
+-   Combines both difficulty ([text]{.red}) and sophistication ([reader]{.red})
+
+    -   Use a combination of [syllables and sentence length]{.red} to indicate difficulty
+
+    -   Human inputs to built parameters
+
+    - [Flesch-Kincaid readability index]{.red} 
+           
+      - Measurement problems from education research 
+      - average grade of students who could correctly answer at least 75% of some multiple-choice questions
+      
+
+:::
+
+## Flesch-Kincaid readability index
+
+::: {.callout-note icon="false"}
+## Flesch Reading Ease (FRE)
+
+$$ 
+FRE = 206.835 - 1.015\left(\frac{\mbox{total words}}{\mbox{total sentences}}\right)-84.6\left(\frac{\mbox{total syllables}}{\mbox{total words}}\right) 
+$$
+:::
+
+
+::: {.callout-note icon="false"}
+## Flesch-Kincaid (Rescaled to US Educational Grade Levels)
+
+$$ 
+FRE = 15.59 - 0.39\left(\frac{\mbox{total words}}{\mbox{total sentences}}\right)- 11.8\left(\frac{\mbox{total syllables}}{\mbox{total words}}\right) 
+$$
+:::
+
+[Interpretation]{.red}: 0-30: university level; 60-70: understandable by 13-15 year olds; and 90-100 easily understood by an 11-year old student.
+
+## Spirling, 2016. The effects of the Second Reform Act
+
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics("week3_figs/spirling_jop.png") 
+```
+
+## Benoit et al., 2019, Political Sophistication
+
+#### Approach
+
+1.  Get human judgments of relative textual easiness for specifically political texts.
+
+2.  Use a logit model to estimate latent "easiness" as equivalent to the "ability" parameter in the Bradley-Terry framework.
+
+3.  Use these as training data for a tree-based model. Pick most important parameters
+
+4.  Re-estimate the models using these covariates (Logit + covariates)
+
+5.  Using these parameters, one can "predict" the easiness parameter for a given new text
+
+    ```         
+     - Nice plus ~ add uncertainty to model-based estimates via bootstrapping
+    ```
+
+## Benoit et al., 2019, Political Sophistication
+
+::: columns
+::: {.column width="50%"}
+```{r fig.align="center"}
+knitr::include_graphics("week3_figs/soph_table.png")
+```
+:::
+
+::: {.column width="50%"}
+```{r fig.align="center"}
+knitr::include_graphics("week3_figs/soph_logit.png")
+```
+:::
+:::
+
+# Weighting Counts
+
+## Can we do better than just using frequencies?
+
+So far our inputs for the vector representation of documents have relied simply the [word frequencies]{.red}.
+
+Can we do better?
+
+-   One option: [weighting]{.red}
+
+-   [Weights]{.red}:
+
+    -   [Reward]{.red} words more unique;
+    -   [Punish]{.red} words that appear in most documents
+
+::: {.callout-note icon="false"}
+## TF-IDF = Term Frequency - Inverse Document Frequency
+
+$\text{TF-IDF}(t, d) = \text{TF}(t, d) \times \text{IDF}(t)$ - $\text{TF}(t, d) = \frac{\text{Number of times term } t \text{ appears in document } d}{\text{Total number of terms in document } d}$ - $\text{IDF}(t) = \log \left( \frac{\text{Total number of documents}}{\text{Number of documents with term } t \text{ in them}} \right)$
+:::
+
+## Federalist Papers
+
+```{r echo=FALSE, out.width = "60%"}
+knitr::include_graphics("week3_figs/tfidf.png") 
+```
+
+<br> <br> <br> <br> <br> <br>
+
+::: aside
+Source: Grimmer, Roberts, and Stewart, Text as Data, 2022
+:::
+
+# `r fontawesome::fa("laptop-code")` Coding!

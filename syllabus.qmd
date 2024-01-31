@@ -225,7 +225,7 @@ Or one of the three below:
 
 | **Assignment**           | **Percentage of Grade** |
 |--------------------------|:-----------------------:|
-| Participation/Attendance |           10%            |
+| Participation/Attendance |           10%           |
 | Problem Sets             |           20%           |
 | Replication Exercises    |           30%           |
 | Final Project            |           40%           |

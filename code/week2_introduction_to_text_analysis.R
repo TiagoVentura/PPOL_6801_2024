@@ -32,6 +32,7 @@
 ## the pacman combines the install.package and library steps in a single function, basically. 
 
 install.packages("pacman")
+
 # Install the latest stable version of quanteda from CRAN
 
 # the `::` allows you to access the function of a package without loading it

@@ -33,33 +33,33 @@ date: "01/31/2024"
   #   filter-ui: false
 tbl-colwidths: [10,50,40]
 ---
+
 # Topics
 
-- How do we evaluate complexity in text? 
-- Why should we care about complexity in text?
-- How do we evaluate similarity in text? 
-- Why is this useful?
+-   More about the vector space model
+-   How do we compare texts?
+-   How do we evaluate similarity in text?
+-   How do we evaluate complexity in text?
+-   Why should we care about complexity in text?
 
 # Readings
 
 **Required Readings**
 
-- [GMB] -  Chapter 7
+-   \[GMB\] - Chapter 7
 
+-   **Applied Papers**:
 
-- **Applied Papers**: 
+    -   Spirling, Arthur. 2016. "Democratization and Linguistic Complexity", Journal of Politics.
 
-    - Spirling, Arthur. 2016. “Democratization and Linguistic Complexity”, Journal of Politics.
+    -   Benoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity
 
-    -  Benoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity
-
-    - Linder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. "Text as policy: Measuring policy similarity through bill text reuse." Policy Studies Journal 48, no. 2 (2020): 546-574.
-
+    -   Linder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. "Text as policy: Measuring policy similarity through bill text reuse." Policy Studies Journal 48, no. 2 (2020): 546-574.
 
 **Coding Materials**
 
-- [TBD]()
+-   <a href="/code/week3_descriptive_inference.R" download> Week 3 - Descriptive Inference </a>
 
 # Slides
 
-- [TBD]()
+-   [Week 3 - Descriptive Inference](/slides/week_03.html)

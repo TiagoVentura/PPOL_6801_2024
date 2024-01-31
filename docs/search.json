@@ -67,7 +67,7 @@
     "href": "weeks/week-02.html",
     "title": "Week 02",
     "section": "",
-    "text": "Topics\n\nHow to represent text as data?\nWhat is a Bag of Words?\nWhat are tokens?\nWhy should we care about tokens?\n\n\n\nReadings\nRequired Readings\n\nGrimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapters 3-5\nApplied Papers:\nDenny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.\nBan, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. “How newspapers reveal political power.” Political Science Research and Methods 7, no. 4 (2019): 661-678.\nMichel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644\n\nCoding Materials\n\n Week 2 - Text Data Processing, \n\n\n\nSlides\n\nWeek 2 - From Text to Matrices: Representing Text as Data"
+    "text": "Topics\n\nHow to represent text as data?\nWhat is a Bag of Words?\nWhat are tokens?\nWhy should we care about tokens?\n\n\n\nReadings\nRequired Readings\n\nGrimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapters 3-5\nApplied Papers:\nDenny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.\nBan, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. “How newspapers reveal political power.” Political Science Research and Methods 7, no. 4 (2019): 661-678.\nMichel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644\n\nCoding Materials\n\n Week 2 - Text Data Processing \n\n\n\nSlides\n\nWeek 2 - From Text to Matrices: Representing Text as Data"
   },
   {
     "objectID": "weeks/week-13.html",
@@ -130,7 +130,7 @@
     "href": "weeks/week-03.html",
     "title": "Week 03",
     "section": "",
-    "text": "Topics\n\nHow do we evaluate complexity in text?\nWhy should we care about complexity in text?\nHow do we evaluate similarity in text?\nWhy is this useful?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 7\nApplied Papers:\n\nSpirling, Arthur. 2016. “Democratization and Linguistic Complexity”, Journal of Politics.\nBenoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity\nLinder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. “Text as policy: Measuring policy similarity through bill text reuse.” Policy Studies Journal 48, no. 2 (2020): 546-574.\n\n\nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
+    "text": "Topics\n\nMore about the vector space model\nHow do we compare texts?\nHow do we evaluate similarity in text?\nHow do we evaluate complexity in text?\nWhy should we care about complexity in text?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 7\nApplied Papers:\n\nSpirling, Arthur. 2016. “Democratization and Linguistic Complexity”, Journal of Politics.\nBenoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity\nLinder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. “Text as policy: Measuring policy similarity through bill text reuse.” Policy Studies Journal 48, no. 2 (2020): 546-574.\n\n\nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
   },
   {
     "objectID": "slides/week_01_intro.html#outline",
@@ -452,14 +452,14 @@
     "href": "slides/week_02.html#visualizing-vector-space-model",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Visualizing Vector Space Model",
-    "text": "Visualizing Vector Space Model\n\n\n\nDoocuments\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “no no yes no no no”"
+    "text": "Visualizing Vector Space Model\n\n\n\n\n\n\nDocuments\n\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “yes yes yes yes yes yes”\n\n\n\n\nWarning: package 'ggplot' is not available for this version of R\n\nA version of this package for your version of R might be available elsewhere,\nsee the ideas at\nhttps://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages\n\n\nWarning: 'BiocManager' not available.  Could not check Bioconductor.\n\nPlease use `install.packages('BiocManager')` and then retry.\n\n\nWarning in p_install(package, character.only = TRUE, ...):\n\n\nWarning in library(package, lib.loc = lib.loc, character.only = TRUE,\nlogical.return = TRUE, : there is no package called 'ggplot'\n\n\nWarning in pacman::p_load(ggplot, tidyverse): Failed to install/load:\nggplot\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
   },
   {
     "objectID": "slides/week_02.html#outline",
     "href": "slides/week_02.html#outline",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Outline",
-    "text": "Outline\n\n\nChallenges of working with text\nDefining a corpus and selecting documents\nUnit of analysis\nReducing complexity (Denny & Spirling’s article)\nBag-of-Word, Vector model representation and Document-Feature Matrix\nApplication (Ban et. al.’s paper)"
+    "section": "",
+    "text": "Challenges of working with text\nDefining a corpus and selecting documents\nUnit of analysis\nReducing complexity (Denny & Spirling’s article)\nBag-of-Word, Vector model representation and Document-Feature Matrix\nApplication (Ban et. al.’s paper)"
   },
   {
     "objectID": "slides/week_02.html#text-analysis-workflow",
@@ -592,7 +592,7 @@
     "href": "slides/week_02.html#ban-et.-al.-2019-how-newspapers-reveal-political-power.",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Ban et. al. 2019, How Newspapers Reveal Political Power.",
-    "text": "Ban et. al. 2019, How Newspapers Reveal Political Power.\n\n\n\n\n\n\n\n\n \n\nPurely descriptive\nSimple measure just by counting words.\nTheorethically-driven: measure that capture a theorethically relevant concept.\n\n\n\\[\n\\small \\text{Coverage of Mayor}_{it} = \\frac{\\text{Mayor}_{it}}{\\text{Mayor}_{it} + \\text{City Manager}_{it} + \\text{City Council}_{it}}\n\\]\n\n\n\n\n\nText-as-Data"
+    "text": "Ban et. al. 2019, How Newspapers Reveal Political Power.\n\n\n\n\n\n\n\n\n \n\nPurely descriptive\nSimple measure just by counting words.\nTheorethically-driven: measure that capture a theorethically relevant concept.\n\n\n\\[\n\\small \\text{Coverage of Mayor}_{it} = \\frac{\\text{Mayor}_{it}}{\\text{Mayor}_{it} + \\text{City Manager}_{it} + \\text{City Council}_{it}}\n\\]"
   },
   {
     "objectID": "slides/week_02.html#defining-a-document",
@@ -634,7 +634,7 @@
     "href": "slides/week_02.html#equivalence-mapping",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Equivalence mapping",
-    "text": "Equivalence mapping\nReduce dimensionality even further!\n\nDifferent forms of words (family, families, familial), or words which are similar in concept (bureaucratic, bureaucrat, bureaucratization) that refer to same basic token/concept.\nuse algorithms to map these variation to a equivalent form:\n\nstemming: chop the end of the words: family, families, familiar ~ famili\nlemmatization: condition on part of speech\n\nbetter (adj) ~ good\nleaves (noun) ~ leaf\nleaves (verb) ~ leave\n\n\nAll [TAD/NLP packages[{.red}] offer easy applications for these algorithms."
+    "text": "Equivalence mapping\n\nReduce dimensionality even further!\n\nDifferent forms of words (family, families, familial), or words which are similar in concept (bureaucratic, bureaucrat, bureaucratization) that refer to same basic token/concept.\nuse algorithms to map these variation to a equivalent form:\n\nstemming: chop the end of the words: family, families, familiar ~ famili\nlemmatization: condition on part of speech\n\nbetter (adj) ~ good\nleaves (noun) ~ leaf\nleaves (verb) ~ leave\n\n\nAll [TAD/NLP packages[{.red}] offer easy applications for these algorithms."
   },
   {
     "objectID": "slides/week_02.html#task-specific-cleaning",
@@ -655,14 +655,14 @@
     "href": "slides/week_02.html#can-we-preserve-the-word-order-another-pre-processing-decision",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Can we preserve the word order? (another pre-processing decision)",
-    "text": "Can we preserve the word order? (another pre-processing decision)\nYes\n\nwe might retaining word order using n-grams.\n\nWhite House, Bill Gates, State Department, Middle East\nwe think some important subtlety of expression is lost: negation perhaps\n\nI want coffee, not tea might be interpreted very diferently without word order.\n\n\ncan use [n-grams], which are (sometimes contiguous) sequences of two (bigrams) or three (trigrams) tokens.\nThis makes computations considerably more complex. We can pick some n-grams to keep but not all:\n\n\\(PMI_{a,b} = log \\frac{p_{a,b}}{p_a \\cdot p_b}\\)\n\nif p(a,b)=0 ~ log (0) = -inf\nif p(a,b)=p(a)p(b) ~ log(1) = 0\nif p(a,b)&lt;p(a)p(b) ~ log(0&lt;x&lt;1) &lt; 0\nif p(a,b)&gt;p(a)p(b) ~ log(x&gt;1) &gt; 0"
+    "text": "Can we preserve the word order? (another pre-processing decision)\n\nYes\n\nwe might retaining word order using n-grams.\n\nWhite House, Bill Gates, State Department, Middle East\nwe think some important subtlety of expression is lost: negation perhaps\n\nI want coffee, not tea might be interpreted very diferently without word order.\n\n\ncan use [n-grams], which are (sometimes contiguous) sequences of two (bigrams) or three (trigrams) tokens.\nThis makes computations considerably more complex. We can pick some n-grams to keep but not all:\n\n\\(PMI_{a,b} = log \\frac{p_{a,b}}{p_a \\cdot p_b}\\)\n\nif p(a,b)=0 ~ log (0) = -inf\nif p(a,b)=p(a)p(b) ~ log(1) = 0\nif p(a,b)&lt;p(a)p(b) ~ log(0&lt;x&lt;1) &lt; 0\nif p(a,b)&gt;p(a)p(b) ~ log(x&gt;1) &gt; 0"
   },
   {
     "objectID": "slides/week_02.html#complete-example",
     "href": "slides/week_02.html#complete-example",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Complete Example",
-    "text": "Complete Example\n\n\n\nText\n\n\nWe use a new dataset containing nearly 50 million historical newspaper pages from 2,700 local US newspapers over the years 1877–1977. We define and discuss a measure of power we develop based on observed word frequencies, and we validate it through a series of analyses. Overall, we find that the relative coverage of political actors and of political offices is a strong indicator of political power for the cases we study\n\n\n\n\n\n\n\nAfter pre-processing\n\n\nuse new dataset contain near 50 million historical newspaper pag 2700 local u newspaper year 18771977 define discus measure power develop bas observ word frequenc validate ser analys overall find relat coverage political actor political offic strong indicator political power cas study"
+    "text": "Complete Example\n\n\n\n\n\n\nText\n\n\n\nWe use a new dataset containing nearly 50 million historical newspaper pages from 2,700 local US newspapers over the years 1877–1977. We define and discuss a measure of power we develop based on observed word frequencies, and we validate it through a series of analyses. Overall, we find that the relative coverage of political actors and of political offices is a strong indicator of political power for the cases we study\n\n\n\n\n\n\n\n\n\nAfter pre-processing\n\n\n\nuse new dataset contain near 50 million historical newspaper pag 2700 local u newspaper year 18771977 define discus measure power develop bas observ word frequenc validate ser analys overall find relat coverage political actor political offic strong indicator political power cas study"
   },
   {
     "objectID": "slides/week_02.html#other-steps-functional-words-highly-frequent-or-rare-words",
@@ -683,7 +683,7 @@
     "href": "slides/week_02.html#learning-goals",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Learning goals",
-    "text": "Learning goals\nToday:\n\nCover techniques to reduce complexity from text data using a set of pre-processing steps ~ Challenge I\nHow to represent text as numbers using the vector space model ~ Challenge II\nStarting next week we will deal more with inference and modeling latent parameters using text ~ Challenge III"
+    "text": "Learning goals\n\nToday:\n\nCover techniques to reduce complexity from text data using a set of pre-processing steps ~ Challenge I\nHow to represent text as numbers using the vector space model ~ Challenge II\nStarting next week we will deal more with inference and modeling latent parameters using text ~ Challenge III"
   },
   {
     "objectID": "slides/week_02.html#corpus-and-selecting-documents",
@@ -704,7 +704,7 @@
     "href": "slides/week_02.html#ventura-et.-al.-streaming-chats-2021",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Ventura et. al., Streaming Chats, 2021",
-    "text": "Ventura et. al., Streaming Chats, 2021\n\n\n\n\n\n\n\n\nKey components\n\n\nRQ: Measure quality of comments on streaming chat platforms during political debates\nPopulation of interest?\nQuantity of interest?\nSource of bias?"
+    "text": "Ventura et. al., Streaming Chats, 2021\n\n\n\n\n\n\n\n\n\nKey components\n\n\nRQ: Measure quality of comments on streaming chat platforms during political debates\nPopulation of interest?\nQuantity of interest?\nSource of bias?"
   },
   {
     "objectID": "slides/week_02.html#unit-of-analysis",
@@ -712,5 +712,243 @@
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "2. Unit of Analysis",
     "text": "2. Unit of Analysis\nAfter selecting your documents and converting them to a computer-friendly format, we must decide our unit of analysis\n\nentire document? sentence? paragraph? a larger group of documents?\n\n\nThree things to consider in making this decision:\n\nFeatures of your data and model fit\nYour research question\nIterative model\n\nswitching through different units of analysis has a low cost\nallows you to look at the data from a different angle\nprovide new insights to your research"
+  },
+  {
+    "objectID": "slides/week_03.html#housekeeping",
+    "href": "slides/week_03.html#housekeeping",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nThanks for selecting the articles for replication exercise! Next steps:\n\n\nGet access to the data and code ASAP\n\nHarvard Dataverse, see footnotes in the papers, contact the authors\nany issue, please, talk to me!\n\nIf the data is too big for your laptop, use a sample of the data.\nIf the paper has much more than the text analysis, ignore it, just focus on the TAD component.\nAny questions?"
+  },
+  {
+    "objectID": "slides/week_03.html#where-are-we",
+    "href": "slides/week_03.html#where-are-we",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Where are we?",
+    "text": "Where are we?\nThree primary challenges dealing with text as data:\n\nChallenge I: Text is high dimensional\nChallenge II: Text is unstructured data source\nChallenge III: Outcomes live in the latent space\n\n\nLast week:\n\nPre-processing text + bag of words ~&gt; reduces greatly text complexity (dimensions)\nText representation using vectors of numbers ~&gt; document feature matrix (text to numbers)"
+  },
+  {
+    "objectID": "slides/week_03.html#plans-for-today",
+    "href": "slides/week_03.html#plans-for-today",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Plans for today",
+    "text": "Plans for today\nWe will start thinking about latent outcomes. Our first approach will focus on descriptive inference about documents:\n\nComparing documents\nUsing similarity to measure text-reuse\nEvaluating complexity in text\nWeighting (TF-iDF)"
+  },
+  {
+    "objectID": "slides/week_03.html#recall-vector-space-model",
+    "href": "slides/week_03.html#recall-vector-space-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Recall: Vector space model",
+    "text": "Recall: Vector space model\nTo represent documents as numbers, we will use the vector space model representation:\n\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams, etc…)\nEach feature \\(w_i\\) can be placed in a real line\nA document \\(D_i\\) is a point in a \\(\\mathbb{R}^W\\)\n\nEach document is now a vector,\nEach entry represents the frequency of a particular token or feature.\nStacking those vectors on top of each other gives the document feature matrix (DFM)."
+  },
+  {
+    "objectID": "slides/week_03.html#document-feature-matrix",
+    "href": "slides/week_03.html#document-feature-matrix",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Document-Feature Matrix",
+    "text": "Document-Feature Matrix\nOur fundamental unit of text analysis is the document feature matrix\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
+  },
+  {
+    "objectID": "slides/week_03.html#in-two-dimensional-space",
+    "href": "slides/week_03.html#in-two-dimensional-space",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "In two dimensional space",
+    "text": "In two dimensional space\n\n\n\nDocuments, W=2\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “yes yes yes yes yes yes”"
+  },
+  {
+    "objectID": "slides/week_03.html#comparing-documents-how-far-is-that-document-from-some-other-document",
+    "href": "slides/week_03.html#comparing-documents-how-far-is-that-document-from-some-other-document",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Comparing Documents: How `far’ is that document from some other document?",
+    "text": "Comparing Documents: How `far’ is that document from some other document?\nUsing vector space, we can use geometry to build well-defined comparison/similarity measures between the documents."
+  },
+  {
+    "objectID": "slides/week_03.html#euclidean-distance",
+    "href": "slides/week_03.html#euclidean-distance",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Euclidean Distance",
+    "text": "Euclidean Distance\nThe ordinary, straight line distance between two points in space. Using document vectors \\(y_a\\) and \\(y_b\\) with \\(j\\) dimensions\n\n\n\nEuclidean Distance\n\n\n\\[\n||y_a - y_b|| = \\sqrt{\\sum^{j}(y_{aj} - y_{bj})^2}\n\\]\n\n\n\nCan be performed for any number of features J ~ has nice mathematical properties\n\nno negative distances: sij   0 2 distance between documents is zero () documents are identical 3 distance between documents is symmetric: sij = sji 4 measures satisfy triangle inequality. sik   sij + sjk"
+  },
+  {
+    "objectID": "slides/week_03.html#exercise",
+    "href": "slides/week_03.html#exercise",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Exercise",
+    "text": "Exercise\n\n\n\nDocuments, W=3 {yes, no}\n\n\nDocument 1 = “yes yes yes no no no” (3, 3)\nDocument 2 = “yes yes yes yes yes yes” (6,0)\nDocument 3= “yes yes yes no no no yes yes yes no no no yes yes yes no no no yes yes yes no no no” (12, 12)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich documents will the euclidean distance place closer together?\nDoes it look like a good measure for similarity?\n\nDoc C = Doc A * 3"
+  },
+  {
+    "objectID": "slides/week_03.html#exercise-1",
+    "href": "slides/week_03.html#exercise-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Exercise",
+    "text": "Exercise\nThe cosine function can range from [-1, 1]. When thinking about document vectors, cosine similarity is actually constrained to vary only from 0 - 1.\n\nWhy does cosine similarity for document vectors can never be lower than zero? Think about the vector representation and the document feature matrix."
+  },
+  {
+    "objectID": "slides/week_03.html#cosine-similarity",
+    "href": "slides/week_03.html#cosine-similarity",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Cosine Similarity",
+    "text": "Cosine Similarity\nEuclidean distance rewards magnitude, rather than direction\n\\[\n\\text{cosine similarity}(\\mathbf{y_a}, \\mathbf{y_b}) = \\frac{\\mathbf{y_a} \\cdot \\mathbf{y_b}}{\\|\\mathbf{y_a}\\| \\|\\mathbf{y_b}\\|}\n\\]\nUnpacking the formula:\n\n\\(\\mathbf{y_a} \\cdot \\mathbf{y_b}\\) ~ dot product between vectors\n\nprojecting common magnitudes\nmeasure of similarity (see textbook)\n\\(\\sum_j{y_{aj}*y_{bj}}\\)\n\n\\(||\\mathbf{y_a}||\\) ~ vector magnitude, length ~ \\(\\sqrt{\\sum{y_{aj}^2}}\\)\nnormalizes similarity by documents’ length ~ independent of document length be because it deals only with the angle of the vectors\ncosine similarity captures some notion of relative direction (e.g. style or topics in the document)"
+  },
+  {
+    "objectID": "slides/week_03.html#visually",
+    "href": "slides/week_03.html#visually",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Visually",
+    "text": "Visually\nCosine function has a range between -1 and 1.\n\ncos (0) = 1\ncos (90) = 0\ncos (180) = -1"
+  },
+  {
+    "objectID": "slides/week_03.html#more-metrics",
+    "href": "slides/week_03.html#more-metrics",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "More metrics",
+    "text": "More metrics\nThere are a large number of distance/similarity metrics out there, just to name a few:\n\nJaccard Similarity: overlap between documents\nManhattan Distance: absolute distance between documents\nCanberra Distance: Weighted version of Manhattan Distance\nMinowski: generalized version of Euclidean\n\nNo single best measure, depends on your research question."
+  },
+  {
+    "objectID": "slides/week_03.html#mozer-et-al-2020-matching-with-text-data",
+    "href": "slides/week_03.html#mozer-et-al-2020-matching-with-text-data",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Mozer et al, 2020 ‘Matching with Text Data’",
+    "text": "Mozer et al, 2020 ‘Matching with Text Data’\nBut some recent research show Document Feature Matrix (DTM) + Cosine similarity works well to perceived similarity on documents"
+  },
+  {
+    "objectID": "slides/week_03.html#linder-et.-al-2020---text-as-policy",
+    "href": "slides/week_03.html#linder-et.-al-2020---text-as-policy",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Linder et. al, 2020 - Text as Policy",
+    "text": "Linder et. al, 2020 - Text as Policy\n\n\n\n\n\n\n\n\n\n\n\n\nHow is cosine similarity used in the application?\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nMain assumption: text reuse serves as a summary measure of the greatest overlap observed across all relevant policy dimensions represented in legislative text.\nHow? Identifying large segments of equivalent or highly similar text.\nSmith-Waterman local alignment algorithm\n\nlongest sequence of overlap allowing for gaps and mismatches\n\nThe SW algorithm amounts to a systematic procedure for scoring similar sequences of text, and efficiently finding the highest scoring sequences in two documents.\nAnalysis:\n\nSelection: Elastic search for 500 candidates\nSmith Waterman alignment algorithm\nDowneight give average cosine dissimilarity between allignment and a random sample of 1000 other alignments. If the alignment is everywhere, downweight."
+  },
+  {
+    "objectID": "slides/week_03.html#can-we-do-better-than-just-using-frequencies",
+    "href": "slides/week_03.html#can-we-do-better-than-just-using-frequencies",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Can we do better than just using frequencies?",
+    "text": "Can we do better than just using frequencies?\nSo far our inputs for the vector representation of documents have relied simply the word frequencies.\nCan we do better?\n\nOne option: weighting\nWeights:\n\nReward words more unique;\nPunish words that appear in most documents\n\n\n\n\n\nTF-IDF = Term Frequency - Inverse Document Frequency\n\n\n\\(\\text{TF-IDF}(t, d) = \\text{TF}(t, d) \\times \\text{IDF}(t)\\) - \\(\\text{TF}(t, d) = \\frac{\\text{Number of times term } t \\text{ appears in document } d}{\\text{Total number of terms in document } d}\\) - \\(\\text{IDF}(t) = \\log \\left( \\frac{\\text{Total number of documents}}{\\text{Number of documents with term } t \\text{ in them}} \\right)\\)"
+  },
+  {
+    "objectID": "slides/week_03.html#section",
+    "href": "slides/week_03.html#section",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Source: Grimmer, Roberts, and Stewart, Text as Data, 2022"
+  },
+  {
+    "objectID": "slides/week_03.html#federalist-papers",
+    "href": "slides/week_03.html#federalist-papers",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Federalist Papers",
+    "text": "Federalist Papers\n\n\n\n\n\n     \n\n\nSource: Grimmer, Roberts, and Stewart, Text as Data, 2022"
+  },
+  {
+    "objectID": "slides/week_02.html",
+    "href": "slides/week_02.html",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Challenges of working with text\nDefining a corpus and selecting documents\nUnit of analysis\nReducing complexity (Denny & Spirling’s article)\nBag-of-Word, Vector model representation and Document-Feature Matrix\nApplication (Ban et. al.’s paper)"
+  },
+  {
+    "objectID": "slides/week_03.html#quantities-to-describe-documents",
+    "href": "slides/week_03.html#quantities-to-describe-documents",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Quantities to describe documents",
+    "text": "Quantities to describe documents\n\nLength refers to the size in terms of: characters, words, lines, sentences, paragraphs, pages, sections, chapters, etc.\ntokens are generally words ~ useful semantic unit for processing\ntypes are unique tokens.\ntypically \\(N_{tokens}\\) &gt;&gt;&gt;&gt; \\(N_{types}\\)\n\n\n\\[ TTR: \\frac{\\text{total type}}{\\text{total tokens}} \\]\nSo… authors with limited vocabularies will have a low lexical diversity"
+  },
+  {
+    "objectID": "slides/week_03.html#lexical-diversity",
+    "href": "slides/week_03.html#lexical-diversity",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Lexical Diversity",
+    "text": "Lexical Diversity\n\nLength refers to the size in terms of: characters, words, lines, sentences, paragraphs, pages, sections, chapters, etc.\nTokens are generally words ~ useful semantic unit for processing\nTypes are unique tokens.\nTypically \\(N_{tokens}\\) &gt;&gt;&gt;&gt; \\(N_{types}\\)\n\n\nType-to-Token ratio\n\\[ TTR: \\frac{\\text{total type}}{\\text{total tokens}} \\]\nSo… authors with limited vocabularies will have a low lexical diversity"
+  },
+  {
+    "objectID": "slides/week_03.html#issues-with-ttr-and-extensions",
+    "href": "slides/week_03.html#issues-with-ttr-and-extensions",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Issues with TTR and Extensions",
+    "text": "Issues with TTR and Extensions\n\nTTR is very sensitive to overall document length,\n\nshorter texts may exhibit fewer word repetitions\n\nLength also correlates with topic variation ~ more types being added to the document\n\n\n\nOther Measures\n\nGuiraud: \\(\\frac{\\text{total type}}{\\sqrt{\\text{total tokens}}}\\)\nS Summer’s Index: \\(\\frac{\\text{log(total type)}}{\\text{log(total tokens)}}}\\)\nMTTR: the Moving-Average Type-Token Ratio (Covington and McFall, 2010)"
+  },
+  {
+    "objectID": "slides/week_03.html#readability",
+    "href": "slides/week_03.html#readability",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Readability",
+    "text": "Readability\nAnother way to think about textual complexity is to consider readability.\nReadability: ease with which reader (especially of given education) can comprehend a text\n\n\nCombines both difficulty (text) and sophistication (reader)\n\nUse a combination of syllables and sentence length to indicate difficulty\nHuman inputs to built parameters\nFlesch-Kincaid readability index\n\nMeasurement problems from education research\naverage grade of students who could correctly answer at least 75% of some multiple-choice questions"
+  },
+  {
+    "objectID": "slides/week_03.html#flesch-kincaid-readability-index",
+    "href": "slides/week_03.html#flesch-kincaid-readability-index",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Flesch-Kincaid readability index",
+    "text": "Flesch-Kincaid readability index\n\n\n\nFlesch Reading Ease (FRE)\n\n\n\\[\nFRE = 206.835 - 1.015\\left(\\frac{\\mbox{total words}}{\\mbox{total sentences}}\\right)-84.6\\left(\\frac{\\mbox{total syllables}}{\\mbox{total words}}\\right)\n\\]\n\n\n\n\n\n\nFlesch-Kincaid (Rescaled to US Educational Grade Levels)\n\n\n\\[\nFRE = 15.59 - 0.39\\left(\\frac{\\mbox{total words}}{\\mbox{total sentences}}\\right)- 11.8\\left(\\frac{\\mbox{total syllables}}{\\mbox{total words}}\\right)\n\\]\n\n\n\nInterpretation: 0-30: university level; 60-70: understandable by 13-15 year olds; and 90-100 easily understood by an 11-year old student."
+  },
+  {
+    "objectID": "slides/week_03.html#spirling-2016.-the-effects-of-the-second-reform-act",
+    "href": "slides/week_03.html#spirling-2016.-the-effects-of-the-second-reform-act",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Spirling, 2016. The effects of the Second Reform Act",
+    "text": "Spirling, 2016. The effects of the Second Reform Act"
+  },
+  {
+    "objectID": "slides/week_03.html#benoit-et-al.-2019-political-sophistication",
+    "href": "slides/week_03.html#benoit-et-al.-2019-political-sophistication",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Benoit et al., 2019, Political Sophistication",
+    "text": "Benoit et al., 2019, Political Sophistication\nApproach\n\nGet human judgments of relative textual easiness for specifically political texts.\nUse a logit model to estimate latent “easiness” as equivalent to the “ability” parameter in the Bradley-Terry framework.\nUse these as training data for a tree-based model. Pick most important parameters\nRe-estimate the models using these covariates (Logit + covariates)\nUsing these parameters, one can “predict” the easiness parameter for a given new text\n - Nice plus ~ add uncertainty to model-based estimates via bootstrapping"
+  },
+  {
+    "objectID": "slides/week_03.html#benoit-et-al.-2019-political-sophistication-1",
+    "href": "slides/week_03.html#benoit-et-al.-2019-political-sophistication-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Benoit et al., 2019, Political Sophistication",
+    "text": "Benoit et al., 2019, Political Sophistication"
+  },
+  {
+    "objectID": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-text-analysis",
+    "href": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-text-analysis",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Document-Feature Matrix: fundamental unit of text analysis",
+    "text": "Document-Feature Matrix: fundamental unit of text analysis\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
+  },
+  {
+    "objectID": "slides/week_03.html#how-far-is-that-document-from-some-other-document",
+    "href": "slides/week_03.html#how-far-is-that-document-from-some-other-document",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "How `far’ is that document from some other document?",
+    "text": "How `far’ is that document from some other document?\nUsing vector space, we can use notions of geometry to build well-defined comparison/similarity measures between the documents."
+  },
+  {
+    "objectID": "slides/week_03.html#euclidean-distance-w2",
+    "href": "slides/week_03.html#euclidean-distance-w2",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Euclidean Distance, w=2",
+    "text": "Euclidean Distance, w=2\n\n\n\nEuclidean Distance\n\n\n\\[\n||y_a - y_b|| = \\sqrt{\\sum^{j}(y_{aj} - y_{bj})^2}\n\\]\n\n\n\n\n\\(y_a\\) = [0, 2.51, 3.6, 0] and \\(y_b\\) = [0, 2.3, 3.1, 9.2]\n\\(\\sum_{j=1}^j (y_a - y_b)^2\\) = \\((0-0)^2 + (2.51-2.3)^2 + (3.6-3.1)^2 + (9-0)^2\\) = \\(84.9341\\)\n\\(\\sqrt{\\sum_{j=1}^j (y_a - y_b)^2}\\) = 9.21"
+  },
+  {
+    "objectID": "slides/week_03.html#cosine-similarity-1",
+    "href": "slides/week_03.html#cosine-similarity-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Cosine Similarity",
+    "text": "Cosine Similarity\nCosine function has a range between -1 and 1.\n\nConsider: cos (0) = 1, cos (90) = 0, cos (180) = -1"
+  },
+  {
+    "objectID": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-tad",
+    "href": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-tad",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Document-Feature Matrix: fundamental unit of TAD",
+    "text": "Document-Feature Matrix: fundamental unit of TAD\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
+  },
+  {
+    "objectID": "slides/week_03.html#in-a-two-dimensional-space",
+    "href": "slides/week_03.html#in-a-two-dimensional-space",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "In a two dimensional space",
+    "text": "In a two dimensional space\n\n\n\nDocuments, W=2\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “yes yes yes yes yes yes”"
+  },
+  {
+    "objectID": "slides/week_03.html#how-far-is-document-a-from-document-b",
+    "href": "slides/week_03.html#how-far-is-document-a-from-document-b",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "How `far’ is document a from document b?",
+    "text": "How `far’ is document a from document b?\nUsing the vector space, we can use notions of geometry to build well-defined comparison/similarity measures between the documents.\n\n\nin multiple dimensions!!"
   }
 ]

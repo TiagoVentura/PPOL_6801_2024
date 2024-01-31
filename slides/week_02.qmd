@@ -28,15 +28,15 @@ editor_options:
 ## Outline
 
 ::: nonincremental
-- Challenges of working with text
-- Defining a corpus and selecting documents
-- Unit of analysis
-- Reducing complexity (Denny & Spirling's article)
-- Bag-of-Word, Vector model representation and Document-Feature Matrix
-- Application (Ban et. al.'s paper)
+-   Challenges of working with text
+-   Defining a corpus and selecting documents
+-   Unit of analysis
+-   Reducing complexity (Denny & Spirling's article)
+-   Bag-of-Word, Vector model representation and Document-Feature Matrix
+-   Application (Ban et. al.'s paper)
 :::
 
-
+```{=html}
 <!-- ## Text Analysis Workflow
 
 [**Acquire textual data:**]{.red}
@@ -66,7 +66,7 @@ editor_options:
 -   This is where social science happens!
 ::: 
 -->
-
+```
 ## Challenge I: Text is High-Dimensional
 
 From [Gentzkow et al 2017](https://web.stanford.edu/~gentzkow/research/text-as-data.pdf):
@@ -93,7 +93,6 @@ In most social science applications of text as data, we are trying to make an in
 -   Examples: ideology, sentiment, political stance, propensity of someone to turnout
 
 ::: fragment
-
 [Traditional social science]{.red}: mapping between observed and latent/theoretical concepts is easier.
 
 -   We observe/measure country macroeconomic variables, collect survey responses, see how politicians vote.
@@ -115,8 +114,8 @@ In most social science applications of text as data, we are trying to make an in
 
 -   A *corpus* is (typically) a large set of texts or documents which we wish to analyze.
 
-    - [if you can read them in an small amount of time, you should just do it, not TAD]{.midgray}
-  
+    -   [if you can read them in an small amount of time, you should just do it, not TAD]{.midgray}
+
 -   When selecting a corpus, we should consider how the corpus relates to our research question in two aspects:
 
     -   [Population of interest]{.red}: does the corpus allows us to make inferences about them?
@@ -153,22 +152,20 @@ In most social science applications of text as data, we are trying to make an in
 
 After selecting your documents and converting them to a computer-friendly format, we must decide our [unit of analysis]{.red}
 
-- entire document? sentence? paragraph? a larger group of documents?
+-   entire document? sentence? paragraph? a larger group of documents?
 
 ::: fragment
+[Three things]{.red} to consider in making this decision:
 
-[Three things]{.red} to consider in making this decision: 
+-   Features of your data and model fit
 
-- Features of your data and model fit
+-   Your research question
 
-- Your research question
+-   Iterative model
 
-- Iterative model 
-
-  - switching through different units of analysis has a low cost
-  - allows you to look at the data from a different angle
-  - provide new insights to your research
-
+    -   switching through different units of analysis has a low cost
+    -   allows you to look at the data from a different angle
+    -   provide new insights to your research
 :::
 
 ## 3. Reducing complexity
@@ -239,7 +236,7 @@ Language is extraordinarily [complex]{.red}, and involves great [subtlety and nu
         -   leaves (noun) \~ leaf
         -   leaves (verb) \~ leave
 
--   All [TAD/NLP packages[{.red}] offer easy applications for these algorithms.
+-   All \[TAD/NLP packages\[{.red}\] offer easy applications for these algorithms.
 
 ## Other steps: functional words, highly frequent or rare words
 
@@ -275,25 +272,22 @@ Now we have [pre-processed]{.red} our data. So we simplify it even further:
 
 ### Yes
 
--  we might retaining word order using n-grams.
- 
-   - [White House, Bill Gates, State Department, Middle East]{.midgray}
-   -  we think some important subtlety of expression is lost: negation
-perhaps 
-       - _I want coffee, not tea_ might be interpreted very diferently without word order.
+-   we might retaining word order using n-grams.
 
--  can use [n-grams], which are (sometimes contiguous) sequences of two (bigrams) or three (trigrams) tokens. 
+    -   [White House, Bill Gates, State Department, Middle East]{.midgray}
+    -   we think some important subtlety of expression is lost: negation perhaps
+        -   *I want coffee, not tea* might be interpreted very diferently without word order.
 
-- This makes computations considerably more complex. We can pick some n-grams to keep but not all: 
+-   can use \[n-grams\], which are (sometimes contiguous) sequences of two (bigrams) or three (trigrams) tokens.
 
-    - $PMI_{a,b} = log \frac{p_{a,b}}{p_a \cdot p_b}$
-    
-        - if p(a,b)=0 ~  log (0) = -inf 
-        - if p(a,b)=p(a)p(b) ~ log(1) = 0
-        - if p(a,b)<p(a)p(b) ~ log(0<x<1) < 0
-        - if p(a,b)>p(a)p(b) ~ log(x>1) > 0
+-   This makes computations considerably more complex. We can pick some n-grams to keep but not all:
 
+    -   $PMI_{a,b} = log \frac{p_{a,b}}{p_a \cdot p_b}$
 
+        -   if p(a,b)=0 \~ log (0) = -inf
+        -   if p(a,b)=p(a)p(b) \~ log(1) = 0
+        -   if p(a,b)\<p(a)p(b) \~ log(0\<x\<1) \< 0
+        -   if p(a,b)\>p(a)p(b) \~ log(x\>1) \> 0
 
 ## Complete Example
 
@@ -327,18 +321,18 @@ knitr::include_graphics("week2_figs/DA_wordfish.png")
 
 -   What is their solution? (no math needed!)
 
-::: {.notes}
-- calculate the distance for every pair of documents, and rank the distances
+::: notes
+-   calculate the distance for every pair of documents, and rank the distances
 
-- compared to no pre processing, do the pair wise distances again, and get which document pair changed kth position, where k=1 for the pair that changed the most. 
+-   compared to no pre processing, do the pair wise distances again, and get which document pair changed kth position, where k=1 for the pair that changed the most.
 
-- Build vector Vm_i^ with the position of the pairwise distance k affected in every other m combination. So Vm_1_1 contains the position of the changes in parwise distance on every other combination other than m=1 for the most changed document in m_1. 
+-   Build vector Vm_i\^ with the position of the pairwise distance k affected in every other m combination. So Vm_1_1 contains the position of the changes in parwise distance on every other combination other than m=1 for the most changed document in m_1.
 
-- their words: vmk = the rank difference for pair k between specification i and all others. 
+-   their words: vmk = the rank difference for pair k between specification i and all others.
 
-- Another example with 3 documents,  Vm1_1 = (1m2, 1m3), indicates that the document the changed the most in m1 is also the same in m2 and m3. 
+-   Another example with 3 documents, Vm1_1 = (1m2, 1m3), indicates that the document the changed the most in m1 is also the same in m2 and m3.
 
-- pretext score: mean over k (mean of V_m_k)
+-   pretext score: mean over k (mean of V_m_k)
 :::
 
 -   Too much work? Substantive knowledge out of the table?
@@ -372,11 +366,11 @@ Now each document is now a vector (vector space model)
 ## Visualizing Vector Space Model
 
 ::: {.callout-note icon="false"}
-## Doocuments
+## Documents
 
 Document 1 = "yes yes yes no no no"
 
-Document 2 = "no no yes no no no"
+Document 2 = "yes yes yes yes yes yes"
 :::
 
 ```{r echo=FALSE, fig.align="center",fig.width=8}
@@ -449,6 +443,7 @@ knitr::include_graphics("week2_figs/DTM.png")
 Source: [Arthur Spirling TAD Class](https://github.com/ArthurSpirling/text-as-data-class-spring2021)
 :::
 
+````{=html}
 <!-- ## Quick Exercise
 
 What is the vector representation of this sentence? Give me the vocabulary and the feature representation. Remove any punctuation.
@@ -463,6 +458,7 @@ What is the vector representation of this sentence? Give me the vocabulary and t
 knitr::include_graphics("https://m.media-amazon.com/images/I/A1lv97-jJoL._SL1500_.jpg")
 ```
 -->
+````
 
 # Application
 
