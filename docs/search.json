@@ -1026,7 +1026,7 @@
     "href": "slides/week_04.html#why-dictionaries",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Why Dictionaries?",
-    "text": "Why Dictionaries?\n\n\nLow cost and computationally efficient ~ if using a dictionary developed and validated by others\nA hybrid procedure between qualitative and quantitative classification at the fully automated end of the text analysis spectrum\nDictionary construction involves a lot of contextual interpretation and qualitative judgment\nTransparency and interpretability: no black-box model behind the classification task"
+    "text": "Why Dictionaries?\n\n\nLow cost and computationally efficient ~ if using a dictionary developed and validated by others\nA hybrid procedure between qualitative and quantitative classification at the fully automated end of the text analysis spectrum\nDictionary construction involves a lot of contextual interpretation and qualitative judgment\nTransparency: no black-box model behind the classification task"
   },
   {
     "objectID": "slides/week_04.html#general-inquirer",
@@ -1117,7 +1117,7 @@
     "href": "slides/week_04.html#off-the-shelf-deep-learning-models",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Off-the-shelf Deep Learning Models",
-    "text": "Off-the-shelf Deep Learning Models\n\nDefinition: Pre-trained models designed for general-purpose classification tasks\n\nIn general those were models built on TONS of data and optimized for a particular task\nAre dictionaries off-the-shelf models?\n\nKey Features:\n\nReady to use\nLow to zero cost\nDeep ML architectures ~ High accuracy\nCan be re-trained for your specific task"
+    "text": "Off-the-shelf Deep Learning Models\n\nDefinition: Pre-trained models designed for general-purpose classification tasks\n\nIn general those are models built on TONS of data and optimized for a particular task\n\nKey Features:\n\nReady to use\nLow to zero cost\nDeep ML architectures ~ High accuracy\nCan be re-trained for your specific task"
   },
   {
     "objectID": "slides/week_04.html#transformers",

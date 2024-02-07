@@ -183,7 +183,7 @@ Where:
 
 -   Dictionary construction involves a lot of contextual interpretation and qualitative judgment
 
--   Transparency and interpretability: no black-box model behind the classification task
+-   Transparency: no black-box model behind the classification task
 :::
 
 # Some well-known dictionaries
@@ -361,8 +361,7 @@ knitr::include_graphics("./week4_figs/ventura_jqd.png")
 ## Off-the-shelf Deep Learning Models
 
 -   [Definition:]{.red} Pre-trained models designed for general-purpose classification tasks
-    -   In general those were models built on TONS of data and optimized for a particular task
-    -   Are dictionaries off-the-shelf models?
+    -   In general those are models built on TONS of data and optimized for a particular task
 -   [Key Features:]{.red}
     -   Ready to use
     -   Low to zero cost
@@ -375,6 +374,8 @@ knitr::include_graphics("./week4_figs/ventura_jqd.png")
 knitr::include_graphics("./week4_figs/transformers.png") 
 ```
 
-# `r fontawesome::fa("laptop-code")` Coding!
 
 # [Problem set 1](https://classroom.github.com/a/M3UZZ4rz)
+
+# `r fontawesome::fa("laptop-code")` Coding!
+
