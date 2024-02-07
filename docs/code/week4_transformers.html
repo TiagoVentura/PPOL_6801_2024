@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PPOL 6801 - Text as Data - Computational Linguistics - Supervised Learning with Text</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="styles.scss">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning with Text</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/TiagoVentura/PPOL_6801_2024" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Materials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: Text to Matrices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Text Similarity, Text re-use and Complexity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Dictionaries &amp; Pre-Trained Models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#imdb-dataset" id="toc-imdb-dataset" class="nav-link active" data-scroll-target="#imdb-dataset">IMDB Dataset</a></li>
+  <li><a href="#dictionary-methods" id="toc-dictionary-methods" class="nav-link" data-scroll-target="#dictionary-methods">Dictionary Methods</a></li>
+  <li><a href="#pre-trained-large-language-models-hugging-face" id="toc-pre-trained-large-language-models-hugging-face" class="nav-link" data-scroll-target="#pre-trained-large-language-models-hugging-face">Pre-Trained Large Language Models: Hugging Face</a>
+  <ul class="collapse">
+  <li><a href="#transformers-library" id="toc-transformers-library" class="nav-link" data-scroll-target="#transformers-library">Transformers Library</a></li>
+  <li><a href="#use-contextual-knowledge-model-trained-on-amazon-reviews" id="toc-use-contextual-knowledge-model-trained-on-amazon-reviews" class="nav-link" data-scroll-target="#use-contextual-knowledge-model-trained-on-amazon-reviews">Use contextual knowledge: Model Trained on Amazon Reviews</a></li>
+  <li><a href="#who-still-needs-a-dictionary" id="toc-who-still-needs-a-dictionary" class="nav-link" data-scroll-target="#who-still-needs-a-dictionary">Who still needs a dictionary?!?!</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Supervised Learning with Text</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<h1>
+<center>
+PPOL 6801 Text as Data <br><br> <font color="grey"> Supervised Learning with Text and Off-the-Shelf <br><br> Tiago Ventura
+</font></center><font color="grey">
+<h1>
+<hr>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To practice with supervised learning with text data, we will perform some classic sentiment analysis classification task. Sentiment analysis natural language processing technique that given a textual input (tweets, movie reviews, comments on a website chatbox, etc… ) identifies the polarity of the text.</p>
+<p>There are different flavors of sentiment analysis, but one of the most widely used techniques labels data into positive, negative and neutral. Other options are classifying text according to the levels of toxicity, which I did in the paper I asked you to read, or more fine-graine measures of sentiments.</p>
+<p>Sentiment analysis is just one of many types of classification tasks that can be done with text. For any type of task in which you need to identify if the input pertains to a certain category, you can use a similar set of tools as we will see for sentiment analysis. For example, these are some classification tasks I have used in my work before:</p>
+<ul>
+<li>Classify the levels of toxicity in social media live-streaming comments.</li>
+<li>Analyze the sentiment of tweets.</li>
+<li>Classify if the user is a Republican or Democrat given the their Twitter bios.</li>
+<li>Identify if a particular social media post contains misinformation.</li>
+</ul>
+<p>For all these tasks, you need:</p>
+<ul>
+<li>some type of labelled data (which you and your research team will do),</li>
+<li>build/or use a pre-trained machine learning models to make the prediction</li>
+<li>evaluate the performance of the models</li>
+</ul>
+<p>Here, we will work with data that was alread labelled for us. We will analyze the sentiment on IMDB dataset of reviews</p>
+<section id="imdb-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="imdb-dataset">IMDB Dataset</h3>
+<p>For the rest of this notebook, we will IMDB dataset provided by <a href="https://huggingface.co/datasets/imdb">Hugging Face</a>. The IMDB dataset contains 25,000 movie reviews labeled by sentiment for training a model and 25,000 movie reviews for testing it.</p>
+<p>We will talk more about the Hugging Face project later in this notebook. For now, just download their main transformers library, and import the IMDB Review Dataset</p>
+<section id="accessing-the-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="accessing-the-dataset">Accessing the Dataset</h4>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install transformers</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install datasets</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>imdb <span class="op">=</span> load_dataset(<span class="st">"imdb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ebe950036d2845638484d59252063f98","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"dd453c68a3b94f1ca23e841dd7e65bd1","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"bc64fcae950b4e35a59db86e571621e0","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### get a smaller sample</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>small_train_dataset <span class="op">=</span> imdb[<span class="st">"train"</span>].shuffle(seed<span class="op">=</span><span class="dv">42</span>).select([i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">3000</span>))])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>small_test_dataset <span class="op">=</span> imdb[<span class="st">"test"</span>].shuffle(seed<span class="op">=</span><span class="dv">42</span>).select([i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">300</span>))])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to a dataframe</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>pd_train <span class="op">=</span> pd.DataFrame(small_train_dataset)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>pd_test <span class="op">=</span> pd.DataFrame(small_test_dataset)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># see the data</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>pd_train.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">text</th>
+<th data-quarto-table-cell-role="th">label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>There is no relation at all between Fortier an...</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>This movie is a great. The plot is very true t...</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>George P. Cosmatos' "Rambo: First Blood Part I...</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>In the process of trying to establish the audi...</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Yeh, I know -- you're quivering with excitemen...</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dictionary-methods" class="level3">
+<h3 class="anchored" data-anchor-id="dictionary-methods">Dictionary Methods</h3>
+<p>Our first approach for sentiment classification will use dictionary methods.</p>
+<p><strong>Common Procedure:</strong> Consists on using a pre-determined set of words (dictionary) that identifies the categories you want to classify documents. With this dictionary, you can do a simple search through the documents, count how many times these words appear, and use some type of aggregation function to classify the text. For example:</p>
+<ul>
+<li>Positive or negative, for sentiment</li>
+<li>Sad, happy, angry, anxious… for emotions</li>
+<li>Sexism, homophobia, xenophobia, racism… for hate speech</li>
+</ul>
+<p>Dictionaries are the most basic strategy to classify documents. Its simplicity requires some unrealistic assumptions (for example related to ignoring contextual information of the documents). However, the use of dicitionaries have one major advantage: it allows for a bridge between qualititative and quantitative knowledge. You need human experts to build good dictionaries.</p>
+<section id="vader" class="level4">
+<h4 class="anchored" data-anchor-id="vader">VADER</h4>
+<p>There are many options for dictionaries for sentiment classification. We will use one popular open-source option available at NLTK: The VADER dictionary. VADER stands for Valence Aware Dictionary for Sentiment Reasoning. It is a model used for text sentiment analysis that is sensitive to both polarity (positive/negative) and intensity (strength) of emotion, and it was developed to handling particularly social media content.</p>
+<p><strong>Key Components of the VADER Dictionary:</strong>*</p>
+<ul>
+<li><p>Sentiment Lexicon: This is a list of known words and their associated sentiment scores.</p></li>
+<li><p>Sentiment Intensity Scores: Each word in the lexicon is assigned a score that ranges from -4 (extremely negative) to +4 (extremely positive).</p></li>
+<li><p>Handling of Contextual and Qualitative Modifiers: VADER is sensitive to both intensifiers (e.g., “very”) and negations (e.g., “not”).</p></li>
+</ul>
+<p>You can read the original paper that created the VADER <a href="https://www.google.com/search?q=ADER%3A+A+Parsimonious+Rule-based+Model+for+Sentiment+Analysis+of+Social+Media+Text.+Eighth+International+Conference+on+Weblogs+and+Social+Media&amp;rlz=1C5GCEM_enUS1072US1073&amp;oq=ADER%3A+A+Parsimonious+Rule-based+Model+for+Sentiment+Analysis+of+Social+Media+Text.+Eighth+International+Conference+on+Weblogs+and+Social+Media&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg60gEHMTU2ajBqNKgCALACAA&amp;sourceid=chrome&amp;ie=UTF-8">here</a></p>
+</section>
+<section id="import-dictionary" class="level4">
+<h4 class="anchored" data-anchor-id="import-dictionary">Import dictionary</h4>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nltk.download('vader_lexicon')</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.sentiment.vader <span class="im">import</span> SentimentIntensityAnalyzer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate the model</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sid <span class="op">=</span> SentimentIntensityAnalyzer()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># simple example</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>review1 <span class="op">=</span> <span class="st">"I have eaten here dozens of times and have always had an outstanding experience. a meal at Fogo de Chao is always a wonderful experience!"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># classify</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>sid.polarity_scores(review1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>{'neg': 0.0, 'neu': 0.714, 'pos': 0.286, 'compound': 0.8398}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple example</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>review2 <span class="op">=</span> <span class="st">"Long wait on a rainy day. </span><span class="ch">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">I had to order my burger twice. </span><span class="ch">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">I ordered it medium and came way over cooked."</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># classify</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sid.polarity_scores(review2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>{'neg': 0.067, 'neu': 0.933, 'pos': 0.0, 'compound': -0.0772}</code></pre>
+</div>
+</div>
+<p>Let’s now apply the dictionary at scale in our IMDB review dataset</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply the dictionary to your data frame</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pd_test[<span class="st">"vader_scores"</span>]<span class="op">=</span>pd_test[<span class="st">"text"</span>].<span class="bu">apply</span>(sid.polarity_scores)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># let's see</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>pd_test.head()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># grab final sentiment</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>pd_test[<span class="st">"sentiment_vader"</span>]<span class="op">=</span>pd_test[<span class="st">"vader_scores"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.where(x[<span class="st">"compound"</span>] <span class="op">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have performed the classification task, we can see compare the labels and our predictions. We will be using a simple accuracy measure of how many labels were correctly classified</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(pd_test[<span class="st">'label'</span>], pd_test[<span class="st">'sentiment_vader'</span>])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># see</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6966666666666667</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="pre-trained-large-language-models-hugging-face" class="level2">
+<h2 class="anchored" data-anchor-id="pre-trained-large-language-models-hugging-face">Pre-Trained Large Language Models: Hugging Face</h2>
+<p>In the past few years, the field of natural language processing has undergone through a major revolution. As we first saw, the early generation of NLP models was based on the idea of converting text to numbers through the use of document-feature matrix relying on the bag-of-words assumptions.</p>
+<p>In the past ten-years, we have seen the emergence of a new paradigm using deep-learning and neural networks models to improve on the representation of text as numbers. These new models move away from the idea of a bag-of-words towards a more refined representation of text capturing the contextual meaning of words and sentences. This is achieved by training models with billions of parameters on text-sequencing tasks, using as inputs a dense representation of words. These are the famous word embeddings.</p>
+<p>The most recent innovation on this revolution has been the Transformers Models. These models use multiple embeddings (matrices) to represent word, in which each matrix can capture different contextual representations of words. This dynamic representation allow for higher predictive power on downstream tasks in which these matrices form the foundation of the entire machine learning architecture. For example, Transformers are the the core of the language models like Open AI’s GPTs and Meta’s LLaMa.</p>
+<p>The Transformers use a sophisticated architecture that requires a huge amount of data and computational power to be trained. However, several of these models are open-sourced and are made available for us on the web through a platform called <a href="https://huggingface.co/">Hugging Face</a>. Those are what we call <strong>pre-trained large language models</strong>. At this point, there are thousands of pre-trained models based on the transformers framework available at hugging face.</p>
+<p>Once you find a model that fits your task, you have two options:</p>
+<ul>
+<li><p><strong>Use the model architecture: access the model through the transformers library, and use it in you predictive tasks.</strong></p></li>
+<li><p><strong>Fine-Tunning:</strong> this is the most traditional way. You will get the model, give some data, re-train the model slightly so that the model will learn patterns from your data, and use on your predictive task. By fine-tuning a Transformers-based model for our own application, we can improve contextual understanding and therefore task-specific performance</p></li>
+</ul>
+<p>We will see example of the first for sentiment analysis. If you were to do build a full pipeline for classification, you would probably need to fine-tune the model. To learn more about fine-tunning, I suggest you to read:</p>
+<ul>
+<li><p>here on hugging face: https://huggingface.co/blog/sentiment-analysis-python</p></li>
+<li><p>and this forthcoming paper for political science applications:https://joantimoneda.netlify.app/files/Timoneda%20Vallejo%20V%20JOP.pdf</p></li>
+</ul>
+<section id="transformers-library" class="level3">
+<h3 class="anchored" data-anchor-id="transformers-library">Transformers Library</h3>
+<p>To use a model available on hugging face, you only need a few lines of code.</p>
+<section id="use-the-pipeline-class-to-access-the-model." class="level4">
+<h4 class="anchored" data-anchor-id="use-the-pipeline-class-to-access-the-model.">Use the pipeline class to access the model.</h4>
+<p>The pipeline function will give you the default model for this task, that in this case is a Bert-Based Model, see here: https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english?text=I+like+you.+I+love+you</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the pipeline function</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate your model</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sentiment_pipeline <span class="op">=</span> pipeline(<span class="st">"sentiment-analysis"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># see simple cases</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(review1, review2)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#prediction</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>sentiment_pipeline([review1, review2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No model was supplied, defaulted to distilbert-base-uncased-finetuned-sst-2-english and revision af0f99b (https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english).
+Using a pipeline without specifying a model name and revision in production is not recommended.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I have eaten here dozens of times and have always had an outstanding experience. a meal at Fogo de Chao is always a wonderful experience! Long wait on a rainy day. I had to order my burger twice. I ordered it medium and came way over cooked.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[{'label': 'POSITIVE', 'score': 0.9998835325241089},
+ {'label': 'NEGATIVE', 'score': 0.9927043914794922}]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predict in the entire model. </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># notice here I am truncating the model. Transformers can only deal with 512 tokens max</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>pd_test[<span class="st">"bert_scores"</span>]<span class="op">=</span>pd_test[<span class="st">"text"</span>].<span class="bu">apply</span>(sentiment_pipeline, truncation<span class="op">=</span><span class="va">True</span>, max_length<span class="op">=</span><span class="dv">512</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># let's clean it up</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>pd_test[<span class="st">"bert_class"</span>]<span class="op">=</span>pd_test[<span class="st">"bert_scores"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.where(x[<span class="dv">0</span>][<span class="st">"label"</span>]<span class="op">==</span><span class="st">"POSITIVE"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>pd_test.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">text</th>
+<th data-quarto-table-cell-role="th">label</th>
+<th data-quarto-table-cell-role="th">vader_scores</th>
+<th data-quarto-table-cell-role="th">sentiment_vader</th>
+<th data-quarto-table-cell-role="th">bert_scores</th>
+<th data-quarto-table-cell-role="th">bert_class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>&lt;br /&gt;&lt;br /&gt;When I unsuspectedly rented A Thou...</td>
+<td>1</td>
+<td>{'neg': 0.069, 'neu': 0.788, 'pos': 0.143, 'co...</td>
+<td>1</td>
+<td>[{'label': 'POSITIVE', 'score': 0.998875796794...</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>This is the latest entry in the long series of...</td>
+<td>1</td>
+<td>{'neg': 0.066, 'neu': 0.862, 'pos': 0.073, 'co...</td>
+<td>1</td>
+<td>[{'label': 'POSITIVE', 'score': 0.996983110904...</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>This movie was so frustrating. Everything seem...</td>
+<td>0</td>
+<td>{'neg': 0.24, 'neu': 0.583, 'pos': 0.177, 'com...</td>
+<td>0</td>
+<td>[{'label': 'NEGATIVE', 'score': 0.997244238853...</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>I was truly and wonderfully surprised at "O' B...</td>
+<td>1</td>
+<td>{'neg': 0.075, 'neu': 0.752, 'pos': 0.173, 'co...</td>
+<td>1</td>
+<td>[{'label': 'NEGATIVE', 'score': 0.649214446544...</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>This movie spends most of its time preaching t...</td>
+<td>0</td>
+<td>{'neg': 0.066, 'neu': 0.707, 'pos': 0.227, 'co...</td>
+<td>1</td>
+<td>[{'label': 'NEGATIVE', 'score': 0.998503446578...</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We can easily use this model to make predictions on our entire dataset</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">## accuracy</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(pd_test[<span class="st">'label'</span>], pd_test[<span class="st">'bert_class'</span>])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># see</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.87</code></pre>
+</div>
+</div>
+<p>Without any fine-tunning, we are already doing much, much better than dictionaries!</p>
+</section>
+</section>
+<section id="use-contextual-knowledge-model-trained-on-amazon-reviews" class="level3">
+<h3 class="anchored" data-anchor-id="use-contextual-knowledge-model-trained-on-amazon-reviews">Use contextual knowledge: Model Trained on Amazon Reviews</h3>
+<p>We will go in-depth in the process of fine-tunning your model in the week 12 of the course. While we don’t do that, let’s see if there are models on Hugging Face that were actually trained on a similar task: predicting reviews.</p>
+<p>Actually, there are many. See here: https://huggingface.co/models?sort=trending&amp;search=sentiment+reviews</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoModelForSequenceClassification, AutoTokenizer</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># acessing the model</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> AutoModelForSequenceClassification.from_pretrained(<span class="st">"MICADEE/autonlp-imdb-sentiment-analysis2-7121569"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Acessing the tokenizer</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">"MICADEE/autonlp-imdb-sentiment-analysis2-7121569"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use in my model</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>sentiment_pipeline <span class="op">=</span> pipeline(<span class="st">"sentiment-analysis"</span>, model<span class="op">=</span>model, tokenizer<span class="op">=</span>tokenizer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/tb186/anaconda3/lib/python3.11/site-packages/torch/_utils.py:776: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run in the dataframe</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>pd_test[<span class="st">"imdb_scores"</span>]<span class="op">=</span>pd_test[<span class="st">"text"</span>].<span class="bu">apply</span>(sentiment_pipeline, truncation<span class="op">=</span><span class="va">True</span>, max_length<span class="op">=</span><span class="dv">512</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># clean</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>pd_test[<span class="st">"imdb_class"</span>]<span class="op">=</span>pd_test[<span class="st">"imdb_scores"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.where(x[<span class="dv">0</span>][<span class="st">"label"</span>]<span class="op">==</span><span class="st">"positive"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">## accuracy</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(pd_test[<span class="st">'label'</span>], pd_test[<span class="st">'imdb_class'</span>])</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># see</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.97</code></pre>
+</div>
+</div>
+</section>
+<section id="who-still-needs-a-dictionary" class="level3">
+<h3 class="anchored" data-anchor-id="who-still-needs-a-dictionary">Who still needs a dictionary?!?!</h3>
+
+
+</section>
+</section>
+
+</h1></font></h1></main><font color="grey"> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</font></div><font color="grey"> <!-- /content -->
+
+
+
+</font></body></html>

@@ -9,11 +9,11 @@ format: pdf
 
 In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we'll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.
 
-While the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture. 
+While the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture.
 
 I assume students taking this class have taken, at minimum, an introductory class in statistics and have basic knowledge of probability, distributions, hypothesis testing, and linear models. The core language and software environment of this course is R. If you are not familiar with R, you will struggle with the assigned exercises. We will also provide some code in Python, but no prior knowledge here is assumed since this will be additional material.
 
-## Instructor 
+## Instructor
 
 [Professor Tiago Ventura](https://www.venturatiago.com/)
 
@@ -26,7 +26,6 @@ I assume students taking this class have taken, at minimum, an introductory clas
 
 <!-- Download the [syllabus in pdf here]("./_syllabus.pdf") -->
 
-
 ## Our classes
 
 Classes will take place at the scheduled class time/place and will involve a combination of lectures, coding walkthrough, breakout group sessions, and questions. We will start our classes with a lecture highlighting what I consider to be the broader substantive and programming concepts covered in the class. From that, we will switch to a mix of coding walk through and breakout group sessions.
@@ -37,22 +36,21 @@ Note that this class is scheduled to meet weekly for 2.5 hours. I will do my bes
 
 ## Required Materials
 
-**Readings**: We will rely primarily on the following textbooks for this course. While this textbook is not freely available online, all the other materials of the course will be or should be accessible through Georgetown library.  
+**Readings**: We will rely primarily on the following textbooks for this course. While this textbook is not freely available online, all the other materials of the course will be or should be accessible through Georgetown library.
 
-- Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - [GMB]
+-   Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - \[GMB\]
 
-- Daniel Jurafsky and James H. Martin. [Speech and Language Processing, 3nd Edition.](https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf) - [SLP]
+-   Daniel Jurafsky and James H. Martin. [Speech and Language Processing, 3nd Edition.](https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf) - \[SLP\]
 
 **The weekly articles are listed in the syllabus**
 
 ## Course Infrastructure
 
-**Class Website**: A class website [https://tiagoventura.github.io/PPOL_6801_2024/](https://tiagoventura.github.io/PPOL_6801_2024/) will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.
+**Class Website**: A class website <https://tiagoventura.github.io/PPOL_6801_2024/> will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.
 
 **Class Slack Channel**: The class also has a dedicated [slack channel](https://join.slack.com/t/ppol68012024/shared_invite/zt-2a4ofec2d-KH8YDtoiJ3gHRWTNhuBPcQ). The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor and TA the means of answering the question so that all can see the response. If you're unfamiliar with, please consult the following start-up tutorial (https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members).
 
 **Canvas**: A Canvas site (http://canvas.georgetown.edu) will be used throughout the course and should be checked on a regular basis for announcements and assignments. All announcements for the assignments and classes will be posted on Canvas; they will not be distributed in class or by e-mail. Support for Canvas is available at (202) 687-4949
-
 
 ## Weekly Schedule & Readings
 
@@ -60,8 +58,7 @@ Note that this class is scheduled to meet weekly for 2.5 hours. I will do my bes
 
 **Topics:** Review of syllabus and class organization. Introduction to computational text analysis.
 
-
--   [GMB] - Chapter 2.
+-   \[GMB\] - Chapter 2.
 
 Or one of the three below:
 
@@ -75,175 +72,160 @@ Or one of the three below:
 
 **Topics:** How to represent text as data? What is a Bag of Words? What are tokens? Why should we care about tokens?
 
--[GMB] -  Chapters 3-5
+-\[GMB\] - Chapters 3-5
 
-- **Applied Papers**: 
+-   **Applied Papers**:
 
-    - Denny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.
+    -   Denny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.
 
-    - Ban, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. "How newspapers reveal political power." Political Science Research and Methods 7, no. 4 (2019): 661-678.
-    
-    - Michel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644;
+    -   Ban, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. "How newspapers reveal political power." Political Science Research and Methods 7, no. 4 (2019): 661-678.
 
+    -   Michel, J.B., et al. 2011. "Quantitative Analysis of Culture Using Millions of Digitized Books." Science 331 (6014): 176--82. https://doi.org/10.1126/science.1199644;
 
 ### Week 3: Text Similarity, Text re-use and Complexity
 
-**Topics:** How do we evaluate complexity in text? Why should we care about complexity in text?
-How do we evaluate similarity in text? Why is this useful?
+**Topics:** How do we evaluate complexity in text? Why should we care about complexity in text? How do we evaluate similarity in text? Why is this useful?
 
-- [GMB] -  Chapter 7
+-   \[GMB\] - Chapter 7
 
+-   **Applied Papers**:
 
-- **Applied Papers**: 
+    -   Spirling, Arthur. 2016. "Democratization and Linguistic Complexity", Journal of Politics.
 
-    - Spirling, Arthur. 2016. “Democratization and Linguistic Complexity”, Journal of Politics.
+    -   Benoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity
 
-    -  Benoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity
-
-    - Linder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. "Text as policy: Measuring policy similarity through bill text reuse." Policy Studies Journal 48, no. 2 (2020): 546-574.
+    -   Linder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. "Text as policy: Measuring policy similarity through bill text reuse." Policy Studies Journal 48, no. 2 (2020): 546-574.
 
 ### Week 4: Supervised Learning I: Dictionary Methods and Out of Box Classifier Analysis
 
 **Topics:** What are dictionaries? Why/when are they useful? What are their limitations? Can we use models trained by others?
 
-- [GMB] - Chapters 15-16
+-   \[GMB\] - Chapters 15-16
 
+-   **Applied Papers**:
 
-- **Applied Papers**: 
+    -   Lori Young and Stuart Soroka 2012 "Affective News: The Automated Coding of Sentiment in Political Texts." Political Communication, 29:2, 205-231.
 
-    - Lori Young and Stuart Soroka 2012 “Affective News: The Automated Coding of Sentiment in Political Texts.” Political Communication, 29:2, 205-231.
+    -   Rathje, Steve, Jay J. Van Bavel, and Sander Van Der Linden. "Out-group animosity drives engagement on social media." Proceedings of the National Academy of Sciences 118, no. 26 (2021): e2024292118.
 
-    - Rathje, Steve, Jay J. Van Bavel, and Sander Van Der Linden. "Out-group animosity drives engagement on social media." Proceedings of the National Academy of Sciences 118, no. 26 (2021): e2024292118.
+    -   Ventura, Tiago, Kevin Munger, Katherine McCabe, and Keng-Chi Chang. "Connective effervescence and streaming chat during political debates." Journal of Quantitative Description: Digital Media 1 (2021).
 
-    - Ventura, Tiago, Kevin Munger, Katherine McCabe, and Keng-Chi Chang. "Connective effervescence and streaming chat during political debates." Journal of Quantitative Description: Digital Media 1 (2021).
-
-- **Problem set 1** Assigned
-
+-   **Problem set 1** Assigned
 
 ### Week 5: Supervised Learning II: Training your own classifiers
 
-**Topics:** We will study the framework to train our own supervised models, and when to use them. 
+**Topics:** We will study the framework to train our own supervised models, and when to use them.
 
-- [GMB] - Chapters 17, 18, 19, and 20.
+-   \[GMB\] - Chapters 17, 18, 19, and 20.
 
+-   **Applied Papers**:
 
-- **Applied Papers**: 
+    -   Barberá, Pablo, Amber E. Boydstun, Suzanna Linn, Ryan McMahon, and Jonathan Nagler. "Automated text classification of news articles: A practical guide." Political Analysis 29, no. 1 (2021): 19-42.
 
-    - Barberá, Pablo, Amber E. Boydstun, Suzanna Linn, Ryan McMahon, and Jonathan Nagler. "Automated text classification of news articles: A practical guide." Political Analysis 29, no. 1 (2021): 19-42.
-    
-    - Siegel, Alexandra, et al. “Trumping Hate on Twitter? Online Hate Speech in the 2016 US Election Campaign and its Aftermath.”
+    -   Siegel, Alexandra, et al. "Trumping Hate on Twitter? Online Hate Speech in the 2016 US Election Campaign and its Aftermath."
 
-    - Theocharis, Y., Barberá, P., Fazekas, Z., & Popa, S. A. (2020). [The dynamics of political incivility on Twitter](https://journals.sagepub.com/doi/pdf/10.1177/2158244020919447). Sage Open, 10(2), 2158244020919447.
+    -   Theocharis, Y., Barberá, P., Fazekas, Z., & Popa, S. A. (2020). [The dynamics of political incivility on Twitter](https://journals.sagepub.com/doi/pdf/10.1177/2158244020919447). Sage Open, 10(2), 2158244020919447.
 
-    - Mitts, T., Phillips, G., & Walter, B. (2021). [Studying the Impact of ISIS Propaganda Campaigns](https://www.journals.uchicago.edu/doi/abs/10.1086/716281). Journal of Politics 
+    -   Mitts, T., Phillips, G., & Walter, B. (2021). [Studying the Impact of ISIS Propaganda Campaigns](https://www.journals.uchicago.edu/doi/abs/10.1086/716281). Journal of Politics
 
 ### Week 6: Replication Class I: Students' Presentation
-
 
 ### Week 7: Unsupervised Learning: Topic Models
 
 **Topics**: what if we do not have an outcome to predict? can we cluster the text in groups? what are topics?
 
-- [GMB] -  Chapters 12-14.
+-   \[GMB\] - Chapters 12-14.
 
-- David M. Blei . 2012. “Probabilistic Topic Models.” http://www.cs.columbia.edu/~blei/papers/
-Blei2012.pdf
+-   David M. Blei . 2012. "Probabilistic Topic Models." http://www.cs.columbia.edu/\~blei/papers/ Blei2012.pdf
 
-- **Applied Papers**: 
+-   **Applied Papers**:
 
-    - Motolinia, Lucia. [Electoral accountability and particularistic legislation: evidence from an electoral reform in Mexico.](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/electoral-accountability-and-particularistic-legislation-evidence-from-an-electoral-reform-in-mexico/BCFD6B0C73B041C8C410594BDB232DB1) American Political Science Review 115, no. 1 (2021): 97-113.
+    -   Motolinia, Lucia. [Electoral accountability and particularistic legislation: evidence from an electoral reform in Mexico.](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/electoral-accountability-and-particularistic-legislation-evidence-from-an-electoral-reform-in-mexico/BCFD6B0C73B041C8C410594BDB232DB1) American Political Science Review 115, no. 1 (2021): 97-113.
 
-    - Barberá, P., Casas, A., Nagler, J., Egan, P. J., Bonneau, R., Jost, J. T., & Tucker, J. A. (2019). [Who leads? Who follows? Measuring issue attention and agenda setting by legislators and the mass public using social media data](https://www.cambridge.org/core/journals/american-political-science-review/article/who-leads-who-follows-measuring-issue-attention-and-agenda-setting-by-legislators-and-the-mass-public-using-social-media-data/D855849CE288A241529E9EC2E4FBD3A8). American Political Science Review, 113(4), 883-901.
-    
-    - Eshima, Shusei, Kosuke Imai, and Tomoya Sasaki. "Keyword‐Assisted Topic Models." American Journal of Political Science (2020).
+    -   Barberá, P., Casas, A., Nagler, J., Egan, P. J., Bonneau, R., Jost, J. T., & Tucker, J. A. (2019). [Who leads? Who follows? Measuring issue attention and agenda setting by legislators and the mass public using social media data](https://www.cambridge.org/core/journals/american-political-science-review/article/who-leads-who-follows-measuring-issue-attention-and-agenda-setting-by-legislators-and-the-mass-public-using-social-media-data/D855849CE288A241529E9EC2E4FBD3A8). American Political Science Review, 113(4), 883-901.
 
-- **Problem set 2** Assigned
+    -   Eshima, Shusei, Kosuke Imai, and Tomoya Sasaki. "Keyword‐Assisted Topic Models." American Journal of Political Science (2020).
+
+-   **Problem set 2** Assigned
 
 ### Week 8: Word Embeddings: What they are and how to estimate?
 
 **Topics:** What are word-embeddings? When and how can we use them? What? Topic models again? Is this still a bag of words?
 
-- [GMB] - Chapter 8.
+-   \[GMB\] - Chapter 8.
 
-- [SLP] Chapter 6, “Vector Semantics and Embeddings.”
+-   \[SLP\] Chapter 6, "Vector Semantics and Embeddings."
 
-- Meyer, David. How Exactly Does Word2Vec Work?
+-   Meyer, David. How Exactly Does Word2Vec Work?
 
-- Spirling and Rodriguez, Word embeddings: What works, what doesn’t, and how to tell the difference for applied research.
-
+-   Spirling and Rodriguez, Word embeddings: What works, what doesn't, and how to tell the difference for applied research.
 
 ### Week 9: Word Embeddings: Social Science Applications
 
-- **Applied Papers**: 
+-   **Applied Papers**:
 
-    -  Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.
+    -   Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.
 
-    - Gennaro, Gloria, and Elliott Ash. "Emotion and reason in political language." The Economic Journal 132, no. 643 (2022): 1037-1059.
+    -   Gennaro, Gloria, and Elliott Ash. "Emotion and reason in political language." The Economic Journal 132, no. 643 (2022): 1037-1059.
 
-    - Rheault, Ludovic, and Christopher Cochrane. "Word embeddings for the analysis of ideological placement in parliamentary corpora." Political Analysis 28, no. 1 (2020): 112-133.
-    
-    - Austin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.
-    
-    - Garg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.
+    -   Rheault, Ludovic, and Christopher Cochrane. "Word embeddings for the analysis of ideological placement in parliamentary corpora." Political Analysis 28, no. 1 (2020): 112-133.
 
-- **Problem set 3** Assigned
+    -   Austin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. "The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings." American Sociological Review 84, no. 5: 905--49. https://doi.org/10.1177/0003122419877135.
+
+    -   Garg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. "Word embeddings quantify 100 years of gender and ethnic stereotypes." Proceedings of the National Academy of Sciences 115(16):E3635--E3644.
+
+-   **Problem set 3** Assigned
 
 ### Week 10: Using Text to Measure Ideology - Scaling
 
 **Topics:** What are scaling models and what can they tell us? Can we represent politicians/users ideology using text?
 
-- **Applied Papers**: 
+-   **Applied Papers**:
 
-    -  Laver, Michael, Kenneth Benoit, and John Garry. 2003. “Extracting Policy Positions from Political Texts Using Words as Data”. American Political Science Review. 97, 2, 311-331
-    
-    - Slapin, Jonathan and Sven-Oliver Prokschk. 2008. “A Scaling Model for Estimating Time-Series Party Positions from Texts.” American Journal of Political Science. 52, 3 705-722
+    -   Laver, Michael, Kenneth Benoit, and John Garry. 2003. "Extracting Policy Positions from Political Texts Using Words as Data". American Political Science Review. 97, 2, 311-331
 
-    - Rheault, Ludovic, and Christopher Cochrane. "Word embeddings for the analysis of ideological placement in parliamentary corpora." Political Analysis 28, no. 1 (2020): 112-133.
-    
-    - Aruguete, Natalia, Ernesto Calvo, and Tiago Ventura. "News by popular demand: Ideological congruence, issue salience, and media reputation in news sharing." The International Journal of Press/Politics 28, no. 3 (2023): 558-579.
+    -   Slapin, Jonathan and Sven-Oliver Prokschk. 2008. "A Scaling Model for Estimating Time-Series Party Positions from Texts." American Journal of Political Science. 52, 3 705-722
 
-    - Izumi, Mauricio Y., and Danilo B. Medeiros. "Government and opposition in legislative speechmaking: using text-as-data to estimate Brazilian political parties’ policy positions." Latin American Politics and Society 63, no. 1 (2021): 145-164.
+    -   Rheault, Ludovic, and Christopher Cochrane. "Word embeddings for the analysis of ideological placement in parliamentary corpora." Political Analysis 28, no. 1 (2020): 112-133.
 
+    -   Aruguete, Natalia, Ernesto Calvo, and Tiago Ventura. "News by popular demand: Ideological congruence, issue salience, and media reputation in news sharing." The International Journal of Press/Politics 28, no. 3 (2023): 558-579.
+
+    -   Izumi, Mauricio Y., and Danilo B. Medeiros. "Government and opposition in legislative speechmaking: using text-as-data to estimate Brazilian political parties' policy positions." Latin American Politics and Society 63, no. 1 (2021): 145-164.
 
 ### Week 11: Replication Class II: Students' Presentation
-
 
 ### Week 12: Large Language Models: Theory and Fine-tuning a Transformers-based model (Inviter Speaker: Dr. Sebastian Vallejo)
 
 **Topics**: We will learn about the Transformers architecture, attention, and the encoder-coder infrastructure.
 
-- [SLP] - Chapter 10. 
+-   \[SLP\] - Chapter 10.
 
-- Jay Alammar. 2018. “The Illustrated Transformer.” https://jalammar.github.io/illustratedtransformer/
+-   Jay Alammar. 2018. "The Illustrated Transformer." https://jalammar.github.io/illustratedtransformer/
 
-- Vaswani, A., et al. (2017). Attention is all you need. Advances in neural information processing systems, 30;
+-   Vaswani, A., et al. (2017). Attention is all you need. Advances in neural information processing systems, 30;
 
-- Timoneda and Vera, BERT, RoBERTa or DeBERTa? Comparing Performance Across Transformer Models in Political Science Text, Forthcoming Journal of Politics.
-
+-   Timoneda and Vera, BERT, RoBERTa or DeBERTa? Comparing Performance Across Transformer Models in Political Science Text, Forthcoming Journal of Politics.
 
 ### Week 13: Large Language Models: Outsourcing Applications
 
-- **Applied Papers**: We will see some social science application of LLMs chatbots. Can we use ChatGPT to perform zero-shot classification tasks?  What are the concerns of these applications?
+-   **Applied Papers**: We will see some social science application of LLMs chatbots. Can we use ChatGPT to perform zero-shot classification tasks? What are the concerns of these applications?
 
-    - [Wu, Patrick Y., Joshua A. Tucker, Jonathan Nagler, and Solomon Messing. "Large language models can be used to estimate the ideologies of politicians in a zero-shot learning setting." arXiv preprint arXiv:2303.12057 (2023)](https://arxiv.org/abs/2303.12057).
+    -   [Wu, Patrick Y., Joshua A. Tucker, Jonathan Nagler, and Solomon Messing. "Large language models can be used to estimate the ideologies of politicians in a zero-shot learning setting." arXiv preprint arXiv:2303.12057 (2023)](https://arxiv.org/abs/2303.12057).
 
-    - [Rathje, Steve, Dan-Mircea Mirea, Ilia Sucholutsky, Raja Marjieh, Claire Robertson, and Jay J. Van Bavel. GPT is an effective tool for multilingual psychological text analysis. (2023)](https://osf.io/preprints/psyarxiv/sekf5).
+    -   [Rathje, Steve, Dan-Mircea Mirea, Ilia Sucholutsky, Raja Marjieh, Claire Robertson, and Jay J. Van Bavel. GPT is an effective tool for multilingual psychological text analysis. (2023)](https://osf.io/preprints/psyarxiv/sekf5).
 
-    - [Davidson, Thomas: Start Generating: Harnessing Generative Artificial Intelligence for Sociological Research, PrePrint](https://osf.io/preprints/socarxiv/u9nft)
-    
-    - [Bisbee, James, Joshua Clinton, Cassy Dorff, Brenton Kenkel, and Jennifer Larson. 2023. “Synthetic Replacements for Human Survey Data? the Perils of Large Language Models.” SocArXiv. May 4.](https://osf.io/preprints/socarxiv/5ecfa) 
-    
+    -   [Davidson, Thomas: Start Generating: Harnessing Generative Artificial Intelligence for Sociological Research, PrePrint](https://osf.io/preprints/socarxiv/u9nft)
 
+    -   [Bisbee, James, Joshua Clinton, Cassy Dorff, Brenton Kenkel, and Jennifer Larson. 2023. "Synthetic Replacements for Human Survey Data? the Perils of Large Language Models." SocArXiv. May 4.](https://osf.io/preprints/socarxiv/5ecfa)
 
 ### Week 14: Final Projects: Students Presentation
-
 
 ## Course Requirements
 
 | **Assignment**           | **Percentage of Grade** |
 |--------------------------|:-----------------------:|
-| Participation/Attendance |           10%          |
-| Problem Sets             |           20%          |
+| Participation/Attendance |           10%           |
+| Problem Sets             |           20%           |
 | Replication Exercises    |           30%           |
 | Final Project            |           40%           |
 
@@ -293,55 +275,52 @@ The assignments will be graded in accuracy and quality of the programming style.
 
 The follow schedule lays out when each assignment will be assigned.
 
-| Assignment | Date Assigned |            Date Due             |
-|:----------:|:-------------:|:-------------------------------:|
+| Assignment | Date Assigned |           Date Due            |
+|:----------:|:-------------:|:-----------------------------:|
 |   No. 1    |    Week 4     | Before EOD of Week 5's class  |
 |   No. 2    |    Week 7     | Before EOD of Week 8's class  |
-|   No. 3    |    Week 9     | Before EOD of Week 10's class  |
-
+|   No. 3    |    Week 9     | Before EOD of Week 10's class |
 
 **Replication Exercises** (30%)
 
-Replication exercises are adapted from Gary King's work [here](https://gking.harvard.edu/files/paperspub.pdf) and [here](https://gking.harvard.edu/files/replication.pdf). Replication consists in the process of repeating a research study using the original data or brining new data to the conversation. Replicability is crucial for the advancement of knowledge and the credibility of scientific inquiry. 
+Replication exercises are adapted from Gary King's work [here](https://gking.harvard.edu/files/paperspub.pdf) and [here](https://gking.harvard.edu/files/replication.pdf). Replication consists in the process of repeating a research study using the original data or brining new data to the conversation. Replicability is crucial for the advancement of knowledge and the credibility of scientific inquiry.
 
 For our purposes, replication exercises will work as a educational tool. A common say in science is that you just learn a new skill/methods when you use in your own work. Since we do not have time to write three papers during a semester, we will take advantage of published work with open available datasets and code for us to work on replication exercises.
 
-You will work in pairs for this assignment. Your partner will be randomly assigned. You will repeat twice in the course. This is a stylized step-by-step of this exercise: 
+You will work in pairs for this assignment. Your partner will be randomly assigned. You will repeat twice in the course. This is a stylized step-by-step of this exercise:
 
-- **Step 1**: finding a paper to replicate
+-   **Step 1**: finding a paper to replicate
 
-   - By the end of the week 2 and week 7, you should select an article from the syllabus to be replicated by your team
-   
-   - The first replication exercise should consider articles from weeks 2 to week 5, and the second from the remaining of the class. 
+    -   By the end of the week 2 and week 7, you should select an article from the syllabus to be replicated by your team
 
+    -   The first replication exercise should consider articles from weeks 2 to week 5, and the second from the remaining of the class.
 
-- **Step 2**: Acquiring the Data
+-   **Step 2**: Acquiring the Data
 
-  - Most research articles are published with open data rules. This means their data and code are often available on github, or on harvard dataverse. Your first task is to find the data and code from these articles. 
-  - If your articles does not have the data and code, you should: 
-    - Politely contact the authors of the article and ask for the replication materials
-    - If you don't get response, select another article. 
-    
-- **Step 3**: Presentation
+    -   Most research articles are published with open data rules. This means their data and code are often available on github, or on harvard dataverse. Your first task is to find the data and code from these articles.
+    -   If your articles does not have the data and code, you should:
+        -   Politely contact the authors of the article and ask for the replication materials
+        -   If you don't get response, select another article.
 
-  - For weeks 6 and 11, you will do a presentation of your replication efforts. 
-  - The presentation should have the following sections: 
-     - Introduction: introduction summarizing the article. 
-     - Methods: data used in the article
-     - Results: the results you were able to replicate
-     - Differences: any differences between your results and the authors'
-     - Autopsy of the replication: what did work and what did not work
-     - Extension: what would you do different if you were to write this article today? Where would you innovate? 
+-   **Step 3**: Presentation
 
-- **Step 4**: Replication Repository
+    -   For weeks 6 and 11, you will do a presentation of your replication efforts.
+    -   The presentation should have the following sections:
+        -   Introduction: introduction summarizing the article.
+        -   Methods: data used in the article
+        -   Results: the results you were able to replicate
+        -   Differences: any differences between your results and the authors'
+        -   Autopsy of the replication: what did work and what did not work
+        -   Extension: what would you do different if you were to write this article today? Where would you innovate?
 
-  - By Friday EOD of each replication week, you should share with me and all your colleagues your replication report. The replication report should be: 
-    - a github repo with a well-detailed readme. See an model here: [https://github.com/TiagoVentura/winning_plosone](https://github.com/TiagoVentura/winning_plosone)
-    - your presentation as a pdf
-    - the code used in the replication as a notebook (Markdown or Jupyter)
-    - a report with maximum of 5 pages (it is fine if you do less than that) summarizing the replication process, with emphasis on three sections of your presentation: Differences, Autopsy and Extension. 
-    
-    
+-   **Step 4**: Replication Repository
+
+    -   By Friday EOD of each replication week, you should share with me and all your colleagues your replication report. The replication report should be:
+        -   a github repo with a well-detailed readme. See an model here: <https://github.com/TiagoVentura/winning_plosone>
+        -   your presentation as a pdf
+        -   the code used in the replication as a notebook (Markdown or Jupyter)
+        -   a report with maximum of 5 pages (it is fine if you do less than that) summarizing the replication process, with emphasis on three sections of your presentation: Differences, Autopsy and Extension.
+
 In addition to following the requirements above, the replication exercises will also be graded in accuracy and quality of the programming style. For instance, our grading team will be looking at:
 
 -   
@@ -362,7 +341,6 @@ In addition to following the requirements above, the replication exercises will 
 
 -   
 
-
 **Final Project (40%)**: Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributtions using data and recent computational developments. In this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings. For this reason, a considerable part of your grade will come from a an independent data science project, *applying concepts learned throughout the course*.
 
 The project is composed of three parts:
@@ -373,10 +351,10 @@ The project is composed of three parts:
 
 Due dates and breakdowns for the project are as follows:
 
-| **Requirement**  | **Due**     | **Length**    | **Percentage** |
-|------------------|-------------|---------------|----------------|
-| Project Proposal | EOD Friday Week 9  | 2 pages       | 5%             |
-| Presentation     | Week 14  | 10-15 minutes | 10%            |
+| **Requirement**  | **Due**           | **Length**    | **Percentage** |
+|------------------|-------------------|---------------|----------------|
+| Project Proposal | EOD Friday Week 9 | 2 pages       | 5%             |
+| Presentation     | Week 14           | 10-15 minutes | 10%            |
 | Project Report   | Wednesday Week 15 | 10 pages      | 25%            |
 
 **Important notes about the final project**

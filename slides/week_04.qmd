@@ -1,0 +1,380 @@
+---
+title: "PPOL 6801 - Text as Data - Computational Linguistics"
+subtitle: "<span style = 'font-size: 140%;'> <br> Week 4: Dictionaries and off-the-shelf classifiers </span>"
+author: "<span style = 'font-size: 120%;'> Professor: Tiago Ventura </span>"
+execute: 
+  echo: false
+  error: true
+  cache: true
+format:
+  revealjs: 
+    transition: slide
+    background-transition: fade
+    code-line-numbers: false
+    width: 1050
+    height: 700
+    center: false
+    slide-number: true
+    incremental: false
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: "Text-as-Data"
+    theme: [simple, custom.scss]
+editor_options: 
+  chunk_output_type: console
+---
+
+## Housekeeping
+
+Your first problem set will be assigned today! Some important information:
+
+::: incremental
+-   You will receive and submit your assignment using Github!
+
+    -   Github Clasroom: Creates automatically a repo for the assignment. You and I are owner of the repo.
+
+-   [Deadline]{.red}: EOD next Wednesday, February 14th.
+
+-   Please use an .RMD/.QMD file to submit your assignment. If you prefer to solve using jupyter, let me know!
+
+-   [Any questions?]{.red}
+:::
+
+## Where are we?
+
+After learning how to process and represent text as numbers, we started digging in on how to use text on a research pipeline. 
+
+::: fragment
+### Descriptive inference:
+
+::: incremental
+-   Counting words (Ban's Paper)
+
+-   Comparing document similarity using vector space model (text re-use)
+
+-   Measures of lexical diversity and readability
+
+:::
+:::
+
+## Plans for today
+
+For the next two weeks, we will talk about [Measurement]{.red}
+
+- [Measurement]{.red}: Map/Measure concepts from theory to data. 
+
+:::fragment
+>  _Documents pertaining to certain [classes]{.red} and how we can use statistical assumptions to [measure]{.red} these classes_
+:::
+
+::: fragment
+::: incremental
+-   Dictionary Methods
+    -   Discuss some well-known dictionaries
+-   Off-the-Shelf Classifiers
+    -   Perspective API
+    -   Hugging Face (only see as a off-the-shelf machines, LMMs later in this course)
+-   [Next week]{.red}: training our own machine learning models
+:::
+:::
+
+## Connecting Machine Learning with TAD
+
+In the Machine Learning tradition, we are introduced to two core family of models:
+
+::: fragment
+-   [Unsupervised Models]{.red}: learning (hidden or latent) structure in [unlabeled]{.red} data.
+
+    -   [Topic Models to cluster documents and words]{.midgray}
+:::
+
+::: fragment
+-   [Supervised Models]{.red}: learning relationship between [inputs]{.red} and a [labeled set of outputs]{.red}.
+
+    -   Sentiment Analysis, classify if a tweet contains misinformation, etc..
+:::
+
+::: fragment
+#### In TAD, we mostly use unsupervised techniques for [discovery]{.red} and supervised for [measurement of concepts]{.red}.
+:::
+
+## Supervised Learning Pipeline for TAD
+
+::: incremental
+-   [Step 1:]{.red} label some examples of the concept of we want to measure
+
+    -   [some tweets are positive, some are neutral and some are negative]{.midgray}
+
+-   [Step 2:]{.red} train a statistical model on these set of label data using the [document-feature matrix]{.red} as input
+
+    -   [choose a model (transformation function) that gives higher out-of-sample accuracy]{.midgray}
+
+-   [Step 3:]{.red} use the classifier - some f(x) - to predict unseen documents.
+
+-   [Step 4:]{.red} use the measure + metadata|exogenous shocks to learn something new about the world.
+
+    -   [This is where social science happens!]{.midgray}
+:::
+
+## Back to the Future Exercise
+
+::: columns
+::: {.column width="50%"}
+<iframe src="https://giphy.com/embed/fRm4hhcT7y3wEUgzlo" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
+<p><a href="https://giphy.com/gifs/BTTF-back-to-the-future-bttf-three-fRm4hhcT7y3wEUgzlo">via GIPHY</a></p>
+:::
+
+::: {.column width="50%"}
+Assume you got the delorean to travel back twenty years ago, you want to run a simple sentiment analysis in a corpus of news articles.
+
+-   **Which challenges would you face?**
+
+-   **How could you solve it?**
+
+-   **Please consider all four steps described before**
+:::
+:::
+
+# Dictionaries
+
+## Overview of Dictionaries
+:::incremental
+-   Use a set of pre-defined words that allow us to classify documents automatically, quickly and accurately.
+
+-   Instead of optimizing a transformation function using statistical assumption and seen data, in dictionaries we have a [pre-assumed recipe]{.red} for the transformation function.
+
+-   A dictionary contains:
+
+    -   a list of words that corresponds to each category
+        -   [positive and negative for sentiment]{.midgray}
+        -   [Sexism, homophobia, xenophobia, racism for hate speech]{.midgray}
+
+-   Weights given to each word \~ same for all words or some continuous variation.
+:::
+## More specifically...
+
+We have a set of [key words]{.red} with weights,
+
+-   e.g. for sentiment analysis: **horrible** is scored as $-1$ and **beautiful** as $+1$
+
+-   the relative rate of occurrence of these terms tells us about the overall tone or category that the document should be placed in.
+
+::: fragment
+For document $i$ and words $m=1,\ldots, M$ in the dictionary,
+
+$$\text{tone of document $i$}= \sum^M_{m=1} \frac{s_m w_{im}}{N_i}$$
+
+Where: 
+
+- $s_m$ is the score of word $m$ 
+- $w_{im}$ is the number of occurrences of the $m_{th}$ dictionary word in the document $i$ 
+- $N_i$ is the total number of all dictionary words in the document
+:::
+
+## Why Dictionaries?
+:::incremental
+-   Low cost and computationally efficient \~ [if using a dictionary developed and validated by others]{.midgray}
+
+-   A hybrid procedure between qualitative and quantitative classification at the fully automated end of the text analysis spectrum
+
+-   Dictionary construction involves a lot of contextual interpretation and qualitative judgment
+
+-   Transparency and interpretability: no black-box model behind the classification task
+:::
+
+# Some well-known dictionaries
+
+## General Inquirer  (Stone et al 1966)
+
+:::incremental
+-   It combines several dictionaries to make total of 182 categories: 
+    - the "Harvard IV-4" dictionary: psychology, themes, topics
+    -   the "Lasswell" dictionary, five categories based on the social cognition work of Semin and Fiedler
+   - "self references", containing mostly pronouns; 
+   - "negatives", the largest category with 2291 entries
+:::
+
+## Linquistic Inquiry and Word Count
+
+Created by Pennebaker et al --- see [http://www.liwc.net](%5Bhttp://www.liwc.net)
+
+-   Large dictionary with around 4,500 words and words steams
+-   90 categories
+-   Categories are organized hierarchically
+    -   [All anger words, by definition, will be categorized as negative emotion and overall emotion words.]{.midgray}
+-   Words are in one or more categories
+    -   [the word cried is part of five word categories: sadness, negative emotion, overall affect, verb, and past tense verb.]{.midgray}
+-   You can [buy]{.red} it here: http://www.liwc.net/descriptiontable1.php
+
+## Heavily used in academia!
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week4_figs/liwc.png") 
+```
+
+::: aside
+[Pennebaker et al, 2009](https://journals.sagepub.com/doi/abs/10.1177/0261927x09351676)
+:::
+
+## VADER: an open-source alternative to LIWC
+
+**Valence Aware Dictionary and sEntiment Reasoner:**
+
+-   Tuned for social media text
+
+-   Capture polarity and intensity
+
+    -   Sentiment Lexicon: This is a list of known words and their associated sentiment scores.
+    -   Sentiment Intensity Scores: Each word in the lexicon is assigned a score that ranges from -4 (extremely negative) to +4 (extremely positive).
+    -   Five Heuristic-based rules: exclamation points, caps lock, intensifiers, negation, tri-grams
+
+-   Python and R libraries: <https://github.com/cjhutto/vaderSentiment>
+
+-   Article: <https://ojs.aaai.org/index.php/ICWSM/article/view/14550/14399>
+
+## Young & Saroka's Lexicoder Sentiment Dictionary
+
+-   Create dictionary specifically for [political communication]{.red}
+
+-   Combines:
+
+    -   General Inquirer;
+    -   Roget's Thesaurus and
+    -   Regressive Imagery Dictionary
+    
+- Each words pertains to a single class
+
+-   [Plus]{.red}
+
+    -   Hand coding
+    -   Keyword in context dos disambiguation
+
+## Performance
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week4_figs/lsd.png") 
+```
+
+::: aside
+LSD results assign 74% to the positive category and just 12% to the negative category. Of the 495 articles that are categorized as negative by at least two coders, LSD results assign 53% to the negative category and 32% to the positive category \~ [69% of accuracy]{.red}
+:::
+
+## Laver and Garry, 2000
+
+A hierarchical set of categories to distinguish policy domains and policy positions on party manifestos
+
+-   Five Domains:
+    -   economy
+    -   political system
+    -   social system
+    -   external relations
+    
+- Lookes for word occurrences within “word strings with an average length of ten words”    
+
+-   Article: [Estimating Policy Positions from Political Texts](https://www.jstor.org/stable/2669268)
+
+## Laver and Garry, 2000
+
+::: columns
+::: {.column width="50%"}
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week4_figs/laver_dict.png") 
+```
+:::
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week4_figs/laver_score.png") 
+```
+:::
+:::
+
+# Applications
+
+## Rathje et. al 2020, PNAS, Out-group animosity
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week4_figs/rathje.png") 
+```
+
+
+## Rathje et. al 2020, PNAS, Out-group animosity
+
+> We used the R package [quanteda]{.red} to analyze Twitter and Facebook text. During text preprocessing, we removed punctuation, URLs, and numbers. To classify whether a specific post was referring to a liberal or a conservative, we adapted previously used dictionaries that referred to words associated with liberals or conservatives. Specifically, these dictionaries included 1) [a list of the top 100 most famous Democratic and Republican politicians]{.red} according to YouGov, along with their Twitter handles (or Facebook page names for the Facebook datasets) (e.g., "Trump," "Pete Buttigieg," "@realDonaldTrump"); 2) [a list of the current Democratic and Republican]{.red} (but not independent) US Congressional members (532 total) along with their Twitter and Facebook names (e.g., "Amy Klobuchar," "Tom Cotton"); and 3) [a list of about 10 terms]{.red} associated with Democratic (e.g., "liberal," "democrat," or "leftist") or Republican identity (e.g., "conservative," "republican," or "ring-wing").
+
+## Rathje et. al 2020, PNAS, Out-group animosity
+
+> We then assigned each tweet a count for words that matched our Republican and Democrat dictionaries (for instance, if a tweet mentioned two words in the "Republican" dictionary, it would receive a score of "2" in that category). We also used previously validated [dictionaries]{.red} that counted the number of [positive and negative affect]{.red} words per post and the number of [moral-emotional words]{.red} per post (LIWC).
+
+# Discussion: Advantages and Disadvantages of Dictionaries
+
+## Advantages
+
+We already discussed some of the advantages:
+
+-   low-cost when working with open sourced dictionaries
+
+    -   relatively easy to build/expand on new dictionaries
+
+-   bridge qualitative and quantitative
+
+-   easy to validate
+
+    -   dictionaries are transparent and reliable.
+
+-   transfer well across languages.
+
+## Disadvantage: Context specific
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week4_figs/bailon_dict.png") 
+```
+
+::: aside
+Source: [Gonzalez-Bailon et al](https://journals.sagepub.com/doi/abs/10.1177/0002716215569192)
+:::
+
+## Disadvantage: Performance
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week4_figs/muddiman.png") 
+```
+
+::: aside
+[Muddiman et al, 2019 - Reclaiming our Expertise](https://www.tandfonline.com/doi/full/10.1080/10584609.2018.1517843)
+:::
+
+## Off-the-shelf models: Ventura et. al. 2021.
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week4_figs/ventura_jqd.png") 
+```
+
+::: aside
+ See article: [Ventura et al. 2021, Connective Effervescence and Streaming Chat](https://journalqd.org/article/view/2573)
+:::
+
+## Off-the-shelf Deep Learning Models
+
+-   [Definition:]{.red} Pre-trained models designed for general-purpose classification tasks
+    -   In general those were models built on TONS of data and optimized for a particular task
+    -   Are dictionaries off-the-shelf models?
+-   [Key Features:]{.red}
+    -   Ready to use
+    -   Low to zero cost
+    -   Deep ML architectures \~ High accuracy
+    -   Can be re-trained for your specific task
+
+## Transformers
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week4_figs/transformers.png") 
+```
+
+# `r fontawesome::fa("laptop-code")` Coding!
+
+# [Problem set 1](https://classroom.github.com/a/M3UZZ4rz)

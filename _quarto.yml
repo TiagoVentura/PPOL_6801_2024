@@ -34,8 +34,8 @@ website:
             text: "Week 2: Text to Matrices"
           - href: weeks/week-03.qmd
             text: "Week 3: Text Similarity, Text re-use and Complexity"
-          #- href: weeks/week-04.qmd
-          #  text: "Week 4: From Nested Collectors to DataFrames"
+          - href: weeks/week-04.qmd
+            text: "Week 4: Dictionaries & Pre-Trained Models"
           #- href: weeks/week-05.qmd
           #  text: "Week 5: Intro to Pandas"
           #- href: weeks/week-06.qmd

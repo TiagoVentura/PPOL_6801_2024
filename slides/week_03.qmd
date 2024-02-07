@@ -29,7 +29,7 @@ editor_options:
 
 Thanks for selecting the articles for replication exercise! [Next steps]{.red}:
 
-:::incremental
+::: incremental
 -   Get access to the data and code ASAP
 
     -   Harvard Dataverse, see footnotes in the papers, contact the authors
@@ -52,13 +52,12 @@ Three primary challenges dealing with text as data:
 
 -   [Challenge III:]{.red} Outcomes live in the latent space
 
-:::fragment
+::: fragment
 [Last week:]{.red}
 
 -   Pre-processing text + bag of words \~\> reduces greatly text complexity (dimensions)
 
 -   Text representation using vectors of numbers \~\> document feature matrix (text to numbers)
-
 :::
 
 ## Plans for today
@@ -78,7 +77,6 @@ We will start thinking about latent outcomes. Our first approach will focus on [
 To represent documents as numbers, we will use the [vector space model representation]{.red}:
 
 ::: incremental
-
 -   A document $D_i$ is represented as a collection of features $W$ (words, tokens, n-grams, etc...)
 
 -   Each feature $w_i$ can be placed in a real line
@@ -88,8 +86,7 @@ To represent documents as numbers, we will use the [vector space model represent
     -   Each document is now a [vector]{.red},
     -   Each entry represents the [frequency of a particular token or feature]{.red}.
     -   Stacking those vectors on top of each other gives the [document feature matrix (DFM)]{.red}.
-    
-:::    
+:::
 
 ## Document-Feature Matrix: fundamental unit of TAD
 
@@ -148,12 +145,12 @@ ggplot(df, aes(x = no, y = yes, label = document)) +
 
 ## How \`far' is document a from document b?
 
-Using the vector space, we can use notions of geometry to build well-defined [comparison/similarity]{.red} measures between the documents. 
+Using the vector space, we can use notions of geometry to build well-defined [comparison/similarity]{.red} measures between the documents.
 
-:::incremental
-- [in multiple dimensions!!]{.red}
+::: incremental
+-   [in multiple dimensions!!]{.red}
 
-:::fragment 
+::: fragment
 ```{r echo=FALSE, fig.align="center",fig.width=8}
 
 # Plot the documents in 2D space using ggplot
@@ -206,7 +203,6 @@ $$
 :::
 
 #### Can be performed for any number of features J \~ has nice mathematical properties
-
 
 ::: notes
 no negative distances: sij   0 2 distance between documents is zero () documents are identical 3 distance between documents is symmetric: sij = sji 4 measures satisfy triangle inequality. sik   sij + sjk
@@ -470,7 +466,6 @@ $$ TTR: \frac{\text{total type}}{\text{total tokens}} $$
 -   Length also correlates with topic variation \~ [more types being added to the document]{.red}
 
 ::: fragment
-
 #### Other Measures
 
 -   [Guiraud]{.red}: $\frac{\text{total type}}{\sqrt{\text{total tokens}}}$
@@ -484,21 +479,19 @@ $$ TTR: \frac{\text{total type}}{\text{total tokens}} $$
 
 Another way to think about textual complexity is to consider [readability]{.red}.
 
-[Readability]{.red}: _ease with which reader (especially of given education) can comprehend a text_
+[Readability]{.red}: *ease with which reader (especially of given education) can comprehend a text*
 
-:::incremental
+::: incremental
 -   Combines both difficulty ([text]{.red}) and sophistication ([reader]{.red})
 
     -   Use a combination of [syllables and sentence length]{.red} to indicate difficulty
 
     -   Human inputs to built parameters
 
-    - [Flesch-Kincaid readability index]{.red} 
-           
-      - Measurement problems from education research 
-      - average grade of students who could correctly answer at least 75% of some multiple-choice questions
-      
+    -   [Flesch-Kincaid readability index]{.red}
 
+        -   Measurement problems from education research
+        -   average grade of students who could correctly answer at least 75% of some multiple-choice questions
 :::
 
 ## Flesch-Kincaid readability index
@@ -510,7 +503,6 @@ $$
 FRE = 206.835 - 1.015\left(\frac{\mbox{total words}}{\mbox{total sentences}}\right)-84.6\left(\frac{\mbox{total syllables}}{\mbox{total words}}\right) 
 $$
 :::
-
 
 ::: {.callout-note icon="false"}
 ## Flesch-Kincaid (Rescaled to US Educational Grade Levels)

@@ -89,7 +89,7 @@ knitr::include_graphics("https://www.mzes.uni-mannheim.de/socialsciencedatalab/a
 
 In most social science applications of text as data, we are trying to make an inference about a [latent variable]{.red}
 
--   [Latent variable]{.red}: we cannot observe directly but try to identify with statistical and theorethical assumptions.
+-   [Latent variable]{.red}: we cannot observe directly but try to identify with statistical and theoretical assumptions.
 -   Examples: ideology, sentiment, political stance, propensity of someone to turnout
 
 ::: fragment
