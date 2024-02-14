@@ -1,0 +1,391 @@
+---
+title: "PPOL 6801 - Text as Data - Computational Linguistics"
+subtitle: "<span style = 'font-size: 140%;'> <br> Week 5: Supervised Learning: <br> Training your own classifiers </span>"
+author: "<span style = 'font-size: 120%;'> Professor: Tiago Ventura </span>"
+execute: 
+  echo: false
+  error: true
+  cache: true
+format:
+  revealjs: 
+    transition: slide
+    background-transition: fade
+    code-line-numbers: false
+    width: 1050
+    height: 700
+    center: false
+    slide-number: true
+    incremental: false
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: "Text-as-Data"
+    theme: [simple, custom.scss]
+editor_options: 
+  chunk_output_type: console
+---
+
+## Housekeeping
+
+Today is your [deadline]{.red} for the problem set 1. 
+
+::: incremental
+
+- [Replications next week]{.red}
+
+  -   Presentation (20 min each):
+      -   Introduction;
+      -   Methods;
+      -   Results;
+      -   Differences;
+      -   Autopsy of the replication;
+      -   Extensions
+  -   Repository (by friday):
+      -   Github Repo
+          -   readme
+          -   your presentation pdf
+          -   code
+          -   5pgs report
+:::
+
+## Where are we?
+
+We started from [pre-processing text]{.red} as data, [representing]{.red} text as numbers, and [describing features]{.red} of the text.
+
+Last week, we started learning how to measure concepts in text:
+
+::: fragment
+> *Documents pertaining to certain [classes]{.red} and how we can use statistical assumptions to [measure]{.red} these classes*
+:::
+
+:::fragment
+-   Dictionary Methods
+    -   Discuss some well-known dictionaries
+-   Off-the-Shelf Classifiers
+    -   Perspective API
+    -   Hugging Face (only see as a off-the-shelf machines, LMMs later in this course)
+:::
+
+## Remember...
+
+::: fragment
+-   [Unsupervised Models]{.red}: learning (hidden or latent) structure in [unlabeled]{.red} data.
+
+    -   [Topic Models to cluster documents and words]{.midgray}
+:::
+
+::: fragment
+-   [Supervised Models]{.red}: learning relationship between [inputs]{.red} and a [labeled set of outputs]{.red}.
+
+    -   Sentiment Analysis, classify if a tweet contains misinformation, etc..
+:::
+
+::: fragment
+#### In TAD, we mostly use unsupervised techniques for [discovery]{.red} and supervised for [measurement of concepts]{.red}.
+:::
+
+# Today: cover the pipeline to train your own machine learning models to classify text using [classic]{.red} ML models
+
+## Assuming:
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week5_figs/ds2.png") 
+```
+
+## Supervised Learning Pipeline for TAD
+
+::: incremental
+-   [Step 1:]{.red} label some examples of the concept of we want to measure
+
+    -   [some tweets are positive, some are neutral and some are negative]{.midgray}
+
+-   [Step 2:]{.red} train a statistical model on these set of label data using the [document-feature matrix]{.red} as input
+
+    -   [choose a model (transformation function) that gives higher out-of-sample accuracy]{.midgray}
+
+-   [Step 3:]{.red} use the classifier - some f(x) - to predict unseen documents.
+
+    -   [pick the best out-sample perfirmance]{.midgray}
+
+-   [Step 4:]{.red} use the measure + metadata\|exogenous shocks to learn something new about the world.
+
+    -   [This is where social science happens!]{.midgray}
+:::
+
+## 
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week5_figs/ml.png") 
+```
+
+## Supervised Learning vs Dictionaries
+
+**Dictionary methods:**
+
+-   Advantage: [not corpus-specific]{.red}, cost to apply to a new corpus is trivial
+-   Disadvantage: [not corpus-specific]{.red}, so performance on a new corpus is unknown (domain shift)
+
+**Supervised learning:**
+
+-   [Generalization]{.red} of dictionary methods
+-   Features associated with each categories (and their relative weight) are [learned]{.red} from the data
+-   By construction, ML [will outperform dictionary methods]{.red} in classification tasks, as long as training sample is large enough
+
+## Supervised Learning Pipeline for TAD
+
+-   [Step 1: label some examples of the concept of we want to measure]{.red}
+
+-   [Step 2 train a statistical model on these set of label data using the document-feature matrix as input]{.midgray}
+
+-   [Step 3: use the classifier - some f(x) - to predict unseen documents.]{.midgray}
+
+-   [Step 4: use the measure + metadata\|exogenous shocks to learn something new about the world.]{.midgray}
+
+# Creating a labeled set
+
+## How to obtain a labeled dataset?
+
+::: incremental
+-   **External Source of Annotation:** [someone else labelled the data for you]{.midgray}
+
+    -   Federalist papers
+    -   Metadata from text
+    -   Manifestos from Parties with well-developed dictionaries
+
+-   **Expert annotation:** [put experts in quotation]{.midgray}
+
+    -   mostly undergrads \~ that you train to be experts
+
+-   **Crowd-sourced coding:** [digital labor markets]{.midgray}
+
+    -   [Wisdom of Crowsds:]{.red} the idea that large groups of non-expert people are collectively smarter than individual experts when it comes to problem-solving
+:::
+
+## Crowdsourcing as a research tool for ML
+
+<br>
+<br>
+<br>
+
+> Crowdsourcing is now understood to mean using the Internet to distribute a [large package of small tasks]{.red} to a large number of [anonymous workers]{.red}, located around the world and offered small financial rewards per task. The method is widely used for data-processing tasks such as image classification, video annotation, data entry, optical character recognition, translation, recommendation, and proofreading
+
+::: aside
+Source: [Benoit et al, 2016](https://www.cambridge.org/core/journals/american-political-science-review/article/crowdsourced-text-analysis-reproducible-and-agile-production-of-political-data/EC674A9384A19CFA357BC2B525461AC3)
+:::
+
+## Benoit et al, 206: Crowdsourcing Political Texts
+
+:::incremental
+- Expert annotation is expensive. 
+
+- [Benoit, Conway, Lauderdale, Laver and Mikhaylov (2016)](https://www.cambridge.org/core/journals/american-political-science-review/article/crowdsourced-text-analysis-reproducible-and-agile-production-of-political-data/EC674A9384A19CFA357BC2B525461AC3) note that [classification jobs]{.red} could be given to a large number of relatively cheap [online workers]{.red}
+
+-   Multiple workers \~ similar task \~ same stimuli \~ [wisdom of crowds!]{.red}
+
+-   Representativeness of a broader population doesn't matter \~ not a populational quantity, it is just a measurement task
+
+-   Their task: Manifestos \~ sentences \~ workers:
+
+    -   social\|economic
+        -   very-left vs very right
+
+-   Reduce uncertainty by having more workers for each sentence
+:::
+
+## Comparing Experts and online workers
+
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week5_figs/crows_performance.png") 
+```
+
+## How many workers?
+
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week5_figs/crowd_std.png") 
+```
+
+## 
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/crowd_tweet.png") 
+```
+
+::: aside
+Source: Pablo Barbera's CSS Seminar
+:::
+
+## Supervised Learning Pipeline for TAD
+
+-   [Step 1: label some examples of the concept of we want to measure]{.midgray}
+
+-   [Step 2 train a statistical model on these set of label data using the document-feature matrix as input]{.red}
+
+-   [Step 3: use the classifier - some f(x) - to predict unseen documents.]{.midgray}
+
+-   [Step 4: use the measure + metadata\|exogenous shocks to learn something new about the world.]{.midgray}
+
+## General Thoughts
+
+Once we have our training data, we need to pick a classifier. We face these challenges:
+
+:::fragment
+-   in text as data, often your DFM has [Features \> Documents]{.red}
+
+    -   identification problems for statistical models
+    -   overfitting the data
+:::
+
+:::fragment
+-   Bias-Variance Trade-off
+
+    -   fit a overly complicated model \~ [leads to higher variance]{.red}
+    -   fit a more flexible model \~ [leads to more bias]{.red}
+:::
+
+
+:::fragment
+-   Many models:
+
+    -   Naive Bayes
+    -   Regularized regression
+    -   SVM
+    -   k-nearest neighbors, tree-based methods, etc.
+    -   Ensemble methods + DL
+:::
+
+## Bias and Variance Tradeoff
+
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week5_figs/bias_variance.png") 
+```
+
+## Train-Validation-Test OR Cross Validation
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/xval.png") 
+```
+
+## Many Models
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/ml_models.png") 
+```
+
+## But not so different...
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/models.png") 
+```
+
+## Regularized OLS Regression
+
+The simplest, but highly effective, way to avoid overfit and improve out-sample accuracy is to add penalty parameters for statistical models:
+
+:::fragment
+[**OLS Loss Function :**]{.red}
+
+$$
+RSS = \sum_{i=1}^{N} \left( y_i - \beta_0 - \sum_{j=1}^{J} \beta_j x_{ij} \right)^2 
+$$
+
+:::
+
+:::fragment
+[**OLS + Penalty:**]{.red}
+
+$$
+\text{RSS} = \sum_{i=1}^{N} \left( y_i - \beta_0 - \sum_{j=1}^{J} \beta_j x_{ij} \right)^2 + \lambda \sum_{j=1}^{J} \beta_j^2 \rightarrow \text{ridge regression}
+$$ 
+
+$$
+\text{RSS} = \sum_{i=1}^{N} \left( y_i - \beta_0 - \sum_{j=1}^{J} \beta_j x_{ij} \right)^2 + \lambda \sum_{j=1}^{J} |\beta_j| \rightarrow \text{lasso regression}
+$$
+:::
+
+
+## Supervised Learning Pipeline for TAD
+
+-   [Step 1: label some examples of the concept of we want to measure]{.midgray}
+
+-   [Step 2 train a statistical model on these set of label data using the document-feature matrix as input]{.midgray}
+
+-   [Step 3: use the classifier - some f(x) - to predict unseen documents.]{.red}
+
+-   [Step 4: use the measure + metadata\|exogenous shocks to learn something new about the world.]{.midgray}
+
+## Evaluating the Performance
+
+|            |       | Predicted |        |       |
+|------------|-------|:---------:|:------:|------:|
+|            |       |     J     |   ¬J   | Total |
+| **Actual** | J     |  a (TP)   | b (FN) |   a+b |
+|            | ¬J    |  c (FP)   | d (TN) |   c+d |
+|            | Total |    a+c    |  b+d   |     N |
+
+:::incremental
+
+-   **Accuracy**: number correctly classified/total number of cases = (a+d)/(a+b+c+d)
+
+-   **Precision** : number of TP / (number of TP+number of FP) = a/(a+c) .
+
+    -   Fraction of the documents predicted to be J, that were in fact J.
+    -   Think as a measure for the estimator
+
+-   **Recall**: (number of TP) / (number of TP + number of FN) = a /(a+b)
+
+    -   Fraction of the documents that were in fact J, that method predicted were J.
+    -   Think as a measure for the data
+
+-   **F** : 2 precision\*recall / precision+recall
+
+    -   Harmonic mean of precision and recall.
+
+:::
+
+## Barbera et al, 2020, Guide for Supervised Models with Text
+
+::: columns
+::: {.column width="50%"}
+<iframe src="https://giphy.com/embed/z1yZD48IGFzYk" width="480" height="355" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
+<p><a href="https://giphy.com/gifs/flintstones-z1yZD48IGFzYk">via GIPHY</a></p>
+:::
+
+::: {.column width="50%"}
+<br>
+Task: Tone of New York Times coverage of the economy. Discusses:
+
+-   How to build a corpus
+-   Unit of analysis
+-   Documents or Coders?
+-   ML or Dictionaries?
+:::
+:::
+
+## 
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/barbera_corpus.png") 
+```
+
+## 
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/barbera_segments.png") 
+```
+
+## 
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/barbera_coders.png") 
+```
+
+## 
+
+```{r echo=FALSE, out.width = "75%"}
+knitr::include_graphics("./week5_figs/barbera_perfomance_graph.png") 
+```
+
+# `r fontawesome::fa("laptop-code")` Coding!

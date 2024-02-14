@@ -36,8 +36,8 @@ website:
             text: "Week 3: Text Similarity, Text re-use and Complexity"
           - href: weeks/week-04.qmd
             text: "Week 4: Dictionaries & Pre-Trained Models"
-          #- href: weeks/week-05.qmd
-          #  text: "Week 5: Intro to Pandas"
+          - href: weeks/week-05.qmd
+            text: "Week 5: Supervised Learning"
           #- href: weeks/week-06.qmd
           #  text: "Week 6: Pandas II"
           #- href: weeks/week-07.qmd

@@ -43,7 +43,7 @@ Your first problem set will be assigned today! Some important information:
 
 ## Where are we?
 
-After learning how to process and represent text as numbers, we started digging in on how to use text on a research pipeline. 
+After learning how to process and represent text as numbers, we started digging in on how to use text on a research pipeline.
 
 ::: fragment
 ### Descriptive inference:
@@ -54,7 +54,6 @@ After learning how to process and represent text as numbers, we started digging 
 -   Comparing document similarity using vector space model (text re-use)
 
 -   Measures of lexical diversity and readability
-
 :::
 :::
 
@@ -62,10 +61,10 @@ After learning how to process and represent text as numbers, we started digging 
 
 For the next two weeks, we will talk about [Measurement]{.red}
 
-- [Measurement]{.red}: Map/Measure concepts from theory to data. 
+-   [Measurement]{.red}: Map/Measure concepts from theory to data.
 
-:::fragment
->  _Documents pertaining to certain [classes]{.red} and how we can use statistical assumptions to [measure]{.red} these classes_
+::: fragment
+> *Documents pertaining to certain [classes]{.red} and how we can use statistical assumptions to [measure]{.red} these classes*
 :::
 
 ::: fragment
@@ -112,7 +111,7 @@ In the Machine Learning tradition, we are introduced to two core family of model
 
 -   [Step 3:]{.red} use the classifier - some f(x) - to predict unseen documents.
 
--   [Step 4:]{.red} use the measure + metadata|exogenous shocks to learn something new about the world.
+-   [Step 4:]{.red} use the measure + metadata\|exogenous shocks to learn something new about the world.
 
     -   [This is where social science happens!]{.midgray}
 :::
@@ -142,7 +141,8 @@ Assume you got the delorean to travel back twenty years ago, you want to run a s
 # Dictionaries
 
 ## Overview of Dictionaries
-:::incremental
+
+::: incremental
 -   Use a set of pre-defined words that allow us to classify documents automatically, quickly and accurately.
 
 -   Instead of optimizing a transformation function using statistical assumption and seen data, in dictionaries we have a [pre-assumed recipe]{.red} for the transformation function.
@@ -155,6 +155,7 @@ Assume you got the delorean to travel back twenty years ago, you want to run a s
 
 -   Weights given to each word \~ same for all words or some continuous variation.
 :::
+
 ## More specifically...
 
 We have a set of [key words]{.red} with weights,
@@ -168,15 +169,16 @@ For document $i$ and words $m=1,\ldots, M$ in the dictionary,
 
 $$\text{tone of document $i$}= \sum^M_{m=1} \frac{s_m w_{im}}{N_i}$$
 
-Where: 
+Where:
 
-- $s_m$ is the score of word $m$ 
-- $w_{im}$ is the number of occurrences of the $m_{th}$ dictionary word in the document $i$ 
-- $N_i$ is the total number of all dictionary words in the document
+-   $s_m$ is the score of word $m$
+-   $w_{im}$ is the number of occurrences of the $m_{th}$ dictionary word in the document $i$
+-   $N_i$ is the total number of all dictionary words in the document
 :::
 
 ## Why Dictionaries?
-:::incremental
+
+::: incremental
 -   Low cost and computationally efficient \~ [if using a dictionary developed and validated by others]{.midgray}
 
 -   A hybrid procedure between qualitative and quantitative classification at the fully automated end of the text analysis spectrum
@@ -188,14 +190,14 @@ Where:
 
 # Some well-known dictionaries
 
-## General Inquirer  (Stone et al 1966)
+## General Inquirer (Stone et al 1966)
 
-:::incremental
--   It combines several dictionaries to make total of 182 categories: 
-    - the "Harvard IV-4" dictionary: psychology, themes, topics
+::: incremental
+-   It combines several dictionaries to make total of 182 categories:
+    -   the "Harvard IV-4" dictionary: psychology, themes, topics
     -   the "Lasswell" dictionary, five categories based on the social cognition work of Semin and Fiedler
-   - "self references", containing mostly pronouns; 
-   - "negatives", the largest category with 2291 entries
+-   "self references", containing mostly pronouns;
+-   "negatives", the largest category with 2291 entries
 :::
 
 ## Linquistic Inquiry and Word Count
@@ -245,8 +247,8 @@ knitr::include_graphics("./week4_figs/liwc.png")
     -   General Inquirer;
     -   Roget's Thesaurus and
     -   Regressive Imagery Dictionary
-    
-- Each words pertains to a single class
+
+-   Each words pertains to a single class
 
 -   [Plus]{.red}
 
@@ -268,12 +270,13 @@ LSD results assign 74% to the positive category and just 12% to the negative cat
 A hierarchical set of categories to distinguish policy domains and policy positions on party manifestos
 
 -   Five Domains:
+
     -   economy
     -   political system
     -   social system
     -   external relations
-    
-- Lookes for word occurrences within “word strings with an average length of ten words”    
+
+-   Lookes for word occurrences within "word strings with an average length of ten words"
 
 -   Article: [Estimating Policy Positions from Political Texts](https://www.jstor.org/stable/2669268)
 
@@ -300,7 +303,6 @@ knitr::include_graphics("./week4_figs/laver_score.png")
 ```{r echo=FALSE, out.width = "80%"}
 knitr::include_graphics("./week4_figs/rathje.png") 
 ```
-
 
 ## Rathje et. al 2020, PNAS, Out-group animosity
 
@@ -355,7 +357,7 @@ knitr::include_graphics("./week4_figs/ventura_jqd.png")
 ```
 
 ::: aside
- See article: [Ventura et al. 2021, Connective Effervescence and Streaming Chat](https://journalqd.org/article/view/2573)
+See article: [Ventura et al. 2021, Connective Effervescence and Streaming Chat](https://journalqd.org/article/view/2573)
 :::
 
 ## Off-the-shelf Deep Learning Models
@@ -374,8 +376,6 @@ knitr::include_graphics("./week4_figs/ventura_jqd.png")
 knitr::include_graphics("./week4_figs/transformers.png") 
 ```
 
-
 # [Problem set 1](https://classroom.github.com/a/M3UZZ4rz)
 
 # `r fontawesome::fa("laptop-code")` Coding!
-

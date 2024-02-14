@@ -115,7 +115,6 @@ df_sent %>%
 data_dictionary_LSD2015_pos_neg <- data_dictionary_LSD2015[1:2]
 
 # use tokens lookup
-
 toks_gov_lsd <- d %>%
                 corpus(text_field = "comments")  %>% 
                 tokens() %>%

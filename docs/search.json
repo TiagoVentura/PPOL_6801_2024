@@ -109,7 +109,7 @@
     "href": "weeks/week-05.html",
     "title": "Week 05",
     "section": "",
-    "text": "Topics\nWe will study the framework to train our own supervised models, and when to use them.\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 17, 18, 19, and 20.\nApplied Papers:\n\nBarberá, Pablo, Amber E. Boydstun, Suzanna Linn, Ryan McMahon, and Jonathan Nagler. “Automated text classification of news articles: A practical guide.” Political Analysis 29, no. 1 (2021): 19-42.\nSiegel, Alexandra, et al. “Trumping Hate on Twitter? Online Hate Speech in the 2016 US Election Campaign and its Aftermath.”\nTheocharis, Y., Barberá, P., Fazekas, Z., & Popa, S. A. (2020). The dynamics of political incivility on Twitter. Sage Open, 10(2), 2158244020919447.\nMitts, T., Phillips, G., & Walter, B. (2021). Studying the Impact of ISIS Propaganda Campaigns. Journal of Politics\n\n\nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
+    "text": "Topics\nWe will study the framework to train our own supervised models, and when to use them.\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 17, 18, 19, and 20.\nApplied Papers:\n\nBarberá, Pablo, Amber E. Boydstun, Suzanna Linn, Ryan McMahon, and Jonathan Nagler. Automated text classification of news articles: A practical guide. Political Analysis 29, no. 1 (2021): 19-42.\nSiegel, Alexandra A., Evgenii Nikitin, Pablo Barberá, Joanna Sterling, Bethany Pullen, Richard Bonneau, Jonathan Nagler, and Joshua A. Tucker. Trumping hate on Twitter? Online hate speech in the 2016 US election campaign and its aftermath. Quarterly Journal of Political Science 16, no. 1 (2021): 71-104.\nTheocharis, Y., Barberá, P., Fazekas, Z., & Popa, S. A. (2020). The dynamics of political incivility on Twitter. Sage Open, 10(2), 2158244020919447.\nMitts, T., Phillips, G., & Walter, B. (2021). Studying the Impact of ISIS Propaganda Campaigns. Journal of Politics\n\n\nCoding Materials\n\n Week 5 - Supervised Learning: Training your own classifiers\n\n\n\nSlides\n\nWeek 5 - Supervised Learning"
   },
   {
     "objectID": "weeks/week-07.html",
@@ -445,7 +445,7 @@
     "href": "index.html#credits",
     "title": "PPOL 6801: Text as Data - Computational Linguistics",
     "section": "Credits",
-    "text": "Credits\nTo build this course, I used materials from Arthur Spirling Text-as-Data Class at NYU, and lab materials from various TA’s for his course, Pablo Barbera’s Computational Social Science Seminar seminar, Brandon Stewart, Alex Siegel, Chris Bail, Sebastian Vallejo, among others. Their lessons and inspiration are spread throughout all the materials of the course. Thanks!"
+    "text": "Credits\nTo build this course, I used materials from Arthur Spirling Text-as-Data Class at NYU, and lab materials from various TA’s for his course (Elisa Wirsching, Lucia Motolinia, Pedro L. Rodriguez, Kevin Munger, Patrick Chester, Leslie Huang), Pablo Barbera’s Computational Social Science Seminar seminar, Brandon Stewart, Alex Siegel, Chris Bail, Sebastian Vallejo, among others. Their lessons and inspiration are spread throughout all the materials of the course. Thanks!"
   },
   {
     "objectID": "slides/week_02.html#visualizing-vector-space-model",
@@ -955,8 +955,8 @@
     "objectID": "slides/week_04.html#housekeeping",
     "href": "slides/week_04.html#housekeeping",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nYour first problem set will be assigned today! Some important information:\n\n\nYou will receive and submit your assignment using Github!\n\nGithub Clasroom: Creates automatically a repo for the assignment. You and I are owner of the repo.\n\nDeadline: EOD next Wednesday, February 14th.\nPlease use an .RMD/.QMD file to submit your assignment. If you prefer to solve using jupyter, let me know!\nAny questions?"
+    "section": "",
+    "text": "Your first problem set will be assigned today! Some important information:\n\n\nYou will receive and submit your assignment using Github!\n\nGithub Clasroom: Creates automatically a repo for the assignment. You and I are owner of the repo.\n\nDeadline: EOD next Wednesday, February 14th.\nPlease use an .RMD/.QMD file to submit your assignment. If you prefer to solve using jupyter, let me know!\nAny questions?"
   },
   {
     "objectID": "slides/week_04.html#where-are-we",
@@ -1209,5 +1209,243 @@
     "title": "Supervised Learning with Text",
     "section": "",
     "text": "In the past few years, the field of natural language processing has undergone through a major revolution. As we first saw, the early generation of NLP models was based on the idea of converting text to numbers through the use of document-feature matrix relying on the bag-of-words assumptions.\nIn the past ten-years, we have seen the emergence of a new paradigm using deep-learning and neural networks models to improve on the representation of text as numbers. These new models move away from the idea of a bag-of-words towards a more refined representation of text capturing the contextual meaning of words and sentences. This is achieved by training models with billions of parameters on text-sequencing tasks, using as inputs a dense representation of words. These are the famous word embeddings.\nThe most recent innovation on this revolution has been the Transformers Models. These models use multiple embeddings (matrices) to represent word, in which each matrix can capture different contextual representations of words. This dynamic representation allow for higher predictive power on downstream tasks in which these matrices form the foundation of the entire machine learning architecture. For example, Transformers are the the core of the language models like Open AI’s GPTs and Meta’s LLaMa.\nThe Transformers use a sophisticated architecture that requires a huge amount of data and computational power to be trained. However, several of these models are open-sourced and are made available for us on the web through a platform called Hugging Face. Those are what we call pre-trained large language models. At this point, there are thousands of pre-trained models based on the transformers framework available at hugging face.\nOnce you find a model that fits your task, you have two options:\n\nUse the model architecture: access the model through the transformers library, and use it in you predictive tasks.\nFine-Tunning: this is the most traditional way. You will get the model, give some data, re-train the model slightly so that the model will learn patterns from your data, and use on your predictive task. By fine-tuning a Transformers-based model for our own application, we can improve contextual understanding and therefore task-specific performance\n\nWe will see example of the first for sentiment analysis. If you were to do build a full pipeline for classification, you would probably need to fine-tune the model. To learn more about fine-tunning, I suggest you to read:\n\nhere on hugging face: https://huggingface.co/blog/sentiment-analysis-python\nand this forthcoming paper for political science applications:https://joantimoneda.netlify.app/files/Timoneda%20Vallejo%20V%20JOP.pdf\n\n\n\nTo use a model available on hugging face, you only need a few lines of code.\n\n\nThe pipeline function will give you the default model for this task, that in this case is a Bert-Based Model, see here: https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english?text=I+like+you.+I+love+you\n\n# import the pipeline function\nfrom transformers import pipeline\n\n\n# instantiate your model\nsentiment_pipeline = pipeline(\"sentiment-analysis\")\n\n# see simple cases\nprint(review1, review2)\n\n#prediction\nsentiment_pipeline([review1, review2])\n\nNo model was supplied, defaulted to distilbert-base-uncased-finetuned-sst-2-english and revision af0f99b (https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english).\nUsing a pipeline without specifying a model name and revision in production is not recommended.\n\n\nI have eaten here dozens of times and have always had an outstanding experience. a meal at Fogo de Chao is always a wonderful experience! Long wait on a rainy day. I had to order my burger twice. I ordered it medium and came way over cooked.\n\n\n[{'label': 'POSITIVE', 'score': 0.9998835325241089},\n {'label': 'NEGATIVE', 'score': 0.9927043914794922}]\n\n\n\n# predict in the entire model. \n# notice here I am truncating the model. Transformers can only deal with 512 tokens max\npd_test[\"bert_scores\"]=pd_test[\"text\"].apply(sentiment_pipeline, truncation=True, max_length=512)\n\n# let's clean it up\npd_test[\"bert_class\"]=pd_test[\"bert_scores\"].apply(lambda x: np.where(x[0][\"label\"]==\"POSITIVE\", 1, 0))\n\npd_test.head()\n\n\n\n\n\n\n\n\ntext\nlabel\nvader_scores\nsentiment_vader\nbert_scores\nbert_class\n\n\n\n\n0\n&lt;br /&gt;&lt;br /&gt;When I unsuspectedly rented A Thou...\n1\n{'neg': 0.069, 'neu': 0.788, 'pos': 0.143, 'co...\n1\n[{'label': 'POSITIVE', 'score': 0.998875796794...\n1\n\n\n1\nThis is the latest entry in the long series of...\n1\n{'neg': 0.066, 'neu': 0.862, 'pos': 0.073, 'co...\n1\n[{'label': 'POSITIVE', 'score': 0.996983110904...\n1\n\n\n2\nThis movie was so frustrating. Everything seem...\n0\n{'neg': 0.24, 'neu': 0.583, 'pos': 0.177, 'com...\n0\n[{'label': 'NEGATIVE', 'score': 0.997244238853...\n0\n\n\n3\nI was truly and wonderfully surprised at \"O' B...\n1\n{'neg': 0.075, 'neu': 0.752, 'pos': 0.173, 'co...\n1\n[{'label': 'NEGATIVE', 'score': 0.649214446544...\n0\n\n\n4\nThis movie spends most of its time preaching t...\n0\n{'neg': 0.066, 'neu': 0.707, 'pos': 0.227, 'co...\n1\n[{'label': 'NEGATIVE', 'score': 0.998503446578...\n0\n\n\n\n\n\n\n\nWe can easily use this model to make predictions on our entire dataset\n\n## accuracy\nfrom sklearn.metrics import accuracy_score\naccuracy = accuracy_score(pd_test['label'], pd_test['bert_class'])\n# see\nprint(accuracy)\n\n0.87\n\n\nWithout any fine-tunning, we are already doing much, much better than dictionaries!\n\n\n\n\nWe will go in-depth in the process of fine-tunning your model in the week 12 of the course. While we don’t do that, let’s see if there are models on Hugging Face that were actually trained on a similar task: predicting reviews.\nActually, there are many. See here: https://huggingface.co/models?sort=trending&search=sentiment+reviews\n\nfrom transformers import AutoModelForSequenceClassification, AutoTokenizer\n\n# acessing the model\nmodel = AutoModelForSequenceClassification.from_pretrained(\"MICADEE/autonlp-imdb-sentiment-analysis2-7121569\")\n\n# Acessing the tokenizer\ntokenizer = AutoTokenizer.from_pretrained(\"MICADEE/autonlp-imdb-sentiment-analysis2-7121569\")\n\n# use in my model\nsentiment_pipeline = pipeline(\"sentiment-analysis\", model=model, tokenizer=tokenizer)\n\n/Users/tb186/anaconda3/lib/python3.11/site-packages/torch/_utils.py:776: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()\n  return self.fget.__get__(instance, owner)()\n\n\n\n# Run in the dataframe\npd_test[\"imdb_scores\"]=pd_test[\"text\"].apply(sentiment_pipeline, truncation=True, max_length=512)\n\n# clean\npd_test[\"imdb_class\"]=pd_test[\"imdb_scores\"].apply(lambda x: np.where(x[0][\"label\"]==\"positive\", 1, 0))\n\n\n## accuracy\nfrom sklearn.metrics import accuracy_score\naccuracy = accuracy_score(pd_test['label'], pd_test['imdb_class'])\n# see\nprint(accuracy)\n\n0.97"
+  },
+  {
+    "objectID": "slides/week_05.html#housekeeping",
+    "href": "slides/week_05.html#housekeeping",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nToday is your deadline for the problem set 1.\n\n\nReplications next week\n\nPresentation (20 min each):\n\nIntroduction;\nMethods;\nResults;\nDifferences;\nAutopsy of the replication;\nExtensions\n\nRepository (by friday):\n\nGithub Repo\n\nreadme\nyour presentation pdf\ncode\n5pgs report"
+  },
+  {
+    "objectID": "slides/week_05.html#where-are-we",
+    "href": "slides/week_05.html#where-are-we",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Where are we?",
+    "text": "Where are we?\nWe started from pre-processing text as data, representing text as numbers, and describing features of the text.\nLast week, we started learning how to measure concepts in text:\n\n\nDocuments pertaining to certain classes and how we can use statistical assumptions to measure these classes\n\n\n\n\nDictionary Methods\n\nDiscuss some well-known dictionaries\n\nOff-the-Shelf Classifiers\n\nPerspective API\nHugging Face (only see as a off-the-shelf machines, LMMs later in this course)"
+  },
+  {
+    "objectID": "slides/week_05.html#plans-for-today",
+    "href": "slides/week_05.html#plans-for-today",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Plans for today",
+    "text": "Plans for today\nFor the next two weeks, we will talk about Measurement\n\nMeasurement: Map/Measure concepts from theory to data.\n\n\n\nDocuments pertaining to certain classes and how we can use statistical assumptions to measure these classes\n\n\n\n\n\nDictionary Methods\n\nDiscuss some well-known dictionaries\n\nOff-the-Shelf Classifiers\n\nPerspective API\nHugging Face (only see as a off-the-shelf machines, LMMs later in this course)\n\nNext week: training our own machine learning models"
+  },
+  {
+    "objectID": "slides/week_05.html#remember",
+    "href": "slides/week_05.html#remember",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Remember…",
+    "text": "Remember…\n\n\nUnsupervised Models: learning (hidden or latent) structure in unlabeled data.\n\nTopic Models to cluster documents and words\n\n\n\n\n\nSupervised Models: learning relationship between inputs and a labeled set of outputs.\n\nSentiment Analysis, classify if a tweet contains misinformation, etc..\n\n\n\n\n\nIn TAD, we mostly use unsupervised techniques for discovery and supervised for measurement of concepts."
+  },
+  {
+    "objectID": "slides/week_05.html#caveat",
+    "href": "slides/week_05.html#caveat",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Caveat …",
+    "text": "Caveat …"
+  },
+  {
+    "objectID": "slides/week_05.html#supervised-learning-pipeline-for-tad",
+    "href": "slides/week_05.html#supervised-learning-pipeline-for-tad",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Supervised Learning Pipeline for TAD",
+    "text": "Supervised Learning Pipeline for TAD\n\n\nStep 1: label some examples of the concept of we want to measure\n\nsome tweets are positive, some are neutral and some are negative\n\nStep 2: train a statistical model on these set of label data using the document-feature matrix as input\n\nchoose a model (transformation function) that gives higher out-of-sample accuracy\n\nStep 3: use the classifier - some f(x) - to predict unseen documents.\n\npick the best out-sample perfirmance\n\nStep 4: use the measure + metadata|exogenous shocks to learn something new about the world.\n\nThis is where social science happens!"
+  },
+  {
+    "objectID": "slides/week_05.html#section",
+    "href": "slides/week_05.html#section",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Error in knitr::include_graphics(\"./week5_figs/mle.png\"): Cannot find the file(s): \"./week5_figs/mle.png\""
+  },
+  {
+    "objectID": "slides/week_05.html#supervised-learning-vs-dictionaries",
+    "href": "slides/week_05.html#supervised-learning-vs-dictionaries",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Supervised Learning vs Dictionaries",
+    "text": "Supervised Learning vs Dictionaries\nDictionary methods:\n\nAdvantage: not corpus-specific, cost to apply to a new corpus is trivial\nDisadvantage: not corpus-specific, so performance on a new corpus is unknown (domain shift)\n\nSupervised learning:\n\nGeneralization of dictionary methods\nFeatures associated with each categories (and their relative weight) are learned from the data\nBy construction, ML will outperform dictionary methods in classification tasks, as long as training sample is large enough"
+  },
+  {
+    "objectID": "slides/week_05.html#supervised-learning-pipeline-for-tad-1",
+    "href": "slides/week_05.html#supervised-learning-pipeline-for-tad-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Supervised Learning Pipeline for TAD",
+    "text": "Supervised Learning Pipeline for TAD\n\nStep 1: label some examples of the concept of we want to measure\nStep 2 train a statistical model on these set of label data using the document-feature matrix as input\nStep 3: use the classifier - some f(x) - to predict unseen documents.\nStep 4: use the measure + metadata|exogenous shocks to learn something new about the world."
+  },
+  {
+    "objectID": "slides/week_05.html#how-to-obtain-a-labeled-dataset",
+    "href": "slides/week_05.html#how-to-obtain-a-labeled-dataset",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "How to obtain a labeled dataset?",
+    "text": "How to obtain a labeled dataset?\n\n\nExternal Source of Annotation: someone else labelled the data for you\n\nFederalist papers\nMetadata from text\nManifestos from Parties with well-developed dictionaries\n\nExpert annotation: put experts in quotation\n\nmostly undergrads ~ that you train to be experts\n\nCrowd-sourced coding: digital labor markets\n\nWisdom of Crowsds: the idea that large groups of non-expert people are collectively smarter than individual experts when it comes to problem-solving"
+  },
+  {
+    "objectID": "slides/week_05.html#crowdsourcing-as-a-research-tool-for-ml",
+    "href": "slides/week_05.html#crowdsourcing-as-a-research-tool-for-ml",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Crowdsourcing as a research tool for ML",
+    "text": "Crowdsourcing as a research tool for ML\n  \n\nCrowdsourcing is now understood to mean using the Internet to distribute a large package of small tasks to a large number of anonymous workers, located around the world and offered small financial rewards per task. The method is widely used for data-processing tasks such as image classification, video annotation, data entry, optical character recognition, translation, recommendation, and proofreading\n\n\n\nSource: Benoit et al, 2016"
+  },
+  {
+    "objectID": "slides/week_05.html#crowdsourcing-political-texts",
+    "href": "slides/week_05.html#crowdsourcing-political-texts",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Crowdsourcing Political Texts",
+    "text": "Crowdsourcing Political Texts\nExpert annotation is expensive. Benoit, Conway, Lauderdale, Laver and Mikhaylov (2016) note classification jobs could be given to a large number of relatively cheap online workers\n\nMultiple workers ~ similar julgament ~ same stimuli ~ wisdom of crowds!\nRepresentativeness of a broader population doesn’t matter ~ not a populational quantity, it is just a measurement task\nManifestos ~ sentences ~ workers:\n\nsocial|economic\n\nvery-left vs very right\n\n\nReduce uncertainty by having more workers for each sentence\n\nwisdom of crowds!"
+  },
+  {
+    "objectID": "slides/week_05.html#comparing-experts-and-online-workers",
+    "href": "slides/week_05.html#comparing-experts-and-online-workers",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Comparing Experts and online workers",
+    "text": "Comparing Experts and online workers"
+  },
+  {
+    "objectID": "slides/week_05.html#how-many-workers",
+    "href": "slides/week_05.html#how-many-workers",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "How many workers?",
+    "text": "How many workers?"
+  },
+  {
+    "objectID": "slides/week_05.html#section-1",
+    "href": "slides/week_05.html#section-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Source: Pablo Barbera’s CSS Seminar"
+  },
+  {
+    "objectID": "slides/week_05.html#supervised-learning-pipeline-for-tad-2",
+    "href": "slides/week_05.html#supervised-learning-pipeline-for-tad-2",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Supervised Learning Pipeline for TAD",
+    "text": "Supervised Learning Pipeline for TAD\n\nStep 1: label some examples of the concept of we want to measure\nStep 2 train a statistical model on these set of label data using the document-feature matrix as input\nStep 3: use the classifier - some f(x) - to predict unseen documents.\nStep 4: use the measure + metadata|exogenous shocks to learn something new about the world."
+  },
+  {
+    "objectID": "slides/week_05.html#general-thoughts",
+    "href": "slides/week_05.html#general-thoughts",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "General Thoughts",
+    "text": "General Thoughts\nOnce we have our training data, we need to pick a classifier. We face these challenges:\n\n\nin text as data, often your DFM has Features &gt; Documents\n\nidentification problems for statistical models\noverfitting the data\n\n\n\n\n\nBias-Variance Trade-off\n\nfit a overly complicated model ~ leads to higher variance\nfit a more flexible model ~ leads to more bias\n\n\n\n\n\nMany models:\n\nNaive Bayes\nRegularized regression\nSVM\nk-nearest neighbors, tree-based methods, etc.\nEnsemble methods + DL"
+  },
+  {
+    "objectID": "slides/week_05.html#bias-and-variance-tradeoff",
+    "href": "slides/week_05.html#bias-and-variance-tradeoff",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Bias and Variance Tradeoff",
+    "text": "Bias and Variance Tradeoff"
+  },
+  {
+    "objectID": "slides/week_05.html#cross-validation",
+    "href": "slides/week_05.html#cross-validation",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Cross Validation",
+    "text": "Cross Validation"
+  },
+  {
+    "objectID": "slides/week_05.html#regularized-regression",
+    "href": "slides/week_05.html#regularized-regression",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Regularized Regression",
+    "text": "Regularized Regression\nThe simplest, but highly effective, way to avoid overfit and improve out-sample accuracy is to add penalty parameters for statistical models:\nOLS:\n\\[\nRSS = \\sum_{i=1}^{N} \\left( y_i - \\beta_0 - \\sum_{j=1}^{J} \\beta_j x_{ij} \\right)^2\n\\]\nOLS + Penalty:\n\\[\n\\text{RSS} = \\sum_{i=1}^{N} \\left( y_i - \\beta_0 - \\sum_{j=1}^{J} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{J} \\beta_j^2 \\rightarrow \\text{ridge regression}\n\\] \\[\n\\text{RSS} = \\sum_{i=1}^{N} \\left( y_i - \\beta_0 - \\sum_{j=1}^{J} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{J} |\\beta_j| \\rightarrow \\text{lasso regression}\n\\] ## #  Coding!\n\n\nText-as-Data"
+  },
+  {
+    "objectID": "slides/week_05.html#models-many-models",
+    "href": "slides/week_05.html#models-many-models",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Models, many models…",
+    "text": "Models, many models…"
+  },
+  {
+    "objectID": "slides/week_05.html#regularized-ols-regression",
+    "href": "slides/week_05.html#regularized-ols-regression",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Regularized OLS Regression",
+    "text": "Regularized OLS Regression\nThe simplest, but highly effective, way to avoid overfit and improve out-sample accuracy is to add penalty parameters for statistical models:\n\nOLS Loss Function :\n\\[\nRSS = \\sum_{i=1}^{N} \\left( y_i - \\beta_0 - \\sum_{j=1}^{J} \\beta_j x_{ij} \\right)^2\n\\]\n\n\nOLS + Penalty:\n\\[\n\\text{RSS} = \\sum_{i=1}^{N} \\left( y_i - \\beta_0 - \\sum_{j=1}^{J} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{J} \\beta_j^2 \\rightarrow \\text{ridge regression}\n\\]\n\\[\n\\text{RSS} = \\sum_{i=1}^{N} \\left( y_i - \\beta_0 - \\sum_{j=1}^{J} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{J} |\\beta_j| \\rightarrow \\text{lasso regression}\n\\]"
+  },
+  {
+    "objectID": "slides/week_05.html#supervised-learning-pipeline-for-tad-3",
+    "href": "slides/week_05.html#supervised-learning-pipeline-for-tad-3",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Supervised Learning Pipeline for TAD",
+    "text": "Supervised Learning Pipeline for TAD\n\nStep 1: label some examples of the concept of we want to measure\nStep 2 train a statistical model on these set of label data using the document-feature matrix as input\nStep 3: use the classifier - some f(x) - to predict unseen documents.\nStep 4: use the measure + metadata|exogenous shocks to learn something new about the world."
+  },
+  {
+    "objectID": "slides/week_05.html#evaluting-the-performance",
+    "href": "slides/week_05.html#evaluting-the-performance",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Evaluting the Performance",
+    "text": "Evaluting the Performance"
+  },
+  {
+    "objectID": "slides/week_05.html#evaluating-the-performance",
+    "href": "slides/week_05.html#evaluating-the-performance",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Evaluating the Performance",
+    "text": "Evaluating the Performance\n\n\n\n\n\nPredicted\n\n\n\n\n\n\n\n\nJ\n¬J\nTotal\n\n\nActual\nJ\na (TP)\nb (FN)\na+b\n\n\n\n¬J\nc (FP)\nd (TN)\nc+d\n\n\n\nTotal\na+c\nb+d\nN\n\n\n\n\n\nAccuracy: number correctly classified/total number of cases = (a+d)/(a+b+c+d)\nPrecision : number of TP / (number of TP+number of FP) = a/(a+c) .\n\nFraction of the documents predicted to be J, that were in fact J.\nThink as a measure for the estimator\n\nRecall: (number of TP) / (number of TP + number of FN) = a /(a+b)\n\nFraction of the documents that were in fact J, that method predicted were J.\nThink as a measure for the data\n\nF : 2 precision*recall / precision+recall\n\nHarmonic mean of precision and recall."
+  },
+  {
+    "objectID": "slides/week_05.html#barbera-et-al-2020-guide-for-supervised-models-with-text",
+    "href": "slides/week_05.html#barbera-et-al-2020-guide-for-supervised-models-with-text",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Barbera et al, 2020, Guide for Supervised Models with Text",
+    "text": "Barbera et al, 2020, Guide for Supervised Models with Text\n\n\n\n\n\nvia GIPHY\n\n\n Task: Tone of New York Times coverage of the economy. Discusses:\n\nHow to build a corpus\nUnit of analysis\nDocuments or Coders?\nML or Dictionaries?"
+  },
+  {
+    "objectID": "slides/week_05.html#section-5",
+    "href": "slides/week_05.html#section-5",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Error in knitr::include_graphics(\"./week5_figs/barbera_performance_graph.png\"): Cannot find the file(s): \"./week5_figs/barbera_performance_graph.png\""
+  },
+  {
+    "objectID": "slides/week_04.html",
+    "href": "slides/week_04.html",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Your first problem set will be assigned today! Some important information:\n\n\nYou will receive and submit your assignment using Github!\n\nGithub Clasroom: Creates automatically a repo for the assignment. You and I are owner of the repo.\n\nDeadline: EOD next Wednesday, February 14th.\nPlease use an .RMD/.QMD file to submit your assignment. If you prefer to solve using jupyter, let me know!\nAny questions?"
+  },
+  {
+    "objectID": "slides/week_05.html#assuming",
+    "href": "slides/week_05.html#assuming",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Assuming:",
+    "text": "Assuming:"
+  },
+  {
+    "objectID": "slides/week_05.html#benoit-et-al-206-crowdsourcing-political-texts",
+    "href": "slides/week_05.html#benoit-et-al-206-crowdsourcing-political-texts",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Benoit et al, 206: Crowdsourcing Political Texts",
+    "text": "Benoit et al, 206: Crowdsourcing Political Texts\n\n\nExpert annotation is expensive.\nBenoit, Conway, Lauderdale, Laver and Mikhaylov (2016) note that classification jobs could be given to a large number of relatively cheap online workers\nMultiple workers ~ similar task ~ same stimuli ~ wisdom of crowds!\nRepresentativeness of a broader population doesn’t matter ~ not a populational quantity, it is just a measurement task\nTheir task: Manifestos ~ sentences ~ workers:\n\nsocial|economic\n\nvery-left vs very right\n\n\nReduce uncertainty by having more workers for each sentence"
+  },
+  {
+    "objectID": "slides/week_05.html#train-validation-test-cross-validation",
+    "href": "slides/week_05.html#train-validation-test-cross-validation",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Train-Validation-Test | Cross Validation",
+    "text": "Train-Validation-Test | Cross Validation"
+  },
+  {
+    "objectID": "slides/week_05.html#train-validation-test-or-cross-validation",
+    "href": "slides/week_05.html#train-validation-test-or-cross-validation",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Train-Validation-Test OR Cross Validation",
+    "text": "Train-Validation-Test OR Cross Validation"
+  },
+  {
+    "objectID": "slides/week_05.html#many-models",
+    "href": "slides/week_05.html#many-models",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Many Models",
+    "text": "Many Models"
+  },
+  {
+    "objectID": "slides/week_05.html#but-not-so-different",
+    "href": "slides/week_05.html#but-not-so-different",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "But not so different…",
+    "text": "But not so different…"
   }
 ]
