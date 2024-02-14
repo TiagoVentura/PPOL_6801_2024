@@ -27,25 +27,24 @@ editor_options:
 
 ## Housekeeping
 
-Today is your [deadline]{.red} for the problem set 1. 
+Today is your [deadline]{.red} for the problem set 1.
 
 ::: incremental
+-   [Replications next week]{.red}
 
-- [Replications next week]{.red}
-
-  -   Presentation (20 min each):
-      -   Introduction;
-      -   Methods;
-      -   Results;
-      -   Differences;
-      -   Autopsy of the replication;
-      -   Extensions
-  -   Repository (by friday):
-      -   Github Repo
-          -   readme
-          -   your presentation pdf
-          -   code
-          -   5pgs report
+    -   Presentation (20 min each):
+        -   Introduction;
+        -   Methods;
+        -   Results;
+        -   Differences;
+        -   Autopsy of the replication;
+        -   Extensions
+    -   Repository (by friday):
+        -   Github Repo
+            -   readme
+            -   your presentation pdf
+            -   code
+            -   5pgs report
 :::
 
 ## Where are we?
@@ -58,7 +57,7 @@ Last week, we started learning how to measure concepts in text:
 > *Documents pertaining to certain [classes]{.red} and how we can use statistical assumptions to [measure]{.red} these classes*
 :::
 
-:::fragment
+::: fragment
 -   Dictionary Methods
     -   Discuss some well-known dictionaries
 -   Off-the-Shelf Classifiers
@@ -84,7 +83,7 @@ Last week, we started learning how to measure concepts in text:
 #### In TAD, we mostly use unsupervised techniques for [discovery]{.red} and supervised for [measurement of concepts]{.red}.
 :::
 
-# Today: cover the pipeline to train your own machine learning models to classify text using [classic]{.red} ML models
+# Today: cover the pipeline to [train your own machine learning models]{.red} to classify textual data.
 
 ## Assuming:
 
@@ -163,9 +162,7 @@ knitr::include_graphics("./week5_figs/ml.png")
 
 ## Crowdsourcing as a research tool for ML
 
-<br>
-<br>
-<br>
+<br> <br> <br>
 
 > Crowdsourcing is now understood to mean using the Internet to distribute a [large package of small tasks]{.red} to a large number of [anonymous workers]{.red}, located around the world and offered small financial rewards per task. The method is widely used for data-processing tasks such as image classification, video annotation, data entry, optical character recognition, translation, recommendation, and proofreading
 
@@ -175,10 +172,10 @@ Source: [Benoit et al, 2016](https://www.cambridge.org/core/journals/american-po
 
 ## Benoit et al, 206: Crowdsourcing Political Texts
 
-:::incremental
-- Expert annotation is expensive. 
+::: incremental
+-   Expert annotation is expensive.
 
-- [Benoit, Conway, Lauderdale, Laver and Mikhaylov (2016)](https://www.cambridge.org/core/journals/american-political-science-review/article/crowdsourced-text-analysis-reproducible-and-agile-production-of-political-data/EC674A9384A19CFA357BC2B525461AC3) note that [classification jobs]{.red} could be given to a large number of relatively cheap [online workers]{.red}
+-   [Benoit, Conway, Lauderdale, Laver and Mikhaylov (2016)](https://www.cambridge.org/core/journals/american-political-science-review/article/crowdsourced-text-analysis-reproducible-and-agile-production-of-political-data/EC674A9384A19CFA357BC2B525461AC3) note that [classification jobs]{.red} could be given to a large number of relatively cheap [online workers]{.red}
 
 -   Multiple workers \~ similar task \~ same stimuli \~ [wisdom of crowds!]{.red}
 
@@ -228,22 +225,21 @@ Source: Pablo Barbera's CSS Seminar
 
 Once we have our training data, we need to pick a classifier. We face these challenges:
 
-:::fragment
+::: fragment
 -   in text as data, often your DFM has [Features \> Documents]{.red}
 
     -   identification problems for statistical models
     -   overfitting the data
 :::
 
-:::fragment
+::: fragment
 -   Bias-Variance Trade-off
 
     -   fit a overly complicated model \~ [leads to higher variance]{.red}
     -   fit a more flexible model \~ [leads to more bias]{.red}
 :::
 
-
-:::fragment
+::: fragment
 -   Many models:
 
     -   Naive Bayes
@@ -281,27 +277,25 @@ knitr::include_graphics("./week5_figs/models.png")
 
 The simplest, but highly effective, way to avoid overfit and improve out-sample accuracy is to add penalty parameters for statistical models:
 
-:::fragment
+::: fragment
 [**OLS Loss Function :**]{.red}
 
 $$
 RSS = \sum_{i=1}^{N} \left( y_i - \beta_0 - \sum_{j=1}^{J} \beta_j x_{ij} \right)^2 
 $$
-
 :::
 
-:::fragment
+::: fragment
 [**OLS + Penalty:**]{.red}
 
 $$
 \text{RSS} = \sum_{i=1}^{N} \left( y_i - \beta_0 - \sum_{j=1}^{J} \beta_j x_{ij} \right)^2 + \lambda \sum_{j=1}^{J} \beta_j^2 \rightarrow \text{ridge regression}
-$$ 
+$$
 
 $$
 \text{RSS} = \sum_{i=1}^{N} \left( y_i - \beta_0 - \sum_{j=1}^{J} \beta_j x_{ij} \right)^2 + \lambda \sum_{j=1}^{J} |\beta_j| \rightarrow \text{lasso regression}
 $$
 :::
-
 
 ## Supervised Learning Pipeline for TAD
 
@@ -322,8 +316,7 @@ $$
 |            | ¬J    |  c (FP)   | d (TN) |   c+d |
 |            | Total |    a+c    |  b+d   |     N |
 
-:::incremental
-
+::: incremental
 -   **Accuracy**: number correctly classified/total number of cases = (a+d)/(a+b+c+d)
 
 -   **Precision** : number of TP / (number of TP+number of FP) = a/(a+c) .
@@ -339,7 +332,6 @@ $$
 -   **F** : 2 precision\*recall / precision+recall
 
     -   Harmonic mean of precision and recall.
-
 :::
 
 ## Barbera et al, 2020, Guide for Supervised Models with Text
@@ -354,8 +346,7 @@ $$
 :::
 
 ::: {.column width="50%"}
-<br>
-Task: Tone of New York Times coverage of the economy. Discusses:
+<br> Task: Tone of New York Times coverage of the economy. Discusses:
 
 -   How to build a corpus
 -   Unit of analysis

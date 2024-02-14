@@ -283,24 +283,24 @@ The follow schedule lays out when each assignment will be assigned.
 
 **Replication Exercises** (30%)
 
-Replication exercises are adapted from Gary King's work [here](https://gking.harvard.edu/files/paperspub.pdf) and [here](https://gking.harvard.edu/files/replication.pdf). Replication consists in the process of repeating a research study using the original data or brining new data to the conversation. Replicability is crucial for the advancement of knowledge and the credibility of scientific inquiry.
+Replication exercises are adapted from Gary King's work [here](https://gking.harvard.edu/files/paperspub.pdf) and [here](https://gking.harvard.edu/files/replication.pdf). Replication consists of the process of repeating a research study using the original data or bringing new data to the conversation. Replicability is crucial for the advancement of knowledge and the credibility of scientific inquiry.
 
-For our purposes, replication exercises will work as a educational tool. A common say in science is that you just learn a new skill/methods when you use in your own work. Since we do not have time to write three papers during a semester, we will take advantage of published work with open available datasets and code for us to work on replication exercises.
+For our purposes, replication exercises will work as an educational tool. A common say in science is that you just learn a new skill/method when you use it in your own work. Since we do not have time to write three papers during a semester, we will take advantage of published work with openly available datasets and code for us to work on replication exercises.
 
 You will work in pairs for this assignment. Your partner will be randomly assigned. You will repeat twice in the course. This is a stylized step-by-step of this exercise:
 
 -   **Step 1**: finding a paper to replicate
 
-    -   By the end of the week 2 and week 7, you should select an article from the syllabus to be replicated by your team
+    -   By the end of week 2 and week 7, you should select an article from the syllabus to be replicated by your team
 
     -   The first replication exercise should consider articles from weeks 2 to week 5, and the second from the remaining of the class.
 
 -   **Step 2**: Acquiring the Data
 
-    -   Most research articles are published with open data rules. This means their data and code are often available on github, or on harvard dataverse. Your first task is to find the data and code from these articles.
-    -   If your articles does not have the data and code, you should:
+    -   Most research articles are published with open data rules. This means their data and code are often available on GitHub or on Harvard database. Your first task is to find the data and code from these articles.
+    -   If your articles do not have the data and code, you should:
         -   Politely contact the authors of the article and ask for the replication materials
-        -   If you don't get response, select another article.
+        -   If you don't get a response, select another article.
 
 -   **Step 3**: Presentation
 
@@ -311,15 +311,15 @@ You will work in pairs for this assignment. Your partner will be randomly assign
         -   Results: the results you were able to replicate
         -   Differences: any differences between your results and the authors'
         -   Autopsy of the replication: what did work and what did not work
-        -   Extension: what would you do different if you were to write this article today? Where would you innovate?
+        -   Extension: what would you do differently if you were to write this article today? Where would you innovate?
 
 -   **Step 4**: Replication Repository
 
     -   By Friday EOD of each replication week, you should share with me and all your colleagues your replication report. The replication report should be:
-        -   a github repo with a well-detailed readme. See an model here: <https://github.com/TiagoVentura/winning_plosone>
+        -   a GitHub repo with a well-detailed readme. See a model here: <https://github.com/TiagoVentura/winning_plosone>
         -   your presentation as a pdf
         -   the code used in the replication as a notebook (Markdown or Jupyter)
-        -   a report with maximum of 5 pages (it is fine if you do less than that) summarizing the replication process, with emphasis on three sections of your presentation: Differences, Autopsy and Extension.
+        - a report with a maximum of 5 pages (it is fine if you do less than that) summarizing the replication process, with emphasis on three sections of your presentation: Differences, Autopsy, and Extension.
 
 In addition to following the requirements above, the replication exercises will also be graded in accuracy and quality of the programming style. For instance, our grading team will be looking at:
 
