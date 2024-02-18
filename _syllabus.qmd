@@ -319,7 +319,7 @@ You will work in pairs for this assignment. Your partner will be randomly assign
         -   a GitHub repo with a well-detailed readme. See a model here: <https://github.com/TiagoVentura/winning_plosone>
         -   your presentation as a pdf
         -   the code used in the replication as a notebook (Markdown or Jupyter)
-        - a report with a maximum of 5 pages (it is fine if you do less than that) summarizing the replication process, with emphasis on three sections of your presentation: Differences, Autopsy, and Extension.
+        -   a report with a maximum of 5 pages (it is fine if you do less than that) summarizing the replication process, with emphasis on three sections of your presentation: Differences, Autopsy, and Extension.
 
 In addition to following the requirements above, the replication exercises will also be graded in accuracy and quality of the programming style. For instance, our grading team will be looking at:
 

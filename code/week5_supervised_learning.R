@@ -35,7 +35,7 @@ json_file="data/news.json"
 temp = readLines(json_file)
 
 # open by entry (some entries were corrupted)
-news_data <- map(a, ~ fromJSON(.x) %>% as_tibble()) %>% bind_rows() 
+news_data <- map(temp, ~ fromJSON(.x) %>% as_tibble()) %>% bind_rows() 
 
 # see the data
 news_data
@@ -139,7 +139,6 @@ cat(
 # another way to get the confusion matrix from caret package
 library(caret)
 confusionMatrix(tab_class, mode = "everything")
-
 
 
 
