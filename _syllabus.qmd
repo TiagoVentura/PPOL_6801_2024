@@ -146,7 +146,6 @@ Or one of the three below:
 
     -   Eshima, Shusei, Kosuke Imai, and Tomoya Sasaki. "Keyword‐Assisted Topic Models." American Journal of Political Science (2020).
 
--   **Problem set 2** Assigned
 
 ### Week 8: Word Embeddings: What they are and how to estimate?
 
@@ -278,7 +277,6 @@ The follow schedule lays out when each assignment will be assigned.
 | Assignment | Date Assigned |           Date Due            |
 |:----------:|:-------------:|:-----------------------------:|
 |   No. 1    |    Week 4     | Before EOD of Week 5's class  |
-|   No. 2    |    Week 7     | Before EOD of Week 8's class  |
 |   No. 3    |    Week 9     | Before EOD of Week 10's class |
 
 **Replication Exercises** (30%)

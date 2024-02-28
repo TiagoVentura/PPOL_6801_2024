@@ -38,10 +38,10 @@ website:
             text: "Week 4: Dictionaries & Pre-Trained Models"
           - href: weeks/week-05.qmd
             text: "Week 5: Supervised Learning"
-          #- href: weeks/week-06.qmd
-          #  text: "Week 6: Pandas II"
-          #- href: weeks/week-07.qmd
-          #  text: "Week 7: Joinining, Tidying and Visualizing Data"
+          - href: weeks/week-06.qmd
+            text: "Week 6: Replication Class"
+          - href: weeks/week-07.qmd
+            text: "Week 7: Unsupervised Learning"
           #- href: weeks/week-08.qmd
           #  text: "Week 8: Scraping"
           #- href: weeks/week-09.qmd

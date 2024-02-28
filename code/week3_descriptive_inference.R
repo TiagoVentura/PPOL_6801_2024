@@ -337,15 +337,12 @@ library(reticulate)
 # see conda environment
 reticulate::conda_list()
 
-
 # create conda environment
-reticulate::conda_create("my_new_env")
+reticulate::conda_create("ppol6801")
+
 
 # activate my conda envinroment
 reticulate::use_condaenv("ppol6801")
-
-# create conda environment
-reticulate::conda_create("my_new_env")
 
 # tell which python I am running
 Sys.setenv(RETICULATE_PYTHON ="/Users/tb186/anaconda3/envs/ppol6801/bin/python")

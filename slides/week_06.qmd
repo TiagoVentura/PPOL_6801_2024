@@ -1,0 +1,458 @@
+---
+title: "PPOL 6801 - Text as Data - Computational Linguistics"
+subtitle: "<span style = 'font-size: 140%;'> <br> Week 6: Unsupervised Learning: <br> Topic Models </span>"
+author: "<span style = 'font-size: 120%;'> Professor: Tiago Ventura </span>"
+execute: 
+  echo: false
+  error: true
+  cache: true
+format:
+  revealjs: 
+    transition: slide
+    background-transition: fade
+    code-line-numbers: false
+    width: 1200
+    height: 800
+    center: false
+    slide-number: true
+    incremental: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: "Text-as-Data"
+    theme: [simple, custom.scss]
+editor_options: 
+  chunk_output_type: console
+---
+
+## Housekeeping
+
+Let's quickly review your future assignments:
+
+::: incremental
+-   [Problem Set 3]{.red}
+
+    -   **No problem set 2**
+    -   Assigned: week 9, March 20
+    -   Due: Following week.
+
+-   [Replication Class II]{.red}
+
+    -   In group
+    -   Select you paper this week
+    -   More rigorous \~\> Contact the author soon to get the raw data!
+    -   Class: April 03
+
+-   [Final Project]{.red}
+
+    -   Proposal: EOD Friday, Week 9, March 20
+        -   you [have to]{.red} meet with me before submitting your proposal
+        -   Send me a draft of the proposal before the meeting
+    -   Presentation: Week 14.
+:::
+
+## Where are we?
+
+We started from [pre-processing text]{.red} as data, [representing]{.red} text as numbers, [describing features]{.red} of the tex, and learned how to [measure]{.red} concepts in text:
+
+::: fragment
+-   Last Week: Supervised learning \~ [Training your models]{.red}
+    -   Crowdsourcing label classification
+    -   Full pipeline for model training
+    -   Regularized regressions
+    -   Evaluating Performance
+-   This week: unsupervised learning
+    -   Begin to take a purely inductive approach
+    -   [Discovery]{.red}
+    -   Look for things we don't know about in the text.\
+:::
+
+## Overview: Unsupervised Learning
+
+-   [Data:]{.red} humans, documents, votes, etc. are [not]{.red} pre-labelled in terms of some underlying concept.
+    -   Think about congressional speeches, we know the author, their party, other metadata, but:
+        -   [we don't yet know what that speech 'represents' in terms of its latent properties, what 'kind' of speech it is, what 'topics' it covers, what speeches it is similar to conceptually, etc.]{.midgray}
+-   [Goal]{.red} is to take the observations and find [hidden structure]{.red} and meaning in them.
+    -   similarity
+    -   groups
+    -   topics
+    -   association between word, etc...
+
+## Main challenges of Topic Models
+
+::: fragment
+
+### Hard to get it right
+
+:::nonincremental
+
+-   unsupervised learning requires several **ad-hoc** decisions and these decisions matter for quality of your results
+
+    -   number of clusters
+    -   number of topics
+    -   pre-processing steps
+
+-   Domain knowledge (and honestly a bit of randomness) guides a lot of these decisions
+:::
+:::
+
+::: fragment
+
+### Hard to know if you are doing right!
+
+:::nonincremental
+
+-   in contrast to supervised approaches, we won't know 'how correct' the output is in a simple statistical sense
+
+-   use statistical measures of fit/unfit of different modeling decisions
+
+    -   but in general, it will involve a hugely amount of qualitative assessment.
+
+-   No easy measure of acccuracy, recall and precision.
+:::
+:::
+
+# Clustering Methods
+
+## K-means Clustering
+
+**Purpose**: look for 'groups' in data explicitly.
+
+::: nonincremental
+-   Input: text + number of clusters
+-   Output: documents \~\> clusters
+:::
+
+```{r echo=FALSE, out.width = "80%"}
+
+knitr::include_graphics("./week6_figs/kmeans.png") 
+
+```
+
+## Visually
+
+```{r echo=FALSE, out.width = "80%"}
+
+knitr::include_graphics("./week6_figs/kmeans1.png") 
+
+```
+
+## Visually
+
+```{r echo=FALSE, out.width = "80%"}
+
+knitr::include_graphics("./week6_figs/kmeans2.png") 
+
+```
+
+## Visually
+
+```{r echo=FALSE, out.width = "80%"}
+
+knitr::include_graphics("./week6_figs/kmeans3.png") 
+
+```
+
+## Visually
+
+```{r echo=FALSE, out.width = "80%"}
+
+knitr::include_graphics("./week6_figs/kmeansfinal.png") 
+
+```
+
+## Cluster Methods vs Topic Models
+
+#### Topics models can be thought as a probabilistic generalization of of clustering methods
+
+-   **Clustering**:
+
+    -   Every document is assigned to a cluster
+
+-   **Topic Models**:
+
+    -   every document has a [probability distribution]{.red} of topic.
+
+    -   every topic has a [probability distribution]{.red} of words.
+
+## Topid Models: Intuition
+
+-   Capture words that are more likely to occur together across a set of documents.
+
+-   Assign these words a probability of being part of a cluster (topic).
+
+-   Assign documents a probability of being associated of these clusters.
+
+    - **Documents:** formed from probability distribution of topics
+
+        -   [a speech can be 40% about trade, 30% about sports, 10% about health, and 20% spread across topics you don't think make much sense]{.midgray}
+
+    -   **Topics:** fromed from probability distribution over words
+
+         -   [the topic health will have words like hospital, clinic, dr., sick, cancer]{.midgray}
+
+## Blei, 2012, 
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week6_figs/blei_fig.png") 
+
+```
+
+## Intuition: Language Model
+
+-   **Step 1: For each [document]{.red}:**
+
+    -   Randomly choose a [distribution]{.red} over topics. That is, choose one of many multinomial distributions, each which mixes the topics in different proportions.
+
+-   **Step 2: Then, for every [word]{.red} in the document**
+
+    -   Randomly choose a [topic]{.red} from the distribution over topics from step 1.
+    -   Randomly choose a [word]{.red} from the distribution over the vocabulary that the topic implies.
+
+## Step 1: or what a multinomial distribution looks like
+
+For each document \~ Randomly choose a distribution over topics from a multinomal distribution
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week6_figs/topic_distns.png") 
+```
+
+## Step 2: sampling words
+
+For every word:
+
+:::nonincremental
+
+-   Randomly choose a topic from the distribution over topics from step 1.
+
+-   Randomly choose a word from the distribution over the vocabulary that the topic implies.
+
+:::
+
+```{r echo=FALSE, out.width = "100%",fig.align='center'}
+knitr::include_graphics("./week6_figs/sampling.png") 
+```
+
+## Latent Dirichlet Allocation
+
+To estimate the model, we need to assume some known mathematical distributions for this data generating process:
+
+-   **For every topic:**
+
+    -   $\beta_k \sim \text{Dirichlet}(\tau)$
+
+-   **For every document:**
+
+    -   $\theta_d \sim \text{Dirichlet}(\alpha)$,
+
+-   **For every word**:
+
+    -   a topic $z_{dn} \sim \text{Multinomial}(\theta_d)$.
+    -   a word $w_{dn} \sim \text{Multinomial}(\beta_{z_{dn}})$
+
+-   **where:**
+
+    -   $\alpha$ and $\tau$ are hyperparameter of the Dirichlet priors
+    -   $\beta_k$ is drawn from a Dirichlet for per-topic word distribution
+    -   $\theta_d$ is drawn from a Dirichlet for the topic distribution for documents - $K$ topics
+    -   $D$ documents in the corpus
+    -   $N_d$ words in document $d$
+
+## Aside: Dirichlet distribution
+
+-   The Dirichlet distribution is a [conjugate prior]{.red} for the multinomial  distribution.
+
+    -   It makes joint distributions easier to calculate because we know their families.
+
+-   It is parameterized by a vector of positive real numbers ($alpha$)
+
+    -   Larger values of $\alpha$ (assuming we are in symmetric case) mean we think (a priori) that documents are generally an even mix of the topics.
+
+    -   If $\alpha$ is small (less than 1) we think a given document is generally from one or a few topics.
+
+## Visually
+
+```{r}
+library(ggtext)
+library(tidyverse)
+library(ggtern)
+withr::with_seed(1234, {
+  draws_1_1_1 <- brms::rdirichlet(n = 1e5, alpha = c(.2, .2, .2)) |> 
+    data.frame() |> 
+    set_names(c("x", "y", "z"))
+})
+
+
+tern1 <- draws_1_1_1 |> 
+  ggtern(aes(x = x, y = y, z = z)) +
+  geom_point(size = 0.05, alpha = 0.05) +
+  scale_L_continuous(breaks = 0:5 / 5, labels = 0:5 / 5, name = "α<sub>1</sub>") +
+  scale_T_continuous(breaks = 0:5 / 5, labels = 0:5 / 5, name = "α<sub>2</sub>") +
+  scale_R_continuous(breaks = 0:5 / 5, labels = 0:5 / 5, name = "α<sub>3</sub>") +
+  theme(
+    tern.axis.title.L = element_markdown(face = "bold", size = rel(1.2)),
+    tern.axis.title.T = element_markdown(face = "bold", size = rel(1.2)),
+    tern.axis.title.R = element_markdown(face = "bold", size = rel(1.2)), 
+    plot.title =  element_text(hjust = 0.5)
+  ) +
+  ggtitle("Alpha = .2")
+
+withr::with_seed(1234, {
+  draws_1_1_2 <- brms::rdirichlet(n = 1e5, alpha = c(100, 100, 100)) |> 
+    data.frame() |> 
+    set_names(c("x", "y", "z"))
+})
+
+tern2 <- draws_1_1_2|> 
+  ggtern(aes(x = x, y = y, z = z)) +
+  geom_point(size = 0.05, alpha = 0.05) +
+  scale_L_continuous(breaks = 0:5 / 5, labels = 0:5 / 5, name = "α<sub>1</sub>") +
+  scale_T_continuous(breaks = 0:5 / 5, labels = 0:5 / 5, name = "α<sub>2</sub>") +
+  scale_R_continuous(breaks = 0:5 / 5, labels = 0:5 / 5, name = "α<sub>3</sub>") +
+  theme(
+    tern.axis.title.L = element_markdown(face = "bold", size = rel(1.2)),
+    tern.axis.title.T = element_markdown(face = "bold", size = rel(1.2)),
+    tern.axis.title.R = element_markdown(face = "bold", size = rel(1.2)), 
+    plot.title =  element_text(hjust = 0.5)
+  ) +
+  ggtitle("Alpha = 100")
+
+ggtern::grid.arrange(tern1, tern2, ncol = 2)
+
+```
+
+::: aside
+Source: [Andrew Heiss](https://www.andrewheiss.com/blog/2023/09/18/understanding-dirichlet-beta-intuition/)
+:::
+
+## Exercise: Plate Notation
+
+```{r echo=FALSE, out.width = "80%"}
+knitr::include_graphics("./week6_figs/plate.png") 
+```
+
+## Inference: How to estimate all these parameters?
+
+Use the observed data, the words, to make an inference about the latent parameters: the $\beta$s, the $z$s, the $\theta$s.
+
+We start with the joint distribution implied by our language model (Blei, 2012):
+
+$$
+p(\beta_{1:K}, \theta_{1:D}, z_{1:D}, w_{1:D})= \prod_{K}^{i=1}p(\beta_i)\prod_{D}^{d=1}p(\theta_d)(\prod_{N}^{n=1}p(z_{d,n}|\theta_d)p(w_{d,n}|\beta_{1:K},z_{d,n})
+$$
+
+To get to the conditional:
+
+$$
+p(\beta_{1:K}, \theta_{1:D}, z_{1:D}|w_{1:D})=\frac{p(\beta_{1:K}, \theta_{1:D}, z_{1:D}, w_{1:D})}{p(w_{1:D})}
+$$
+
+The denominator is hard complicate to be estimate (requires integration for every word for every topic):
+
+-   Simulate with Gibbs Sampling or Variational Inference.
+-   Take a Bayesian statistic course to learn more about this type of inference!
+
+## Show me results!
+
+```{r echo=FALSE, out.width = "80%", fig.align='center'}
+knitr::include_graphics("./week6_figs/topic_matrices.png") 
+```
+
+## Choosing the number of topics
+
+::: nonincremental
+-   Choosing K is "one of the most difficult questions in unsupervised learning" (Grimmer and Stewart, 2013, p.19)
+
+-   **Common approach**: decide based on cross-validated statistical measures model fit or other measures of topic quality.
+:::
+
+```{r echo=FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("./week6_figs/topic_selection.png") 
+```
+
+## Validation of topics
+
+-   Working with topic models require a lot of back-and-forth and humans in the loop.
+
+-   How to measure the quality of the topics?
+
+:::fragment
+::: nonincremental
+-  Crowdsourcing for:
+    -   whether a topic has (human-identifiable) semantic coherence: [word intrusion]{.red}, asking subjects to identify a spurious word inserted into a topic
+    -   whether the association between a document and a topic makes sense: [topic intrusion]{.red}, asking subjects to identify a topic that was not associated with the document by the model
+    -   See [Ying et al, 2022, Political Analysis.](https://www.cambridge.org/core/journals/political-analysis/article/abs/topics-concepts-and-measurement-a-crowdsourced-procedure-for-validating-topics-as-measures/F28DC93AFD4C8DE63CC235BC6D684257)
+
+:::
+:::
+
+# Applications
+
+## Barbera et al, American Political Science Review, 2020.
+
+-   Data: tweets sent by US legislators, samples of the public, and media outlets.
+-   LDA with K = 100 topics
+-   Topic predictions are used to understand agenda-setting dynamics (who leads? who follows?)
+-   Conclusion: Legislators are more likely to follow, than to lead, discussion of public issues,
+
+## Motolinia, American Political Science Review, 2021
+
+-   Data: transcripts of legislative sessions in Mexican states
+-   Correlated Topic model to identify "particularistic" legislation; i.e. laws with clear benefits to voters
+-   Each topic is then classified into particularistic or not
+-   Validation: correlation with spending
+-   Use exogenous electoral reform that allowed legislators to be re-elected
+
+## Exercise
+
+-   Take 5-min to read the methods sections of this paper
+
+-   List to me some of the decisions the authors need to make to get the topic models to work.
+
+-   Do you think these make sense? What would you do different
+
+## Extensions: Many more beyond LDA
+
+-   **Structural topic model:** allow (1) topic prevalence, (2) topic content to vary as a function of document-level covariates (e.g., how do topics vary over time or documents produced in 1990 talk about something differently than documents produced in 2020?); implemented in stm in R (Roberts, Stewart, Tingley, Benoit)
+
+-   **Correlated topic model:** way to explore between-topic relationships (Blei and Lafferty, 2017); implemented in topicmodels in R; possibly somewhere in Python as well!
+
+-   **Keyword-assisted topic model:** seed topic model with keywords to try to increase the face validity of topics to what you're trying to measure; implemented in keyATM in R (Eshima, Imai, Sasaki, 2019)
+
+-   **BertTopic:** BERTopic is a topic modeling technique that leverages transformers and TF-IDF to create dense clusters of words.
+
+## STM: Adding Structure to the LDA
+
+::: columns
+::: {.column width="70%"}
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week6_figs/stm.png") 
+```
+:::
+
+::: {.column width="30%"}
+<br> <br> <br>
+
+::: nonincremental
+-   [Prevalence]{.red}: Prior on the mixture over topics is now document-specific, and can be a function of covariates.
+
+-   [Content]{.red}: distribution over words is now document-specific and can be a function of covariates.
+
+See [Roberts et al 2014](https://scholar.harvard.edu/files/dtingley/files/topicmodelsopenendedexperiments.pdf)
+:::
+:::
+:::
+
+## Keyword-assisted topic model: summary
+
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week6_figs/keyatm_model.png") 
+```
+
+## Keyword-assisted topic model: performance
+
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week6_figs/keyatm_results.png") 
+```
+
+# `r fontawesome::fa("laptop-code")` Coding!
