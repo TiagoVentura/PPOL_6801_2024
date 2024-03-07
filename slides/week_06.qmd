@@ -395,6 +395,12 @@ knitr::include_graphics("./week6_figs/topic_selection.png")
 -   Topic predictions are used to understand agenda-setting dynamics (who leads? who follows?)
 -   Conclusion: Legislators are more likely to follow, than to lead, discussion of public issues,
 
+- Decisions:
+
+ - k=100
+ - 
+
+
 ## Motolinia, American Political Science Review, 2021
 
 -   Data: transcripts of legislative sessions in Mexican states
@@ -425,7 +431,7 @@ knitr::include_graphics("./week6_figs/topic_selection.png")
 
 ::: columns
 ::: {.column width="70%"}
-```{r echo=FALSE, out.width = "100%"}
+```{r echo=FALSE, out.width = "80%"}
 knitr::include_graphics("./week6_figs/stm.png") 
 ```
 :::
@@ -445,7 +451,7 @@ See [Roberts et al 2014](https://scholar.harvard.edu/files/dtingley/files/topicm
 
 ## Keyword-assisted topic model: summary
 
-```{r echo=FALSE, out.width = "100%"}
+```{r echo=FALSE, out.width = "80%"}
 knitr::include_graphics("./week6_figs/keyatm_model.png") 
 ```
 

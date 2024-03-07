@@ -36,32 +36,30 @@ tbl-colwidths: [10,50,40]
 
 # Topics
 
-- What are word-embeddings? 
+-   What are word-embeddings?
 
-- When and how can we use them? 
+-   When and how can we use them?
 
-- What? Topic models again?
+-   What? Topic models again?
 
-- Is this still a bag of words?
+-   Is this still a bag of words?
 
 # Readings
 
-
 **Required Readings**
 
+-   \[GMB\] - Chapter 8.
 
-- [GMB] - Chapter 8.
+-   \[SLP\] Chapter 6, "Vector Semantics and Embeddings."
 
-- [SLP] Chapter 6, “Vector Semantics and Embeddings.”
+-   [Jay Alanmar, The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)
 
-- Meyer, David. How Exactly Does Word2Vec Work?
-
-- Spirling and Rodriguez, Word embedding: What works, what doesn’t, and how to tell the difference for applied research.
+-   Spirling and Rodriguez, Word embedding: What works, what doesn't, and how to tell the difference for applied research.
 
 **Coding Materials**
 
-- [TBD]()
+-   [TBD]()
 
 # Slides
 
-- [TBD]()
+-   [TBD]()
