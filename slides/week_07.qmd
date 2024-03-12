@@ -1,0 +1,374 @@
+---
+title: "PPOL 6801 - Text as Data - Computational Linguistics"
+subtitle: "<span style = 'font-size: 140%;'> <br> Week 7: Word Embeddings: Theory"
+author: "<span style = 'font-size: 120%;'> Professor: Tiago Ventura </span>"
+execute: 
+  echo: false
+  error: true
+  cache: true
+format:
+  revealjs: 
+    transition: slide
+    background-transition: fade
+    code-line-numbers: false
+    width: 1200
+    height: 800
+    center: false
+    slide-number: true
+    incremental: false
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: "Text-as-Data"
+    theme: [simple, custom.scss]
+editor_options: 
+  chunk_output_type: console
+---
+
+## Survey Responses
+
+Thank you so much for responding to the survey! Here are the most important feedback I receive:
+
+ -  [more structured walk throughs of the code]{.midgray}
+
+  - [If you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA]{.midgray}
+
+ - [I hope we can have a few discussion questions along with weekly readings]{.midgray}
+
+  - [Including discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?{.midgray}
+
+**Stop Doing:**
+
+- [long alone time with code]{.midgray}
+
+- [Sometimes we spend a bit too long on the recap part]{.midgray}
+
+## Plans for Today:
+
+- Live coding from last class on topic models
+
+- Word Embeddings
+ 
+  - Semantics, Distributional Hypothesis, From Sparse to Dense Vectors
+  
+  - Word2Vec Algorithm
+    
+     - Mathematical Model
+     
+     - Estimate with Neural Networks
+  
+- Next week:
+   
+   - Start with coding to estimate Word2Vec from Co-Occurence Matrices
+   
+   - Discuss applications to social science
+  
+# `r fontawesome::fa("laptop-code")` Coding!
+
+
+# Word Embeddings
+
+## Back to class II: Vector Space Model
+
+In the vector space model, we learned: 
+
+- A document $D_i$ is represented as a collection of features $W$ (words, tokens, n-grams..)
+
+- Each feature $w_i$ can be place in a real line, then a document $D_i$ is a point in a $W$ dimensional space. 
+
+Embedded in this model, there is the idea we represent [words]{.red} as a one-hot encoding. 
+
+- "cat": [0,0, 0, 0, 0, 0, 1, 0, ....., V] , on a V dimensional vector
+-  "dog": [0,0, 0, 0, 0, 0, 0, 1, ....,  V]
+  
+  - really sparse
+  
+  - vectors are orthogonal
+  
+  - no natural notion of similarity
+  
+
+## Distributional Semantics
+
+> “you shall know a word by the company it keeps.” J. R. Firth 1957
+
+[Distributional semantics]{.red}: words that are used in the same contexts tend to be similar in
+their meaning. 
+
+:::incremental
+
+- How can we use this insight to understand what words mean?
+
+  - Move from sparse representation to dense representation
+  
+  - Represent words as vectors of numbers with high number of dimensions
+  
+  - Each feature on this vectors embeds some information from the word (gender? noun? sentiment? stance?)
+  
+  - Learn this representation from the unlabeled data. 
+  
+:::  
+
+## Visually
+
+
+**One-hot encoding:**
+
+- cat = $\begin{bmatrix} 0,0, 0, 0, 0, 0, 1, 0, 0 \end{bmatrix}$
+
+- dog = $\begin{bmatrix} 0,0, 0, 0, 0, 1, 0, 0, 0 \end{bmatrix}$
+
+
+
+**Word Embedding / Dense Representation:**
+
+- cat = $\begin{bmatrix} 0.25, -0.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \end{bmatrix}$
+
+- dog = $\begin{bmatrix} 0.25, 1.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \end{bmatrix}$
+
+
+## With colors and real word vectors
+
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week7_figs/embed_color.png") 
+```
+
+
+Source: [Illustrated Word2Vec](https://jalammar.github.io/illustrated-word2vec/)
+
+
+## Why Word Embeddings?
+
+**Encoding similarity:** vectors are not ortogonal anymore!
+
+**Automatic Generalization:**  learn about one word allow us to automatically learn about related words
+
+**Encodes Meaning:** by learning the context, I can learn what a word means. 
+
+**As a consequence:** 
+
+- Word Embeddings improves several NLP/Text-as-Data Tasks.
+
+- Form the core idea of state-of-the-art models, such as LLMs.
+
+
+## Estimating Word Embeddings
+
+#### Approches: 
+
+- [Count-based methods]{.red: look at how often words co-occur with neighbors.
+   - use this matrix, and some some factorization to retrieve vectors for the words
+   - GloVE 
+   - fast, not computationally intensive, but not the best representation
+   - we will see code doing this next week
+   
+- [Predictive Methods:]{.red} rely on the idea of **self-supervision**
+  - use unlabeled data and use words to predict sequence
+  - the famous word2vec.
+     - Skipgram: predicts context words
+     - Continuous Bag of Words: predict center word
+   
+## Word2Vec
+
+Word2vec is a framework for learning word vectors (Mikolov et al. 2013)
+
+**Idea**: 
+
+- We have a large corpus (“body”) of text: a long list of words
+
+- Every word in a fixed vocabulary is represented by a vector
+
+- Go through each position t in the text, which has a center
+word c and context (“outside”) words o
+
+- Use the similarity of the word vectors for c and o to calculate
+the probability of o given c (or vice versa)
+
+- Keep adjusting the word vectors to maximize this probability 
+   - Neural Network + Gradient Descent
+   
+## Skigram Example: Self-Supervision   
+
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week7_figs/skipgram_0.png") 
+```
+
+
+Source: [CS224N](https://web.stanford.edu/class/cs224n/index.html#schedule)
+
+## Skigram Example: Self-Supervision   
+
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week7_figs/skipgram.png") 
+```
+
+
+Source: [CS224N](https://web.stanford.edu/class/cs224n/index.html#schedule)
+
+## Encoding Similarity
+
+To estimate the model, we first need to formalize the probability function we want to estimate. 
+
+This is as simple as a logistic regression:
+
+- **In logistic regression: probability of a event occur given data X and parameters:** 
+  - $\beta$. $P(y=1|X, \beta ) = X*\beta$
+  - $X*\beta$ is not a proper probability function, so we make it to be by using a logit transformation
+  - $P(y=1|X, \beta ) = \frac{exp(XB)}{1 + exp(XB)}$
+  
+- **$P(w_t|w_{t-1})$ can be parametrized as how similar these words are:**
+  - $P(w_t|w_{t-1}) = u_c \cdot u_t$
+     -  $u_c \cdot u_t$: dot product between vectors, measures similarity
+     -  $u_c$: center vector
+     -  $u_t$: target vectors 
+  - $u_c \cdot u_t$ is also not a proper probability distribution ~ use logit/sigmoid/softmax function
+     - $P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}$
+     
+
+## Let'see this again:
+
+$$P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}$$
+
+- Dotproduct compares similarity between vectors
+
+- numerator: center vs target
+
+- exponentiation makes everything positive
+
+- Normalize over entire vocabulary to give probability distribution
+
+- This is an example of a softmax function
+
+  - max: assign high values to be 1
+  
+  - soft: still assigns some probability to smaller values
+  
+  - generalization of the logit ~ multinomial logistic function. 
+  
+## Word2Vec: Objective Function
+
+For each position $t$, predict context words within a window of fixed size $m$, given center word $w$. 
+
+#### Likelihood Function
+
+
+$$ L(\theta) = \prod_{t=1}^{T} \prod_{\substack{-m<= j<=m \\ j \neq 0}}^{m} P(w_{t+j} | w_t; \theta) $$
+
+- Assuming independence, this means you multiplying the probability of every target for every center word in your dictionary. 
+
+- This likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)
+
+#### Objective Function: Negative log likelihood
+
+$$J(\theta) = - \frac{1}{T}log(L(\theta))$$
+
+- better to take the gradient with log and sums
+
+- the average increases the numerical stability of the gradient. 
+
+## Neural Networks: Brief overview
+
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week7_figs/nn.png") 
+```
+
+
+## Skipgram Architecture
+
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week7_figs/sg_arc.png") 
+```
+
+
+## Check your matrices
+
+
+::: columns
+::: {.column width="70%"}
+```{r echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./week7_figs/rustic.png") 
+```
+:::
+
+::: {.column width="30%"}
+
+<br>
+<br>
+<br>
+
+Practice with  a vocabulary of size 5, a embedding with 3 dimensions, and I want to predict the next word.
+
+- **Step 1: v_1^5 * W_5^3**
+
+- **Step 2:  w_1^3 * C_3^5**
+
+- **Step 3: Softmax entire vector**
+:::
+:::
+
+## Word Embeddings Matrices
+
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("./week7_figs/matrices.png") 
+```
+
+## Applications:
+
+Once we’ve optimized, we can extract the word specific vectors from W as embedding vectors. These real valued vectors can be used for analogies and related tasks
+
+
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics("./week7_figs/king.png") 
+```
+
+We will see several applications next week. Most important: 
+
+- Alternative to bag-of-words feature representation in supervised learning tasks
+
+- Support for other automated text analysis tasks: expand dictionaries
+
+- Understanding word meaning: variation over time, bias, variation by groups
+
+- as a scaling method (in two weeks)
+
+## Training Embeddings
+
+Embeddings need quite a lot of text to train: e.g. want to disambiguate meanings from contexts. You can download [pre-trained]{.red}, or get the code and [train locally]{.red}
+
+- [Word2Vec]{.red} is trained on the Google News dataset (∼ 100B words, 2013)
+
+- [GloVe]{.red} are trained on different things: Wikipedia
+(2014) + Gigaword (6B words), Common Crawl, Twitter
+
+- [fastext]{.red} from facebook
+
+## Decisions on embeddings, Rodriguez and Spirling, 2022
+
+When using/training embeddings, we face four key decisions: 
+
+- Window size
+
+- Number of dimensions for the embedding matrix
+
+- Pre-trained versus locally fit variants
+
+- Which algorithm to use?
+
+## Findings
+
+```{r echo=FALSE, out.width = "100%", fig.align="center"}
+knitr::include_graphics("./week7_figs/rodriguez.png") 
+```
+
+- popular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.
+
+- GloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings
+
+- Larger window size and embeddings are often preferred. 
+
+# More next week!

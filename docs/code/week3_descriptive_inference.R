@@ -6,7 +6,7 @@
 # topics: document similarity,tf-idf, and readability measures in text
 # Machine: MacOS High Sierra
 ##############################################################################
-
+sessionInfo()
 
 # 0 -  Introduction -------------------------------------------------------------
 
@@ -15,7 +15,6 @@
 ## Comparing documents using cosine similarity
 ## TF-IDF
 ## Measures of readability and lexical diversity
-
 pacman::p_load(tidyverse, quanteda, quanteda.corpora, quanteda.textstats)
 
 # 1 - Comparing Documents -----------------------------------------------------
@@ -82,10 +81,11 @@ sample_n_politicians <- tweets %>%
 tweets_g = left_join(sample_n_politicians, tweets)
 
 # let me aggregate politicians tweets
-tweets_g <- tweets_g %>%
-            group_by(author) %>%
-            summarize(text=paste0(text, collapse = " ")) %>% 
-            ungroup()
+
+# tweets_g <- tweets_g %>%
+#            group_by(author) %>%
+#            summarize(text=paste0(text, collapse = " ")) %>% 
+#            ungroup()
 
 # convert to a corpus
 tweets_corpus  <- corpus(tweets_g, text_field="text")
@@ -113,6 +113,7 @@ print(dfm_grouped)
 simil_tweets <- textstat_simil(dfm_grouped,  
                margin = "documents",
                method = "cosine")
+
 # convert to a matrix
 as.matrix(simil_tweets)
 
@@ -194,9 +195,10 @@ tfidf_sim = as_tibble(as.matrix(simil_tweets)) %>%
   mutate(names = rownames(as.matrix(simil_tweets))) %>%
   select(names, everything()) 
 
+
 # get the 10 closest to ted cruz
 top10_df = df_sim %>%
-  filter(names=="SenTedCruz") %>%
+  filter(names=="SenatorRomney") %>%
   pivot_longer(cols = -c(names), 
                names_to = "rep", 
                values_to="similarity") %>%
@@ -204,7 +206,7 @@ top10_df = df_sim %>%
   slice(2:21) %>% mutate(cell="No Weight") %>% rownames_to_column()
 
 top10_idfdf = tfidf_sim %>%
-  filter(names=="SenTedCruz") %>%
+  filter(names=="SenatorRomney") %>%
   pivot_longer(cols = -c(names), 
                names_to = "rep", 
                values_to="similarity") %>%
@@ -332,10 +334,20 @@ install.packages("spacyr")
 library(spacyr)
 library(reticulate) 
 
+# see conda environment
+reticulate::conda_list()
+
+# create conda environment
+reticulate::conda_create("ppol6801")
+
+
+# activate my conda envinroment
+reticulate::use_condaenv("ppol6801")
+
 # tell which python I am running
 Sys.setenv(RETICULATE_PYTHON ="/Users/tb186/anaconda3/envs/ppol6801/bin/python")
-# tell spacy which conda environment I am using
 
+# tell spacy which conda environment I am using
 Sys.setenv(SPACY_PYTHON = "/Users/tb186/anaconda3/envs/ppol6801/")
 
 # install spacy
@@ -352,11 +364,10 @@ library(sophistication)
 # if you want to go ahead with this model, and predict some new data,
 # it is relatively simple
 ?predict_readability
-sophistication::data_corpus_presdebates2016
-
 
 # run this function in a new dataset
-sophistication_sotu = predict_readability(data_BTm_bms, newdata = data_corpus_sotu)
+sophistication_sotu = predict_readability(data_BTm_bms, 
+                            newdata = data_corpus_sotu)
 
 
 

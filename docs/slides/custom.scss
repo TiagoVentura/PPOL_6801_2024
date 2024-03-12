@@ -4,7 +4,10 @@
 $presentation-font-size-root: 28px;
 $presentation-heading-color: #012169;
 $code-block-bg:#F0F0F0;
-$font-family: "Atkinson Hyperlegible", sans-serif;
+$font-family-sans-serif: "Palatino Linotype", "Book Antiqua", Palatino,
+  FreeSerif, serif !default;
+$font-family-sans-serif: "Palatino Linotype", "Book Antiqua", Palatino,
+  FreeSerif, serif !default;
 
 /*-- scss:rules --*/
 
@@ -21,6 +24,9 @@ $font-family: "Atkinson Hyperlegible", sans-serif;
   color: #D50032;
   font-weight: bold;
 }
+.midgray {
+  color: gray;
+  opacity: .8;}
 
 .center h1 {
   text-align: center;

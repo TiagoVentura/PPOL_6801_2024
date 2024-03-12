@@ -81,11 +81,9 @@ We started from [pre-processing text]{.red} as data, [representing]{.red} text a
 ## Main challenges of Topic Models
 
 ::: fragment
-
 ### Hard to get it right
 
-:::nonincremental
-
+::: nonincremental
 -   unsupervised learning requires several **ad-hoc** decisions and these decisions matter for quality of your results
 
     -   number of clusters
@@ -97,11 +95,9 @@ We started from [pre-processing text]{.red} as data, [representing]{.red} text a
 :::
 
 ::: fragment
-
 ### Hard to know if you are doing right!
 
-:::nonincremental
-
+::: nonincremental
 -   in contrast to supervised approaches, we won't know 'how correct' the output is in a simple statistical sense
 
 -   use statistical measures of fit/unfit of different modeling decisions
@@ -183,15 +179,15 @@ knitr::include_graphics("./week6_figs/kmeansfinal.png")
 
 -   Assign documents a probability of being associated of these clusters.
 
-    - **Documents:** formed from probability distribution of topics
+    -   **Documents:** formed from probability distribution of topics
 
         -   [a speech can be 40% about trade, 30% about sports, 10% about health, and 20% spread across topics you don't think make much sense]{.midgray}
 
     -   **Topics:** fromed from probability distribution over words
 
-         -   [the topic health will have words like hospital, clinic, dr., sick, cancer]{.midgray}
+        -   [the topic health will have words like hospital, clinic, dr., sick, cancer]{.midgray}
 
-## Blei, 2012, 
+## Blei, 2012,
 
 ```{r echo=FALSE, out.width = "80%"}
 knitr::include_graphics("./week6_figs/blei_fig.png") 
@@ -221,12 +217,10 @@ knitr::include_graphics("./week6_figs/topic_distns.png")
 
 For every word:
 
-:::nonincremental
-
+::: nonincremental
 -   Randomly choose a topic from the distribution over topics from step 1.
 
 -   Randomly choose a word from the distribution over the vocabulary that the topic implies.
-
 :::
 
 ```{r echo=FALSE, out.width = "100%",fig.align='center'}
@@ -260,7 +254,7 @@ To estimate the model, we need to assume some known mathematical distributions f
 
 ## Aside: Dirichlet distribution
 
--   The Dirichlet distribution is a [conjugate prior]{.red} for the multinomial  distribution.
+-   The Dirichlet distribution is a [conjugate prior]{.red} for the multinomial distribution.
 
     -   It makes joint distributions easier to calculate because we know their families.
 
@@ -376,13 +370,12 @@ knitr::include_graphics("./week6_figs/topic_selection.png")
 
 -   How to measure the quality of the topics?
 
-:::fragment
+::: fragment
 ::: nonincremental
--  Crowdsourcing for:
+-   Crowdsourcing for:
     -   whether a topic has (human-identifiable) semantic coherence: [word intrusion]{.red}, asking subjects to identify a spurious word inserted into a topic
     -   whether the association between a document and a topic makes sense: [topic intrusion]{.red}, asking subjects to identify a topic that was not associated with the document by the model
     -   See [Ying et al, 2022, Political Analysis.](https://www.cambridge.org/core/journals/political-analysis/article/abs/topics-concepts-and-measurement-a-crowdsourced-procedure-for-validating-topics-as-measures/F28DC93AFD4C8DE63CC235BC6D684257)
-
 :::
 :::
 
@@ -391,15 +384,18 @@ knitr::include_graphics("./week6_figs/topic_selection.png")
 ## Barbera et al, American Political Science Review, 2020.
 
 -   Data: tweets sent by US legislators, samples of the public, and media outlets.
+
 -   LDA with K = 100 topics
+
 -   Topic predictions are used to understand agenda-setting dynamics (who leads? who follows?)
+
 -   Conclusion: Legislators are more likely to follow, than to lead, discussion of public issues,
 
-- Decisions:
+-   Decisions:
 
- - k=100
- - 
+-   k=100
 
+-   
 
 ## Motolinia, American Political Science Review, 2021
 
@@ -460,7 +456,6 @@ knitr::include_graphics("./week6_figs/keyatm_model.png")
 ```{r echo=FALSE, out.width = "100%"}
 knitr::include_graphics("./week6_figs/keyatm_results.png") 
 ```
-
 
 # Quick survey: click [here](https://forms.gle/M4wtnf1bqFTffFMXA)
 
