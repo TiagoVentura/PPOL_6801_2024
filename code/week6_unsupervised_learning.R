@@ -13,7 +13,6 @@
 ## simple clustering methods, and then a variety of flavors from topic models
 
 # loading packages
-
 pacman::p_load(tidyverse, quanteda, quanteda.corpora, quanteda.textstats, quanteda.textmodels, 
                rjson, here)
 
@@ -124,7 +123,8 @@ library(topicmodels)
 
 
 # pre-processing
-dfm_news <-  corpus(news_data %>% mutate(id=1:nrow(.)),
+dfm_news <-  corpus(news_data %>% 
+                    mutate(id=1:nrow(.)),
                     docid_field="id", text_field = "headline") %>%
   tokens(remove_punct = TRUE, remove_numbers = TRUE, remove_symbols=TRUE)  %>%
   dfm() %>% 
@@ -153,11 +153,14 @@ K <- 30
 
 
 # estimate
-lda <- LDA(dfm_news_non_na, 
-           k = K, 
-           method = "Gibbs",
-           control = list(verbose=25L, seed = 123,
-                          burnin = 100, iter = 500))
+#lda <- LDA(dfm_news_non_na, 
+#           k = K, 
+#           method = "Gibbs",
+#           control = list(verbose=25L, seed = 123,
+#                          burnin = 100, iter = 500))
+
+
+?LDA
 
 # We can use `get_terms` to the top `n` terms from the topic model, 
 terms <- get_terms(lda, 10)
@@ -242,14 +245,13 @@ df  %>% select(topic, words, text, short_description) %>% slice(1:10) %>% View()
 library(stm)
 
 # the first step is to use quanteda to convert the dfm to a format stm can read
-
 dfm_stm <-  quanteda::convert(dfm_news_non_na, to = "stm")
 
 # see what this looks like
 # matrix with id for words and counts
 dfm_stm$documents[[1]]
 
-# Models 
+# Models
 stm_m <- stm(documents=dfm_stm$documents,
               vocab=dfm_stm$vocab, 
               data = dfm_stm$meta, 
@@ -265,7 +267,6 @@ load("data/stm_model.rdata")
 
 # Check topic
 ?labelTopics
-
 labelTopics(stm_m)
 
 #  topic proportion
@@ -310,6 +311,7 @@ gamma_terms <- td_gamma %>%
   mutate(topic_ = paste0("Topic ", topic),
          topic_ = reorder(topic_, gamma))
 
+gamma_terms
 
 # Looking at specific stopics
 library(scales)
@@ -371,6 +373,7 @@ speeches_topic
 # Selecting the number of topics ------------------------------------------
 
 # How many Topics  -------------------------------------------------------------------------
+
 ## Deciding the topics using data-driven approach
 library(stm)
 library(ggrepel)
@@ -378,12 +381,15 @@ seq(10, 210, 20)
 
 # run many models
 # this will take a long time.
-many_models_search_k <- searchK(dfm_stm$documents, dfm_stm$vocab, K = seq(10, 210, 20),
+many_models_search_k <- searchK(dfm_stm$documents, dfm_stm$vocab, 
+                                K = seq(10, 210, 20),
                                 data = dfm_stm$meta, init.type = "Spectral")
 
 # load pre-saved results
 load(here("data", "many_models_stm.Rdata"))
 # download here: https://www.dropbox.com/scl/fi/f1qdjx44cgzzwchobo28q/many_models_stm.Rdata?rlkey=slin76qp1233dcd6ng9cymsww&dl=0
+
+many_models_search_k
 
 
 # compare exclusivity vs coherence
@@ -416,9 +422,13 @@ many_models_search_k$results %>%
 # some other sources you can use to learn about topic models
 
 # for keyATM: https://keyatm.github.io/keyATM/
+
 # Bert Based Topic Models: https://maartengr.github.io/BERTopic/index.html
+
 # tidytext https://www.tidytextmining.com/topicmodeling.html
-# in pythonn: https://medium.com/nanonets/topic-modeling-with-lsa-psla-lda-and-lda2vec-555ff65b0b05
+
+# in python: https://medium.com/nanonets/topic-modeling-with-lsa-psla-lda-and-lda2vec-555ff65b0b05
+
 # human validation of topic models: https://dl.acm.org/citation.cfm?id=2984126
 
 

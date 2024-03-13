@@ -42,8 +42,8 @@ website:
             text: "Week 6: Replication Class"
           - href: weeks/week-07.qmd
             text: "Week 7: Unsupervised Learning"
-          #- href: weeks/week-08.qmd
-          #  text: "Week 8: Scraping"
+          - href: weeks/week-08.qmd
+            text: "Week 8: Word Embeddings"
           #- href: weeks/week-09.qmd
           #  text: "Week 9: APIs + Selenium"
           #- href: weeks/week-10.qmd
