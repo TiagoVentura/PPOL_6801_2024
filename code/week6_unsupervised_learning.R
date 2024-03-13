@@ -38,6 +38,7 @@ news_data
 
 # let's limit to a smaller set of topics
 names_ = names(sort(table(news_data$category), decreasing = TRUE)[1:10])
+
 news_data_ <- news_data %>% filter(category%in%names_) %>% sample_n(10000)
 
 # little pre-processing
@@ -50,8 +51,6 @@ dfm_news <-  corpus(news_data_, text_field = "headline") %>%
 # normalize the text ~ matter if we are using euclidean distance for kmeans
 dfm_news <-  dfm_weight(dfm_news, scheme = "prop") 
 
-docvars(dfm_news) %>% as_tibble()
-
 # kmeans
 n.clust<- 10
 set.seed(1310) 
@@ -61,6 +60,7 @@ k_cluster<- kmeans(dfm_news, centers = n.clust)
 
 # see output
 str(k_cluster, 2) 
+
 ## clusters for document assignment
 k_cluster$cluster
 
@@ -174,7 +174,6 @@ terms_df <- as_tibble(terms) %>%
   unnest() 
 
 terms_df  
-
 
 # get_topics to predict the top `k` topic for each document. 
 # This will help us interpret the results of the model.
@@ -357,7 +356,6 @@ meta %>%
   slice(1:2) 
 
 # not bad!
-
 
 # Main topic in each documents
 speeches_topic <- td_gamma %>%

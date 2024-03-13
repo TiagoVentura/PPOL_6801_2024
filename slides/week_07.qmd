@@ -35,7 +35,7 @@ Thank you so much for responding to the survey! Here are the most important feed
 
  - [I hope we can have a few discussion questions along with weekly readings]{.midgray}
 
-  - [Including discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?{.midgray}
+  - [Including discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?]{.midgray}
 
 **Stop Doing:**
 
@@ -59,7 +59,11 @@ Thank you so much for responding to the survey! Here are the most important feed
   
 - Next week:
    
-   - Start with coding to estimate Word2Vec from Co-Occurence Matrices
+   - Start with coding to work with wordembeddings
+   
+      - Estimate from co-occurence matrices
+      - Working with pre-trained models
+      
    
    - Discuss applications to social science
   
@@ -68,7 +72,7 @@ Thank you so much for responding to the survey! Here are the most important feed
 
 # Word Embeddings
 
-## Back to class II: Vector Space Model
+## Vector Space Model
 
 In the vector space model, we learned: 
 
@@ -76,17 +80,22 @@ In the vector space model, we learned:
 
 - Each feature $w_i$ can be place in a real line, then a document $D_i$ is a point in a $W$ dimensional space. 
 
-Embedded in this model, there is the idea we represent [words]{.red} as a one-hot encoding. 
+Embedded in this model, there is the idea we represent [words]{.red} as a [one-hot encoding]{.red}. 
 
 - "cat": [0,0, 0, 0, 0, 0, 1, 0, ....., V] , on a V dimensional vector
--  "dog": [0,0, 0, 0, 0, 0, 0, 1, ....,  V]
+-  "dog": [0,0, 0, 0, 0, 0, 0, 1, ....,  V], on a V dimensional vector
+
+
+**What these vectors look like?**
+
+- really sparse
   
-  - really sparse
+- vectors are orthogonal
   
-  - vectors are orthogonal
-  
-  - no natural notion of similarity
-  
+- no natural notion of similarity
+
+
+# How can we embed some notion of meaning in the way we represent words?
 
 ## Distributional Semantics
 
@@ -97,7 +106,7 @@ their meaning.
 
 :::incremental
 
-- How can we use this insight to understand what words mean?
+- How can we use this insight to build a word representation?
 
   - Move from sparse representation to dense representation
   
@@ -109,10 +118,10 @@ their meaning.
   
 :::  
 
-## Visually
+## Sparse vs Dense Vectors
 
 
-**One-hot encoding:**
+**One-hot encoding / Sparse Representation:**
 
 - cat = $\begin{bmatrix} 0,0, 0, 0, 0, 0, 1, 0, 0 \end{bmatrix}$
 
@@ -150,44 +159,56 @@ Source: [Illustrated Word2Vec](https://jalammar.github.io/illustrated-word2vec/)
 
 - Word Embeddings improves several NLP/Text-as-Data Tasks.
 
-- Form the core idea of state-of-the-art models, such as LLMs.
+- Allows to deal with unseen words.
 
+- Form the core idea of state-of-the-art models, such as LLMs.
 
 ## Estimating Word Embeddings
 
-#### Approches: 
+### Approches: 
 
-- [Count-based methods]{.red: look at how often words co-occur with neighbors.
+
+:::fragment
+
+- [Count-based methods]{.red}: look at how often words co-occur with neighbors.
    - use this matrix, and some some factorization to retrieve vectors for the words
    - GloVE 
    - fast, not computationally intensive, but not the best representation
    - we will see code doing this next week
-   
+
+:::
+
+::: fragment
 - [Predictive Methods:]{.red} rely on the idea of **self-supervision**
   - use unlabeled data and use words to predict sequence
   - the famous word2vec.
      - Skipgram: predicts context words
      - Continuous Bag of Words: predict center word
-   
-## Word2Vec
 
-Word2vec is a framework for learning word vectors (Mikolov et al. 2013)
+:::
 
-**Idea**: 
+## Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)
+
+### Core Idea: 
+
+::: incremental
 
 - We have a large corpus (“body”) of text: a long list of words
 
 - Every word in a fixed vocabulary is represented by a vector
 
 - Go through each position t in the text, which has a center
-word c and context (“outside”) words o
+word $c$ and context (“outside”) words $t$
 
-- Use the similarity of the word vectors for c and o to calculate
+- Use the similarity of the word vectors for $c$ and $t$ to calculate
 the probability of o given c (or vice versa)
 
 - Keep adjusting the word vectors to maximize this probability 
    - Neural Network + Gradient Descent
    
+:::
+
+
 ## Skigram Example: Self-Supervision   
 
 
@@ -212,35 +233,53 @@ Source: [CS224N](https://web.stanford.edu/class/cs224n/index.html#schedule)
 
 To estimate the model, we first need to formalize the probability function we want to estimate. 
 
-This is as simple as a logistic regression:
+::: fragment
 
-- **In logistic regression: probability of a event occur given data X and parameters:** 
-  - $\beta$. $P(y=1|X, \beta ) = X*\beta$
-  - $X*\beta$ is not a proper probability function, so we make it to be by using a logit transformation
+#### This is similar to a [logistic regression]{.red}
+
+:::
+
+::: fragment
+
+- **In logistic regression: probability of a event occur given data X and parameters $\beta$.:** 
+  - $ P(y=1| X, \beta ) = X * $\beta$ $
+  - $X*\beta$ is not a proper probability function, so we make it to proper probability by using a logit transformation.
   - $P(y=1|X, \beta ) = \frac{exp(XB)}{1 + exp(XB)}$
   
-- **$P(w_t|w_{t-1})$ can be parametrized as how similar these words are:**
+  - Throw this transformation inside of a bernouilli distribution, get the likelihood function, and find the parameters using MLE. 
+
+:::
+
+
+## Pametrizing $P(w_t|w_{t-1})$
+
+- **$P(w_t|w_{t-1})$ must be condition on how similar these words are.**
+  - [Exactly the same]{.red} intuition behind placing documents in the vector space model.
+  - Now words are vectors!
   - $P(w_t|w_{t-1}) = u_c \cdot u_t$
-     -  $u_c \cdot u_t$: dot product between vectors, measures similarity
+     -  $u_c \cdot u_t$
+     -  dot product between vectors
+     -  measures similarity using vector projection
      -  $u_c$: center vector
      -  $u_t$: target vectors 
-  - $u_c \cdot u_t$ is also not a proper probability distribution ~ use logit/sigmoid/softmax function
-     - $P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}$
      
-
-## Let'see this again:
+- **$u_c \cdot u_t$ is also not a proper probability distribution:** Logit on them!
 
 $$P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}$$
 
-- Dotproduct compares similarity between vectors
+## Softmax Transformation
 
-- numerator: center vs target
+$$P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}$$
+
+- Dot product compares similarity between vectors
+
+- numerator: center vs target vectors
 
 - exponentiation makes everything positive
 
-- Normalize over entire vocabulary to give probability distribution
+- Denominator: normalize over entire vocabulary to give probability distribution
 
-- This is an example of a softmax function
+- What is the meaning of softmax? 
 
   - max: assign high values to be 1
   
@@ -249,6 +288,8 @@ $$P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}$$
   - generalization of the logit ~ multinomial logistic function. 
   
 ## Word2Vec: Objective Function
+
+::: fragment
 
 For each position $t$, predict context words within a window of fixed size $m$, given center word $w$. 
 
@@ -261,13 +302,18 @@ $$ L(\theta) = \prod_{t=1}^{T} \prod_{\substack{-m<= j<=m \\ j \neq 0}}^{m} P(w_
 
 - This likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)
 
+:::
+
+:::fragment
 #### Objective Function: Negative log likelihood
 
 $$J(\theta) = - \frac{1}{T}log(L(\theta))$$
 
-- better to take the gradient with log and sums
+- better to take the gradient with sums
 
 - the average increases the numerical stability of the gradient. 
+
+:::
 
 ## Neural Networks: Brief overview
 
@@ -301,7 +347,7 @@ knitr::include_graphics("./week7_figs/rustic.png")
 <br>
 <br>
 
-Practice with  a vocabulary of size 5, a embedding with 3 dimensions, and I want to predict the next word.
+Practice with  a vocabulary of size 5, a embedding with 3 dimensions, and the task is to predict the next word.
 
 - **Step 1: v_1^5 * W_5^3**
 
@@ -342,8 +388,7 @@ Embeddings need quite a lot of text to train: e.g. want to disambiguate meanings
 
 - [Word2Vec]{.red} is trained on the Google News dataset (∼ 100B words, 2013)
 
-- [GloVe]{.red} are trained on different things: Wikipedia
-(2014) + Gigaword (6B words), Common Crawl, Twitter
+- [GloVe]{.red} are trained on different things: Wikipedia (2014) + Gigaword (6B words), Common Crawl, Twitter. And uses a co-occurence matrix instead of Neural Networks
 
 - [fastext]{.red} from facebook
 

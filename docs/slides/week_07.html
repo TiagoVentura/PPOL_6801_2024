@@ -346,7 +346,7 @@
 <li><p><span class="midgray">more structured walk throughs of the code</span></p></li>
 <li><p><span class="midgray">If you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA</span></p></li>
 <li><p><span class="midgray">I hope we can have a few discussion questions along with weekly readings</span></p></li>
-<li><p>[Including discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?{.midgray}</p></li>
+<li><p><span class="midgray">Including discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?</span></p></li>
 </ul>
 <p><strong>Stop Doing:</strong></p>
 <ul>
@@ -369,7 +369,11 @@
 </ul></li>
 <li><p>Next week:</p>
 <ul>
-<li><p>Start with coding to estimate Word2Vec from Co-Occurence Matrices</p></li>
+<li><p>Start with coding to work with wordembeddings</p>
+<ul>
+<li>Estimate from co-occurence matrices</li>
+<li>Working with pre-trained models</li>
+</ul></li>
 <li><p>Discuss applications to social science</p></li>
 </ul></li>
 </ul>
@@ -384,21 +388,29 @@
 <h1>Word Embeddings</h1>
 
 </section>
-<section id="back-to-class-ii-vector-space-model" class="slide level2">
-<h2>Back to class II: Vector Space Model</h2>
+<section id="vector-space-model" class="slide level2">
+<h2>Vector Space Model</h2>
 <p>In the vector space model, we learned:</p>
 <ul>
 <li><p>A document <span class="math inline">\(D_i\)</span> is represented as a collection of features <span class="math inline">\(W\)</span> (words, tokens, n-grams..)</p></li>
 <li><p>Each feature <span class="math inline">\(w_i\)</span> can be place in a real line, then a document <span class="math inline">\(D_i\)</span> is a point in a <span class="math inline">\(W\)</span> dimensional space.</p></li>
 </ul>
-<p>Embedded in this model, there is the idea we represent <span class="red">words</span> as a one-hot encoding.</p>
+<p>Embedded in this model, there is the idea we represent <span class="red">words</span> as a <span class="red">one-hot encoding</span>.</p>
 <ul>
-<li><p>“cat”: [0,0, 0, 0, 0, 0, 1, 0, ….., V] , on a V dimensional vector</p></li>
-<li><p>“dog”: [0,0, 0, 0, 0, 0, 0, 1, …., V]</p></li>
+<li>“cat”: [0,0, 0, 0, 0, 0, 1, 0, ….., V] , on a V dimensional vector</li>
+<li>“dog”: [0,0, 0, 0, 0, 0, 0, 1, …., V], on a V dimensional vector</li>
+</ul>
+<p><strong>What these vectors look like?</strong></p>
+<ul>
 <li><p>really sparse</p></li>
 <li><p>vectors are orthogonal</p></li>
 <li><p>no natural notion of similarity</p></li>
 </ul>
+</section></section>
+<section>
+<section id="how-can-we-embed-some-notion-of-meaning-in-the-way-we-represent-words" class="title-slide slide level1 center">
+<h1>How can we embed some notion of meaning in the way we represent words?</h1>
+
 </section>
 <section id="distributional-semantics" class="slide level2">
 <h2>Distributional Semantics</h2>
@@ -408,7 +420,7 @@
 <p><span class="red">Distributional semantics</span>: words that are used in the same contexts tend to be similar in their meaning.</p>
 <div>
 <ul>
-<li class="fragment"><p>How can we use this insight to understand what words mean?</p>
+<li class="fragment"><p>How can we use this insight to build a word representation?</p>
 <ul>
 <li class="fragment"><p>Move from sparse representation to dense representation</p></li>
 <li class="fragment"><p>Represent words as vectors of numbers with high number of dimensions</p></li>
@@ -418,9 +430,9 @@
 </ul>
 </div>
 </section>
-<section id="visually" class="slide level2">
-<h2>Visually</h2>
-<p><strong>One-hot encoding:</strong></p>
+<section id="sparse-vs-dense-vectors" class="slide level2">
+<h2>Sparse vs Dense Vectors</h2>
+<p><strong>One-hot encoding / Sparse Representation:</strong></p>
 <ul>
 <li><p>cat = <span class="math inline">\(\begin{bmatrix} 0,0, 0, 0, 0, 0, 1, 0, 0 \end{bmatrix}\)</span></p></li>
 <li><p>dog = <span class="math inline">\(\begin{bmatrix} 0,0, 0, 0, 0, 1, 0, 0, 0 \end{bmatrix}\)</span></p></li>
@@ -444,20 +456,26 @@
 <p><strong>As a consequence:</strong></p>
 <ul>
 <li><p>Word Embeddings improves several NLP/Text-as-Data Tasks.</p></li>
+<li><p>Allows to deal with unseen words.</p></li>
 <li><p>Form the core idea of state-of-the-art models, such as LLMs.</p></li>
 </ul>
 </section>
 <section id="estimating-word-embeddings" class="slide level2">
 <h2>Estimating Word Embeddings</h2>
-<h4 id="approches">Approches:</h4>
+<h3 id="approches">Approches:</h3>
+<div class="fragment">
 <ul>
-<li>[Count-based methods]{.red: look at how often words co-occur with neighbors.
+<li><span class="red">Count-based methods</span>: look at how often words co-occur with neighbors.
 <ul>
 <li>use this matrix, and some some factorization to retrieve vectors for the words</li>
 <li>GloVE</li>
 <li>fast, not computationally intensive, but not the best representation</li>
 <li>we will see code doing this next week</li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><span class="red">Predictive Methods:</span> rely on the idea of <strong>self-supervision</strong>
 <ul>
 <li>use unlabeled data and use words to predict sequence</li>
@@ -468,21 +486,23 @@
 </ul></li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="word2vec" class="slide level2">
-<h2>Word2Vec</h2>
-<p>Word2vec is a framework for learning word vectors (Mikolov et al.&nbsp;2013)</p>
-<p><strong>Idea</strong>:</p>
+<section id="word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013" class="slide level2">
+<h2>Word2Vec: a framework for learning word vectors (Mikolov et al.&nbsp;2013)</h2>
+<h3 id="core-idea">Core Idea:</h3>
+<div>
 <ul>
-<li><p>We have a large corpus (“body”) of text: a long list of words</p></li>
-<li><p>Every word in a fixed vocabulary is represented by a vector</p></li>
-<li><p>Go through each position t in the text, which has a center word c and context (“outside”) words o</p></li>
-<li><p>Use the similarity of the word vectors for c and o to calculate the probability of o given c (or vice versa)</p></li>
-<li><p>Keep adjusting the word vectors to maximize this probability</p>
+<li class="fragment"><p>We have a large corpus (“body”) of text: a long list of words</p></li>
+<li class="fragment"><p>Every word in a fixed vocabulary is represented by a vector</p></li>
+<li class="fragment"><p>Go through each position t in the text, which has a center word <span class="math inline">\(c\)</span> and context (“outside”) words <span class="math inline">\(t\)</span></p></li>
+<li class="fragment"><p>Use the similarity of the word vectors for <span class="math inline">\(c\)</span> and <span class="math inline">\(t\)</span> to calculate the probability of o given c (or vice versa)</p></li>
+<li class="fragment"><p>Keep adjusting the word vectors to maximize this probability</p>
 <ul>
-<li>Neural Network + Gradient Descent</li>
+<li class="fragment">Neural Network + Gradient Descent</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="skigram-example-self-supervision" class="slide level2">
 <h2>Skigram Example: Self-Supervision</h2>
@@ -497,38 +517,51 @@
 <section id="encoding-similarity" class="slide level2">
 <h2>Encoding Similarity</h2>
 <p>To estimate the model, we first need to formalize the probability function we want to estimate.</p>
-<p>This is as simple as a logistic regression:</p>
+<div class="fragment">
+<!-- -->
+<h4 id="this-is-similar-to-a-logistic-regression">This is similar to a <span class="red">logistic regression</span></h4>
+</div>
+<div class="fragment">
 <ul>
-<li><strong>In logistic regression: probability of a event occur given data X and parameters:</strong>
+<li><strong>In logistic regression: probability of a event occur given data X and parameters <span class="math inline">\(\beta\)</span>.:</strong>
 <ul>
-<li><span class="math inline">\(\beta\)</span>. <span class="math inline">\(P(y=1|X, \beta ) = X*\beta\)</span></li>
-<li><span class="math inline">\(X*\beta\)</span> is not a proper probability function, so we make it to be by using a logit transformation</li>
-<li><span class="math inline">\(P(y=1|X, \beta ) = \frac{exp(XB)}{1 + exp(XB)}\)</span></li>
+<li><p>$ P(y=1| X, ) = X * <span class="math inline">\(\beta\)</span> $</p></li>
+<li><p><span class="math inline">\(X*\beta\)</span> is not a proper probability function, so we make it to proper probability by using a logit transformation.</p></li>
+<li><p><span class="math inline">\(P(y=1|X, \beta ) = \frac{exp(XB)}{1 + exp(XB)}\)</span></p></li>
+<li><p>Throw this transformation inside of a bernouilli distribution, get the likelihood function, and find the parameters using MLE.</p></li>
 </ul></li>
-<li><strong><span class="math inline">\(P(w_t|w_{t-1})\)</span> can be parametrized as how similar these words are:</strong>
+</ul>
+</div>
+</section>
+<section id="pametrizing-pw_tw_t-1" class="slide level2">
+<h2>Pametrizing <span class="math inline">\(P(w_t|w_{t-1})\)</span></h2>
 <ul>
+<li><strong><span class="math inline">\(P(w_t|w_{t-1})\)</span> must be condition on how similar these words are.</strong>
+<ul>
+<li><span class="red">Exactly the same</span> intuition behind placing documents in the vector space model.</li>
+<li>Now words are vectors!</li>
 <li><span class="math inline">\(P(w_t|w_{t-1}) = u_c \cdot u_t\)</span>
 <ul>
-<li><span class="math inline">\(u_c \cdot u_t\)</span>: dot product between vectors, measures similarity</li>
+<li><span class="math inline">\(u_c \cdot u_t\)</span></li>
+<li>dot product between vectors</li>
+<li>measures similarity using vector projection</li>
 <li><span class="math inline">\(u_c\)</span>: center vector</li>
 <li><span class="math inline">\(u_t\)</span>: target vectors</li>
 </ul></li>
-<li><span class="math inline">\(u_c \cdot u_t\)</span> is also not a proper probability distribution ~ use logit/sigmoid/softmax function
-<ul>
-<li><span class="math inline">\(P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}\)</span></li>
 </ul></li>
-</ul></li>
+<li><strong><span class="math inline">\(u_c \cdot u_t\)</span> is also not a proper probability distribution:</strong> Logit on them!</li>
 </ul>
+<p><span class="math display">\[P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}\]</span></p>
 </section>
-<section id="letsee-this-again" class="slide level2">
-<h2>Let’see this again:</h2>
+<section id="softmax-transformation" class="slide level2">
+<h2>Softmax Transformation</h2>
 <p><span class="math display">\[P(w_t|w_{t-1}) = \frac{exp(u_c \cdot u_t)}{{\sum_{w}^V exp(u_c*u_w)}}\]</span></p>
 <ul>
-<li><p>Dotproduct compares similarity between vectors</p></li>
-<li><p>numerator: center vs target</p></li>
+<li><p>Dot product compares similarity between vectors</p></li>
+<li><p>numerator: center vs target vectors</p></li>
 <li><p>exponentiation makes everything positive</p></li>
-<li><p>Normalize over entire vocabulary to give probability distribution</p></li>
-<li><p>This is an example of a softmax function</p>
+<li><p>Denominator: normalize over entire vocabulary to give probability distribution</p></li>
+<li><p>What is the meaning of softmax?</p>
 <ul>
 <li><p>max: assign high values to be 1</p></li>
 <li><p>soft: still assigns some probability to smaller values</p></li>
@@ -538,6 +571,7 @@
 </section>
 <section id="word2vec-objective-function" class="slide level2">
 <h2>Word2Vec: Objective Function</h2>
+<div class="fragment">
 <p>For each position <span class="math inline">\(t\)</span>, predict context words within a window of fixed size <span class="math inline">\(m\)</span>, given center word <span class="math inline">\(w\)</span>.</p>
 <h4 id="likelihood-function">Likelihood Function</h4>
 <p><span class="math display">\[ L(\theta) = \prod_{t=1}^{T} \prod_{\substack{-m&lt;= j&lt;=m \\ j \neq 0}}^{m} P(w_{t+j} | w_t; \theta) \]</span></p>
@@ -545,12 +579,16 @@
 <li><p>Assuming independence, this means you multiplying the probability of every target for every center word in your dictionary.</p></li>
 <li><p>This likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)</p></li>
 </ul>
+</div>
+<div class="fragment">
+<!-- -->
 <h4 id="objective-function-negative-log-likelihood">Objective Function: Negative log likelihood</h4>
 <p><span class="math display">\[J(\theta) = - \frac{1}{T}log(L(\theta))\]</span></p>
 <ul>
-<li><p>better to take the gradient with log and sums</p></li>
+<li><p>better to take the gradient with sums</p></li>
 <li><p>the average increases the numerical stability of the gradient.</p></li>
 </ul>
+</div>
 </section>
 <section id="neural-networks-brief-overview" class="slide level2">
 <h2>Neural Networks: Brief overview</h2>
@@ -571,7 +609,7 @@
 </div>
 </div><div class="column" style="width:30%;">
 <p><br> <br> <br></p>
-<p>Practice with a vocabulary of size 5, a embedding with 3 dimensions, and I want to predict the next word.</p>
+<p>Practice with a vocabulary of size 5, a embedding with 3 dimensions, and the task is to predict the next word.</p>
 <ul>
 <li><p><strong>Step 1: v_1^5 * W_5^3</strong></p></li>
 <li><p><strong>Step 2: w_1^3 * C_3^5</strong></p></li>
@@ -601,15 +639,8 @@
 <p>Embeddings need quite a lot of text to train: e.g.&nbsp;want to disambiguate meanings from contexts. You can download <span class="red">pre-trained</span>, or get the code and <span class="red">train locally</span></p>
 <ul>
 <li><p><span class="red">Word2Vec</span> is trained on the Google News dataset (∼ 100B words, 2013)</p></li>
-<li><p><span class="red">GloVe</span> are trained on different things: Wikipedia</p></li>
-</ul>
-<ol start="2014" type="1">
-<li><ul>
-<li>Gigaword (6B words), Common Crawl, Twitter</li>
-</ul></li>
-</ol>
-<ul>
-<li><span class="red">fastext</span> from facebook</li>
+<li><p><span class="red">GloVe</span> are trained on different things: Wikipedia (2014) + Gigaword (6B words), Common Crawl, Twitter. And uses a co-occurence matrix instead of Neural Networks</p></li>
+<li><p><span class="red">fastext</span> from facebook</p></li>
 </ul>
 </section>
 <section id="decisions-on-embeddings-rodriguez-and-spirling-2022" class="slide level2">

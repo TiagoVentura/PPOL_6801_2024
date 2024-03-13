@@ -851,28 +851,28 @@
     "href": "slides/week_07.html#survey-responses",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Survey Responses",
-    "text": "Survey Responses\nThank you so much for responding to the survey! Here are the most important feedback I receive:\n\nmore structured walk throughs of the code\nIf you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA\nI hope we can have a few discussion questions along with weekly readings\n[Including discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?{.midgray}\n\nStop Doing:\n\nlong alone time with code\nSometimes we spend a bit too long on the recap part"
+    "text": "Survey Responses\nThank you so much for responding to the survey! Here are the most important feedback I receive:\n\nmore structured walk throughs of the code\nIf you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA\nI hope we can have a few discussion questions along with weekly readings\nIncluding discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?\n\nStop Doing:\n\nlong alone time with code\nSometimes we spend a bit too long on the recap part"
   },
   {
     "objectID": "slides/week_07.html#plans-for-today",
     "href": "slides/week_07.html#plans-for-today",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Plans for Today:",
-    "text": "Plans for Today:\n\nLive coding from last class on topic models\nWord Embeddings\n\nSemantics, Distributional Hypothesis, From Sparse to Dense Vectors\nWord2Vec Algorithm\n\nMathematical Model\nEstimate with Neural Networks\n\n\nNext week:\n\nStart with coding to estimate Word2Vec from Co-Occurence Matrices\nDiscuss applications to social science"
+    "text": "Plans for Today:\n\nLive coding from last class on topic models\nWord Embeddings\n\nSemantics, Distributional Hypothesis, From Sparse to Dense Vectors\nWord2Vec Algorithm\n\nMathematical Model\nEstimate with Neural Networks\n\n\nNext week:\n\nStart with coding to work with wordembeddings\n\nEstimate from co-occurence matrices\nWorking with pre-trained models\n\nDiscuss applications to social science"
   },
   {
     "objectID": "slides/week_07.html#back-to-class-ii-vector-space-model",
     "href": "slides/week_07.html#back-to-class-ii-vector-space-model",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Back to class II: Vector Space Model",
-    "text": "Back to class II: Vector Space Model\nIn the vector space model, we learned:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space.\n\nEmbedded in this model, there is the idea we represent words as a one-hot encoding.\n\n“cat”: [0,0, 0, 0, 0, 0, 1, 0, ….., V] , on a V dimensional vector\n“dog”: [0,0, 0, 0, 0, 0, 0, 1, …., V]\nreally sparse\nvectors are orthogonal\nno natural notion of similarity"
+    "text": "Back to class II: Vector Space Model\nIn the vector space model, we learned:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space.\n\nEmbedded in this model, there is the idea we represent words as a one-hot encoding.\n\n“cat”: [0,0, 0, 0, 0, 0, 1, 0, ….., V] , on a V dimensional vector\n“dog”: [0,0, 0, 0, 0, 0, 0, 1, …., V], on a V dimensional vector\n\nWhat these vectors look like?\n\nreally sparse\nvectors are orthogonal\nno natural notion of similarity"
   },
   {
     "objectID": "slides/week_07.html#distributional-semantics",
     "href": "slides/week_07.html#distributional-semantics",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Distributional Semantics",
-    "text": "Distributional Semantics\n\n“you shall know a word by the company it keeps.” J. R. Firth 1957\n\nDistributional semantics: words that are used in the same contexts tend to be similar in their meaning.\n\n\nHow can we use this insight to understand what words mean?\n\nMove from sparse representation to dense representation\nRepresent words as vectors of numbers with high number of dimensions\nEach feature on this vectors embeds some information from the word (gender? noun? sentiment? stance?)\nLearn this representation from the unlabeled data."
+    "text": "Distributional Semantics\n\n“you shall know a word by the company it keeps.” J. R. Firth 1957\n\nDistributional semantics: words that are used in the same contexts tend to be similar in their meaning.\n\n\nHow can we use this insight to build a word representation?\n\nMove from sparse representation to dense representation\nRepresent words as vectors of numbers with high number of dimensions\nEach feature on this vectors embeds some information from the word (gender? noun? sentiment? stance?)\nLearn this representation from the unlabeled data."
   },
   {
     "objectID": "slides/week_07.html#visually",
@@ -893,14 +893,14 @@
     "href": "slides/week_07.html#why-word-embeddings",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Why Word Embeddings?",
-    "text": "Why Word Embeddings?\nEncoding similarity: vectors are not ortogonal anymore!\nAutomatic Generalization: learn about one word allow us to automatically learn about related words\nEncodes Meaning: by learning the context, I can learn what a word means.\nAs a consequence:\n\nWord Embeddings improves several NLP/Text-as-Data Tasks.\nForm the core idea of state-of-the-art models, such as LLMs."
+    "text": "Why Word Embeddings?\nEncoding similarity: vectors are not ortogonal anymore!\nAutomatic Generalization: learn about one word allow us to automatically learn about related words\nEncodes Meaning: by learning the context, I can learn what a word means.\nAs a consequence:\n\nWord Embeddings improves several NLP/Text-as-Data Tasks.\nAllows to deal with unseen words.\nForm the core idea of state-of-the-art models, such as LLMs."
   },
   {
     "objectID": "slides/week_07.html#estimating-word-embeddings",
     "href": "slides/week_07.html#estimating-word-embeddings",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Estimating Word Embeddings",
-    "text": "Estimating Word Embeddings\nApproches:\n\n[Count-based methods]{.red: look at how often words co-occur with neighbors.\n\nuse this matrix, and some some factorization to retrieve vectors for the words\nGloVE\nfast, not computationally intensive, but not the best representation\nwe will see code doing this next week\n\nPredictive Methods: rely on the idea of self-supervision\n\nuse unlabeled data and use words to predict sequence\nthe famous word2vec.\n\nSkipgram: predicts context words\nContinuous Bag of Words: predict center word"
+    "text": "Estimating Word Embeddings\nApproches:\n\n\nCount-based methods: look at how often words co-occur with neighbors.\n\nuse this matrix, and some some factorization to retrieve vectors for the words\nGloVE\nfast, not computationally intensive, but not the best representation\nwe will see code doing this next week\n\n\n\n\n\nPredictive Methods: rely on the idea of self-supervision\n\nuse unlabeled data and use words to predict sequence\nthe famous word2vec.\n\nSkipgram: predicts context words\nContinuous Bag of Words: predict center word"
   },
   {
     "objectID": "slides/week_07.html#word2vec",
@@ -928,7 +928,7 @@
     "href": "slides/week_07.html#encoding-similarity",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Encoding Similarity",
-    "text": "Encoding Similarity\nTo estimate the model, we first need to formalize the probability function we want to estimate.\nThis is as simple as a logistic regression:\n\nIn logistic regression: probability of a event occur given data X and parameters:\n\n\\(\\beta\\). \\(P(y=1|X, \\beta ) = X*\\beta\\)\n\\(X*\\beta\\) is not a proper probability function, so we make it to be by using a logit transformation\n\\(P(y=1|X, \\beta ) = \\frac{exp(XB)}{1 + exp(XB)}\\)\n\n\\(P(w_t|w_{t-1})\\) can be parametrized as how similar these words are:\n\n\\(P(w_t|w_{t-1}) = u_c \\cdot u_t\\)\n\n\\(u_c \\cdot u_t\\): dot product between vectors, measures similarity\n\\(u_c\\): center vector\n\\(u_t\\): target vectors\n\n\\(u_c \\cdot u_t\\) is also not a proper probability distribution ~ use logit/sigmoid/softmax function\n\n\\(P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\)"
+    "text": "Encoding Similarity\nTo estimate the model, we first need to formalize the probability function we want to estimate.\n\n\nThis is similar to a logistic regression\n\n\n\nIn logistic regression: probability of a event occur given data X and parameters \\(\\beta\\).:\n\n$ P(y=1| X, ) = X * \\(\\beta\\) $\n\\(X*\\beta\\) is not a proper probability function, so we make it to proper probability by using a logit transformation.\n\\(P(y=1|X, \\beta ) = \\frac{exp(XB)}{1 + exp(XB)}\\)\nThrow this transformation inside of a bernouilli distribution, get the likelihood function, and find the parameters using MLE."
   },
   {
     "objectID": "slides/week_07.html#letsee-this-again",
@@ -942,7 +942,7 @@
     "href": "slides/week_07.html#word2vec-objective-function",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Word2Vec: Objective Function",
-    "text": "Word2Vec: Objective Function\nFor each position \\(t\\), predict context words within a window of fixed size \\(m\\), given center word \\(w\\).\nLikelihood Function\n\\[ L(\\theta) = \\prod_{t=1}^{T} \\prod_{\\substack{-m&lt;= j&lt;=m \\\\ j \\neq 0}}^{m} P(w_{t+j} | w_t; \\theta) \\]\n\nAssuming independence, this means you multiplying the probability of every target for every center word in your dictionary.\nThis likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)\n\nObjective Function: Negative log likelihood\n\\[J(\\theta) = - \\frac{1}{T}log(L(\\theta))\\]\n\nbetter to take the gradient with log and sums\nthe average increases the numerical stability of the gradient."
+    "text": "Word2Vec: Objective Function\n\nFor each position \\(t\\), predict context words within a window of fixed size \\(m\\), given center word \\(w\\).\nLikelihood Function\n\\[ L(\\theta) = \\prod_{t=1}^{T} \\prod_{\\substack{-m&lt;= j&lt;=m \\\\ j \\neq 0}}^{m} P(w_{t+j} | w_t; \\theta) \\]\n\nAssuming independence, this means you multiplying the probability of every target for every center word in your dictionary.\nThis likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)\n\n\n\n\nObjective Function: Negative log likelihood\n\\[J(\\theta) = - \\frac{1}{T}log(L(\\theta))\\]\n\nbetter to take the gradient with sums\nthe average increases the numerical stability of the gradient."
   },
   {
     "objectID": "slides/week_07.html#neural-networks-brief-overview",
@@ -963,7 +963,7 @@
     "href": "slides/week_07.html#check-your-matrices",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Check your matrices",
-    "text": "Check your matrices\n\n\n\n\n\n\n\n\n  \nPractice with a vocabulary of size 5, a embedding with 3 dimensions, and I want to predict the next word.\n\nStep 1: v_1^5 * W_5^3\nStep 2: w_1^3 * C_3^5\nStep 3: Softmax entire vector"
+    "text": "Check your matrices\n\n\n\n\n\n\n\n\n  \nPractice with a vocabulary of size 5, a embedding with 3 dimensions, and the task is to predict the next word.\n\nStep 1: v_1^5 * W_5^3\nStep 2: w_1^3 * C_3^5\nStep 3: Softmax entire vector"
   },
   {
     "objectID": "slides/week_07.html#word-embeddings-matrices",
@@ -984,7 +984,7 @@
     "href": "slides/week_07.html#training-embeddings",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Training Embeddings",
-    "text": "Training Embeddings\nEmbeddings need quite a lot of text to train: e.g. want to disambiguate meanings from contexts. You can download pre-trained, or get the code and train locally\n\nWord2Vec is trained on the Google News dataset (∼ 100B words, 2013)\nGloVe are trained on different things: Wikipedia\n\n\n\nGigaword (6B words), Common Crawl, Twitter\n\n\n\nfastext from facebook"
+    "text": "Training Embeddings\nEmbeddings need quite a lot of text to train: e.g. want to disambiguate meanings from contexts. You can download pre-trained, or get the code and train locally\n\nWord2Vec is trained on the Google News dataset (∼ 100B words, 2013)\nGloVe are trained on different things: Wikipedia (2014) + Gigaword (6B words), Common Crawl, Twitter. And uses a co-occurence matrix instead of Neural Networks\nfastext from facebook"
   },
   {
     "objectID": "slides/week_07.html#decisions-on-embeddings-rodriguez-and-spirling-2022",
@@ -1475,5 +1475,40 @@
     "title": "Syllabus: PPOL 6801 - Text as Data: Computational Linguistics",
     "section": "Georgetown Policies",
     "text": "Georgetown Policies\n\nDisability\nIf you believe you have a disability, then you should contact the Academic Resource Center (arc@georgetown.edu) for further information. The Center is located in the Leavey Center, Suite 335 (202-687-8354). The Academic Resource Center is the campus office responsible for reviewing documentation provided by students with disabilities and for determining reasonable accommodations in accordance with the Americans with Disabilities Act (ASA) and University policies. For more information, go to http://academicsupport.georgetown.edu/disability/\n\n\nImportant Academic Policies and Academic Integrity\nMcCourt School students are expected to uphold the academic policies set forth by Georgetown University and the Graduate School of Arts and Sciences. Students should therefore familiarize themselves with all the rules, regulations, and procedures relevant to their pursuit of a Graduate School degree. The policies are located at: http://grad.georgetown.edu/academics/policies/\nApplied to this course, while I encourage collaboration on assignments and use of resources like StackOverflow, the problem sets will ask you to list who you worked on the problem set with and cite StackOverflow if it is the direct source of a code snippet.\n\nChatGPT\nIn the last year, the world was inundated with popularization of Large Language Models, particularly the easy use of ChatGPT. I see ChatGPT as Google on steroids, so I assume ChatGPT will be part of your daily work in this course, and it is part of my work as a researcher.\nThat being said, ChatGPT does not replace your training as a data scientist. If you are using ChatGPT instead of learning, I consider you are cheating in the course. And most importantly, you are wasting your time and resources. So that’s our policy for using LLMs models in class:\n\nDo not copy the responses from chatgpt – a lot of them are wrong or will just not run on your computer.\nUse chatgpt as a auxiliary source.\nIf your entire homework comes straight from chatgpt, I will consider it plagiarism.\nIf you use chatgpt, I ask you to mention on your code how chatgpt worked for you.\n\n\n\n\nStatement on Sexual Misconduct\nGeorgetown University and its faculty are committed to supporting survivors and those impacted by sexual misconduct, which includes sexual assault, sexual harassment, relationship violence, and stalking. Georgetown requires faculty members, unless otherwise designated as confidential, to report all disclosures of sexual misconduct to the University Title IX Coordinator or a Deputy Title IX Coordinator. If you disclose an incident of sexual misconduct to a professor in or outside of the classroom (with the exception of disclosures in papers), that faculty member must report the incident to the Title IX Coordinator, or Deputy Title IX Coordinator. The coordinator will, in turn, reach out to the student to provide support, resources, and the option to meet. [Please note that the student is not required to meet with the Title IX coordinator.]. More information about reporting options and resources can be found on the Sexual Misconduct\nWebsite: https://sexualassault.georgetown.edu/resourcecenter\nIf you would prefer to speak to someone confidentially, Georgetown has a number of fully confidential professional resources that can provide support and assistance. These resources include: Health Education Services for Sexual Assault Response and Prevention: confidential email: sarp[at]georgetown.edu\nCounseling and Psychiatric Services (CAPS): 202.687.6985 or after hours, call (833) 960-3006 to reach Fonemed, a telehealth service; individuals may ask for the on-call CAPS clinician\nMore information about reporting options and resources can be found on the Sexual Misconduct Website.\n\n\nProvost’s Policy on Religious Observances\nGeorgetown University promotes respect for all religions. Any student who is unable to attend classes or to participate in any examination, presentation, or assignment on a given day because of the observance of a major religious holiday or related travel shall be excused and provided with the opportunity to make up, without unreasonable burden, any work that has been missed for this reason and shall not in any other way be penalized for the absence or rescheduled work. Students will remain responsible for all assigned work. Students should notify professors in writing at the beginning of the semester of religious observances that conflict with their classes. The Office of the Provost, in consultation with Campus Ministry and the Registrar, will publish, before classes begin for a given term, a list of major religious holidays likely to affect Georgetown students. The Provost and the Main Campus Executive Faculty encourage faculty to accommodate students whose bona fide religious observances in other ways impede normal participation in a course. Students who cannot be accommodated should discuss the matter with an advising dean."
+  },
+  {
+    "objectID": "slides/week_07.html#sparse-vs-dense-vectors",
+    "href": "slides/week_07.html#sparse-vs-dense-vectors",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Sparse vs Dense Vectors",
+    "text": "Sparse vs Dense Vectors\nOne-hot encoding / Sparse Representation:\n\ncat = \\(\\begin{bmatrix} 0,0, 0, 0, 0, 0, 1, 0, 0 \\end{bmatrix}\\)\ndog = \\(\\begin{bmatrix} 0,0, 0, 0, 0, 1, 0, 0, 0 \\end{bmatrix}\\)\n\nWord Embedding / Dense Representation:\n\ncat = \\(\\begin{bmatrix} 0.25, -0.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \\end{bmatrix}\\)\ndog = \\(\\begin{bmatrix} 0.25, 1.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "slides/week_07.html#word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013",
+    "href": "slides/week_07.html#word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)",
+    "text": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)\nCore Idea:\n\n\nWe have a large corpus (“body”) of text: a long list of words\nEvery word in a fixed vocabulary is represented by a vector\nGo through each position t in the text, which has a center word \\(c\\) and context (“outside”) words \\(t\\)\nUse the similarity of the word vectors for \\(c\\) and \\(t\\) to calculate the probability of o given c (or vice versa)\nKeep adjusting the word vectors to maximize this probability\n\nNeural Network + Gradient Descent"
+  },
+  {
+    "objectID": "slides/week_07.html#softmax-transformation",
+    "href": "slides/week_07.html#softmax-transformation",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Softmax Transformation",
+    "text": "Softmax Transformation\n\\[P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\]\n\nDot product compares similarity between vectors\nnumerator: center vs target vectors\nexponentiation makes everything positive\nDenominator: normalize over entire vocabulary to give probability distribution\nWhat is the meaning of softmax?\n\nmax: assign high values to be 1\nsoft: still assigns some probability to smaller values\ngeneralization of the logit ~ multinomial logistic function."
+  },
+  {
+    "objectID": "slides/week_07.html#vector-space-model",
+    "href": "slides/week_07.html#vector-space-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Vector Space Model",
+    "text": "Vector Space Model\nIn the vector space model, we learned:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space.\n\nEmbedded in this model, there is the idea we represent words as a one-hot encoding.\n\n“cat”: [0,0, 0, 0, 0, 0, 1, 0, ….., V] , on a V dimensional vector\n“dog”: [0,0, 0, 0, 0, 0, 0, 1, …., V], on a V dimensional vector\n\nWhat these vectors look like?\n\nreally sparse\nvectors are orthogonal\nno natural notion of similarity"
+  },
+  {
+    "objectID": "slides/week_07.html#pametrizing-pw_tw_t-1",
+    "href": "slides/week_07.html#pametrizing-pw_tw_t-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Pametrizing \\(P(w_t|w_{t-1})\\)",
+    "text": "Pametrizing \\(P(w_t|w_{t-1})\\)\n\n\\(P(w_t|w_{t-1})\\) must be condition on how similar these words are.\n\nExactly the same intuition behind placing documents in the vector space model.\nNow words are vectors!\n\\(P(w_t|w_{t-1}) = u_c \\cdot u_t\\)\n\n\\(u_c \\cdot u_t\\)\ndot product between vectors\nmeasures similarity using vector projection\n\\(u_c\\): center vector\n\\(u_t\\): target vectors\n\n\n\\(u_c \\cdot u_t\\) is also not a proper probability distribution: Logit on them!\n\n\\[P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\]"
   }
 ]
