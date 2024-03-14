@@ -146,7 +146,6 @@ Or one of the three below:
 
     -   Eshima, Shusei, Kosuke Imai, and Tomoya Sasaki. "Keyword‐Assisted Topic Models." American Journal of Political Science (2020).
 
-
 ### Week 8: Word Embeddings: What they are and how to estimate?
 
 **Topics:** What are word-embeddings? When and how can we use them? What? Topic models again? Is this still a bag of words?

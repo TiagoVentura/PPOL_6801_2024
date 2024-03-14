@@ -24,8 +24,8 @@ website:
         text: Schedule
       #- href: problemset.qmd
       #  text: Problem Sets
-      # - href: finalproject.qmd
-      #  text: Final Project
+      - href: finalproject.qmd
+        text: Final Project
       - section: "Materials"
         contents: 
           - href: weeks/week-01.qmd

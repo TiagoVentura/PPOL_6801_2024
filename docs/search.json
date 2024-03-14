@@ -641,7 +641,7 @@
     "href": "weeks/week-08.html",
     "title": "Week 08",
     "section": "",
-    "text": "Topics\n\nWhat are word-embeddings?\nWhen and how can we use them?\nWhat? Topic models again?\nIs this still a bag of words?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 8.\n[SLP] Chapter 6, “Vector Semantics and Embeddings.”\nJay Alanmar, The Illustrated Word2vec\nSpirling and Rodriguez, Word embedding: What works, what doesn’t, and how to tell the difference for applied research.\n\nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
+    "text": "Topics\n\nWhat are word-embeddings?\nWhen and how can we use them?\nWhat? Topic models again?\nIs this still a bag of words?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 8.\n[SLP] Chapter 6, “Vector Semantics and Embeddings.”\nJay Alanmar, The Illustrated Word2vec\nSpirling and Rodriguez, Word embedding: What works, what doesn’t, and how to tell the difference for applied research.\n\n\n\nSlides\n\nWeek 9 - Word Embeddings"
   },
   {
     "objectID": "weeks/week-09.html",
@@ -1510,5 +1510,40 @@
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Pametrizing \\(P(w_t|w_{t-1})\\)",
     "text": "Pametrizing \\(P(w_t|w_{t-1})\\)\n\n\\(P(w_t|w_{t-1})\\) must be condition on how similar these words are.\n\nExactly the same intuition behind placing documents in the vector space model.\nNow words are vectors!\n\\(P(w_t|w_{t-1}) = u_c \\cdot u_t\\)\n\n\\(u_c \\cdot u_t\\)\ndot product between vectors\nmeasures similarity using vector projection\n\\(u_c\\): center vector\n\\(u_t\\): target vectors\n\n\n\\(u_c \\cdot u_t\\) is also not a proper probability distribution: Logit on them!\n\n\\[P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\]"
+  },
+  {
+    "objectID": "finalproject.html",
+    "href": "finalproject.html",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "",
+    "text": "Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments.\nIn this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings.\nFor this reason, a considerable part of your grade (40%) will come from a an independent data science project, applying concepts learned throughout the course.\nThe project is composed of three parts:\n\na 2 page project proposal: (which should be discussed and approved by me)\nan in-class presentation,\nA 10-page project report.\n\nDue dates and breakdowns for the project are as follows:\n\n\n\n\n\n\n\n\n\nRequirement\nDue\nLength\nPercentage\n\n\n\n\nProject Proposal\nEOD Friday Week 9\n2 pages\n5%\n\n\nPresentation\nWeek 14\n10-15 minutes\n10%\n\n\nProject Report\nWednesday Week 15\n10 pages\n25%"
+  },
+  {
+    "objectID": "finalproject.html#general-instructions",
+    "href": "finalproject.html#general-instructions",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "",
+    "text": "Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments.\nIn this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings.\nFor this reason, a considerable part of your grade (40%) will come from a an independent data science project, applying concepts learned throughout the course.\nThe project is composed of three parts:\n\na 2 page project proposal: (which should be discussed and approved by me)\nan in-class presentation,\nA 10-page project report.\n\nDue dates and breakdowns for the project are as follows:\n\n\n\n\n\n\n\n\n\nRequirement\nDue\nLength\nPercentage\n\n\n\n\nProject Proposal\nEOD Friday Week 9\n2 pages\n5%\n\n\nPresentation\nWeek 14\n10-15 minutes\n10%\n\n\nProject Report\nWednesday Week 15\n10 pages\n25%"
+  },
+  {
+    "objectID": "finalproject.html#all-components-of-the-project",
+    "href": "finalproject.html#all-components-of-the-project",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "All components of the project:",
+    "text": "All components of the project:\n\nProject Proposal\nThe project proposal asks that you sketch out a general 2 page (single-spaced; 12pt font) project proposal. The proposal should offer the following information:\n\nA high-level statement of the problem you intend to address or the analysis you aim to generate\nThe data source(s) you intend to use\nYour plan to obtain that data\nThe text as data method you plan to use.\nA definition for what “success” means with respect to your project.\n\nIn your words, what would a successful project look like? What is the results you want to show? What would be a surprising finding for you?\n\n\n\n\nPresentation\nYou will have the opportunity to present you final project in class. As a Data scientists, your presentation skills are as important as your data skills. You should prepare a 10-12 minutes presentation. It should cover:\n\nMotivation or problem statement\nData collection\nMethods\nResults\nLessons learned and next steps\n\n\n\nProject Report\nThe report is a complete description of the project’s analysis and results. The report should be a 10 page in length (single-spaced; 12pt font) and cover the points presented below. Citations and Front page will not be considered in the 10 page.\nBelow I’ve outlined points that one should aim to discuss in each section. Note that paper should read as a cohesive report:\n\nIntroduction\n\nsummarize your motivation, present some previous work related to your question\npresent your research question\nsummarize your report\n\nData and Methods\n\nWhere does the data come from? – What is the unit of observation? – What are the variables of interest? – What steps did you take to wrangle the data?\n\nAnalysis\n\nDescribe the methods/tools you explored in your project.\n\nResults\n\nGive a detailed summary of your results. – Present your results clearly and concisely. – Please use visualizations instead of tables whenever possible.\n\nDiscussion\n\nRe-introduce your main results\nState your contributions\nWhere do you want take this project next?\n\n\nIMPORTANT: There is not literature review section. You can use the literature to motivate your work. But you don’t need to have a full section on literature review. Read for example, papers at main general interest journals, like here, here and here. All these super accomplished articles do not have long literature reviews."
+  },
+  {
+    "objectID": "finalproject.html#submission-of-the-final-project",
+    "href": "finalproject.html#submission-of-the-final-project",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "Submission of the Final Project",
+    "text": "Submission of the Final Project\nThe end product should be a github repository that contains:\n\nThe raw source data you used for the project. If the data is too large for GitHub, talk with me, and we will find a solution\nYour proposal\nA README for the repository that, for each file, describes in detail:\n\nInputs to the file: e.g., raw data; a file containing credentials needed to access an API\nWhat the file does: describe major transformations.\nOutput: if the file produces any outputs (e.g., a cleaned dataset; a figure or graph).\nA set of code files that transform that data into a form usable to answer the question you have posed in your descriptive research proposal.\nYour final 10 pages report (I will share a template later in the semester)\n\n\nOf course, no commits after the due date will be considered in the assessment."
+  },
+  {
+    "objectID": "finalproject.html#templates-for-writing",
+    "href": "finalproject.html#templates-for-writing",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "Templates for writing",
+    "text": "Templates for writing\nHere, I suggest you with a few templates for writing your reports. In my experience, writing data science reports using LaTeX is an gain in productivity in the long-run.\nIf you want to experiment with LaTeX via overleaf, you should use this template from PNAS (Just remember to switch to a one-column template):\n\nPNAS Template\n\nYou can also use the Journal of Quantitative Description templates in Word Doc or LaTeX:\n\nJQD Word\nJQD LaTeX\n\nOr, you can use templates from Quarto and write you entire project using quarto or markdown files"
   }
 ]
