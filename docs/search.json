@@ -648,7 +648,7 @@
     "href": "weeks/week-09.html",
     "title": "Week 09",
     "section": "",
-    "text": "Topics\n\nApplications of Word Embeddings to social science problems\n\n\n\nReadings\nRequired Readings\n-  Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.\n\n- Gennaro, Gloria, and Elliott Ash. \"Emotion and reason in political language.\" The Economic Journal 132, no. 643 (2022): 1037-1059.\n\n- Rheault, Ludovic, and Christopher Cochrane. \"Word embeddings for the analysis of ideological placement in parliamentary corpora.\" Political Analysis 28, no. 1 (2020): 112-133.\n\n- Austin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.\n\n- Garg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.\nCoding Materials\n\nTBD\n\n\n\nProblem Set 3\n\nTBD\n\n\n\nSlides\n\nTBD"
+    "text": "Topics\n\nApplications of Word Embeddings to social science problems\n\n\n\nReadings\nRequired Readings\n\nRodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.\nGennaro, Gloria, and Elliott Ash. “Emotion and reason in political language.” The Economic Journal 132, no. 643 (2022): 1037-1059.\nRheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.\nAustin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.\nGarg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.\n\nCoding Materials\n\n Week 9 - Word Embeddings\n\n\n\nSlides\n\nWeek 9 - Word Embeddings II\n\n\n\nProblem Set 2\n\nhttps://classroom.github.com/a/WcrFfilI"
   },
   {
     "objectID": "weeks/week-10.html",
@@ -850,8 +850,8 @@
     "objectID": "slides/week_07.html#survey-responses",
     "href": "slides/week_07.html#survey-responses",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Survey Responses",
-    "text": "Survey Responses\nThank you so much for responding to the survey! Here are the most important feedback I receive:\n\nmore structured walk throughs of the code\nIf you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA\nI hope we can have a few discussion questions along with weekly readings\nIncluding discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?\n\nStop Doing:\n\nlong alone time with code\nSometimes we spend a bit too long on the recap part"
+    "section": "",
+    "text": "Thank you so much for responding to the survey! Here are the most important feedback I receive:\n\nmore structured walk throughs of the code\nIf you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA\nI hope we can have a few discussion questions along with weekly readings\nIncluding discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?\n\nStop Doing:\n\nlong alone time with code\nSometimes we spend a bit too long on the recap part"
   },
   {
     "objectID": "slides/week_07.html#plans-for-today",
@@ -886,7 +886,7 @@
     "href": "slides/week_07.html#with-colors-and-real-word-vectors",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "With colors and real word vectors",
-    "text": "With colors and real word vectors\n\nSource: Illustrated Word2Vec"
+    "text": "With colors and real word vectors\n\n\n\n\n\nSource: Illustrated Word2Vec"
   },
   {
     "objectID": "slides/week_07.html#why-word-embeddings",
@@ -900,7 +900,7 @@
     "href": "slides/week_07.html#estimating-word-embeddings",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Estimating Word Embeddings",
-    "text": "Estimating Word Embeddings\nApproches:\n\n\nCount-based methods: look at how often words co-occur with neighbors.\n\nuse this matrix, and some some factorization to retrieve vectors for the words\nGloVE\nfast, not computationally intensive, but not the best representation\nwe will see code doing this next week\n\n\n\n\n\nPredictive Methods: rely on the idea of self-supervision\n\nuse unlabeled data and use words to predict sequence\nthe famous word2vec.\n\nSkipgram: predicts context words\nContinuous Bag of Words: predict center word"
+    "text": "Estimating Word Embeddings\n\nApproches:\n\n\nCount-based methods: look at how often words co-occur with neighbors.\n\nuse this matrix, and some some factorization to retrieve vectors for the words\nGloVE\nfast, not computationally intensive, but not the best representation\nwe will see code doing this next week\n\n\n\n\n\nPredictive Methods: rely on the idea of self-supervision\n\nuse unlabeled data and use words to predict sequence\nthe famous word2vec.\n\nSkipgram: predicts context words\nContinuous Bag of Words: predict center word"
   },
   {
     "objectID": "slides/week_07.html#word2vec",
@@ -914,21 +914,21 @@
     "href": "slides/week_07.html#skigram-example-self-supervision",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Skigram Example: Self-Supervision",
-    "text": "Skigram Example: Self-Supervision\n\nSource: CS224N"
+    "text": "Skigram Example: Self-Supervision\n\n\n\n\n\nSource: CS224N"
   },
   {
     "objectID": "slides/week_07.html#skigram-example-self-supervision-1",
     "href": "slides/week_07.html#skigram-example-self-supervision-1",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Skigram Example: Self-Supervision",
-    "text": "Skigram Example: Self-Supervision\n\nSource: CS224N"
+    "text": "Skigram Example: Self-Supervision\n\n\n\n\n\nSource: CS224N"
   },
   {
     "objectID": "slides/week_07.html#encoding-similarity",
     "href": "slides/week_07.html#encoding-similarity",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Encoding Similarity",
-    "text": "Encoding Similarity\nTo estimate the model, we first need to formalize the probability function we want to estimate.\n\n\nThis is similar to a logistic regression\n\n\n\nIn logistic regression: probability of a event occur given data X and parameters \\(\\beta\\).:\n\n$ P(y=1| X, ) = X * \\(\\beta\\) $\n\\(X*\\beta\\) is not a proper probability function, so we make it to proper probability by using a logit transformation.\n\\(P(y=1|X, \\beta ) = \\frac{exp(XB)}{1 + exp(XB)}\\)\nThrow this transformation inside of a bernouilli distribution, get the likelihood function, and find the parameters using MLE."
+    "text": "Encoding Similarity\nTo estimate the model, we first need to formalize the probability function we want to estimate.\n\n\nThis is similar to a logistic regression\n\n\n\n\nIn logistic regression: probability of a event occur given data X and parameters \\(\\beta\\).:\n\n$ P(y=1| X, ) = X * \\(\\beta\\) $\n\\(X*\\beta\\) is not a proper probability function, so we make it to proper probability by using a logit transformation.\n\\(P(y=1|X, \\beta ) = \\frac{exp(XB)}{1 + exp(XB)}\\)\nThrow this transformation inside of a bernouilli distribution, get the likelihood function, and find the parameters using MLE."
   },
   {
     "objectID": "slides/week_07.html#letsee-this-again",
@@ -942,7 +942,7 @@
     "href": "slides/week_07.html#word2vec-objective-function",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Word2Vec: Objective Function",
-    "text": "Word2Vec: Objective Function\n\nFor each position \\(t\\), predict context words within a window of fixed size \\(m\\), given center word \\(w\\).\nLikelihood Function\n\\[ L(\\theta) = \\prod_{t=1}^{T} \\prod_{\\substack{-m&lt;= j&lt;=m \\\\ j \\neq 0}}^{m} P(w_{t+j} | w_t; \\theta) \\]\n\nAssuming independence, this means you multiplying the probability of every target for every center word in your dictionary.\nThis likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)\n\n\n\n\nObjective Function: Negative log likelihood\n\\[J(\\theta) = - \\frac{1}{T}log(L(\\theta))\\]\n\nbetter to take the gradient with sums\nthe average increases the numerical stability of the gradient."
+    "text": "Word2Vec: Objective Function\n\nFor each position \\(t\\), predict context words within a window of fixed size \\(m\\), given center word \\(w\\).\n\nLikelihood Function\n\\[ L(\\theta) = \\prod_{t=1}^{T} \\prod_{\\substack{-m&lt;= j&lt;=m \\\\ j \\neq 0}}^{m} P(w_{t+j} | w_t; \\theta) \\]\n\nAssuming independence, this means you multiplying the probability of every target for every center word in your dictionary.\nThis likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)\n\n\n\n\n\nObjective Function: Negative log likelihood\n\\[J(\\theta) = - \\frac{1}{T}log(L(\\theta))\\]\n\nbetter to take the gradient with sums\nthe average increases the numerical stability of the gradient."
   },
   {
     "objectID": "slides/week_07.html#neural-networks-brief-overview",
@@ -977,7 +977,7 @@
     "href": "slides/week_07.html#applications",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Applications:",
-    "text": "Applications:\nOnce we’ve optimized, we can extract the word specific vectors from W as embedding vectors. These real valued vectors can be used for analogies and related tasks\n\nWe will see several applications next week. Most important:\n\nAlternative to bag-of-words feature representation in supervised learning tasks\nSupport for other automated text analysis tasks: expand dictionaries\nUnderstanding word meaning: variation over time, bias, variation by groups\nas a scaling method (in two weeks)"
+    "text": "Applications:\nOnce we’ve optimized, we can extract the word specific vectors from W as embedding vectors. These real valued vectors can be used for analogies and related tasks\n\n\n\n\n\n\n\n\n\nWe will see several applications next week. Most important:\n\nAlternative to bag-of-words feature representation in supervised learning tasks\nSupport for other automated text analysis tasks: expand dictionaries\nUnderstanding word meaning: variation over time, bias, variation by groups\nas a scaling method (in two weeks)"
   },
   {
     "objectID": "slides/week_07.html#training-embeddings",
@@ -998,7 +998,7 @@
     "href": "slides/week_07.html#findings",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Findings",
-    "text": "Findings\n\n\npopular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.\nGloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings\nLarger window size and embeddings are often preferred."
+    "text": "Findings\n\n\n\n\n\n\n\n\n\n\npopular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.\nGloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings\nLarger window size and embeddings are often preferred."
   },
   {
     "objectID": "slides/week_04.html#housekeeping",
@@ -1488,7 +1488,7 @@
     "href": "slides/week_07.html#word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)",
-    "text": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)\nCore Idea:\n\n\nWe have a large corpus (“body”) of text: a long list of words\nEvery word in a fixed vocabulary is represented by a vector\nGo through each position t in the text, which has a center word \\(c\\) and context (“outside”) words \\(t\\)\nUse the similarity of the word vectors for \\(c\\) and \\(t\\) to calculate the probability of o given c (or vice versa)\nKeep adjusting the word vectors to maximize this probability\n\nNeural Network + Gradient Descent"
+    "text": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)\n\nCore Idea:\n\n\nWe have a large corpus (“body”) of text: a long list of words\nEvery word in a fixed vocabulary is represented by a vector\nGo through each position t in the text, which has a center word \\(c\\) and context (“outside”) words \\(t\\)\nUse the similarity of the word vectors for \\(c\\) and \\(t\\) to calculate the probability of o given c (or vice versa)\nKeep adjusting the word vectors to maximize this probability\n\nNeural Network + Gradient Descent"
   },
   {
     "objectID": "slides/week_07.html#softmax-transformation",
@@ -1545,5 +1545,166 @@
     "title": "Instructions for PPOL 6801 - Final Project",
     "section": "Templates for writing",
     "text": "Templates for writing\nHere, I suggest you with a few templates for writing your reports. In my experience, writing data science reports using LaTeX is an gain in productivity in the long-run.\nIf you want to experiment with LaTeX via overleaf, you should use this template from PNAS (Just remember to switch to a one-column template):\n\nPNAS Template\n\nYou can also use the Journal of Quantitative Description templates in Word Doc or LaTeX:\n\nJQD Word\nJQD LaTeX\n\nOr, you can use templates from Quarto and write you entire project using quarto or markdown files"
+  },
+  {
+    "objectID": "slides/week_09.html#plans-for-today",
+    "href": "slides/week_09.html#plans-for-today",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Plans for Today:",
+    "text": "Plans for Today:\n\nA quick quizz (as a review exercise) about Word Embeddings\nText as Data applications using Word Embeddings\nCoding\nProblem set 2!"
+  },
+  {
+    "objectID": "slides/week_09.html#word-embeddings-quiz",
+    "href": "slides/week_09.html#word-embeddings-quiz",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Word Embeddings Quiz",
+    "text": "Word Embeddings Quiz\n\n\nExplain these three concepts: Self-Supervision, Distributional Hypothesis, Dense Representation.\nPut these three concepts together to explain how word vectors can capture meaning of words.\nWhat are the two main strategies to estimate word embeddings? One is named Glove, and the other is named Word2Vec\nAre word embeddings still a bag-of-word representation model?\nAre word2vec algorithms deep learning?\nAre word2vec algorithms unsupervised or supervised learning?"
+  },
+  {
+    "objectID": "slides/week_09.html#decisions-when-using-embeddings-rodriguez-and-spirling-2022",
+    "href": "slides/week_09.html#decisions-when-using-embeddings-rodriguez-and-spirling-2022",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Decisions when using embeddings, Rodriguez and Spirling, 2022",
+    "text": "Decisions when using embeddings, Rodriguez and Spirling, 2022\n\n\n\n\n\n\n\n\n \nWhen using/training embeddings, we face four key decisions:\n\nWindow size\nNumber of dimensions for the embedding matrix\nPre-trained versus locally fit variants\nWhich algorithm to use?"
+  },
+  {
+    "objectID": "slides/week_09.html#findings",
+    "href": "slides/week_09.html#findings",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Findings",
+    "text": "Findings\n\n\npopular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.\nGloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings\nLarger window size and embeddings are often preferred."
+  },
+  {
+    "objectID": "slides/week_09.html#applications-1",
+    "href": "slides/week_09.html#applications-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Applications",
+    "text": "Applications\nLet’s discuss now several applications of embeddings on social science papers. These paper show:\n\nHow to use embeddings to track semantic changes over time\nHow to use embeddings to measure emotion in political language.\nHow to use embeddings to measure gender and ethnic stereotypes\nAnd a favorite of political scientists, how to use embeddings to measure ideology."
+  },
+  {
+    "objectID": "slides/week_09.html#how-will-we-make-this-discussion-fun",
+    "href": "slides/week_09.html#how-will-we-make-this-discussion-fun",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "How will we make this discussion fun?",
+    "text": "How will we make this discussion fun?\n\nI: introduce the paper and the main goals\nYou: will explain to me how the author use the word embeddings to do so."
+  },
+  {
+    "objectID": "slides/week_09.html#capturing-cultural-dimensions-with-embeddings",
+    "href": "slides/week_09.html#capturing-cultural-dimensions-with-embeddings",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Capturing cultural dimensions with embeddings",
+    "text": "Capturing cultural dimensions with embeddings\n\nAustin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.\n\n\nWord Embeddings can be use to capture cultural dimensions\nDimensions of word embedding vector space models closely correspond to meaningful “cultural dimensions,” such as rich-poor, moral-immoral, and masculine-feminine.\na word vector’s position on these dimensions reflects the word’s respective cultural associations"
+  },
+  {
+    "objectID": "slides/week_09.html#your-turn-how",
+    "href": "slides/week_09.html#your-turn-how",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Your turn: How?",
+    "text": "Your turn: How?\n\nHow are the cultural dimensions built?\nHow associations between words and dimensions are calculated?\nHow are the result validated?"
+  },
+  {
+    "objectID": "slides/week_09.html#results",
+    "href": "slides/week_09.html#results",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "slides/week_09.html#results-1",
+    "href": "slides/week_09.html#results-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "slides/week_09.html#semantic-changes-over-time",
+    "href": "slides/week_09.html#semantic-changes-over-time",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Semantic changes over time",
+    "text": "Semantic changes over time\n\nRodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.\n\n\nWord Vectors allow us to capture semantic meaning\nInteresting social science questions hinge on the recognition that meaning changes over time\nHow can we properly use word to vectors to track changes over time?\nThree challenges:\n\nArbitrary Cut Points\nLanguage Instability (same concept != words)\nSpatial Noncomparability (latent spaces are not constants)\n\nSolutions:\n\nnaive time series model (just cut)\noverlapping time series model (just cut and add a t-1)\nchronologically trained model (initialize with global parameters)\naligned time series method (post-modelling adjustments)"
+  },
+  {
+    "objectID": "slides/week_09.html#results-2",
+    "href": "slides/week_09.html#results-2",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "slides/week_09.html#your-turn-how-1",
+    "href": "slides/week_09.html#your-turn-how-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Your turn: How?",
+    "text": "Your turn: How?\n\nHow does she uses word2vec?\nWhat is there pipeline to build a golden set?\nWhat is her outcome measure and how she builds it?"
+  },
+  {
+    "objectID": "slides/week_09.html#ideological-scaling",
+    "href": "slides/week_09.html#ideological-scaling",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Ideological Scaling",
+    "text": "Ideological Scaling\n\nRheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.\n\n\nCan word vectors be used to produce scaling estimates of ideological placement on political text?\n\nYes, and word vectors are even better\n\nIt captures semantics\nNo need of training data (self-supervision)"
+  },
+  {
+    "objectID": "slides/week_09.html#your-turn-how-with-a-little-help.",
+    "href": "slides/week_09.html#your-turn-how-with-a-little-help.",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Your turn: How? With a little help.",
+    "text": "Your turn: How? With a little help.\n\n\n\n\n\n\n\n\n\nOther than the a vector for the covariate, what are the other things this model gives you?\nCan you get these vectors without having to re-estimate the model?"
+  },
+  {
+    "objectID": "slides/week_09.html#results-3",
+    "href": "slides/week_09.html#results-3",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "slides/week_09.html#measuring-emotion",
+    "href": "slides/week_09.html#measuring-emotion",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Measuring Emotion",
+    "text": "Measuring Emotion\n\nGennaro, Gloria, and Elliott Ash. “Emotion and reason in political language.” The Economic Journal 132, no. 643 (2022): 1037-1059."
+  },
+  {
+    "objectID": "slides/week_09.html#gender-and-ethnic-stereotypes",
+    "href": "slides/week_09.html#gender-and-ethnic-stereotypes",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Gender and ethnic stereotypes",
+    "text": "Gender and ethnic stereotypes\n\nGarg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.\n\n\nWord Embeddings are trained in huge volumes of data\nTraining data contain stereotypes, for example, in gender and ethnic dimensions.\nHow can we use word vectors to understand these stereotypes?"
+  },
+  {
+    "objectID": "slides/week_09.html#your-turn-how-2",
+    "href": "slides/week_09.html#your-turn-how-2",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Your turn: how?",
+    "text": "Your turn: how?\n\nWhat are the measures of biases proposed by the author?\nWhat the input here? And the variation over time?"
+  },
+  {
+    "objectID": "slides/week_09.html#results-4",
+    "href": "slides/week_09.html#results-4",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "slides/week_09.html#you-turn-how",
+    "href": "slides/week_09.html#you-turn-how",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "You turn: How?",
+    "text": "You turn: How?\n\nWhat are the seed words for emotion and cognition?\nHow are word vectors for speech aggregated?\nHow are word vectors for seed words aggregated?\nHow do the authors measure emotionality in text?"
+  },
+  {
+    "objectID": "slides/week_09.html#problem-set-2",
+    "href": "slides/week_09.html#problem-set-2",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Problem set 2",
+    "text": "Problem set 2\nClick here: https://classroom.github.com/a/WcrFfilI\n\n\nText-as-Data"
+  },
+  {
+    "objectID": "slides/week_07.html",
+    "href": "slides/week_07.html",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "Thank you so much for responding to the survey! Here are the most important feedback I receive:\n\nmore structured walk throughs of the code\nIf you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA\nI hope we can have a few discussion questions along with weekly readings\nIncluding discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?\n\nStop Doing:\n\nlong alone time with code\nSometimes we spend a bit too long on the recap part"
   }
 ]

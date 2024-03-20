@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 09</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-01.html">Materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-09.html">Week 9: Word Embeddings II</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -118,6 +118,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../finalproject.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -171,6 +177,18 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Week 7: Unsupervised Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8: Word Embeddings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-09.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 9: Word Embeddings II</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -185,8 +203,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
   <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
-  <li><a href="#problem-set-3" id="toc-problem-set-3" class="nav-link" data-scroll-target="#problem-set-3">Problem Set 3</a></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#problem-set-2" id="toc-problem-set-2" class="nav-link" data-scroll-target="#problem-set-2">Problem Set 2</a></li>
   </ul>
 </nav>
     </div>
@@ -232,30 +250,28 @@ ul.task-list li input[type="checkbox"] {
 <section id="readings" class="level1">
 <h1>Readings</h1>
 <p><strong>Required Readings</strong></p>
-<pre><code>-  Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.
-
-- Gennaro, Gloria, and Elliott Ash. "Emotion and reason in political language." The Economic Journal 132, no. 643 (2022): 1037-1059.
-
-- Rheault, Ludovic, and Christopher Cochrane. "Word embeddings for the analysis of ideological placement in parliamentary corpora." Political Analysis 28, no. 1 (2020): 112-133.
-
-- Austin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.
-
-- Garg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.</code></pre>
+<ul>
+<li><p>Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.</p></li>
+<li><p>Gennaro, Gloria, and Elliott Ash. “Emotion and reason in political language.” The Economic Journal 132, no. 643 (2022): 1037-1059.</p></li>
+<li><p>Rheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.</p></li>
+<li><p>Austin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.</p></li>
+<li><p>Garg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.</p></li>
+</ul>
 <p><strong>Coding Materials</strong></p>
 <ul>
-<li><a href="">TBD</a></li>
-</ul>
-</section>
-<section id="problem-set-3" class="level1">
-<h1>Problem Set 3</h1>
-<ul>
-<li><a href="">TBD</a></li>
+<li><a href="../code/week7_word_embeddings.R" download=""> Week 9 - Word Embeddings</a></li>
 </ul>
 </section>
 <section id="slides" class="level1">
 <h1>Slides</h1>
 <ul>
-<li><a href="">TBD</a></li>
+<li><a href="../slides/week_09.html">Week 9 - Word Embeddings II</a></li>
+</ul>
+</section>
+<section id="problem-set-2" class="level1">
+<h1>Problem Set 2</h1>
+<ul>
+<li>https://classroom.github.com/a/WcrFfilI</li>
 </ul>
 
 
