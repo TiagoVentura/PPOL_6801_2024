@@ -37,6 +37,7 @@ library(widyr) # for reshaping the text data
 library(irlba) # for svd
 library(here)
 library(quanteda)
+
 # Data
 ## As in Emil Hvitfeldt and Julia Silge, we will use data from 
 ## United States Consumer Financial Protection Bureau (CFPB) about Complains on financial products and services. 
