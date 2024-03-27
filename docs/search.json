@@ -427,657 +427,6 @@
     "text": "Transformers"
   },
   {
-    "objectID": "slides/week_07.html#survey-responses",
-    "href": "slides/week_07.html#survey-responses",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Survey Responses",
-    "text": "Survey Responses\nThank you so much for responding to the survey! Here are the most important feedback I receive:\n\nmore structured walk throughs of the code\nIf you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA\nI hope we can have a few discussion questions along with weekly readings\nIncluding discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?\n\nStop Doing:\n\nlong alone time with code\nSometimes we spend a bit too long on the recap part"
-  },
-  {
-    "objectID": "slides/week_07.html#plans-for-today",
-    "href": "slides/week_07.html#plans-for-today",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Plans for Today:",
-    "text": "Plans for Today:\n\nLive coding from last class on topic models\nWord Embeddings\n\nSemantics, Distributional Hypothesis, From Sparse to Dense Vectors\nWord2Vec Algorithm\n\nMathematical Model\nEstimate with Neural Networks\n\n\nNext week:\n\nStart with coding to work with wordembeddings\n\nEstimate from co-occurence matrices\nWorking with pre-trained models\n\nDiscuss applications to social science"
-  },
-  {
-    "objectID": "slides/week_07.html#vector-space-model",
-    "href": "slides/week_07.html#vector-space-model",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Vector Space Model",
-    "text": "Vector Space Model\nIn the vector space model, we learned:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space.\n\nEmbedded in this model, there is the idea we represent words as a one-hot encoding.\n\n“cat”: [0,0, 0, 0, 0, 0, 1, 0, ….., V] , on a V dimensional vector\n“dog”: [0,0, 0, 0, 0, 0, 0, 1, …., V], on a V dimensional vector\n\nWhat these vectors look like?\n\nreally sparse\nvectors are orthogonal\nno natural notion of similarity"
-  },
-  {
-    "objectID": "slides/week_07.html#distributional-semantics",
-    "href": "slides/week_07.html#distributional-semantics",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Distributional Semantics",
-    "text": "Distributional Semantics\n\n“you shall know a word by the company it keeps.” J. R. Firth 1957\n\nDistributional semantics: words that are used in the same contexts tend to be similar in their meaning.\n\n\nHow can we use this insight to build a word representation?\n\nMove from sparse representation to dense representation\nRepresent words as vectors of numbers with high number of dimensions\nEach feature on this vectors embeds some information from the word (gender? noun? sentiment? stance?)\nLearn this representation from the unlabeled data."
-  },
-  {
-    "objectID": "slides/week_07.html#sparse-vs-dense-vectors",
-    "href": "slides/week_07.html#sparse-vs-dense-vectors",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Sparse vs Dense Vectors",
-    "text": "Sparse vs Dense Vectors\nOne-hot encoding / Sparse Representation:\n\ncat = \\(\\begin{bmatrix} 0,0, 0, 0, 0, 0, 1, 0, 0 \\end{bmatrix}\\)\ndog = \\(\\begin{bmatrix} 0,0, 0, 0, 0, 1, 0, 0, 0 \\end{bmatrix}\\)\n\nWord Embedding / Dense Representation:\n\ncat = \\(\\begin{bmatrix} 0.25, -0.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \\end{bmatrix}\\)\ndog = \\(\\begin{bmatrix} 0.25, 1.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \\end{bmatrix}\\)"
-  },
-  {
-    "objectID": "slides/week_07.html#with-colors-and-real-word-vectors",
-    "href": "slides/week_07.html#with-colors-and-real-word-vectors",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "With colors and real word vectors",
-    "text": "With colors and real word vectors\n\nSource: Illustrated Word2Vec"
-  },
-  {
-    "objectID": "slides/week_07.html#why-word-embeddings",
-    "href": "slides/week_07.html#why-word-embeddings",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Why Word Embeddings?",
-    "text": "Why Word Embeddings?\nEncoding similarity: vectors are not ortogonal anymore!\nAutomatic Generalization: learn about one word allow us to automatically learn about related words\nEncodes Meaning: by learning the context, I can learn what a word means.\nAs a consequence:\n\nWord Embeddings improves several NLP/Text-as-Data Tasks.\nAllows to deal with unseen words.\nForm the core idea of state-of-the-art models, such as LLMs."
-  },
-  {
-    "objectID": "slides/week_07.html#estimating-word-embeddings",
-    "href": "slides/week_07.html#estimating-word-embeddings",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Estimating Word Embeddings",
-    "text": "Estimating Word Embeddings\nApproches:\n\n\nCount-based methods: look at how often words co-occur with neighbors.\n\nuse this matrix, and some some factorization to retrieve vectors for the words\nGloVE\nfast, not computationally intensive, but not the best representation\nwe will see code doing this next week\n\n\n\n\n\nPredictive Methods: rely on the idea of self-supervision\n\nuse unlabeled data and use words to predict sequence\nthe famous word2vec.\n\nSkipgram: predicts context words\nContinuous Bag of Words: predict center word"
-  },
-  {
-    "objectID": "slides/week_07.html#word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013",
-    "href": "slides/week_07.html#word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)",
-    "text": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)\nCore Idea:\n\n\nWe have a large corpus (“body”) of text: a long list of words\nEvery word in a fixed vocabulary is represented by a vector\nGo through each position t in the text, which has a center word \\(c\\) and context (“outside”) words \\(t\\)\nUse the similarity of the word vectors for \\(c\\) and \\(t\\) to calculate the probability of o given c (or vice versa)\nKeep adjusting the word vectors to maximize this probability\n\nNeural Network + Gradient Descent"
-  },
-  {
-    "objectID": "slides/week_07.html#skigram-example-self-supervision",
-    "href": "slides/week_07.html#skigram-example-self-supervision",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Skigram Example: Self-Supervision",
-    "text": "Skigram Example: Self-Supervision\n\nSource: CS224N"
-  },
-  {
-    "objectID": "slides/week_07.html#skigram-example-self-supervision-1",
-    "href": "slides/week_07.html#skigram-example-self-supervision-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Skigram Example: Self-Supervision",
-    "text": "Skigram Example: Self-Supervision\n\nSource: CS224N"
-  },
-  {
-    "objectID": "slides/week_07.html#encoding-similarity",
-    "href": "slides/week_07.html#encoding-similarity",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Encoding Similarity",
-    "text": "Encoding Similarity\nTo estimate the model, we first need to formalize the probability function we want to estimate.\n\n\nThis is similar to a logistic regression\n\n\n\nIn logistic regression: probability of a event occur given data X and parameters \\(\\beta\\).:\n\n$ P(y=1| X, ) = X * \\(\\beta\\) $\n\\(X*\\beta\\) is not a proper probability function, so we make it to proper probability by using a logit transformation.\n\\(P(y=1|X, \\beta ) = \\frac{exp(XB)}{1 + exp(XB)}\\)\nThrow this transformation inside of a bernouilli distribution, get the likelihood function, and find the parameters using MLE."
-  },
-  {
-    "objectID": "slides/week_07.html#pametrizing-pw_tw_t-1",
-    "href": "slides/week_07.html#pametrizing-pw_tw_t-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Pametrizing \\(P(w_t|w_{t-1})\\)",
-    "text": "Pametrizing \\(P(w_t|w_{t-1})\\)\n\n\\(P(w_t|w_{t-1})\\) must be condition on how similar these words are.\n\nExactly the same intuition behind placing documents in the vector space model.\nNow words are vectors!\n\\(P(w_t|w_{t-1}) = u_c \\cdot u_t\\)\n\n\\(u_c \\cdot u_t\\)\ndot product between vectors\nmeasures similarity using vector projection\n\\(u_c\\): center vector\n\\(u_t\\): target vectors\n\n\n\\(u_c \\cdot u_t\\) is also not a proper probability distribution: Logit on them!\n\n\\[P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\]"
-  },
-  {
-    "objectID": "slides/week_07.html#softmax-transformation",
-    "href": "slides/week_07.html#softmax-transformation",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Softmax Transformation",
-    "text": "Softmax Transformation\n\\[P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\]\n\nDot product compares similarity between vectors\nnumerator: center vs target vectors\nexponentiation makes everything positive\nDenominator: normalize over entire vocabulary to give probability distribution\nWhat is the meaning of softmax?\n\nmax: assign high values to be 1\nsoft: still assigns some probability to smaller values\ngeneralization of the logit ~ multinomial logistic function."
-  },
-  {
-    "objectID": "slides/week_07.html#word2vec-objective-function",
-    "href": "slides/week_07.html#word2vec-objective-function",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Word2Vec: Objective Function",
-    "text": "Word2Vec: Objective Function\n\nFor each position \\(t\\), predict context words within a window of fixed size \\(m\\), given center word \\(w\\).\nLikelihood Function\n\\[ L(\\theta) = \\prod_{t=1}^{T} \\prod_{\\substack{-m&lt;= j&lt;=m \\\\ j \\neq 0}}^{m} P(w_{t+j} | w_t; \\theta) \\]\n\nAssuming independence, this means you multiplying the probability of every target for every center word in your dictionary.\nThis likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)\n\n\n\n\nObjective Function: Negative log likelihood\n\\[J(\\theta) = - \\frac{1}{T}log(L(\\theta))\\]\n\nbetter to take the gradient with sums\nthe average increases the numerical stability of the gradient."
-  },
-  {
-    "objectID": "slides/week_07.html#neural-networks-brief-overview",
-    "href": "slides/week_07.html#neural-networks-brief-overview",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Neural Networks: Brief overview",
-    "text": "Neural Networks: Brief overview"
-  },
-  {
-    "objectID": "slides/week_07.html#skipgram-architecture",
-    "href": "slides/week_07.html#skipgram-architecture",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Skipgram Architecture",
-    "text": "Skipgram Architecture"
-  },
-  {
-    "objectID": "slides/week_07.html#check-your-matrices",
-    "href": "slides/week_07.html#check-your-matrices",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Check your matrices",
-    "text": "Check your matrices\n\n\n\n\n\n\n\n\n  \nPractice with a vocabulary of size 5, a embedding with 3 dimensions, and the task is to predict the next word.\n\nStep 1: v_1^5 * W_5^3\nStep 2: w_1^3 * C_3^5\nStep 3: Softmax entire vector"
-  },
-  {
-    "objectID": "slides/week_07.html#word-embeddings-matrices",
-    "href": "slides/week_07.html#word-embeddings-matrices",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Word Embeddings Matrices",
-    "text": "Word Embeddings Matrices"
-  },
-  {
-    "objectID": "slides/week_07.html#applications",
-    "href": "slides/week_07.html#applications",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Applications:",
-    "text": "Applications:\nOnce we’ve optimized, we can extract the word specific vectors from W as embedding vectors. These real valued vectors can be used for analogies and related tasks\n\nWe will see several applications next week. Most important:\n\nAlternative to bag-of-words feature representation in supervised learning tasks\nSupport for other automated text analysis tasks: expand dictionaries\nUnderstanding word meaning: variation over time, bias, variation by groups\nas a scaling method (in two weeks)"
-  },
-  {
-    "objectID": "slides/week_07.html#training-embeddings",
-    "href": "slides/week_07.html#training-embeddings",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Training Embeddings",
-    "text": "Training Embeddings\nEmbeddings need quite a lot of text to train: e.g. want to disambiguate meanings from contexts. You can download pre-trained, or get the code and train locally\n\nWord2Vec is trained on the Google News dataset (∼ 100B words, 2013)\nGloVe are trained on different things: Wikipedia (2014) + Gigaword (6B words), Common Crawl, Twitter. And uses a co-occurence matrix instead of Neural Networks\nfastext from facebook"
-  },
-  {
-    "objectID": "slides/week_07.html#decisions-on-embeddings-rodriguez-and-spirling-2022",
-    "href": "slides/week_07.html#decisions-on-embeddings-rodriguez-and-spirling-2022",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Decisions on embeddings, Rodriguez and Spirling, 2022",
-    "text": "Decisions on embeddings, Rodriguez and Spirling, 2022\nWhen using/training embeddings, we face four key decisions:\n\nWindow size\nNumber of dimensions for the embedding matrix\nPre-trained versus locally fit variants\nWhich algorithm to use?"
-  },
-  {
-    "objectID": "slides/week_07.html#findings",
-    "href": "slides/week_07.html#findings",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Findings",
-    "text": "Findings\n\n\npopular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.\nGloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings\nLarger window size and embeddings are often preferred."
-  },
-  {
-    "objectID": "slides/week_02.html#outline",
-    "href": "slides/week_02.html#outline",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Outline",
-    "text": "Outline\n\n\nChallenges of working with text\nDefining a corpus and selecting documents\nUnit of analysis\nReducing complexity (Denny & Spirling’s article)\nBag-of-Word, Vector model representation and Document-Feature Matrix\nApplication (Ban et. al.’s paper)"
-  },
-  {
-    "objectID": "slides/week_02.html#challenge-i-text-is-high-dimensional",
-    "href": "slides/week_02.html#challenge-i-text-is-high-dimensional",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Challenge I: Text is High-Dimensional",
-    "text": "Challenge I: Text is High-Dimensional\nFrom Gentzkow et al 2017:\n\nsample of documents, each \\(n_L\\) words long, drawn from vocabulary of \\(n_V\\) words.\nThe unique representation of each document has dimension \\(n_{V}^{n_L}\\) .\n\ne.g., a sample of 30-word (\\(n_L\\)) Twitter messages using only the one thousand most common words in the English language\nDimensionality = \\(1000^{30}\\)\nAs a matrix: \\(M^{1000}_{n_tweets}\\)"
-  },
-  {
-    "objectID": "slides/week_02.html#challenge-ii-text-is-an-unstructure-data-source",
-    "href": "slides/week_02.html#challenge-ii-text-is-an-unstructure-data-source",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Challenge II: Text is an unstructure data source",
-    "text": "Challenge II: Text is an unstructure data source"
-  },
-  {
-    "objectID": "slides/week_02.html#challenges-iii-outcomes-live-in-the-latent-space",
-    "href": "slides/week_02.html#challenges-iii-outcomes-live-in-the-latent-space",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Challenges III: Outcomes live in the Latent Space",
-    "text": "Challenges III: Outcomes live in the Latent Space\nIn most social science applications of text as data, we are trying to make an inference about a latent variable\n\nLatent variable: we cannot observe directly but try to identify with statistical and theoretical assumptions.\nExamples: ideology, sentiment, political stance, propensity of someone to turnout\n\n\nTraditional social science: mapping between observed and latent/theoretical concepts is easier.\n\nWe observe/measure country macroeconomic variables, collect survey responses, see how politicians vote.\nIn text, we only observe the words. Much harder to identify the latent concepts."
-  },
-  {
-    "objectID": "slides/week_02.html#learning-goals",
-    "href": "slides/week_02.html#learning-goals",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Learning goals",
-    "text": "Learning goals\nToday:\n\nCover techniques to reduce complexity from text data using a set of pre-processing steps ~ Challenge I\nHow to represent text as numbers using the vector space model ~ Challenge II\nStarting next week we will deal more with inference and modeling latent parameters using text ~ Challenge III"
-  },
-  {
-    "objectID": "slides/week_02.html#corpus-and-selecting-documents",
-    "href": "slides/week_02.html#corpus-and-selecting-documents",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "1. Corpus and selecting documents",
-    "text": "1. Corpus and selecting documents\n\nA corpus is (typically) a large set of texts or documents which we wish to analyze.\n\nif you can read them in an small amount of time, you should just do it, not TAD\n\nWhen selecting a corpus, we should consider how the corpus relates to our research question in two aspects:\n\nPopulation of interest: does the corpus allows us to make inferences about them?\nQuantity of interest: can we measure what we plan to?\nSampling Bias: documents are often sampled from a larger population. Are there concerns about sample selection bias?\n\nMost often we use these documents because they were available to us (custom made data). In these cases, considering the three questions above is even more important."
-  },
-  {
-    "objectID": "slides/week_02.html#ventura-et.-al.-streaming-chats-2021",
-    "href": "slides/week_02.html#ventura-et.-al.-streaming-chats-2021",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Ventura et. al., Streaming Chats, 2021",
-    "text": "Ventura et. al., Streaming Chats, 2021\n\n\n\n\n\n\n\n\nKey components\n\n\nRQ: Measure quality of comments on streaming chat platforms during political debates\nPopulation of interest?\nQuantity of interest?\nSource of bias?"
-  },
-  {
-    "objectID": "slides/week_02.html#unit-of-analysis",
-    "href": "slides/week_02.html#unit-of-analysis",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "2. Unit of Analysis",
-    "text": "2. Unit of Analysis\nAfter selecting your documents and converting them to a computer-friendly format, we must decide our unit of analysis\n\nentire document? sentence? paragraph? a larger group of documents?\n\n\nThree things to consider in making this decision:\n\nFeatures of your data and model fit\nYour research question\nIterative model\n\nswitching through different units of analysis has a low cost\nallows you to look at the data from a different angle\nprovide new insights to your research"
-  },
-  {
-    "objectID": "slides/week_02.html#reducing-complexity",
-    "href": "slides/week_02.html#reducing-complexity",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "3. Reducing complexity",
-    "text": "3. Reducing complexity\nLanguage is extraordinarily complex, and involves great subtlety and nuanced interpretation.\n\nWe simplify documents so that we can analyze/compared them:\n\nmakes the modeling problem much more tractable.\ncomplexity makes not much difference in topic identification or simple prediction tasks (sentiment analysis, for example)\n\nthe degree to which one simplifees is dependent on the particular task at hand.\n\nDenny and Spirling (2019) ~ check sensitivity."
-  },
-  {
-    "objectID": "slides/week_02.html#reducing-complexity-steps",
-    "href": "slides/week_02.html#reducing-complexity-steps",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Reducing complexity: steps",
-    "text": "Reducing complexity: steps\n\nTokenization: What does constitute a feature?\nRemove `superfulous’ material: HTML tags, punctuation, numbers, lower case and stop words\nMap words to equivalence forms: stemming and lemmatization\nDiscard less useful features for your task at hand: functional words, highly frequent or rare words\nDiscard word order: Bag-of-Words Assumption"
-  },
-  {
-    "objectID": "slides/week_02.html#tokenization",
-    "href": "slides/week_02.html#tokenization",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Tokenization",
-    "text": "Tokenization\n\nA first step in any text analysis task is to break documents in meaningful units of analysis (tokens)\nTokens are often words for most tasks. A simple tokenizer uses white space marks to split documents in tokens.\nTokenizer may vary [across tasks]{.red}:\n\nTwiter specific tokenizer ~ keep hashtags, for example.\n\nMay also vary across languages, in which white space is not a good marker to split text into tokens\n\nchinese and japanese\n\nCertain tokens, even in english, make more sense together than separate (“White House”, “United States”). These are collocations\n\nstatistical testing for collocations ~ PMI(a, b) = log(p(a,b)/p(a)*p(b))"
-  },
-  {
-    "objectID": "slides/week_02.html#stop-words",
-    "href": "slides/week_02.html#stop-words",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Stop Words",
-    "text": "Stop Words\n\nThere are certain words that serve as linguistic connectors (`function words’) which we can remove.\n\n( the, it, if, a, for, from, at, on, in, be )\n\nAdd noise to the document. Discard them, focus on signal, meaningful words.\nMost TAD packages have a pre-selected list of stopwords. You can add more given you substantive knowledge (more about this later)\nUsually not important for unsupervised and mostly supervised tasks, but might matter for authorship detection.\n\nFederalist Papers, example. Stop words give away writing styles."
-  },
-  {
-    "objectID": "slides/week_02.html#equivalence-mapping",
-    "href": "slides/week_02.html#equivalence-mapping",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Equivalence mapping",
-    "text": "Equivalence mapping\nReduce dimensionality even further!\n\nDifferent forms of words (family, families, familial), or words which are similar in concept (bureaucratic, bureaucrat, bureaucratization) that refer to same basic token/concept.\nuse algorithms to map these variation to a equivalent form:\n\nstemming: chop the end of the words: family, families, familiar ~ famili\nlemmatization: condition on part of speech\n\nbetter (adj) ~ good\nleaves (noun) ~ leaf\nleaves (verb) ~ leave\n\n\nAll [TAD/NLP packages[{.red}] offer easy applications for these algorithms."
-  },
-  {
-    "objectID": "slides/week_02.html#other-steps-functional-words-highly-frequent-or-rare-words",
-    "href": "slides/week_02.html#other-steps-functional-words-highly-frequent-or-rare-words",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Other steps: functional words, highly frequent or rare words",
-    "text": "Other steps: functional words, highly frequent or rare words\nSome other commons steps, which are highly dependent on your contextual knowledge, are:\n\ndiscard functional words: for example, when working with congressional speeches, remove representative, congress, session, etc...\nremove highly frequent words: words that appear in all documents carry very little meaning for most supervised and unsupervised tasks ~ no clustering and not discrimination.\nremove rare frequent words: same logic as above, no signal. Commong practice, words appear less 5% fo documents."
-  },
-  {
-    "objectID": "slides/week_02.html#bag-of-words-assumption",
-    "href": "slides/week_02.html#bag-of-words-assumption",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "4. Bag-of-Words Assumption",
-    "text": "4. Bag-of-Words Assumption\nNow we have pre-processed our data. So we simplify it even further:\n\nBag-of-Words Assumption: the order in which words appear does not matter.\n\nIgnore order\nBut keep multiplicity, we still consider frequency of words\n\n\n\nHow could this possible work:\n\nit might note: you need validation\ncentral tendency in text: some words are enough to topic detection, classificaiton, measures of similarity, and distance, for example.\nhumans in the loop: expertise knowledge help you figure it out subtle relationships between words and outcomes"
-  },
-  {
-    "objectID": "slides/week_02.html#can-we-preserve-the-word-order-another-pre-processing-decision",
-    "href": "slides/week_02.html#can-we-preserve-the-word-order-another-pre-processing-decision",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Can we preserve the word order? (another pre-processing decision)",
-    "text": "Can we preserve the word order? (another pre-processing decision)\nYes\n\nwe might retaining word order using n-grams.\n\nWhite House, Bill Gates, State Department, Middle East\nwe think some important subtlety of expression is lost: negation perhaps\n\nI want coffee, not tea might be interpreted very diferently without word order.\n\n\ncan use [n-grams], which are (sometimes contiguous) sequences of two (bigrams) or three (trigrams) tokens.\nThis makes computations considerably more complex. We can pick some n-grams to keep but not all:\n\n\\(PMI_{a,b} = log \\frac{p_{a,b}}{p_a \\cdot p_b}\\)\n\nif p(a,b)=0 ~ log (0) = -inf\nif p(a,b)=p(a)p(b) ~ log(1) = 0\nif p(a,b)&lt;p(a)p(b) ~ log(0&lt;x&lt;1) &lt; 0\nif p(a,b)&gt;p(a)p(b) ~ log(x&gt;1) &gt; 0"
-  },
-  {
-    "objectID": "slides/week_02.html#complete-example",
-    "href": "slides/week_02.html#complete-example",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Complete Example",
-    "text": "Complete Example\n\n\n\nText\n\n\nWe use a new dataset containing nearly 50 million historical newspaper pages from 2,700 local US newspapers over the years 1877–1977. We define and discuss a measure of power we develop based on observed word frequencies, and we validate it through a series of analyses. Overall, we find that the relative coverage of political actors and of political offices is a strong indicator of political power for the cases we study\n\n\n\n\n\n\n\nAfter pre-processing\n\n\nuse new dataset contain near 50 million historical newspaper pag 2700 local u newspaper year 18771977 define discus measure power develop bas observ word frequenc validate ser analys overall find relat coverage political actor political offic strong indicator political power cas study"
-  },
-  {
-    "objectID": "slides/week_02.html#denny-spirling-2018",
-    "href": "slides/week_02.html#denny-spirling-2018",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Denny & Spirling, 2018",
-    "text": "Denny & Spirling, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nStarting point: No rigorous way to compare results across different pre-processing steps. Adapting recommendations from supervised learning tasks.\n\nUnsupervised vs Supervised Learning?\nWhat is their solution? (no math needed!)\n\n\n\ncalculate the distance for every pair of documents, and rank the distances\ncompared to no pre processing, do the pair wise distances again, and get which document pair changed kth position, where k=1 for the pair that changed the most.\nBuild vector Vm_i^ with the position of the pairwise distance k affected in every other m combination. So Vm_1_1 contains the position of the changes in parwise distance on every other combination other than m=1 for the most changed document in m_1.\ntheir words: vmk = the rank difference for pair k between specification i and all others.\nAnother example with 3 documents, Vm1_1 = (1m2, 1m3), indicates that the document the changed the most in m1 is also the same in m2 and m3.\npretext score: mean over k (mean of V_m_k)\n\n\n\nToo much work? Substantive knowledge out of the table?"
-  },
-  {
-    "objectID": "slides/week_02.html#vector-space-model",
-    "href": "slides/week_02.html#vector-space-model",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "5. Vector Space Model",
-    "text": "5. Vector Space Model\nTo represent documents as numbers, we will use the vector space model representation:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space\n\n\nImagine the sentence below: “If that is a joke, I love it. If not, can’t wait to unpack that with you later.”\n\nSorted Vocabulary =(a, can’t, i, if, is, it, joke, later, love, not, that, to, unpack, wait, with, you”)\nFeature Representation = (1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1)\nFeatures will typically be the n-gram (mostly unigram) frequencies of the tokens in the document, or some function of those frequencies\n\n\n\nNow each document is now a vector (vector space model)\n\nstacking these vectors will give you our workhose representation for text: Document Feature Matrix"
-  },
-  {
-    "objectID": "slides/week_02.html#visualizing-vector-space-model",
-    "href": "slides/week_02.html#visualizing-vector-space-model",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Visualizing Vector Space Model",
-    "text": "Visualizing Vector Space Model\n\n\n\nDocuments\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “yes yes yes yes yes yes”"
-  },
-  {
-    "objectID": "slides/week_02.html#visualizing-vector-space-model-1",
-    "href": "slides/week_02.html#visualizing-vector-space-model-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Visualizing Vector Space Model",
-    "text": "Visualizing Vector Space Model\nIn the vector space, we can use geometry to build well-defined comparison measures between the documents (more about this next week)"
-  },
-  {
-    "objectID": "slides/week_02.html#document-feature-matrix",
-    "href": "slides/week_02.html#document-feature-matrix",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "6. Document-Feature Matrix",
-    "text": "6. Document-Feature Matrix\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
-  },
-  {
-    "objectID": "slides/week_02.html#ban-et.-al.-2019-how-newspapers-reveal-political-power.",
-    "href": "slides/week_02.html#ban-et.-al.-2019-how-newspapers-reveal-political-power.",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Ban et. al. 2019, How Newspapers Reveal Political Power.",
-    "text": "Ban et. al. 2019, How Newspapers Reveal Political Power.\n\n\n\n\n\n\n\n\n \n\nPurely descriptive\nSimple measure just by counting words.\nTheorethically-driven: measure that capture a theorethically relevant concept.\n\n\n\\[\n\\small \\text{Coverage of Mayor}_{it} = \\frac{\\text{Mayor}_{it}}{\\text{Mayor}_{it} + \\text{City Manager}_{it} + \\text{City Council}_{it}}\n\\]\n\n\n\n\n\nText-as-Data"
-  },
-  {
-    "objectID": "finalproject.html",
-    "href": "finalproject.html",
-    "title": "Instructions for PPOL 6801 - Final Project",
-    "section": "",
-    "text": "Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments.\nIn this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings.\nFor this reason, a considerable part of your grade (40%) will come from a an independent data science project, applying concepts learned throughout the course.\nThe project is composed of three parts:\n\na 2 page project proposal: (which should be discussed and approved by me)\nan in-class presentation,\nA 10-page project report.\n\nDue dates and breakdowns for the project are as follows:\n\n\n\n\n\n\n\n\n\nRequirement\nDue\nLength\nPercentage\n\n\n\n\nProject Proposal\nEOD Friday Week 9\n2 pages\n5%\n\n\nPresentation\nWeek 14\n10-15 minutes\n10%\n\n\nProject Report\nWednesday Week 15\n10 pages\n25%"
-  },
-  {
-    "objectID": "finalproject.html#general-instructions",
-    "href": "finalproject.html#general-instructions",
-    "title": "Instructions for PPOL 6801 - Final Project",
-    "section": "",
-    "text": "Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments.\nIn this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings.\nFor this reason, a considerable part of your grade (40%) will come from a an independent data science project, applying concepts learned throughout the course.\nThe project is composed of three parts:\n\na 2 page project proposal: (which should be discussed and approved by me)\nan in-class presentation,\nA 10-page project report.\n\nDue dates and breakdowns for the project are as follows:\n\n\n\n\n\n\n\n\n\nRequirement\nDue\nLength\nPercentage\n\n\n\n\nProject Proposal\nEOD Friday Week 9\n2 pages\n5%\n\n\nPresentation\nWeek 14\n10-15 minutes\n10%\n\n\nProject Report\nWednesday Week 15\n10 pages\n25%"
-  },
-  {
-    "objectID": "finalproject.html#all-components-of-the-project",
-    "href": "finalproject.html#all-components-of-the-project",
-    "title": "Instructions for PPOL 6801 - Final Project",
-    "section": "All components of the project:",
-    "text": "All components of the project:\n\nProject Proposal\nThe project proposal asks that you sketch out a general 2 page (single-spaced; 12pt font) project proposal. The proposal should offer the following information:\n\nA high-level statement of the problem you intend to address or the analysis you aim to generate\nThe data source(s) you intend to use\nYour plan to obtain that data\nThe text as data method you plan to use.\nA definition for what “success” means with respect to your project.\n\nIn your words, what would a successful project look like? What is the results you want to show? What would be a surprising finding for you?\n\n\n\n\nPresentation\nYou will have the opportunity to present you final project in class. As a Data scientists, your presentation skills are as important as your data skills. You should prepare a 10-12 minutes presentation. It should cover:\n\nMotivation or problem statement\nData collection\nMethods\nResults\nLessons learned and next steps\n\n\n\nProject Report\nThe report is a complete description of the project’s analysis and results. The report should be a 10 page in length (single-spaced; 12pt font) and cover the points presented below. Citations and Front page will not be considered in the 10 page.\nBelow I’ve outlined points that one should aim to discuss in each section. Note that paper should read as a cohesive report:\n\nIntroduction\n\nsummarize your motivation, present some previous work related to your question\npresent your research question\nsummarize your report\n\nData and Methods\n\nWhere does the data come from? – What is the unit of observation? – What are the variables of interest? – What steps did you take to wrangle the data?\n\nAnalysis\n\nDescribe the methods/tools you explored in your project.\n\nResults\n\nGive a detailed summary of your results. – Present your results clearly and concisely. – Please use visualizations instead of tables whenever possible.\n\nDiscussion\n\nRe-introduce your main results\nState your contributions\nWhere do you want take this project next?\n\n\nIMPORTANT: There is not literature review section. You can use the literature to motivate your work. But you don’t need to have a full section on literature review. Read for example, papers at main general interest journals, like here, here and here. All these super accomplished articles do not have long literature reviews."
-  },
-  {
-    "objectID": "finalproject.html#submission-of-the-final-project",
-    "href": "finalproject.html#submission-of-the-final-project",
-    "title": "Instructions for PPOL 6801 - Final Project",
-    "section": "Submission of the Final Project",
-    "text": "Submission of the Final Project\nThe end product should be a github repository that contains:\n\nThe raw source data you used for the project. If the data is too large for GitHub, talk with me, and we will find a solution\nYour proposal\nA README for the repository that, for each file, describes in detail:\n\nInputs to the file: e.g., raw data; a file containing credentials needed to access an API\nWhat the file does: describe major transformations.\nOutput: if the file produces any outputs (e.g., a cleaned dataset; a figure or graph).\nA set of code files that transform that data into a form usable to answer the question you have posed in your descriptive research proposal.\nYour final 10 pages report (I will share a template later in the semester)\n\n\nOf course, no commits after the due date will be considered in the assessment."
-  },
-  {
-    "objectID": "finalproject.html#templates-for-writing",
-    "href": "finalproject.html#templates-for-writing",
-    "title": "Instructions for PPOL 6801 - Final Project",
-    "section": "Templates for writing",
-    "text": "Templates for writing\nHere, I suggest you with a few templates for writing your reports. In my experience, writing data science reports using LaTeX is an gain in productivity in the long-run.\nIf you want to experiment with LaTeX via overleaf, you should use this template from PNAS (Just remember to switch to a one-column template):\n\nPNAS Template\n\nYou can also use the Journal of Quantitative Description templates in Word Doc or LaTeX:\n\nJQD Word\nJQD LaTeX\n\nOr, you can use templates from Quarto and write you entire project using quarto or markdown files"
-  },
-  {
-    "objectID": "weeks/week-01.html",
-    "href": "weeks/week-01.html",
-    "title": "Week 01",
-    "section": "",
-    "text": "Topics\n\nReview of syllabus\nClass organization\nGetting to know you\nIntroduction to computational text analysis.\n\n\n\nReadings\nRequired Readings\n\nGrimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapter 2.\n\nOr one of the three below:\n\nPolitical Science Perspective: Wilkerson, J. and Casas, A. (2017). Large-Scale Computerized Text Analysis in Political Science: Opportunities and Challenges. Annual Review of Political Science, 20, 529:544.\nEconomics Perspective: Gentzkow, Matthew, Bryan Kelly, and Matt Taddy. “Text as data.” Journal of Economic Literature 57, no. 3 (2019): 535-574.\nSociology Perspective: https://www.sciencedirect.com/science/article/pii/S0049089X22000904\n\nCoding Materials\n\nNone\n\n\n\nSlides\n\nWeek 1 - Introduction"
-  },
-  {
-    "objectID": "weeks/week-02.html",
-    "href": "weeks/week-02.html",
-    "title": "Week 02",
-    "section": "",
-    "text": "Topics\n\nHow to represent text as data?\nWhat is a Bag of Words?\nWhat are tokens?\nWhy should we care about tokens?\n\n\n\nReadings\nRequired Readings\n\nGrimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapters 3-5\nApplied Papers:\nDenny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.\nBan, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. “How newspapers reveal political power.” Political Science Research and Methods 7, no. 4 (2019): 661-678.\nMichel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644\n\nCoding Materials\n\n Week 2 - Text Data Processing \n\n\n\nSlides\n\nWeek 2 - From Text to Matrices: Representing Text as Data"
-  },
-  {
-    "objectID": "weeks/week-13.html",
-    "href": "weeks/week-13.html",
-    "title": "Week 13",
-    "section": "",
-    "text": "Topics\n\n\nReadings\nRequired Readings\n\nWu, Patrick Y., Joshua A. Tucker, Jonathan Nagler, and Solomon Messing. “Large language models can be used to estimate the ideologies of politicians in a zero-shot learning setting.” arXiv preprint arXiv:2303.12057 (2023).\n\n- [Rathje, Steve, Dan-Mircea Mirea, Ilia Sucholutsky, Raja Marjieh, Claire Robertson, and Jay J. Van Bavel. GPT is an effective tool for multilingual psychological text analysis. (2023)](https://osf.io/preprints/psyarxiv/sekf5).\n\n- [Davidson, Thomas: Start Generating: Harnessing Generative Artificial Intelligence for Sociological Research, PrePrint](https://osf.io/preprints/socarxiv/u9nft)\n\n- [Bisbee, James, Joshua Clinton, Cassy Dorff, Brenton Kenkel, and Jennifer Larson. 2023. “Synthetic Replacements for Human Survey Data? the Perils of Large Language Models.” SocArXiv. May 4.](https://osf.io/preprints/socarxiv/5ecfa) \nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
-  },
-  {
-    "objectID": "weeks/week-04.html",
-    "href": "weeks/week-04.html",
-    "title": "Week 04",
-    "section": "",
-    "text": "Topics\n\nWhat are dictionaries?\nWhy/when are they useful?\nWhat are their limitations?\nCan we use models trained by others and for other purposes in our classification tasks?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 15-16\nApplied Papers:\n\nLori Young and Stuart Soroka 2012 “Affective News: The Automated Coding of Sentiment in Political Texts.” Political Communication, 29:2, 205-231.\nRathje, Steve, Jay J. Van Bavel, and Sander Van Der Linden. “Out-group animosity drives engagement on social media.” Proceedings of the National Academy of Sciences 118, no. 26 (2021): e2024292118.\nVentura, Tiago, Kevin Munger, Katherine McCabe, and Keng-Chi Chang. “Connective effervescence and streaming chat during political debates.” Journal of Quantitative Description: Digital Media 1 (2021).\n\n\nCoding Materials\n\n Week 4 - Dictionaries and Off-the-Shelf Classifiers\n Week 4 - Transformers Based Classifiers \n\n\n\nProblem set 1\n\nProblem Set 1\n\n\n\nSlides\n\nWeek 4 - Dictionaries and Off-the-Shelf Classifiers"
-  },
-  {
-    "objectID": "weeks/week-08.html",
-    "href": "weeks/week-08.html",
-    "title": "Week 08",
-    "section": "",
-    "text": "Topics\n\nWhat are word-embeddings?\nWhen and how can we use them?\nWhat? Topic models again?\nIs this still a bag of words?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 8.\n[SLP] Chapter 6, “Vector Semantics and Embeddings.”\nJay Alanmar, The Illustrated Word2vec\nSpirling and Rodriguez, Word embedding: What works, what doesn’t, and how to tell the difference for applied research.\n\n\n\nSlides\n\nWeek 9 - Word Embeddings"
-  },
-  {
-    "objectID": "weeks/week-09.html",
-    "href": "weeks/week-09.html",
-    "title": "Week 09",
-    "section": "",
-    "text": "Topics\n\nApplications of Word Embeddings to social science problems\n\n\n\nReadings\nRequired Readings\n\nRodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.\nGennaro, Gloria, and Elliott Ash. “Emotion and reason in political language.” The Economic Journal 132, no. 643 (2022): 1037-1059.\nRheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.\nAustin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.\nGarg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.\n\nCoding Materials\n\n Week 9 - Word Embeddings\n\n\n\nSlides\n\nWeek 9 - Word Embeddings II\n\n\n\nProblem Set 2\n\nhttps://classroom.github.com/a/WcrFfilI"
-  },
-  {
-    "objectID": "weeks/week-10.html",
-    "href": "weeks/week-10.html",
-    "title": "Week 10",
-    "section": "",
-    "text": "Topics\n\nWhat are scaling models and what can they tell us?\nCan we represent politicians/users ideology using text?\n\n\n\nReadings\nRequired Readings\n\nLaver, Michael, Kenneth Benoit, and John Garry. 2003. “Extracting Policy Positions from Political Texts Using Words as Data”. American Political Science Review. 97, 2, 311-331\nSlapin, Jonathan and Sven-Oliver Prokschk. 2008. “A Scaling Model for Estimating Time-Series Party Positions from Texts.” American Journal of Political Science. 52, 3 705-722\n\n- Rheault, Ludovic, and Christopher Cochrane. \"Word embeddings for the analysis of ideological placement in parliamentary corpora.\" Political Analysis 28, no. 1 (2020): 112-133.\n\n- Aruguete, Natalia, Ernesto Calvo, and Tiago Ventura. \"News by popular demand: Ideological congruence, issue salience, and media reputation in news sharing.\" The International Journal of Press/Politics 28, no. 3 (2023): 558-579.\n\n- Izumi, Mauricio Y., and Danilo B. Medeiros. \"Government and opposition in legislative speechmaking: using text-as-data to estimate Brazilian political parties’ policy positions.\" Latin American Politics and Society 63, no. 1 (2021): 145-164.\nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
-  },
-  {
-    "objectID": "weeks/week-05.html",
-    "href": "weeks/week-05.html",
-    "title": "Week 05",
-    "section": "",
-    "text": "Topics\nWe will study the framework to train our own supervised models, and when to use them.\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 17, 18, 19, and 20.\nApplied Papers:\n\nBarberá, Pablo, Amber E. Boydstun, Suzanna Linn, Ryan McMahon, and Jonathan Nagler. Automated text classification of news articles: A practical guide. Political Analysis 29, no. 1 (2021): 19-42.\nSiegel, Alexandra A., Evgenii Nikitin, Pablo Barberá, Joanna Sterling, Bethany Pullen, Richard Bonneau, Jonathan Nagler, and Joshua A. Tucker. Trumping hate on Twitter? Online hate speech in the 2016 US election campaign and its aftermath. Quarterly Journal of Political Science 16, no. 1 (2021): 71-104.\nTheocharis, Y., Barberá, P., Fazekas, Z., & Popa, S. A. (2020). The dynamics of political incivility on Twitter. Sage Open, 10(2), 2158244020919447.\nMitts, T., Phillips, G., & Walter, B. (2021). Studying the Impact of ISIS Propaganda Campaigns. Journal of Politics\n\n\nCoding Materials\n\n Week 5 - Supervised Learning: Training your own classifiers\n\n\n\nSlides\n\nWeek 5 - Supervised Learning"
-  },
-  {
-    "objectID": "weeks/week-07.html",
-    "href": "weeks/week-07.html",
-    "title": "Week 07",
-    "section": "",
-    "text": "Topics\n-what if we do not have an outcome to predict? - can we cluster the text in groups? - what are topics? - how to decide between different topics?\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 12-14.\nDavid M. Blei . 2012. “Probabilistic Topic Models.” http://www.cs.columbia.edu/~blei/papers/ Blei2012.pdf\nApplied Papers:\n\nMotolinia, Lucia. Electoral accountability and particularistic legislation: evidence from an electoral reform in Mexico. American Political Science Review 115, no. 1 (2021): 97-113.\nBarberá, P., Casas, A., Nagler, J., Egan, P. J., Bonneau, R., Jost, J. T., & Tucker, J. A. (2019). Who leads? Who follows? Measuring issue attention and agenda setting by legislators and the mass public using social media data. American Political Science Review, 113(4), 883-901.\nEshima, Shusei, Kosuke Imai, and Tomoya Sasaki. “Keyword‐Assisted Topic Models.” American Journal of Political Science (2020).\n\n\nCoding Materials\n\n Week 7 - Unsupervised Learning: Topic Models\n\n\n\nSlides\n\nWeek 7 - Unsupervised Learning"
-  },
-  {
-    "objectID": "weeks/week-12.html",
-    "href": "weeks/week-12.html",
-    "title": "Week 12",
-    "section": "",
-    "text": "Topics\n\nWe will learn about the Transformers architecture, attention, and the encoder-coder infrastructure.\n\n\n\nReadings\nRequired Readings\n\n[SLP] - Chapter 10.\nJay Alammar. 2018. “The Illustrated Transformer.” https://jalammar.github.io/illustratedtransformer/\nVaswani, A., et al. (2017). Attention is all you need. Advances in neural information processing systems, 30;\nTimoneda and Vera, BERT, RoBERTa or DeBERTa? Comparing Performance Across Transformer Models in Political Science Text, Forthcoming Journal of Politics.\n\nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
-  },
-  {
-    "objectID": "weeks/week-03.html",
-    "href": "weeks/week-03.html",
-    "title": "Week 03",
-    "section": "",
-    "text": "Topics\n\nMore about the vector space model\nHow do we compare texts?\nHow do we evaluate similarity in text?\nHow do we evaluate complexity in text?\nWhy should we care about complexity in text?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 7\nApplied Papers:\n\nSpirling, Arthur. 2016. “Democratization and Linguistic Complexity”, Journal of Politics.\nBenoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity\nLinder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. “Text as policy: Measuring policy similarity through bill text reuse.” Policy Studies Journal 48, no. 2 (2020): 546-574.\n\n\nCoding Materials\n\n Week 3 - Descriptive Inference \n\n\n\nSlides\n\nWeek 3 - Descriptive Inference"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PPOL 6801: Text as Data - Computational Linguistics",
-    "section": "",
-    "text": "In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we’ll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.\nWhile the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture.\nI assume students taking this class have taken, at minimum, an introductory class in statistics and have basic knowledge of probability, distributions, hypothesis testing, and linear models. The core language and software environment of this course is R. If you are not familiar with R, you will struggle with the assigned exercises. We will also provide some code in Python, but no prior knowledge here is assumed since this will be additional material."
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "PPOL 6801: Text as Data - Computational Linguistics",
-    "section": "",
-    "text": "In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we’ll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.\nWhile the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture.\nI assume students taking this class have taken, at minimum, an introductory class in statistics and have basic knowledge of probability, distributions, hypothesis testing, and linear models. The core language and software environment of this course is R. If you are not familiar with R, you will struggle with the assigned exercises. We will also provide some code in Python, but no prior knowledge here is assumed since this will be additional material."
-  },
-  {
-    "objectID": "index.html#class-website",
-    "href": "index.html#class-website",
-    "title": "PPOL 6801: Text as Data - Computational Linguistics",
-    "section": "Class Website",
-    "text": "Class Website\nhttps://tiagoventura.github.io/PPOL_6801_2024/"
-  },
-  {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "PPOL 6801: Text as Data - Computational Linguistics",
-    "section": "Instructor",
-    "text": "Instructor\nProfessor Tiago Ventura\n\nPronouns: He/Him\nEmail: tv186@georgetown.edu\nOffice hours: Every Tuesday, 4pm - 6pm\nLocation: Old north, 312\n\n\n\n\n\n\n\nWhen should I go to your office hours?\n\n\n\n\n\n\nYou are all welcome to the office hours. You can come to the office hours to:\n\ndrink some coffee;\ntalk about soccer;\nAsk what I am doing research at;\nAsk any question about our class.\n\nAll are valid options! And no need to schedule time with me!"
-  },
-  {
-    "objectID": "index.html#course-infra-structure",
-    "href": "index.html#course-infra-structure",
-    "title": "PPOL 6801: Text as Data - Computational Linguistics",
-    "section": "Course Infra-structure",
-    "text": "Course Infra-structure\nClass Website: This class website will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.\nClass Slack Channel: The class also has a dedicated slack channel. The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor the means of answering the question so that all can see the response. If you’re unfamiliar with, please consult the following start-up tutorial https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members. Please follow the invite link to be added to the Slack channel.\nCanvas: A Canvas site http://canvas.georgetown.edu will be used throughout the course and should be checked on a regular basis for announcements. Materials will be posted here, and not on canvas, or distributed in class or by e-mail. Support for Canvas is available at (202) 687-4949"
-  },
-  {
-    "objectID": "index.html#credits",
-    "href": "index.html#credits",
-    "title": "PPOL 6801: Text as Data - Computational Linguistics",
-    "section": "Credits",
-    "text": "Credits\nTo build this course, I used materials from Arthur Spirling Text-as-Data Class at NYU, and lab materials from various TA’s for his course (Elisa Wirsching, Lucia Motolinia, Pedro L. Rodriguez, Kevin Munger, Patrick Chester, Leslie Huang), Pablo Barbera’s Computational Social Science Seminar seminar, Brandon Stewart, Alex Siegel, Chris Bail, Sebastian Vallejo, among others. Their lessons and inspiration are spread throughout all the materials of the course. Thanks!"
-  },
-  {
-    "objectID": "slides/week_03.html#housekeeping",
-    "href": "slides/week_03.html#housekeeping",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nThanks for selecting the articles for replication exercise! Next steps:\n\n\nGet access to the data and code ASAP\n\nHarvard Dataverse, see footnotes in the papers, contact the authors\nany issue, please, talk to me!\n\nIf the data is too big for your laptop, use a sample of the data.\nIf the paper has much more than the text analysis, ignore it, just focus on the TAD component.\nAny questions?"
-  },
-  {
-    "objectID": "slides/week_03.html#where-are-we",
-    "href": "slides/week_03.html#where-are-we",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Where are we?",
-    "text": "Where are we?\nThree primary challenges dealing with text as data:\n\nChallenge I: Text is high dimensional\nChallenge II: Text is unstructured data source\nChallenge III: Outcomes live in the latent space\n\n\nLast week:\n\nPre-processing text + bag of words ~&gt; reduces greatly text complexity (dimensions)\nText representation using vectors of numbers ~&gt; document feature matrix (text to numbers)"
-  },
-  {
-    "objectID": "slides/week_03.html#plans-for-today",
-    "href": "slides/week_03.html#plans-for-today",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Plans for today",
-    "text": "Plans for today\nWe will start thinking about latent outcomes. Our first approach will focus on descriptive inference about documents:\n\nComparing documents\nUsing similarity to measure text-reuse\nEvaluating complexity in text\nWeighting (TF-iDF)"
-  },
-  {
-    "objectID": "slides/week_03.html#recall-vector-space-model",
-    "href": "slides/week_03.html#recall-vector-space-model",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Recall: Vector space model",
-    "text": "Recall: Vector space model\nTo represent documents as numbers, we will use the vector space model representation:\n\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams, etc…)\nEach feature \\(w_i\\) can be placed in a real line\nA document \\(D_i\\) is a point in a \\(\\mathbb{R}^W\\)\n\nEach document is now a vector,\nEach entry represents the frequency of a particular token or feature.\nStacking those vectors on top of each other gives the document feature matrix (DFM)."
-  },
-  {
-    "objectID": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-tad",
-    "href": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-tad",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Document-Feature Matrix: fundamental unit of TAD",
-    "text": "Document-Feature Matrix: fundamental unit of TAD\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
-  },
-  {
-    "objectID": "slides/week_03.html#in-a-two-dimensional-space",
-    "href": "slides/week_03.html#in-a-two-dimensional-space",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "In a two dimensional space",
-    "text": "In a two dimensional space\n\n\n\nDocuments, W=2\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “yes yes yes yes yes yes”"
-  },
-  {
-    "objectID": "slides/week_03.html#how-far-is-document-a-from-document-b",
-    "href": "slides/week_03.html#how-far-is-document-a-from-document-b",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "How `far’ is document a from document b?",
-    "text": "How `far’ is document a from document b?\nUsing the vector space, we can use notions of geometry to build well-defined comparison/similarity measures between the documents.\n\n\nin multiple dimensions!!"
-  },
-  {
-    "objectID": "slides/week_03.html#euclidean-distance",
-    "href": "slides/week_03.html#euclidean-distance",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Euclidean Distance",
-    "text": "Euclidean Distance\nThe ordinary, straight line distance between two points in space. Using document vectors \\(y_a\\) and \\(y_b\\) with \\(j\\) dimensions\n\n\n\nEuclidean Distance\n\n\n\\[\n||y_a - y_b|| = \\sqrt{\\sum^{j}(y_{aj} - y_{bj})^2}\n\\]\n\n\n\nCan be performed for any number of features J ~ has nice mathematical properties\n\nno negative distances: sij   0 2 distance between documents is zero () documents are identical 3 distance between documents is symmetric: sij = sji 4 measures satisfy triangle inequality. sik   sij + sjk"
-  },
-  {
-    "objectID": "slides/week_03.html#euclidean-distance-w2",
-    "href": "slides/week_03.html#euclidean-distance-w2",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Euclidean Distance, w=2",
-    "text": "Euclidean Distance, w=2\n\n\n\nEuclidean Distance\n\n\n\\[\n||y_a - y_b|| = \\sqrt{\\sum^{j}(y_{aj} - y_{bj})^2}\n\\]\n\n\n\n\n\\(y_a\\) = [0, 2.51, 3.6, 0] and \\(y_b\\) = [0, 2.3, 3.1, 9.2]\n\\(\\sum_{j=1}^j (y_a - y_b)^2\\) = \\((0-0)^2 + (2.51-2.3)^2 + (3.6-3.1)^2 + (9-0)^2\\) = \\(84.9341\\)\n\\(\\sqrt{\\sum_{j=1}^j (y_a - y_b)^2}\\) = 9.21"
-  },
-  {
-    "objectID": "slides/week_03.html#exercise",
-    "href": "slides/week_03.html#exercise",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Exercise",
-    "text": "Exercise\n\n\n\nDocuments, W=3 {yes, no}\n\n\nDocument 1 = “yes yes yes no no no” (3, 3)\nDocument 2 = “yes yes yes yes yes yes” (6,0)\nDocument 3= “yes yes yes no no no yes yes yes no no no yes yes yes no no no yes yes yes no no no” (12, 12)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich documents will the euclidean distance place closer together?\nDoes it look like a good measure for similarity?\n\nDoc C = Doc A * 3"
-  },
-  {
-    "objectID": "slides/week_03.html#cosine-similarity",
-    "href": "slides/week_03.html#cosine-similarity",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Cosine Similarity",
-    "text": "Cosine Similarity\nEuclidean distance rewards magnitude, rather than direction\n\\[\n\\text{cosine similarity}(\\mathbf{y_a}, \\mathbf{y_b}) = \\frac{\\mathbf{y_a} \\cdot \\mathbf{y_b}}{\\|\\mathbf{y_a}\\| \\|\\mathbf{y_b}\\|}\n\\]\nUnpacking the formula:\n\n\\(\\mathbf{y_a} \\cdot \\mathbf{y_b}\\) ~ dot product between vectors\n\nprojecting common magnitudes\nmeasure of similarity (see textbook)\n\\(\\sum_j{y_{aj}*y_{bj}}\\)\n\n\\(||\\mathbf{y_a}||\\) ~ vector magnitude, length ~ \\(\\sqrt{\\sum{y_{aj}^2}}\\)\nnormalizes similarity by documents’ length ~ independent of document length be because it deals only with the angle of the vectors\ncosine similarity captures some notion of relative direction (e.g. style or topics in the document)"
-  },
-  {
-    "objectID": "slides/week_03.html#cosine-similarity-1",
-    "href": "slides/week_03.html#cosine-similarity-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Cosine Similarity",
-    "text": "Cosine Similarity\nCosine function has a range between -1 and 1.\n\nConsider: cos (0) = 1, cos (90) = 0, cos (180) = -1"
-  },
-  {
-    "objectID": "slides/week_03.html#exercise-1",
-    "href": "slides/week_03.html#exercise-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Exercise",
-    "text": "Exercise\nThe cosine function can range from [-1, 1]. When thinking about document vectors, cosine similarity is actually constrained to vary only from 0 - 1.\n\nWhy does cosine similarity for document vectors can never be lower than zero? Think about the vector representation and the document feature matrix."
-  },
-  {
-    "objectID": "slides/week_03.html#more-metrics",
-    "href": "slides/week_03.html#more-metrics",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "More metrics",
-    "text": "More metrics\nThere are a large number of distance/similarity metrics out there, just to name a few:\n\nJaccard Similarity: overlap between documents\nManhattan Distance: absolute distance between documents\nCanberra Distance: Weighted version of Manhattan Distance\nMinowski: generalized version of Euclidean\n\nNo single best measure, depends on your research question."
-  },
-  {
-    "objectID": "slides/week_03.html#mozer-et-al-2020-matching-with-text-data",
-    "href": "slides/week_03.html#mozer-et-al-2020-matching-with-text-data",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Mozer et al, 2020 ‘Matching with Text Data’",
-    "text": "Mozer et al, 2020 ‘Matching with Text Data’\nBut some recent research show Document Feature Matrix (DTM) + Cosine similarity works well to perceived similarity on documents"
-  },
-  {
-    "objectID": "slides/week_03.html#linder-et.-al-2020---text-as-policy",
-    "href": "slides/week_03.html#linder-et.-al-2020---text-as-policy",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Linder et. al, 2020 - Text as Policy",
-    "text": "Linder et. al, 2020 - Text as Policy\n\n\n\n\n\n\n\n\n\n\n\n\nHow is cosine similarity used in the application?\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nMain assumption: text reuse serves as a summary measure of the greatest overlap observed across all relevant policy dimensions represented in legislative text.\nHow? Identifying large segments of equivalent or highly similar text.\nSmith-Waterman local alignment algorithm\n\nlongest sequence of overlap allowing for gaps and mismatches\n\nThe SW algorithm amounts to a systematic procedure for scoring similar sequences of text, and efficiently finding the highest scoring sequences in two documents.\nAnalysis:\n\nSelection: Elastic search for 500 candidates\nSmith Waterman alignment algorithm\nDowneight give average cosine dissimilarity between allignment and a random sample of 1000 other alignments. If the alignment is everywhere, downweight."
-  },
-  {
-    "objectID": "slides/week_03.html#lexical-diversity",
-    "href": "slides/week_03.html#lexical-diversity",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Lexical Diversity",
-    "text": "Lexical Diversity\n\nLength refers to the size in terms of: characters, words, lines, sentences, paragraphs, pages, sections, chapters, etc.\nTokens are generally words ~ useful semantic unit for processing\nTypes are unique tokens.\nTypically \\(N_{tokens}\\) &gt;&gt;&gt;&gt; \\(N_{types}\\)\n\n\nType-to-Token ratio\n\\[ TTR: \\frac{\\text{total type}}{\\text{total tokens}} \\]\nSo… authors with limited vocabularies will have a low lexical diversity"
-  },
-  {
-    "objectID": "slides/week_03.html#issues-with-ttr-and-extensions",
-    "href": "slides/week_03.html#issues-with-ttr-and-extensions",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Issues with TTR and Extensions",
-    "text": "Issues with TTR and Extensions\n\nTTR is very sensitive to overall document length,\n\nshorter texts may exhibit fewer word repetitions\n\nLength also correlates with topic variation ~ more types being added to the document\n\n\n\nOther Measures\n\nGuiraud: \\(\\frac{\\text{total type}}{\\sqrt{\\text{total tokens}}}\\)\nS Summer’s Index: \\(\\frac{\\text{log(total type)}}{\\text{log(total tokens)}}}\\)\nMTTR: the Moving-Average Type-Token Ratio (Covington and McFall, 2010)"
-  },
-  {
-    "objectID": "slides/week_03.html#readability",
-    "href": "slides/week_03.html#readability",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Readability",
-    "text": "Readability\nAnother way to think about textual complexity is to consider readability.\nReadability: ease with which reader (especially of given education) can comprehend a text\n\n\nCombines both difficulty (text) and sophistication (reader)\n\nUse a combination of syllables and sentence length to indicate difficulty\nHuman inputs to built parameters\nFlesch-Kincaid readability index\n\nMeasurement problems from education research\naverage grade of students who could correctly answer at least 75% of some multiple-choice questions"
-  },
-  {
-    "objectID": "slides/week_03.html#flesch-kincaid-readability-index",
-    "href": "slides/week_03.html#flesch-kincaid-readability-index",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Flesch-Kincaid readability index",
-    "text": "Flesch-Kincaid readability index\n\n\n\nFlesch Reading Ease (FRE)\n\n\n\\[\nFRE = 206.835 - 1.015\\left(\\frac{\\mbox{total words}}{\\mbox{total sentences}}\\right)-84.6\\left(\\frac{\\mbox{total syllables}}{\\mbox{total words}}\\right)\n\\]\n\n\n\n\n\n\nFlesch-Kincaid (Rescaled to US Educational Grade Levels)\n\n\n\\[\nFRE = 15.59 - 0.39\\left(\\frac{\\mbox{total words}}{\\mbox{total sentences}}\\right)- 11.8\\left(\\frac{\\mbox{total syllables}}{\\mbox{total words}}\\right)\n\\]\n\n\n\nInterpretation: 0-30: university level; 60-70: understandable by 13-15 year olds; and 90-100 easily understood by an 11-year old student."
-  },
-  {
-    "objectID": "slides/week_03.html#spirling-2016.-the-effects-of-the-second-reform-act",
-    "href": "slides/week_03.html#spirling-2016.-the-effects-of-the-second-reform-act",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Spirling, 2016. The effects of the Second Reform Act",
-    "text": "Spirling, 2016. The effects of the Second Reform Act"
-  },
-  {
-    "objectID": "slides/week_03.html#benoit-et-al.-2019-political-sophistication",
-    "href": "slides/week_03.html#benoit-et-al.-2019-political-sophistication",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Benoit et al., 2019, Political Sophistication",
-    "text": "Benoit et al., 2019, Political Sophistication\nApproach\n\nGet human judgments of relative textual easiness for specifically political texts.\nUse a logit model to estimate latent “easiness” as equivalent to the “ability” parameter in the Bradley-Terry framework.\nUse these as training data for a tree-based model. Pick most important parameters\nRe-estimate the models using these covariates (Logit + covariates)\nUsing these parameters, one can “predict” the easiness parameter for a given new text\n - Nice plus ~ add uncertainty to model-based estimates via bootstrapping"
-  },
-  {
-    "objectID": "slides/week_03.html#benoit-et-al.-2019-political-sophistication-1",
-    "href": "slides/week_03.html#benoit-et-al.-2019-political-sophistication-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Benoit et al., 2019, Political Sophistication",
-    "text": "Benoit et al., 2019, Political Sophistication"
-  },
-  {
-    "objectID": "slides/week_03.html#can-we-do-better-than-just-using-frequencies",
-    "href": "slides/week_03.html#can-we-do-better-than-just-using-frequencies",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Can we do better than just using frequencies?",
-    "text": "Can we do better than just using frequencies?\nSo far our inputs for the vector representation of documents have relied simply the word frequencies.\nCan we do better?\n\nOne option: weighting\nWeights:\n\nReward words more unique;\nPunish words that appear in most documents\n\n\n\n\n\nTF-IDF = Term Frequency - Inverse Document Frequency\n\n\n\\(\\text{TF-IDF}(t, d) = \\text{TF}(t, d) \\times \\text{IDF}(t)\\) - \\(\\text{TF}(t, d) = \\frac{\\text{Number of times term } t \\text{ appears in document } d}{\\text{Total number of terms in document } d}\\) - \\(\\text{IDF}(t) = \\log \\left( \\frac{\\text{Total number of documents}}{\\text{Number of documents with term } t \\text{ in them}} \\right)\\)"
-  },
-  {
-    "objectID": "slides/week_03.html#federalist-papers",
-    "href": "slides/week_03.html#federalist-papers",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Federalist Papers",
-    "text": "Federalist Papers\n\n\n\n\n\n     \n\n\nSource: Grimmer, Roberts, and Stewart, Text as Data, 2022"
-  },
-  {
     "objectID": "slides/week_06.html#housekeeping",
     "href": "slides/week_06.html#housekeeping",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
@@ -1288,6 +637,790 @@
     "text": "Keyword-assisted topic model: performance"
   },
   {
+    "objectID": "slides/week_03.html#housekeeping",
+    "href": "slides/week_03.html#housekeeping",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nThanks for selecting the articles for replication exercise! Next steps:\n\n\nGet access to the data and code ASAP\n\nHarvard Dataverse, see footnotes in the papers, contact the authors\nany issue, please, talk to me!\n\nIf the data is too big for your laptop, use a sample of the data.\nIf the paper has much more than the text analysis, ignore it, just focus on the TAD component.\nAny questions?"
+  },
+  {
+    "objectID": "slides/week_03.html#where-are-we",
+    "href": "slides/week_03.html#where-are-we",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Where are we?",
+    "text": "Where are we?\nThree primary challenges dealing with text as data:\n\nChallenge I: Text is high dimensional\nChallenge II: Text is unstructured data source\nChallenge III: Outcomes live in the latent space\n\n\nLast week:\n\nPre-processing text + bag of words ~&gt; reduces greatly text complexity (dimensions)\nText representation using vectors of numbers ~&gt; document feature matrix (text to numbers)"
+  },
+  {
+    "objectID": "slides/week_03.html#plans-for-today",
+    "href": "slides/week_03.html#plans-for-today",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Plans for today",
+    "text": "Plans for today\nWe will start thinking about latent outcomes. Our first approach will focus on descriptive inference about documents:\n\nComparing documents\nUsing similarity to measure text-reuse\nEvaluating complexity in text\nWeighting (TF-iDF)"
+  },
+  {
+    "objectID": "slides/week_03.html#recall-vector-space-model",
+    "href": "slides/week_03.html#recall-vector-space-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Recall: Vector space model",
+    "text": "Recall: Vector space model\nTo represent documents as numbers, we will use the vector space model representation:\n\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams, etc…)\nEach feature \\(w_i\\) can be placed in a real line\nA document \\(D_i\\) is a point in a \\(\\mathbb{R}^W\\)\n\nEach document is now a vector,\nEach entry represents the frequency of a particular token or feature.\nStacking those vectors on top of each other gives the document feature matrix (DFM)."
+  },
+  {
+    "objectID": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-tad",
+    "href": "slides/week_03.html#document-feature-matrix-fundamental-unit-of-tad",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Document-Feature Matrix: fundamental unit of TAD",
+    "text": "Document-Feature Matrix: fundamental unit of TAD\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
+  },
+  {
+    "objectID": "slides/week_03.html#in-a-two-dimensional-space",
+    "href": "slides/week_03.html#in-a-two-dimensional-space",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "In a two dimensional space",
+    "text": "In a two dimensional space\n\n\n\nDocuments, W=2\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “yes yes yes yes yes yes”"
+  },
+  {
+    "objectID": "slides/week_03.html#how-far-is-document-a-from-document-b",
+    "href": "slides/week_03.html#how-far-is-document-a-from-document-b",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "How `far’ is document a from document b?",
+    "text": "How `far’ is document a from document b?\nUsing the vector space, we can use notions of geometry to build well-defined comparison/similarity measures between the documents.\n\n\nin multiple dimensions!!"
+  },
+  {
+    "objectID": "slides/week_03.html#euclidean-distance",
+    "href": "slides/week_03.html#euclidean-distance",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Euclidean Distance",
+    "text": "Euclidean Distance\nThe ordinary, straight line distance between two points in space. Using document vectors \\(y_a\\) and \\(y_b\\) with \\(j\\) dimensions\n\n\n\nEuclidean Distance\n\n\n\\[\n||y_a - y_b|| = \\sqrt{\\sum^{j}(y_{aj} - y_{bj})^2}\n\\]\n\n\n\nCan be performed for any number of features J ~ has nice mathematical properties\n\nno negative distances: sij   0 2 distance between documents is zero () documents are identical 3 distance between documents is symmetric: sij = sji 4 measures satisfy triangle inequality. sik   sij + sjk"
+  },
+  {
+    "objectID": "slides/week_03.html#euclidean-distance-w2",
+    "href": "slides/week_03.html#euclidean-distance-w2",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Euclidean Distance, w=2",
+    "text": "Euclidean Distance, w=2\n\n\n\nEuclidean Distance\n\n\n\\[\n||y_a - y_b|| = \\sqrt{\\sum^{j}(y_{aj} - y_{bj})^2}\n\\]\n\n\n\n\n\\(y_a\\) = [0, 2.51, 3.6, 0] and \\(y_b\\) = [0, 2.3, 3.1, 9.2]\n\\(\\sum_{j=1}^j (y_a - y_b)^2\\) = \\((0-0)^2 + (2.51-2.3)^2 + (3.6-3.1)^2 + (9-0)^2\\) = \\(84.9341\\)\n\\(\\sqrt{\\sum_{j=1}^j (y_a - y_b)^2}\\) = 9.21"
+  },
+  {
+    "objectID": "slides/week_03.html#exercise",
+    "href": "slides/week_03.html#exercise",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Exercise",
+    "text": "Exercise\n\n\n\nDocuments, W=3 {yes, no}\n\n\nDocument 1 = “yes yes yes no no no” (3, 3)\nDocument 2 = “yes yes yes yes yes yes” (6,0)\nDocument 3= “yes yes yes no no no yes yes yes no no no yes yes yes no no no yes yes yes no no no” (12, 12)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich documents will the euclidean distance place closer together?\nDoes it look like a good measure for similarity?\n\nDoc C = Doc A * 3"
+  },
+  {
+    "objectID": "slides/week_03.html#cosine-similarity",
+    "href": "slides/week_03.html#cosine-similarity",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Cosine Similarity",
+    "text": "Cosine Similarity\nEuclidean distance rewards magnitude, rather than direction\n\\[\n\\text{cosine similarity}(\\mathbf{y_a}, \\mathbf{y_b}) = \\frac{\\mathbf{y_a} \\cdot \\mathbf{y_b}}{\\|\\mathbf{y_a}\\| \\|\\mathbf{y_b}\\|}\n\\]\nUnpacking the formula:\n\n\\(\\mathbf{y_a} \\cdot \\mathbf{y_b}\\) ~ dot product between vectors\n\nprojecting common magnitudes\nmeasure of similarity (see textbook)\n\\(\\sum_j{y_{aj}*y_{bj}}\\)\n\n\\(||\\mathbf{y_a}||\\) ~ vector magnitude, length ~ \\(\\sqrt{\\sum{y_{aj}^2}}\\)\nnormalizes similarity by documents’ length ~ independent of document length be because it deals only with the angle of the vectors\ncosine similarity captures some notion of relative direction (e.g. style or topics in the document)"
+  },
+  {
+    "objectID": "slides/week_03.html#cosine-similarity-1",
+    "href": "slides/week_03.html#cosine-similarity-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Cosine Similarity",
+    "text": "Cosine Similarity\nCosine function has a range between -1 and 1.\n\nConsider: cos (0) = 1, cos (90) = 0, cos (180) = -1"
+  },
+  {
+    "objectID": "slides/week_03.html#exercise-1",
+    "href": "slides/week_03.html#exercise-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Exercise",
+    "text": "Exercise\nThe cosine function can range from [-1, 1]. When thinking about document vectors, cosine similarity is actually constrained to vary only from 0 - 1.\n\nWhy does cosine similarity for document vectors can never be lower than zero? Think about the vector representation and the document feature matrix."
+  },
+  {
+    "objectID": "slides/week_03.html#more-metrics",
+    "href": "slides/week_03.html#more-metrics",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "More metrics",
+    "text": "More metrics\nThere are a large number of distance/similarity metrics out there, just to name a few:\n\nJaccard Similarity: overlap between documents\nManhattan Distance: absolute distance between documents\nCanberra Distance: Weighted version of Manhattan Distance\nMinowski: generalized version of Euclidean\n\nNo single best measure, depends on your research question."
+  },
+  {
+    "objectID": "slides/week_03.html#mozer-et-al-2020-matching-with-text-data",
+    "href": "slides/week_03.html#mozer-et-al-2020-matching-with-text-data",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Mozer et al, 2020 ‘Matching with Text Data’",
+    "text": "Mozer et al, 2020 ‘Matching with Text Data’\nBut some recent research show Document Feature Matrix (DTM) + Cosine similarity works well to perceived similarity on documents"
+  },
+  {
+    "objectID": "slides/week_03.html#linder-et.-al-2020---text-as-policy",
+    "href": "slides/week_03.html#linder-et.-al-2020---text-as-policy",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Linder et. al, 2020 - Text as Policy",
+    "text": "Linder et. al, 2020 - Text as Policy\n\n\n\n\n\n\n\n\n\n\n\n\nHow is cosine similarity used in the application?\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nMain assumption: text reuse serves as a summary measure of the greatest overlap observed across all relevant policy dimensions represented in legislative text.\nHow? Identifying large segments of equivalent or highly similar text.\nSmith-Waterman local alignment algorithm\n\nlongest sequence of overlap allowing for gaps and mismatches\n\nThe SW algorithm amounts to a systematic procedure for scoring similar sequences of text, and efficiently finding the highest scoring sequences in two documents.\nAnalysis:\n\nSelection: Elastic search for 500 candidates\nSmith Waterman alignment algorithm\nDowneight give average cosine dissimilarity between allignment and a random sample of 1000 other alignments. If the alignment is everywhere, downweight."
+  },
+  {
+    "objectID": "slides/week_03.html#lexical-diversity",
+    "href": "slides/week_03.html#lexical-diversity",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Lexical Diversity",
+    "text": "Lexical Diversity\n\nLength refers to the size in terms of: characters, words, lines, sentences, paragraphs, pages, sections, chapters, etc.\nTokens are generally words ~ useful semantic unit for processing\nTypes are unique tokens.\nTypically \\(N_{tokens}\\) &gt;&gt;&gt;&gt; \\(N_{types}\\)\n\n\nType-to-Token ratio\n\\[ TTR: \\frac{\\text{total type}}{\\text{total tokens}} \\]\nSo… authors with limited vocabularies will have a low lexical diversity"
+  },
+  {
+    "objectID": "slides/week_03.html#issues-with-ttr-and-extensions",
+    "href": "slides/week_03.html#issues-with-ttr-and-extensions",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Issues with TTR and Extensions",
+    "text": "Issues with TTR and Extensions\n\nTTR is very sensitive to overall document length,\n\nshorter texts may exhibit fewer word repetitions\n\nLength also correlates with topic variation ~ more types being added to the document\n\n\n\nOther Measures\n\nGuiraud: \\(\\frac{\\text{total type}}{\\sqrt{\\text{total tokens}}}\\)\nS Summer’s Index: \\(\\frac{\\text{log(total type)}}{\\text{log(total tokens)}}}\\)\nMTTR: the Moving-Average Type-Token Ratio (Covington and McFall, 2010)"
+  },
+  {
+    "objectID": "slides/week_03.html#readability",
+    "href": "slides/week_03.html#readability",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Readability",
+    "text": "Readability\nAnother way to think about textual complexity is to consider readability.\nReadability: ease with which reader (especially of given education) can comprehend a text\n\n\nCombines both difficulty (text) and sophistication (reader)\n\nUse a combination of syllables and sentence length to indicate difficulty\nHuman inputs to built parameters\nFlesch-Kincaid readability index\n\nMeasurement problems from education research\naverage grade of students who could correctly answer at least 75% of some multiple-choice questions"
+  },
+  {
+    "objectID": "slides/week_03.html#flesch-kincaid-readability-index",
+    "href": "slides/week_03.html#flesch-kincaid-readability-index",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Flesch-Kincaid readability index",
+    "text": "Flesch-Kincaid readability index\n\n\n\nFlesch Reading Ease (FRE)\n\n\n\\[\nFRE = 206.835 - 1.015\\left(\\frac{\\mbox{total words}}{\\mbox{total sentences}}\\right)-84.6\\left(\\frac{\\mbox{total syllables}}{\\mbox{total words}}\\right)\n\\]\n\n\n\n\n\n\nFlesch-Kincaid (Rescaled to US Educational Grade Levels)\n\n\n\\[\nFRE = 15.59 - 0.39\\left(\\frac{\\mbox{total words}}{\\mbox{total sentences}}\\right)- 11.8\\left(\\frac{\\mbox{total syllables}}{\\mbox{total words}}\\right)\n\\]\n\n\n\nInterpretation: 0-30: university level; 60-70: understandable by 13-15 year olds; and 90-100 easily understood by an 11-year old student."
+  },
+  {
+    "objectID": "slides/week_03.html#spirling-2016.-the-effects-of-the-second-reform-act",
+    "href": "slides/week_03.html#spirling-2016.-the-effects-of-the-second-reform-act",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Spirling, 2016. The effects of the Second Reform Act",
+    "text": "Spirling, 2016. The effects of the Second Reform Act"
+  },
+  {
+    "objectID": "slides/week_03.html#benoit-et-al.-2019-political-sophistication",
+    "href": "slides/week_03.html#benoit-et-al.-2019-political-sophistication",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Benoit et al., 2019, Political Sophistication",
+    "text": "Benoit et al., 2019, Political Sophistication\nApproach\n\nGet human judgments of relative textual easiness for specifically political texts.\nUse a logit model to estimate latent “easiness” as equivalent to the “ability” parameter in the Bradley-Terry framework.\nUse these as training data for a tree-based model. Pick most important parameters\nRe-estimate the models using these covariates (Logit + covariates)\nUsing these parameters, one can “predict” the easiness parameter for a given new text\n - Nice plus ~ add uncertainty to model-based estimates via bootstrapping"
+  },
+  {
+    "objectID": "slides/week_03.html#benoit-et-al.-2019-political-sophistication-1",
+    "href": "slides/week_03.html#benoit-et-al.-2019-political-sophistication-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Benoit et al., 2019, Political Sophistication",
+    "text": "Benoit et al., 2019, Political Sophistication"
+  },
+  {
+    "objectID": "slides/week_03.html#can-we-do-better-than-just-using-frequencies",
+    "href": "slides/week_03.html#can-we-do-better-than-just-using-frequencies",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Can we do better than just using frequencies?",
+    "text": "Can we do better than just using frequencies?\nSo far our inputs for the vector representation of documents have relied simply the word frequencies.\nCan we do better?\n\nOne option: weighting\nWeights:\n\nReward words more unique;\nPunish words that appear in most documents\n\n\n\n\n\nTF-IDF = Term Frequency - Inverse Document Frequency\n\n\n\\(\\text{TF-IDF}(t, d) = \\text{TF}(t, d) \\times \\text{IDF}(t)\\) - \\(\\text{TF}(t, d) = \\frac{\\text{Number of times term } t \\text{ appears in document } d}{\\text{Total number of terms in document } d}\\) - \\(\\text{IDF}(t) = \\log \\left( \\frac{\\text{Total number of documents}}{\\text{Number of documents with term } t \\text{ in them}} \\right)\\)"
+  },
+  {
+    "objectID": "slides/week_03.html#federalist-papers",
+    "href": "slides/week_03.html#federalist-papers",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Federalist Papers",
+    "text": "Federalist Papers\n\n\n\n\n\n     \n\n\nSource: Grimmer, Roberts, and Stewart, Text as Data, 2022"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PPOL 6801: Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we’ll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.\nWhile the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture.\nI assume students taking this class have taken, at minimum, an introductory class in statistics and have basic knowledge of probability, distributions, hypothesis testing, and linear models. The core language and software environment of this course is R. If you are not familiar with R, you will struggle with the assigned exercises. We will also provide some code in Python, but no prior knowledge here is assumed since this will be additional material."
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "PPOL 6801: Text as Data - Computational Linguistics",
+    "section": "",
+    "text": "In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we’ll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.\nWhile the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture.\nI assume students taking this class have taken, at minimum, an introductory class in statistics and have basic knowledge of probability, distributions, hypothesis testing, and linear models. The core language and software environment of this course is R. If you are not familiar with R, you will struggle with the assigned exercises. We will also provide some code in Python, but no prior knowledge here is assumed since this will be additional material."
+  },
+  {
+    "objectID": "index.html#class-website",
+    "href": "index.html#class-website",
+    "title": "PPOL 6801: Text as Data - Computational Linguistics",
+    "section": "Class Website",
+    "text": "Class Website\nhttps://tiagoventura.github.io/PPOL_6801_2024/"
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "PPOL 6801: Text as Data - Computational Linguistics",
+    "section": "Instructor",
+    "text": "Instructor\nProfessor Tiago Ventura\n\nPronouns: He/Him\nEmail: tv186@georgetown.edu\nOffice hours: Every Tuesday, 4pm - 6pm\nLocation: Old north, 312\n\n\n\n\n\n\n\nWhen should I go to your office hours?\n\n\n\n\n\n\nYou are all welcome to the office hours. You can come to the office hours to:\n\ndrink some coffee;\ntalk about soccer;\nAsk what I am doing research at;\nAsk any question about our class.\n\nAll are valid options! And no need to schedule time with me!"
+  },
+  {
+    "objectID": "index.html#course-infra-structure",
+    "href": "index.html#course-infra-structure",
+    "title": "PPOL 6801: Text as Data - Computational Linguistics",
+    "section": "Course Infra-structure",
+    "text": "Course Infra-structure\nClass Website: This class website will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.\nClass Slack Channel: The class also has a dedicated slack channel. The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor the means of answering the question so that all can see the response. If you’re unfamiliar with, please consult the following start-up tutorial https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members. Please follow the invite link to be added to the Slack channel.\nCanvas: A Canvas site http://canvas.georgetown.edu will be used throughout the course and should be checked on a regular basis for announcements. Materials will be posted here, and not on canvas, or distributed in class or by e-mail. Support for Canvas is available at (202) 687-4949"
+  },
+  {
+    "objectID": "index.html#credits",
+    "href": "index.html#credits",
+    "title": "PPOL 6801: Text as Data - Computational Linguistics",
+    "section": "Credits",
+    "text": "Credits\nTo build this course, I used materials from Arthur Spirling Text-as-Data Class at NYU, and lab materials from various TA’s for his course (Elisa Wirsching, Lucia Motolinia, Pedro L. Rodriguez, Kevin Munger, Patrick Chester, Leslie Huang), Pablo Barbera’s Computational Social Science Seminar seminar, Brandon Stewart, Alex Siegel, Chris Bail, Sebastian Vallejo, among others. Their lessons and inspiration are spread throughout all the materials of the course. Thanks!"
+  },
+  {
+    "objectID": "weeks/week-03.html",
+    "href": "weeks/week-03.html",
+    "title": "Week 03",
+    "section": "",
+    "text": "Topics\n\nMore about the vector space model\nHow do we compare texts?\nHow do we evaluate similarity in text?\nHow do we evaluate complexity in text?\nWhy should we care about complexity in text?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 7\nApplied Papers:\n\nSpirling, Arthur. 2016. “Democratization and Linguistic Complexity”, Journal of Politics.\nBenoit, K., Munger, K. and Spirling, A. 2017. Measuring and Explaining Political Sophistication Through Textual Complexity\nLinder, Fridolin, Bruce Desmarais, Matthew Burgess, and Eugenia Giraudy. “Text as policy: Measuring policy similarity through bill text reuse.” Policy Studies Journal 48, no. 2 (2020): 546-574.\n\n\nCoding Materials\n\n Week 3 - Descriptive Inference \n\n\n\nSlides\n\nWeek 3 - Descriptive Inference"
+  },
+  {
+    "objectID": "weeks/week-12.html",
+    "href": "weeks/week-12.html",
+    "title": "Week 12",
+    "section": "",
+    "text": "Topics\n\nWe will learn about the Transformers architecture, attention, and the encoder-coder infrastructure.\n\n\n\nReadings\nRequired Readings\n\n[SLP] - Chapter 10.\nJay Alammar. 2018. “The Illustrated Transformer.” https://jalammar.github.io/illustratedtransformer/\nVaswani, A., et al. (2017). Attention is all you need. Advances in neural information processing systems, 30;\nTimoneda and Vera, BERT, RoBERTa or DeBERTa? Comparing Performance Across Transformer Models in Political Science Text, Forthcoming Journal of Politics.\n\nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
+  },
+  {
+    "objectID": "weeks/week-07.html",
+    "href": "weeks/week-07.html",
+    "title": "Week 07",
+    "section": "",
+    "text": "Topics\n-what if we do not have an outcome to predict? - can we cluster the text in groups? - what are topics? - how to decide between different topics?\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 12-14.\nDavid M. Blei . 2012. “Probabilistic Topic Models.” http://www.cs.columbia.edu/~blei/papers/ Blei2012.pdf\nApplied Papers:\n\nMotolinia, Lucia. Electoral accountability and particularistic legislation: evidence from an electoral reform in Mexico. American Political Science Review 115, no. 1 (2021): 97-113.\nBarberá, P., Casas, A., Nagler, J., Egan, P. J., Bonneau, R., Jost, J. T., & Tucker, J. A. (2019). Who leads? Who follows? Measuring issue attention and agenda setting by legislators and the mass public using social media data. American Political Science Review, 113(4), 883-901.\nEshima, Shusei, Kosuke Imai, and Tomoya Sasaki. “Keyword‐Assisted Topic Models.” American Journal of Political Science (2020).\n\n\nCoding Materials\n\n Week 7 - Unsupervised Learning: Topic Models\n\n\n\nSlides\n\nWeek 7 - Unsupervised Learning"
+  },
+  {
+    "objectID": "weeks/week-05.html",
+    "href": "weeks/week-05.html",
+    "title": "Week 05",
+    "section": "",
+    "text": "Topics\nWe will study the framework to train our own supervised models, and when to use them.\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 17, 18, 19, and 20.\nApplied Papers:\n\nBarberá, Pablo, Amber E. Boydstun, Suzanna Linn, Ryan McMahon, and Jonathan Nagler. Automated text classification of news articles: A practical guide. Political Analysis 29, no. 1 (2021): 19-42.\nSiegel, Alexandra A., Evgenii Nikitin, Pablo Barberá, Joanna Sterling, Bethany Pullen, Richard Bonneau, Jonathan Nagler, and Joshua A. Tucker. Trumping hate on Twitter? Online hate speech in the 2016 US election campaign and its aftermath. Quarterly Journal of Political Science 16, no. 1 (2021): 71-104.\nTheocharis, Y., Barberá, P., Fazekas, Z., & Popa, S. A. (2020). The dynamics of political incivility on Twitter. Sage Open, 10(2), 2158244020919447.\nMitts, T., Phillips, G., & Walter, B. (2021). Studying the Impact of ISIS Propaganda Campaigns. Journal of Politics\n\n\nCoding Materials\n\n Week 5 - Supervised Learning: Training your own classifiers\n\n\n\nSlides\n\nWeek 5 - Supervised Learning"
+  },
+  {
+    "objectID": "weeks/week-10.html",
+    "href": "weeks/week-10.html",
+    "title": "Week 10",
+    "section": "",
+    "text": "Topics\n\nWhat are scaling models and what can they tell us?\nCan we represent politicians/users ideology using text?\n\n\n\nReadings\nRequired Readings\n\nLaver, Michael, Kenneth Benoit, and John Garry. 2003. “Extracting Policy Positions from Political Texts Using Words as Data”. American Political Science Review. 97, 2, 311-331\nSlapin, Jonathan and Sven-Oliver Prokschk. 2008. “A Scaling Model for Estimating Time-Series Party Positions from Texts.” American Journal of Political Science. 52, 3 705-722\n\nNon-Required Readings\n\nBarberá, Pablo. “Birds of the same feather tweet together: Bayesian ideal point estimation using Twitter data.” Political analysis 23, no. 1 (2015): 76-91.Harvard\nAruguete, Natalia, Ernesto Calvo, and Tiago Ventura. “News by popular demand: Ideological congruence, issue salience, and media reputation in news sharing.” The International Journal of Press/Politics 28, no. 3 (2023): 558-579.\nRheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.\nIzumi, Mauricio Y., and Danilo B. Medeiros. “Government and opposition in legislative speechmaking: using text-as-data to estimate Brazilian political parties’ policy positions.” Latin American Politics and Society 63, no. 1 (2021): 145-164.\n\nCoding Materials\n\n Week 10 - Scaling\n\n\n\nSlides\n\nWeek 10 - Scaling"
+  },
+  {
+    "objectID": "weeks/week-09.html",
+    "href": "weeks/week-09.html",
+    "title": "Week 09",
+    "section": "",
+    "text": "Topics\n\nApplications of Word Embeddings to social science problems\n\n\n\nReadings\nRequired Readings\n\nRodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.\nGennaro, Gloria, and Elliott Ash. “Emotion and reason in political language.” The Economic Journal 132, no. 643 (2022): 1037-1059.\nRheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.\nAustin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.\nGarg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.\n\nCoding Materials\n\n Week 9 - Word Embeddings\n\n\n\nSlides\n\nWeek 9 - Word Embeddings II\n\n\n\nProblem Set 2\n\nhttps://classroom.github.com/a/WcrFfilI"
+  },
+  {
+    "objectID": "weeks/week-08.html",
+    "href": "weeks/week-08.html",
+    "title": "Week 08",
+    "section": "",
+    "text": "Topics\n\nWhat are word-embeddings?\nWhen and how can we use them?\nWhat? Topic models again?\nIs this still a bag of words?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapter 8.\n[SLP] Chapter 6, “Vector Semantics and Embeddings.”\nJay Alanmar, The Illustrated Word2vec\nSpirling and Rodriguez, Word embedding: What works, what doesn’t, and how to tell the difference for applied research.\n\n\n\nSlides\n\nWeek 9 - Word Embeddings"
+  },
+  {
+    "objectID": "weeks/week-04.html",
+    "href": "weeks/week-04.html",
+    "title": "Week 04",
+    "section": "",
+    "text": "Topics\n\nWhat are dictionaries?\nWhy/when are they useful?\nWhat are their limitations?\nCan we use models trained by others and for other purposes in our classification tasks?\n\n\n\nReadings\nRequired Readings\n\n[GMB] - Chapters 15-16\nApplied Papers:\n\nLori Young and Stuart Soroka 2012 “Affective News: The Automated Coding of Sentiment in Political Texts.” Political Communication, 29:2, 205-231.\nRathje, Steve, Jay J. Van Bavel, and Sander Van Der Linden. “Out-group animosity drives engagement on social media.” Proceedings of the National Academy of Sciences 118, no. 26 (2021): e2024292118.\nVentura, Tiago, Kevin Munger, Katherine McCabe, and Keng-Chi Chang. “Connective effervescence and streaming chat during political debates.” Journal of Quantitative Description: Digital Media 1 (2021).\n\n\nCoding Materials\n\n Week 4 - Dictionaries and Off-the-Shelf Classifiers\n Week 4 - Transformers Based Classifiers \n\n\n\nProblem set 1\n\nProblem Set 1\n\n\n\nSlides\n\nWeek 4 - Dictionaries and Off-the-Shelf Classifiers"
+  },
+  {
+    "objectID": "weeks/week-13.html",
+    "href": "weeks/week-13.html",
+    "title": "Week 13",
+    "section": "",
+    "text": "Topics\n\n\nReadings\nRequired Readings\n\nWu, Patrick Y., Joshua A. Tucker, Jonathan Nagler, and Solomon Messing. “Large language models can be used to estimate the ideologies of politicians in a zero-shot learning setting.” arXiv preprint arXiv:2303.12057 (2023).\n\n- [Rathje, Steve, Dan-Mircea Mirea, Ilia Sucholutsky, Raja Marjieh, Claire Robertson, and Jay J. Van Bavel. GPT is an effective tool for multilingual psychological text analysis. (2023)](https://osf.io/preprints/psyarxiv/sekf5).\n\n- [Davidson, Thomas: Start Generating: Harnessing Generative Artificial Intelligence for Sociological Research, PrePrint](https://osf.io/preprints/socarxiv/u9nft)\n\n- [Bisbee, James, Joshua Clinton, Cassy Dorff, Brenton Kenkel, and Jennifer Larson. 2023. “Synthetic Replacements for Human Survey Data? the Perils of Large Language Models.” SocArXiv. May 4.](https://osf.io/preprints/socarxiv/5ecfa) \nCoding Materials\n\nTBD\n\n\n\nSlides\n\nTBD"
+  },
+  {
+    "objectID": "weeks/week-02.html",
+    "href": "weeks/week-02.html",
+    "title": "Week 02",
+    "section": "",
+    "text": "Topics\n\nHow to represent text as data?\nWhat is a Bag of Words?\nWhat are tokens?\nWhy should we care about tokens?\n\n\n\nReadings\nRequired Readings\n\nGrimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapters 3-5\nApplied Papers:\nDenny, M. J., & Spirling, A. (2018). Text preprocessing for unsupervised learning: why it matters, when it misleads, and what to do about it. Political Analysis, 26(2): 168-189.\nBan, Pamela, Alexander Fouirnaies, Andrew B. Hall, and James M. Snyder. “How newspapers reveal political power.” Political Science Research and Methods 7, no. 4 (2019): 661-678.\nMichel, J.B., et al. 2011. “Quantitative Analysis of Culture Using Millions of Digitized Books.” Science 331 (6014): 176–82. https://doi.org/10.1126/science.1199644\n\nCoding Materials\n\n Week 2 - Text Data Processing \n\n\n\nSlides\n\nWeek 2 - From Text to Matrices: Representing Text as Data"
+  },
+  {
+    "objectID": "weeks/week-01.html",
+    "href": "weeks/week-01.html",
+    "title": "Week 01",
+    "section": "",
+    "text": "Topics\n\nReview of syllabus\nClass organization\nGetting to know you\nIntroduction to computational text analysis.\n\n\n\nReadings\nRequired Readings\n\nGrimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapter 2.\n\nOr one of the three below:\n\nPolitical Science Perspective: Wilkerson, J. and Casas, A. (2017). Large-Scale Computerized Text Analysis in Political Science: Opportunities and Challenges. Annual Review of Political Science, 20, 529:544.\nEconomics Perspective: Gentzkow, Matthew, Bryan Kelly, and Matt Taddy. “Text as data.” Journal of Economic Literature 57, no. 3 (2019): 535-574.\nSociology Perspective: https://www.sciencedirect.com/science/article/pii/S0049089X22000904\n\nCoding Materials\n\nNone\n\n\n\nSlides\n\nWeek 1 - Introduction"
+  },
+  {
+    "objectID": "finalproject.html",
+    "href": "finalproject.html",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "",
+    "text": "Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments.\nIn this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings.\nFor this reason, a considerable part of your grade (40%) will come from a an independent data science project, applying concepts learned throughout the course.\nThe project is composed of three parts:\n\na 2 page project proposal: (which should be discussed and approved by me)\nan in-class presentation,\nA 10-page project report.\n\nDue dates and breakdowns for the project are as follows:\n\n\n\n\n\n\n\n\n\nRequirement\nDue\nLength\nPercentage\n\n\n\n\nProject Proposal\nEOD Friday Week 9\n2 pages\n5%\n\n\nPresentation\nWeek 14\n10-15 minutes\n10%\n\n\nProject Report\nWednesday Week 15\n10 pages\n25%"
+  },
+  {
+    "objectID": "finalproject.html#general-instructions",
+    "href": "finalproject.html#general-instructions",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "",
+    "text": "Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments.\nIn this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings.\nFor this reason, a considerable part of your grade (40%) will come from a an independent data science project, applying concepts learned throughout the course.\nThe project is composed of three parts:\n\na 2 page project proposal: (which should be discussed and approved by me)\nan in-class presentation,\nA 10-page project report.\n\nDue dates and breakdowns for the project are as follows:\n\n\n\n\n\n\n\n\n\nRequirement\nDue\nLength\nPercentage\n\n\n\n\nProject Proposal\nEOD Friday Week 9\n2 pages\n5%\n\n\nPresentation\nWeek 14\n10-15 minutes\n10%\n\n\nProject Report\nWednesday Week 15\n10 pages\n25%"
+  },
+  {
+    "objectID": "finalproject.html#all-components-of-the-project",
+    "href": "finalproject.html#all-components-of-the-project",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "All components of the project:",
+    "text": "All components of the project:\n\nProject Proposal\nThe project proposal asks that you sketch out a general 2 page (single-spaced; 12pt font) project proposal. The proposal should offer the following information:\n\nA high-level statement of the problem you intend to address or the analysis you aim to generate\nThe data source(s) you intend to use\nYour plan to obtain that data\nThe text as data method you plan to use.\nA definition for what “success” means with respect to your project.\n\nIn your words, what would a successful project look like? What is the results you want to show? What would be a surprising finding for you?\n\n\n\n\nPresentation\nYou will have the opportunity to present you final project in class. As a Data scientists, your presentation skills are as important as your data skills. You should prepare a 10-12 minutes presentation. It should cover:\n\nMotivation or problem statement\nData collection\nMethods\nResults\nLessons learned and next steps\n\n\n\nProject Report\nThe report is a complete description of the project’s analysis and results. The report should be a 10 page in length (single-spaced; 12pt font) and cover the points presented below. Citations and Front page will not be considered in the 10 page.\nBelow I’ve outlined points that one should aim to discuss in each section. Note that paper should read as a cohesive report:\n\nIntroduction\n\nsummarize your motivation, present some previous work related to your question\npresent your research question\nsummarize your report\n\nData and Methods\n\nWhere does the data come from? – What is the unit of observation? – What are the variables of interest? – What steps did you take to wrangle the data?\n\nAnalysis\n\nDescribe the methods/tools you explored in your project.\n\nResults\n\nGive a detailed summary of your results. – Present your results clearly and concisely. – Please use visualizations instead of tables whenever possible.\n\nDiscussion\n\nRe-introduce your main results\nState your contributions\nWhere do you want take this project next?\n\n\nIMPORTANT: There is not literature review section. You can use the literature to motivate your work. But you don’t need to have a full section on literature review. Read for example, papers at main general interest journals, like here, here and here. All these super accomplished articles do not have long literature reviews."
+  },
+  {
+    "objectID": "finalproject.html#submission-of-the-final-project",
+    "href": "finalproject.html#submission-of-the-final-project",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "Submission of the Final Project",
+    "text": "Submission of the Final Project\nThe end product should be a github repository that contains:\n\nThe raw source data you used for the project. If the data is too large for GitHub, talk with me, and we will find a solution\nYour proposal\nA README for the repository that, for each file, describes in detail:\n\nInputs to the file: e.g., raw data; a file containing credentials needed to access an API\nWhat the file does: describe major transformations.\nOutput: if the file produces any outputs (e.g., a cleaned dataset; a figure or graph).\nA set of code files that transform that data into a form usable to answer the question you have posed in your descriptive research proposal.\nYour final 10 pages report (I will share a template later in the semester)\n\n\nOf course, no commits after the due date will be considered in the assessment."
+  },
+  {
+    "objectID": "finalproject.html#templates-for-writing",
+    "href": "finalproject.html#templates-for-writing",
+    "title": "Instructions for PPOL 6801 - Final Project",
+    "section": "Templates for writing",
+    "text": "Templates for writing\nHere, I suggest you with a few templates for writing your reports. In my experience, writing data science reports using LaTeX is an gain in productivity in the long-run.\nIf you want to experiment with LaTeX via overleaf, you should use this template from PNAS (Just remember to switch to a one-column template):\n\nPNAS Template\n\nYou can also use the Journal of Quantitative Description templates in Word Doc or LaTeX:\n\nJQD Word\nJQD LaTeX\n\nOr, you can use templates from Quarto and write you entire project using quarto or markdown files"
+  },
+  {
+    "objectID": "slides/week_02.html#outline",
+    "href": "slides/week_02.html#outline",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Outline",
+    "text": "Outline\n\n\nChallenges of working with text\nDefining a corpus and selecting documents\nUnit of analysis\nReducing complexity (Denny & Spirling’s article)\nBag-of-Word, Vector model representation and Document-Feature Matrix\nApplication (Ban et. al.’s paper)"
+  },
+  {
+    "objectID": "slides/week_02.html#challenge-i-text-is-high-dimensional",
+    "href": "slides/week_02.html#challenge-i-text-is-high-dimensional",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Challenge I: Text is High-Dimensional",
+    "text": "Challenge I: Text is High-Dimensional\nFrom Gentzkow et al 2017:\n\nsample of documents, each \\(n_L\\) words long, drawn from vocabulary of \\(n_V\\) words.\nThe unique representation of each document has dimension \\(n_{V}^{n_L}\\) .\n\ne.g., a sample of 30-word (\\(n_L\\)) Twitter messages using only the one thousand most common words in the English language\nDimensionality = \\(1000^{30}\\)\nAs a matrix: \\(M^{1000}_{n_tweets}\\)"
+  },
+  {
+    "objectID": "slides/week_02.html#challenge-ii-text-is-an-unstructure-data-source",
+    "href": "slides/week_02.html#challenge-ii-text-is-an-unstructure-data-source",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Challenge II: Text is an unstructure data source",
+    "text": "Challenge II: Text is an unstructure data source"
+  },
+  {
+    "objectID": "slides/week_02.html#challenges-iii-outcomes-live-in-the-latent-space",
+    "href": "slides/week_02.html#challenges-iii-outcomes-live-in-the-latent-space",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Challenges III: Outcomes live in the Latent Space",
+    "text": "Challenges III: Outcomes live in the Latent Space\nIn most social science applications of text as data, we are trying to make an inference about a latent variable\n\nLatent variable: we cannot observe directly but try to identify with statistical and theoretical assumptions.\nExamples: ideology, sentiment, political stance, propensity of someone to turnout\n\n\nTraditional social science: mapping between observed and latent/theoretical concepts is easier.\n\nWe observe/measure country macroeconomic variables, collect survey responses, see how politicians vote.\nIn text, we only observe the words. Much harder to identify the latent concepts."
+  },
+  {
+    "objectID": "slides/week_02.html#learning-goals",
+    "href": "slides/week_02.html#learning-goals",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Learning goals",
+    "text": "Learning goals\nToday:\n\nCover techniques to reduce complexity from text data using a set of pre-processing steps ~ Challenge I\nHow to represent text as numbers using the vector space model ~ Challenge II\nStarting next week we will deal more with inference and modeling latent parameters using text ~ Challenge III"
+  },
+  {
+    "objectID": "slides/week_02.html#corpus-and-selecting-documents",
+    "href": "slides/week_02.html#corpus-and-selecting-documents",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "1. Corpus and selecting documents",
+    "text": "1. Corpus and selecting documents\n\nA corpus is (typically) a large set of texts or documents which we wish to analyze.\n\nif you can read them in an small amount of time, you should just do it, not TAD\n\nWhen selecting a corpus, we should consider how the corpus relates to our research question in two aspects:\n\nPopulation of interest: does the corpus allows us to make inferences about them?\nQuantity of interest: can we measure what we plan to?\nSampling Bias: documents are often sampled from a larger population. Are there concerns about sample selection bias?\n\nMost often we use these documents because they were available to us (custom made data). In these cases, considering the three questions above is even more important."
+  },
+  {
+    "objectID": "slides/week_02.html#ventura-et.-al.-streaming-chats-2021",
+    "href": "slides/week_02.html#ventura-et.-al.-streaming-chats-2021",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Ventura et. al., Streaming Chats, 2021",
+    "text": "Ventura et. al., Streaming Chats, 2021\n\n\n\n\n\n\n\n\nKey components\n\n\nRQ: Measure quality of comments on streaming chat platforms during political debates\nPopulation of interest?\nQuantity of interest?\nSource of bias?"
+  },
+  {
+    "objectID": "slides/week_02.html#unit-of-analysis",
+    "href": "slides/week_02.html#unit-of-analysis",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "2. Unit of Analysis",
+    "text": "2. Unit of Analysis\nAfter selecting your documents and converting them to a computer-friendly format, we must decide our unit of analysis\n\nentire document? sentence? paragraph? a larger group of documents?\n\n\nThree things to consider in making this decision:\n\nFeatures of your data and model fit\nYour research question\nIterative model\n\nswitching through different units of analysis has a low cost\nallows you to look at the data from a different angle\nprovide new insights to your research"
+  },
+  {
+    "objectID": "slides/week_02.html#reducing-complexity",
+    "href": "slides/week_02.html#reducing-complexity",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "3. Reducing complexity",
+    "text": "3. Reducing complexity\nLanguage is extraordinarily complex, and involves great subtlety and nuanced interpretation.\n\nWe simplify documents so that we can analyze/compared them:\n\nmakes the modeling problem much more tractable.\ncomplexity makes not much difference in topic identification or simple prediction tasks (sentiment analysis, for example)\n\nthe degree to which one simplifees is dependent on the particular task at hand.\n\nDenny and Spirling (2019) ~ check sensitivity."
+  },
+  {
+    "objectID": "slides/week_02.html#reducing-complexity-steps",
+    "href": "slides/week_02.html#reducing-complexity-steps",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Reducing complexity: steps",
+    "text": "Reducing complexity: steps\n\nTokenization: What does constitute a feature?\nRemove `superfulous’ material: HTML tags, punctuation, numbers, lower case and stop words\nMap words to equivalence forms: stemming and lemmatization\nDiscard less useful features for your task at hand: functional words, highly frequent or rare words\nDiscard word order: Bag-of-Words Assumption"
+  },
+  {
+    "objectID": "slides/week_02.html#tokenization",
+    "href": "slides/week_02.html#tokenization",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Tokenization",
+    "text": "Tokenization\n\nA first step in any text analysis task is to break documents in meaningful units of analysis (tokens)\nTokens are often words for most tasks. A simple tokenizer uses white space marks to split documents in tokens.\nTokenizer may vary [across tasks]{.red}:\n\nTwiter specific tokenizer ~ keep hashtags, for example.\n\nMay also vary across languages, in which white space is not a good marker to split text into tokens\n\nchinese and japanese\n\nCertain tokens, even in english, make more sense together than separate (“White House”, “United States”). These are collocations\n\nstatistical testing for collocations ~ PMI(a, b) = log(p(a,b)/p(a)*p(b))"
+  },
+  {
+    "objectID": "slides/week_02.html#stop-words",
+    "href": "slides/week_02.html#stop-words",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Stop Words",
+    "text": "Stop Words\n\nThere are certain words that serve as linguistic connectors (`function words’) which we can remove.\n\n( the, it, if, a, for, from, at, on, in, be )\n\nAdd noise to the document. Discard them, focus on signal, meaningful words.\nMost TAD packages have a pre-selected list of stopwords. You can add more given you substantive knowledge (more about this later)\nUsually not important for unsupervised and mostly supervised tasks, but might matter for authorship detection.\n\nFederalist Papers, example. Stop words give away writing styles."
+  },
+  {
+    "objectID": "slides/week_02.html#equivalence-mapping",
+    "href": "slides/week_02.html#equivalence-mapping",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Equivalence mapping",
+    "text": "Equivalence mapping\nReduce dimensionality even further!\n\nDifferent forms of words (family, families, familial), or words which are similar in concept (bureaucratic, bureaucrat, bureaucratization) that refer to same basic token/concept.\nuse algorithms to map these variation to a equivalent form:\n\nstemming: chop the end of the words: family, families, familiar ~ famili\nlemmatization: condition on part of speech\n\nbetter (adj) ~ good\nleaves (noun) ~ leaf\nleaves (verb) ~ leave\n\n\nAll [TAD/NLP packages[{.red}] offer easy applications for these algorithms."
+  },
+  {
+    "objectID": "slides/week_02.html#other-steps-functional-words-highly-frequent-or-rare-words",
+    "href": "slides/week_02.html#other-steps-functional-words-highly-frequent-or-rare-words",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Other steps: functional words, highly frequent or rare words",
+    "text": "Other steps: functional words, highly frequent or rare words\nSome other commons steps, which are highly dependent on your contextual knowledge, are:\n\ndiscard functional words: for example, when working with congressional speeches, remove representative, congress, session, etc...\nremove highly frequent words: words that appear in all documents carry very little meaning for most supervised and unsupervised tasks ~ no clustering and not discrimination.\nremove rare frequent words: same logic as above, no signal. Commong practice, words appear less 5% fo documents."
+  },
+  {
+    "objectID": "slides/week_02.html#bag-of-words-assumption",
+    "href": "slides/week_02.html#bag-of-words-assumption",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "4. Bag-of-Words Assumption",
+    "text": "4. Bag-of-Words Assumption\nNow we have pre-processed our data. So we simplify it even further:\n\nBag-of-Words Assumption: the order in which words appear does not matter.\n\nIgnore order\nBut keep multiplicity, we still consider frequency of words\n\n\n\nHow could this possible work:\n\nit might note: you need validation\ncentral tendency in text: some words are enough to topic detection, classificaiton, measures of similarity, and distance, for example.\nhumans in the loop: expertise knowledge help you figure it out subtle relationships between words and outcomes"
+  },
+  {
+    "objectID": "slides/week_02.html#can-we-preserve-the-word-order-another-pre-processing-decision",
+    "href": "slides/week_02.html#can-we-preserve-the-word-order-another-pre-processing-decision",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Can we preserve the word order? (another pre-processing decision)",
+    "text": "Can we preserve the word order? (another pre-processing decision)\nYes\n\nwe might retaining word order using n-grams.\n\nWhite House, Bill Gates, State Department, Middle East\nwe think some important subtlety of expression is lost: negation perhaps\n\nI want coffee, not tea might be interpreted very diferently without word order.\n\n\ncan use [n-grams], which are (sometimes contiguous) sequences of two (bigrams) or three (trigrams) tokens.\nThis makes computations considerably more complex. We can pick some n-grams to keep but not all:\n\n\\(PMI_{a,b} = log \\frac{p_{a,b}}{p_a \\cdot p_b}\\)\n\nif p(a,b)=0 ~ log (0) = -inf\nif p(a,b)=p(a)p(b) ~ log(1) = 0\nif p(a,b)&lt;p(a)p(b) ~ log(0&lt;x&lt;1) &lt; 0\nif p(a,b)&gt;p(a)p(b) ~ log(x&gt;1) &gt; 0"
+  },
+  {
+    "objectID": "slides/week_02.html#complete-example",
+    "href": "slides/week_02.html#complete-example",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Complete Example",
+    "text": "Complete Example\n\n\n\nText\n\n\nWe use a new dataset containing nearly 50 million historical newspaper pages from 2,700 local US newspapers over the years 1877–1977. We define and discuss a measure of power we develop based on observed word frequencies, and we validate it through a series of analyses. Overall, we find that the relative coverage of political actors and of political offices is a strong indicator of political power for the cases we study\n\n\n\n\n\n\n\nAfter pre-processing\n\n\nuse new dataset contain near 50 million historical newspaper pag 2700 local u newspaper year 18771977 define discus measure power develop bas observ word frequenc validate ser analys overall find relat coverage political actor political offic strong indicator political power cas study"
+  },
+  {
+    "objectID": "slides/week_02.html#denny-spirling-2018",
+    "href": "slides/week_02.html#denny-spirling-2018",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Denny & Spirling, 2018",
+    "text": "Denny & Spirling, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nStarting point: No rigorous way to compare results across different pre-processing steps. Adapting recommendations from supervised learning tasks.\n\nUnsupervised vs Supervised Learning?\nWhat is their solution? (no math needed!)\n\n\n\ncalculate the distance for every pair of documents, and rank the distances\ncompared to no pre processing, do the pair wise distances again, and get which document pair changed kth position, where k=1 for the pair that changed the most.\nBuild vector Vm_i^ with the position of the pairwise distance k affected in every other m combination. So Vm_1_1 contains the position of the changes in parwise distance on every other combination other than m=1 for the most changed document in m_1.\ntheir words: vmk = the rank difference for pair k between specification i and all others.\nAnother example with 3 documents, Vm1_1 = (1m2, 1m3), indicates that the document the changed the most in m1 is also the same in m2 and m3.\npretext score: mean over k (mean of V_m_k)\n\n\n\nToo much work? Substantive knowledge out of the table?"
+  },
+  {
+    "objectID": "slides/week_02.html#vector-space-model",
+    "href": "slides/week_02.html#vector-space-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "5. Vector Space Model",
+    "text": "5. Vector Space Model\nTo represent documents as numbers, we will use the vector space model representation:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space\n\n\nImagine the sentence below: “If that is a joke, I love it. If not, can’t wait to unpack that with you later.”\n\nSorted Vocabulary =(a, can’t, i, if, is, it, joke, later, love, not, that, to, unpack, wait, with, you”)\nFeature Representation = (1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1)\nFeatures will typically be the n-gram (mostly unigram) frequencies of the tokens in the document, or some function of those frequencies\n\n\n\nNow each document is now a vector (vector space model)\n\nstacking these vectors will give you our workhose representation for text: Document Feature Matrix"
+  },
+  {
+    "objectID": "slides/week_02.html#visualizing-vector-space-model",
+    "href": "slides/week_02.html#visualizing-vector-space-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Visualizing Vector Space Model",
+    "text": "Visualizing Vector Space Model\n\n\n\nDocuments\n\n\nDocument 1 = “yes yes yes no no no”\nDocument 2 = “yes yes yes yes yes yes”"
+  },
+  {
+    "objectID": "slides/week_02.html#visualizing-vector-space-model-1",
+    "href": "slides/week_02.html#visualizing-vector-space-model-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Visualizing Vector Space Model",
+    "text": "Visualizing Vector Space Model\nIn the vector space, we can use geometry to build well-defined comparison measures between the documents (more about this next week)"
+  },
+  {
+    "objectID": "slides/week_02.html#document-feature-matrix",
+    "href": "slides/week_02.html#document-feature-matrix",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "6. Document-Feature Matrix",
+    "text": "6. Document-Feature Matrix\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Arthur Spirling TAD Class"
+  },
+  {
+    "objectID": "slides/week_02.html#ban-et.-al.-2019-how-newspapers-reveal-political-power.",
+    "href": "slides/week_02.html#ban-et.-al.-2019-how-newspapers-reveal-political-power.",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Ban et. al. 2019, How Newspapers Reveal Political Power.",
+    "text": "Ban et. al. 2019, How Newspapers Reveal Political Power.\n\n\n\n\n\n\n\n\n \n\nPurely descriptive\nSimple measure just by counting words.\nTheorethically-driven: measure that capture a theorethically relevant concept.\n\n\n\\[\n\\small \\text{Coverage of Mayor}_{it} = \\frac{\\text{Mayor}_{it}}{\\text{Mayor}_{it} + \\text{City Manager}_{it} + \\text{City Council}_{it}}\n\\]\n\n\n\n\n\nText-as-Data"
+  },
+  {
+    "objectID": "slides/week_07.html#survey-responses",
+    "href": "slides/week_07.html#survey-responses",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Survey Responses",
+    "text": "Survey Responses\nThank you so much for responding to the survey! Here are the most important feedback I receive:\n\nmore structured walk throughs of the code\nIf you could a few resources we can look at for mathematical depth for class topic. Really enjoyed the in-depth discussion on LDA\nI hope we can have a few discussion questions along with weekly readings\nIncluding discussion of papers that are from non-polisci applications? For example, econ, sociology, psychology, etc.?\n\nStop Doing:\n\nlong alone time with code\nSometimes we spend a bit too long on the recap part"
+  },
+  {
+    "objectID": "slides/week_07.html#plans-for-today",
+    "href": "slides/week_07.html#plans-for-today",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Plans for Today:",
+    "text": "Plans for Today:\n\nLive coding from last class on topic models\nWord Embeddings\n\nSemantics, Distributional Hypothesis, From Sparse to Dense Vectors\nWord2Vec Algorithm\n\nMathematical Model\nEstimate with Neural Networks\n\n\nNext week:\n\nStart with coding to work with wordembeddings\n\nEstimate from co-occurence matrices\nWorking with pre-trained models\n\nDiscuss applications to social science"
+  },
+  {
+    "objectID": "slides/week_07.html#vector-space-model",
+    "href": "slides/week_07.html#vector-space-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Vector Space Model",
+    "text": "Vector Space Model\nIn the vector space model, we learned:\n\nA document \\(D_i\\) is represented as a collection of features \\(W\\) (words, tokens, n-grams..)\nEach feature \\(w_i\\) can be place in a real line, then a document \\(D_i\\) is a point in a \\(W\\) dimensional space.\n\nEmbedded in this model, there is the idea we represent words as a one-hot encoding.\n\n“cat”: [0,0, 0, 0, 0, 0, 1, 0, ….., V] , on a V dimensional vector\n“dog”: [0,0, 0, 0, 0, 0, 0, 1, …., V], on a V dimensional vector\n\nWhat these vectors look like?\n\nreally sparse\nvectors are orthogonal\nno natural notion of similarity"
+  },
+  {
+    "objectID": "slides/week_07.html#distributional-semantics",
+    "href": "slides/week_07.html#distributional-semantics",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Distributional Semantics",
+    "text": "Distributional Semantics\n\n“you shall know a word by the company it keeps.” J. R. Firth 1957\n\nDistributional semantics: words that are used in the same contexts tend to be similar in their meaning.\n\n\nHow can we use this insight to build a word representation?\n\nMove from sparse representation to dense representation\nRepresent words as vectors of numbers with high number of dimensions\nEach feature on this vectors embeds some information from the word (gender? noun? sentiment? stance?)\nLearn this representation from the unlabeled data."
+  },
+  {
+    "objectID": "slides/week_07.html#sparse-vs-dense-vectors",
+    "href": "slides/week_07.html#sparse-vs-dense-vectors",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Sparse vs Dense Vectors",
+    "text": "Sparse vs Dense Vectors\nOne-hot encoding / Sparse Representation:\n\ncat = \\(\\begin{bmatrix} 0,0, 0, 0, 0, 0, 1, 0, 0 \\end{bmatrix}\\)\ndog = \\(\\begin{bmatrix} 0,0, 0, 0, 0, 1, 0, 0, 0 \\end{bmatrix}\\)\n\nWord Embedding / Dense Representation:\n\ncat = \\(\\begin{bmatrix} 0.25, -0.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \\end{bmatrix}\\)\ndog = \\(\\begin{bmatrix} 0.25, 1.75, 0.90, 0.12, -0.50, 0.33, 0.66, -0.88, 0.10, -0.45 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "slides/week_07.html#with-colors-and-real-word-vectors",
+    "href": "slides/week_07.html#with-colors-and-real-word-vectors",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "With colors and real word vectors",
+    "text": "With colors and real word vectors\n\nSource: Illustrated Word2Vec"
+  },
+  {
+    "objectID": "slides/week_07.html#why-word-embeddings",
+    "href": "slides/week_07.html#why-word-embeddings",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Why Word Embeddings?",
+    "text": "Why Word Embeddings?\nEncoding similarity: vectors are not ortogonal anymore!\nAutomatic Generalization: learn about one word allow us to automatically learn about related words\nEncodes Meaning: by learning the context, I can learn what a word means.\nAs a consequence:\n\nWord Embeddings improves several NLP/Text-as-Data Tasks.\nAllows to deal with unseen words.\nForm the core idea of state-of-the-art models, such as LLMs."
+  },
+  {
+    "objectID": "slides/week_07.html#estimating-word-embeddings",
+    "href": "slides/week_07.html#estimating-word-embeddings",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Estimating Word Embeddings",
+    "text": "Estimating Word Embeddings\nApproches:\n\n\nCount-based methods: look at how often words co-occur with neighbors.\n\nuse this matrix, and some some factorization to retrieve vectors for the words\nGloVE\nfast, not computationally intensive, but not the best representation\nwe will see code doing this next week\n\n\n\n\n\nPredictive Methods: rely on the idea of self-supervision\n\nuse unlabeled data and use words to predict sequence\nthe famous word2vec.\n\nSkipgram: predicts context words\nContinuous Bag of Words: predict center word"
+  },
+  {
+    "objectID": "slides/week_07.html#word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013",
+    "href": "slides/week_07.html#word2vec-a-framework-for-learning-word-vectors-mikolov-et-al.-2013",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)",
+    "text": "Word2Vec: a framework for learning word vectors (Mikolov et al. 2013)\nCore Idea:\n\n\nWe have a large corpus (“body”) of text: a long list of words\nEvery word in a fixed vocabulary is represented by a vector\nGo through each position t in the text, which has a center word \\(c\\) and context (“outside”) words \\(t\\)\nUse the similarity of the word vectors for \\(c\\) and \\(t\\) to calculate the probability of o given c (or vice versa)\nKeep adjusting the word vectors to maximize this probability\n\nNeural Network + Gradient Descent"
+  },
+  {
+    "objectID": "slides/week_07.html#skigram-example-self-supervision",
+    "href": "slides/week_07.html#skigram-example-self-supervision",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Skigram Example: Self-Supervision",
+    "text": "Skigram Example: Self-Supervision\n\nSource: CS224N"
+  },
+  {
+    "objectID": "slides/week_07.html#skigram-example-self-supervision-1",
+    "href": "slides/week_07.html#skigram-example-self-supervision-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Skigram Example: Self-Supervision",
+    "text": "Skigram Example: Self-Supervision\n\nSource: CS224N"
+  },
+  {
+    "objectID": "slides/week_07.html#encoding-similarity",
+    "href": "slides/week_07.html#encoding-similarity",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Encoding Similarity",
+    "text": "Encoding Similarity\nTo estimate the model, we first need to formalize the probability function we want to estimate.\n\n\nThis is similar to a logistic regression\n\n\n\nIn logistic regression: probability of a event occur given data X and parameters \\(\\beta\\).:\n\n$ P(y=1| X, ) = X * \\(\\beta\\) $\n\\(X*\\beta\\) is not a proper probability function, so we make it to proper probability by using a logit transformation.\n\\(P(y=1|X, \\beta ) = \\frac{exp(XB)}{1 + exp(XB)}\\)\nThrow this transformation inside of a bernouilli distribution, get the likelihood function, and find the parameters using MLE."
+  },
+  {
+    "objectID": "slides/week_07.html#pametrizing-pw_tw_t-1",
+    "href": "slides/week_07.html#pametrizing-pw_tw_t-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Pametrizing \\(P(w_t|w_{t-1})\\)",
+    "text": "Pametrizing \\(P(w_t|w_{t-1})\\)\n\n\\(P(w_t|w_{t-1})\\) must be condition on how similar these words are.\n\nExactly the same intuition behind placing documents in the vector space model.\nNow words are vectors!\n\\(P(w_t|w_{t-1}) = u_c \\cdot u_t\\)\n\n\\(u_c \\cdot u_t\\)\ndot product between vectors\nmeasures similarity using vector projection\n\\(u_c\\): center vector\n\\(u_t\\): target vectors\n\n\n\\(u_c \\cdot u_t\\) is also not a proper probability distribution: Logit on them!\n\n\\[P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\]"
+  },
+  {
+    "objectID": "slides/week_07.html#softmax-transformation",
+    "href": "slides/week_07.html#softmax-transformation",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Softmax Transformation",
+    "text": "Softmax Transformation\n\\[P(w_t|w_{t-1}) = \\frac{exp(u_c \\cdot u_t)}{{\\sum_{w}^V exp(u_c*u_w)}}\\]\n\nDot product compares similarity between vectors\nnumerator: center vs target vectors\nexponentiation makes everything positive\nDenominator: normalize over entire vocabulary to give probability distribution\nWhat is the meaning of softmax?\n\nmax: assign high values to be 1\nsoft: still assigns some probability to smaller values\ngeneralization of the logit ~ multinomial logistic function."
+  },
+  {
+    "objectID": "slides/week_07.html#word2vec-objective-function",
+    "href": "slides/week_07.html#word2vec-objective-function",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Word2Vec: Objective Function",
+    "text": "Word2Vec: Objective Function\n\nFor each position \\(t\\), predict context words within a window of fixed size \\(m\\), given center word \\(w\\).\nLikelihood Function\n\\[ L(\\theta) = \\prod_{t=1}^{T} \\prod_{\\substack{-m&lt;= j&lt;=m \\\\ j \\neq 0}}^{m} P(w_{t+j} | w_t; \\theta) \\]\n\nAssuming independence, this means you multiplying the probability of every target for every center word in your dictionary.\nThis likelihood function will change if you do skipgram with negative sampling (See SLP chapter 6)\n\n\n\n\nObjective Function: Negative log likelihood\n\\[J(\\theta) = - \\frac{1}{T}log(L(\\theta))\\]\n\nbetter to take the gradient with sums\nthe average increases the numerical stability of the gradient."
+  },
+  {
+    "objectID": "slides/week_07.html#neural-networks-brief-overview",
+    "href": "slides/week_07.html#neural-networks-brief-overview",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Neural Networks: Brief overview",
+    "text": "Neural Networks: Brief overview"
+  },
+  {
+    "objectID": "slides/week_07.html#skipgram-architecture",
+    "href": "slides/week_07.html#skipgram-architecture",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Skipgram Architecture",
+    "text": "Skipgram Architecture"
+  },
+  {
+    "objectID": "slides/week_07.html#check-your-matrices",
+    "href": "slides/week_07.html#check-your-matrices",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Check your matrices",
+    "text": "Check your matrices\n\n\n\n\n\n\n\n\n  \nPractice with a vocabulary of size 5, a embedding with 3 dimensions, and the task is to predict the next word.\n\nStep 1: v_1^5 * W_5^3\nStep 2: w_1^3 * C_3^5\nStep 3: Softmax entire vector"
+  },
+  {
+    "objectID": "slides/week_07.html#word-embeddings-matrices",
+    "href": "slides/week_07.html#word-embeddings-matrices",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Word Embeddings Matrices",
+    "text": "Word Embeddings Matrices"
+  },
+  {
+    "objectID": "slides/week_07.html#applications",
+    "href": "slides/week_07.html#applications",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Applications:",
+    "text": "Applications:\nOnce we’ve optimized, we can extract the word specific vectors from W as embedding vectors. These real valued vectors can be used for analogies and related tasks\n\nWe will see several applications next week. Most important:\n\nAlternative to bag-of-words feature representation in supervised learning tasks\nSupport for other automated text analysis tasks: expand dictionaries\nUnderstanding word meaning: variation over time, bias, variation by groups\nas a scaling method (in two weeks)"
+  },
+  {
+    "objectID": "slides/week_07.html#training-embeddings",
+    "href": "slides/week_07.html#training-embeddings",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Training Embeddings",
+    "text": "Training Embeddings\nEmbeddings need quite a lot of text to train: e.g. want to disambiguate meanings from contexts. You can download pre-trained, or get the code and train locally\n\nWord2Vec is trained on the Google News dataset (∼ 100B words, 2013)\nGloVe are trained on different things: Wikipedia (2014) + Gigaword (6B words), Common Crawl, Twitter. And uses a co-occurence matrix instead of Neural Networks\nfastext from facebook"
+  },
+  {
+    "objectID": "slides/week_07.html#decisions-on-embeddings-rodriguez-and-spirling-2022",
+    "href": "slides/week_07.html#decisions-on-embeddings-rodriguez-and-spirling-2022",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Decisions on embeddings, Rodriguez and Spirling, 2022",
+    "text": "Decisions on embeddings, Rodriguez and Spirling, 2022\nWhen using/training embeddings, we face four key decisions:\n\nWindow size\nNumber of dimensions for the embedding matrix\nPre-trained versus locally fit variants\nWhich algorithm to use?"
+  },
+  {
+    "objectID": "slides/week_07.html#findings",
+    "href": "slides/week_07.html#findings",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Findings",
+    "text": "Findings\n\n\npopular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.\nGloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings\nLarger window size and embeddings are often preferred."
+  },
+  {
+    "objectID": "slides/week_10.html#plans-for-today",
+    "href": "slides/week_10.html#plans-for-today",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Plans for Today:",
+    "text": "Plans for Today:\n\nOverview of scaling models\nScaling models using text\n\nsupervised models: wordscore\nunsupervised models: wordfish\n\nBut remember we saw the Doc2vec last week\n\n\nScaling models with network data"
+  },
+  {
+    "objectID": "slides/week_10.html#many-questions-depends-on-policy-positions",
+    "href": "slides/week_10.html#many-questions-depends-on-policy-positions",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Many questions depends on policy positions",
+    "text": "Many questions depends on policy positions\nMany substantive questions in policy and politics depends on estimating ideological preferences:\n\nIs polarization increasing over time?\n\nare parties moving together over time?\n\nDo governments/coalitions last longer conditional on:\n\nhow homogeneous coalition is?\ndistance between coalition and congress ideal points?\ndistance between coalition and median voter?\n\nDoes ideology affect policy decisions?\n\nEconomic Cycles and elections?\nglobalization and the social welfare state?\n\n\nMany more examples …."
+  },
+  {
+    "objectID": "slides/week_10.html#scaling-with-without-computational-text-analysis",
+    "href": "slides/week_10.html#scaling-with-without-computational-text-analysis",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Scaling with without computational text analysis",
+    "text": "Scaling with without computational text analysis\nSurveys\n\nAsk elites or regular voters about policy preference, and scale them in some sort of political continuum.\nChallenges:\n\nExpensive\nSources of bias: non-response, social desirebility, strategic responses, to name a few\nCannot be used for historical data"
+  },
+  {
+    "objectID": "slides/week_10.html#scaling-with-without-computational-text-analysis-1",
+    "href": "slides/week_10.html#scaling-with-without-computational-text-analysis-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Scaling with without computational text analysis",
+    "text": "Scaling with without computational text analysis\nBehavioral data (for example, roll-call voting):\n\nPoliticians vote on proposals (or judges make decisions) that are close to their ideal points\n\nUse statistical methods (mostly matrix factorization) to estimate orthogonal dimensions\nNominate Scores\nChallenge\n\nMost times politicians vote for many things other than ideology\nFace-Validity: AOC for example often place as a centrist (not always voting with democrats)"
+  },
+  {
+    "objectID": "slides/week_10.html#scaling-with-without-computational-text-analysis-2",
+    "href": "slides/week_10.html#scaling-with-without-computational-text-analysis-2",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Scaling with without computational text analysis",
+    "text": "Scaling with without computational text analysis\nText Data\n\nManually label content of political manifestos (Comparative Manifestos Project)\nChallenges:\n\nReally expensive\nCostly to translate to other languages\nHeavily dependent on substantive knowledge"
+  },
+  {
+    "objectID": "slides/week_10.html#scaling-models-with-computational-text-analysis",
+    "href": "slides/week_10.html#scaling-models-with-computational-text-analysis",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Scaling models with computational text analysis",
+    "text": "Scaling models with computational text analysis\nIn the past 20 years, computational text analysis has been widely used for building scaling models.\n\nAdvantages: fast, reliable, deals with large volumes of text, and easy to translate to other domains/language.\nWordscore: supervised approach, mimic naive bayesian models, start with reference, and score virgin texts.\nWordfish: unsupervised approach, learn word occurrence from the documents using a ideal points models."
+  },
+  {
+    "objectID": "slides/week_10.html#wordscore-laver-benoit-garry-2003-apsr",
+    "href": "slides/week_10.html#wordscore-laver-benoit-garry-2003-apsr",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Wordscore (Laver, Benoit, Garry, 2003, APSR)",
+    "text": "Wordscore (Laver, Benoit, Garry, 2003, APSR)\nStep 1: Begin with a reference set (training set) of texts that have known positions.\n\nget a speech by AOC , give it -1 score.\nget a speech by MTG, give it a +1 score.\n\nStep 2: Generate word scores from these reference texts\n\nPretty much like a NB\n\nStep 3: Score the virgin texts (test set) of texts using those word scores\n\nscale virgin score to the same original metric (-1 to +1)\n\ncalculate confidence intervals"
+  },
+  {
+    "objectID": "slides/week_10.html#scoring-words",
+    "href": "slides/week_10.html#scoring-words",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Scoring Words",
+    "text": "Scoring Words\n\n\nLearning Words\n\\[ P_{wr} = \\frac{F_{wr}}{\\sum_r F_{wr}}\\] - \\(P_{wr}\\): Probability of word \\(w\\) being from reference document \\(r\\)\n\n\\(F_{wr}\\): Frequency of word \\(w\\) in reference text \\(r\\)\n\n\n\n\nScoring Words\n\\[S_{wd} = \\sum_r (P_{wr} \\cdot A_{rd}) \\] - \\(S_{wd}\\): Score of word \\(w\\) in dimension \\(d\\)\n\n\\(A_{rd}\\): Pre-defined position of reference text \\(r\\) in dimension \\(d\\)\n\\(A_{rd}\\) will be -1 for liberal and +1 for conservative documents, for example.\n\n\n\n\nScoring virgin texts\n\\[ S_{vd} = \\sum_w (F_{wv} · S_{wd}) \\]"
+  },
+  {
+    "objectID": "slides/week_10.html#example",
+    "href": "slides/week_10.html#example",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Example",
+    "text": "Example\nRepublican manifesto uses `wall’ 25 times in 1000 words, while Democrat use it only 5 times. Assume 1 for republican and -1 for democrat\n\\[P_{wr} = 0.83\\]\n\\[P_{wl} =  0.16 \\] \\[ S_w = 0.83*1 + -1*.16 = 0.66\\]\n\nVirgin text 1 mentions wall 200 times in 1000 words ~ \\(0.2 * 0.66 = 0.132\\)\nVirgin text 2 mentions wall 1 times in 1000 words ~ \\(0.001 * 0:66 = 0.0066\\)\n\nRepeat for all words!"
+  },
+  {
+    "objectID": "slides/week_10.html#results",
+    "href": "slides/week_10.html#results",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "slides/week_10.html#wordfish-slapin-and-proksch-2008-ajps",
+    "href": "slides/week_10.html#wordfish-slapin-and-proksch-2008-ajps",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Wordfish, (Slapin and Proksch, 2008, AJPS)",
+    "text": "Wordfish, (Slapin and Proksch, 2008, AJPS)\nSame assumptions as in Wordscore (word usage provides information about policy placement), but in an unsupervised setting and with fully specified language model.\nThe count of word \\(j\\) from party \\(i\\) , in year \\(t\\):\n\\[ y_{ijt}   \\sim  Pois(\\lambda)\\]\n\\[ \\lambda_{ijt}=\\exp({\\alpha_{it} + \\psi_j + \\beta_j\\times\\omega_{it}}) \\]\n\n\\(\\alpha_{it}\\): fixed effect(s) for party \\(i\\) in time \\(t\\) ~ deal with parties that write too much\n\\(\\psi_j\\): word fixed effect: some parties just use certain words more (e.g. their own name)\n\\(\\beta_j\\): word specific weights (discrimination parameter, adds more information than simple usage)\n\\(\\omega_{it}\\) estimate of party’s position in a given year."
+  },
+  {
+    "objectID": "slides/week_10.html#estimation",
+    "href": "slides/week_10.html#estimation",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Estimation",
+    "text": "Estimation\n\\[ \\lambda_{ijt}=\\exp({\\alpha_{it} + \\psi_j + \\beta_j\\times\\omega_{it}}) \\]\nNothing on RHS is known: everything needs to be estimated.\n\nUse Expectation Maximization (EM) algorithm (same as we could use for topic models):\n\nInitialize values based on counts in the data\nE-Step: run a Poisson regression holding word parameters fixed, and estimating the party parameters\nM-Step: run a Poisson regression holding party parameters fixed, and estimating the word parameter\nIterate until convergence\n\nOther option: Bayesian Estimation with Gibbs sampling."
+  },
+  {
+    "objectID": "slides/week_10.html#results-i",
+    "href": "slides/week_10.html#results-i",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results I",
+    "text": "Results I"
+  },
+  {
+    "objectID": "slides/week_10.html#results-ii",
+    "href": "slides/week_10.html#results-ii",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Results II",
+    "text": "Results II"
+  },
+  {
+    "objectID": "slides/week_10.html#spatial-following-model-barbera-2015",
+    "href": "slides/week_10.html#spatial-following-model-barbera-2015",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Spatial Following Model, Barbera 2015",
+    "text": "Spatial Following Model, Barbera 2015\nWith the emergence of social media data, not only more text data has become available, but also network data. Some of the most interesting developments in computational social science research in the past years has been on using this data to estimate ideological positions for a LARGE number of social media users.\n\nAssumption: users prefer to follow political accounts they perceive to be ideologically close to their own position.\nFollowing decisions contain information about allocation of scarce resource: attention\nSelective exposure: preference for information that reinforces current views\nStatistical model that builds on assumption to estimate positions of both individuals and political accounts"
+  },
+  {
+    "objectID": "slides/week_10.html#all-you-need-is-a-matrix",
+    "href": "slides/week_10.html#all-you-need-is-a-matrix",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "All you need is a matrix!",
+    "text": "All you need is a matrix!"
+  },
+  {
+    "objectID": "slides/week_10.html#statistical-model",
+    "href": "slides/week_10.html#statistical-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Statistical Model",
+    "text": "Statistical Model\n\nUsers’ and political accounts’ ideology (\\(theta_i\\) and \\(\\phi_j\\) ) are defined as latent variables to be estimated.\nData: “following” decisions, a matrix of binary choices (Y).\nProbability that user i follows political account j is\n\n\\[P(y_{ij} = 1) = logit^{-1} (\\alpha_j + \\beta_i - \\zeta(\\theta_i - \\phi_j)^2)\\]\nwith latent variables: - \\(\\theta_i\\) measures ideology of user i - \\(\\phi_j\\) measures ideology of political account j\nAnd: - \\(\\alpha_j\\) measures popularity of political account j - \\(\\beta_i\\) measures political interest of user i"
+  },
+  {
+    "objectID": "slides/week_10.html#ventura-et-al-news-sharing-model",
+    "href": "slides/week_10.html#ventura-et-al-news-sharing-model",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Ventura et al’ News Sharing Model",
+    "text": "Ventura et al’ News Sharing Model"
+  },
+  {
+    "objectID": "slides/week_10.html#statistical-model-1",
+    "href": "slides/week_10.html#statistical-model-1",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Statistical Model",
+    "text": "Statistical Model\nThe estimation of the utility function for sharing uses a multilevel overdispersed poisson model.\n\\[y_{ij} \\sim \\mbox{Po}(\\mu_i)\\]\n\\[\\mu_i = \\exp(\\alpha_{i[q]}\\left(x_{i}-L_{j}\\right)^2 + A_{[q]} + R_{[j]} + \\gamma_{[i]})\\]\nWhere:\n\n\\(y_{i}\\) = Number of links embedded by user x media\n\\(\\alpha_{q}\\) = Random Slope by quantile\n\\(A_{q}\\) = Random intercept by quantile\n\\(R_{j}\\) = Random intercept by media outlet\n\\(\\gamma_{[i]}\\) = Overdispersion parameter\n\n\n\nText-as-Data"
+  },
+  {
     "objectID": "slides/week_05.html#housekeeping",
     "href": "slides/week_05.html#housekeeping",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
@@ -1453,154 +1586,70 @@
     "href": "slides/week_09.html#plans-for-today",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Plans for Today:",
-    "text": "Plans for Today:\n\nA quick quizz (as a review exercise) about Word Embeddings\nText as Data applications using Word Embeddings\nCoding\nProblem set 2!"
+    "text": "Plans for Today:\n\nOverview of scaling models\nScaling models using text\n\nsupervised models: wordscore\nunsupervised models:\n\nwordfish\nDoc2vec\n\n\nScaling models with network data"
   },
   {
-    "objectID": "slides/week_09.html#word-embeddings-quiz",
-    "href": "slides/week_09.html#word-embeddings-quiz",
+    "objectID": "slides/week_09.html#many-questions-depends-on-policy-positions",
+    "href": "slides/week_09.html#many-questions-depends-on-policy-positions",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Word Embeddings Quiz",
-    "text": "Word Embeddings Quiz\n\n\nExplain these three concepts: Self-Supervision, Distributional Hypothesis, Dense Representation.\nPut these three concepts together to explain how word vectors can capture meaning of words.\nWhat are the two main strategies to estimate word embeddings? One is named Glove, and the other is named Word2Vec\nAre word embeddings still a bag-of-word representation model?\nAre word2vec algorithms deep learning?\nAre word2vec algorithms unsupervised or supervised learning?"
+    "section": "Many questions depends on policy positions",
+    "text": "Many questions depends on policy positions\nMany substantive questions in policy and politics depends on estimating ideological preferences:\n\nIs polarization increasing over time?\n\nare parties moving together over time?\n\nDo governments/coalitions last longer conditional on:\n\nhow homogeneous coalition is?\ndistance between coalition and congress ideal points?\ndistance between coalition and median voter?\n\nDoes ideology affect policy decisions?\n\nEconomic Cycles and elections?\nglobalization and the social welfare state?\n\n\nMany more examples …."
   },
   {
-    "objectID": "slides/week_09.html#decisions-when-using-embeddings-rodriguez-and-spirling-2022",
-    "href": "slides/week_09.html#decisions-when-using-embeddings-rodriguez-and-spirling-2022",
+    "objectID": "slides/week_09.html#scaling-with-without-computational-text-analysis",
+    "href": "slides/week_09.html#scaling-with-without-computational-text-analysis",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Decisions when using embeddings, Rodriguez and Spirling, 2022",
-    "text": "Decisions when using embeddings, Rodriguez and Spirling, 2022\n\n\n\n\n\n\n\n\n \nWhen using/training embeddings, we face four key decisions:\n\nWindow size\nNumber of dimensions for the embedding matrix\nPre-trained versus locally fit variants\nWhich algorithm to use?"
+    "section": "Scaling with without computational text analysis",
+    "text": "Scaling with without computational text analysis\n\nSurveys\n\nAsk elites or regular voters about policy preference, and scale them in some sort of political continuum.\nChallenges:\n\nExpensive\nSources of bias: non-response, social desirebility, strategic responses, to name a few\nCannot be used for historical data"
   },
   {
-    "objectID": "slides/week_09.html#findings",
-    "href": "slides/week_09.html#findings",
+    "objectID": "slides/week_09.html#scaling-with-without-computational-text-analysis-1",
+    "href": "slides/week_09.html#scaling-with-without-computational-text-analysis-1",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Findings",
-    "text": "Findings\n\n\npopular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.\nGloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings\nLarger window size and embeddings are often preferred."
+    "section": "Scaling with without computational text analysis",
+    "text": "Scaling with without computational text analysis\n\nBehavioral data (for example, roll-call voting):\n\nPoliticians vote on proposals (or judges make decisions) that are close to their ideal points\n\nUse statistical methods (mostly matrix factorization) to estimate orthogonal dimensions\nNominate Scores\nChallenge\n\nMost times politicians vote for many things other than ideology\nFace-Validity: AOC for example often place as a centrist (not always voting with democrats)"
   },
   {
-    "objectID": "slides/week_09.html#applications-1",
-    "href": "slides/week_09.html#applications-1",
+    "objectID": "slides/week_09.html#scaling-with-without-computational-text-analysis-2",
+    "href": "slides/week_09.html#scaling-with-without-computational-text-analysis-2",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Applications",
-    "text": "Applications\nLet’s discuss now several applications of embeddings on social science papers. These paper show:\n\nHow to use embeddings to track semantic changes over time\nHow to use embeddings to measure emotion in political language.\nHow to use embeddings to measure gender and ethnic stereotypes\nAnd a favorite of political scientists, how to use embeddings to measure ideology."
+    "section": "Scaling with without computational text analysis",
+    "text": "Scaling with without computational text analysis\n\nText Data\n\nManually label content of political manifestos (Comparative Manifestos Project)\nChallenges:\n\nReally expensive\nCostly to translate to other languages\nHeavily dependent on substantive knowledge"
   },
   {
-    "objectID": "slides/week_09.html#how-will-we-make-this-discussion-fun",
-    "href": "slides/week_09.html#how-will-we-make-this-discussion-fun",
+    "objectID": "slides/week_09.html#scaling-models-with-computational-text-analysis",
+    "href": "slides/week_09.html#scaling-models-with-computational-text-analysis",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "How will we make this discussion fun?",
-    "text": "How will we make this discussion fun?\n\nI: introduce the paper and the main goals\nYou: will explain to me how the author use the word embeddings to do so."
+    "section": "Scaling models with computational text analysis",
+    "text": "Scaling models with computational text analysis\nIn the past 20 years, computational text analysis has been widely used for building scaling models.\n\nAdvantages: fast, reliable, deals with large volumes of text, and easy to translate to other domains/language.\nWordscore: supervised approach, mimic naive bayesian models, start with reference, and score virgin texts.\nWordfish: unsupervised approach, learn word occurrence from the documents using a ideal points models.\nDoc2Vec: unsupervised approach, maps documents in the embedding vector space, use PCA to reduce dimensionality."
   },
   {
-    "objectID": "slides/week_09.html#capturing-cultural-dimensions-with-embeddings",
-    "href": "slides/week_09.html#capturing-cultural-dimensions-with-embeddings",
+    "objectID": "slides/week_09.html#wordscore",
+    "href": "slides/week_09.html#wordscore",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Capturing cultural dimensions with embeddings",
-    "text": "Capturing cultural dimensions with embeddings\n\nAustin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.\n\n\nWord Embeddings can be use to capture cultural dimensions\nDimensions of word embedding vector space models closely correspond to meaningful “cultural dimensions,” such as rich-poor, moral-immoral, and masculine-feminine.\na word vector’s position on these dimensions reflects the word’s respective cultural associations"
+    "section": "Wordscore",
+    "text": "Wordscore\nStep 1: Begin with a reference set (training set) of texts that have known positions.\n\nget a speech by AOC , give it -1 score.\nget a speech by MTG, give it a +1 score.\n\nStep 2: Generate word scores from these reference texts\n\nPretty much like a NB\n\nStep 3: Score the virgin texts (test set) of texts using those word scores\n\nscale virgin score to the same original metric (-1 to +1)\n\ncalculate confidence intervals"
   },
   {
-    "objectID": "slides/week_09.html#your-turn-how",
-    "href": "slides/week_09.html#your-turn-how",
+    "objectID": "slides/week_09.html#scoring-words",
+    "href": "slides/week_09.html#scoring-words",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Your turn: How?",
-    "text": "Your turn: How?\n\nHow are the cultural dimensions built?\nHow associations between words and dimensions are calculated?\nHow are the result validated?"
+    "section": "Scoring Words",
+    "text": "Scoring Words\n\n\nLearning Words\n\\[ P_{wr} = \\frac{F_{wr}}{\\sum_r F_{wr}}\\] - \\(P_{wr}\\): Probability of word \\(w\\) being from reference document \\(r\\)\n\n\\(F_{wr}\\): Frequency of word \\(w\\) in reference text \\(r\\)\n\n\n\n\nScoring Words\n\\[S_{wd} = \\sum_r (P_{wr} \\cdot A_{rd}) \\] - \\(S_{wd}\\): Score of word \\(w\\) in dimension \\(d\\)\n\n\\(A_{rd}\\): Pre-defined position of reference text \\(r\\) in dimension \\(d\\)\n\\(A_{rd}\\) will be -1 for liberal and +1 for conservative documents, for example.\n\n\n\n\nScoring virgin texts\n\\[ S_{vd} = \\sum_w (F_{wv} · S_{wd}) \\]"
+  },
+  {
+    "objectID": "slides/week_09.html#example",
+    "href": "slides/week_09.html#example",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Example",
+    "text": "Example\nRepublican manifesto uses `wall’ 25 times in 1000 words, while Democrat use it only 5 times. Assume 1 for republican and -1 for democrat\n\\[P_{wr} = 0.83\\]\n\\[P_{wl} =  0.16 \\] \\[ S_w = 0.83*1 + -1*.16 = 0.66\\]\n\nVirgin text 1 mentions wall 200 times in 1000 words ~ \\(0.2 * 0.66 = 0.132\\)\nVirgin text 2 mentions wall 1 times in 1000 words ~ \\(0.001 * 0:66 = 0.0066\\)\n\nRepeat for all words!"
   },
   {
     "objectID": "slides/week_09.html#results",
     "href": "slides/week_09.html#results",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Results",
-    "text": "Results"
-  },
-  {
-    "objectID": "slides/week_09.html#results-1",
-    "href": "slides/week_09.html#results-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Results",
-    "text": "Results"
-  },
-  {
-    "objectID": "slides/week_09.html#semantic-changes-over-time",
-    "href": "slides/week_09.html#semantic-changes-over-time",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Semantic changes over time",
-    "text": "Semantic changes over time\n\nRodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.\n\n\nWord Vectors allow us to capture semantic meaning\nInteresting social science questions hinge on the recognition that meaning changes over time\nHow can we properly use word to vectors to track changes over time?\nThree challenges:\n\nArbitrary Cut Points\nLanguage Instability (same concept != words)\nSpatial Noncomparability (latent spaces are not constants)\n\nSolutions:\n\nnaive time series model (just cut)\noverlapping time series model (just cut and add a t-1)\nchronologically trained model (initialize with global parameters)\naligned time series method (post-modelling adjustments)"
-  },
-  {
-    "objectID": "slides/week_09.html#results-2",
-    "href": "slides/week_09.html#results-2",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Results",
-    "text": "Results"
-  },
-  {
-    "objectID": "slides/week_09.html#your-turn-how-1",
-    "href": "slides/week_09.html#your-turn-how-1",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Your turn: How?",
-    "text": "Your turn: How?\n\nHow does she uses word2vec?\nWhat is there pipeline to build a golden set?\nWhat is her outcome measure and how she builds it?"
-  },
-  {
-    "objectID": "slides/week_09.html#ideological-scaling",
-    "href": "slides/week_09.html#ideological-scaling",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Ideological Scaling",
-    "text": "Ideological Scaling\n\nRheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.\n\n\nCan word vectors be used to produce scaling estimates of ideological placement on political text?\n\nYes, and word vectors are even better\n\nIt captures semantics\nNo need of training data (self-supervision)"
-  },
-  {
-    "objectID": "slides/week_09.html#your-turn-how-with-a-little-help.",
-    "href": "slides/week_09.html#your-turn-how-with-a-little-help.",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Your turn: How? With a little help.",
-    "text": "Your turn: How? With a little help.\n\n\n\n\n\n\n\n\n\nOther than the a vector for the covariate, what are the other things this model gives you?\nCan you get these vectors without having to re-estimate the model?"
-  },
-  {
-    "objectID": "slides/week_09.html#results-3",
-    "href": "slides/week_09.html#results-3",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Results",
-    "text": "Results"
-  },
-  {
-    "objectID": "slides/week_09.html#measuring-emotion",
-    "href": "slides/week_09.html#measuring-emotion",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Measuring Emotion",
-    "text": "Measuring Emotion\n\nGennaro, Gloria, and Elliott Ash. “Emotion and reason in political language.” The Economic Journal 132, no. 643 (2022): 1037-1059."
-  },
-  {
-    "objectID": "slides/week_09.html#you-turn-how",
-    "href": "slides/week_09.html#you-turn-how",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "You turn: How?",
-    "text": "You turn: How?\n\nWhat are the seed words for emotion and cognition?\nHow are word vectors for speech aggregated?\nHow are word vectors for seed words aggregated?\nHow do the authors measure emotionality in text?"
-  },
-  {
-    "objectID": "slides/week_09.html#gender-and-ethnic-stereotypes",
-    "href": "slides/week_09.html#gender-and-ethnic-stereotypes",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Gender and ethnic stereotypes",
-    "text": "Gender and ethnic stereotypes\n\nGarg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.\n\n\nWord Embeddings are trained in huge volumes of data\nTraining data contain stereotypes, for example, in gender and ethnic dimensions.\nHow can we use word vectors to understand these stereotypes?"
-  },
-  {
-    "objectID": "slides/week_09.html#your-turn-how-2",
-    "href": "slides/week_09.html#your-turn-how-2",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Your turn: how?",
-    "text": "Your turn: how?\n\nWhat are the measures of biases proposed by the author?\nWhat the input here? And the variation over time?"
-  },
-  {
-    "objectID": "slides/week_09.html#results-4",
-    "href": "slides/week_09.html#results-4",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Results",
-    "text": "Results"
-  },
-  {
-    "objectID": "slides/week_09.html#problem-set-2",
-    "href": "slides/week_09.html#problem-set-2",
-    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
-    "section": "Problem set 2",
-    "text": "Problem set 2\nClick here: https://classroom.github.com/a/WcrFfilI\n\n\nText-as-Data"
+    "text": "Results\n\n\n\nText-as-Data"
   },
   {
     "objectID": "syllabus.html",

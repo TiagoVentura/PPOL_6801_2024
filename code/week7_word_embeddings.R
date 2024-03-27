@@ -45,6 +45,7 @@ library(quanteda)
 ## You can download the data here: https://github.com/EmilHvitfeldt/smltar/blob/master/data/complaints.csv.gz
 
 cpts <- read_csv(here("data", "complaints.csv"))
+
 # create an id
 cpts$id <- 1:nrow(cpts)
 
@@ -68,7 +69,7 @@ cpts$id <- 1:nrow(cpts)
 
 
 ## 1.1 - Estimation ----------------
-
+cpts <- cpts %>% slice(1:10000)
 
 # Step 1: get the unigram probabilities
 
@@ -106,7 +107,7 @@ tidy_skipgrams <- tidy_skipgrams %>%
   mutate(p = n / sum(n))
 
 ## Step 3: Get the PMI
-
+head(tidy_skipgrams)
 ## Join the skipgram with the unigram probabilities
 normalized_prob <- tidy_skipgrams %>%
   filter(n > 20) %>%
@@ -139,6 +140,7 @@ pmi_matrix@x[is.na(pmi_matrix@x)] <- 0
 # run SVD
 pmi_svd <- irlba(pmi_matrix, 256, maxit = 500)
 
+str(pmi_svd)
 # Here are your word vectors
 word_vectors <- pmi_svd$u
 rownames(word_vectors) <- rownames(pmi_matrix)
@@ -368,6 +370,7 @@ rownames(glove_matrix) <- glove_wts$V1
 
 # check object
 head(glove_matrix)
+dim(glove_matrix)
 glove_matrix["war", ]
 
 # function to compute nearest neighbors
@@ -533,6 +536,7 @@ dict = bind_rows(tibble(dictionary="care_vice",
                  words=care_vice), 
           tibble(dictionary="care_virtue", 
                   words=care_virtue))
+
 # convert to a matrix
 glove_df <- glove_matrix %>%
   as_tibble() %>%
@@ -547,7 +551,7 @@ dict = dict %>%
   summarise(across(contains("V"), ~mean(.x, na.rm=TRUE)))
 
 # then you need to repeat the same process for your documents and calculate some similarity metric to your new dictionary
-
+dict
 
 # 3.2 - In a supervised Learning Task ---------------------------------------------------
 

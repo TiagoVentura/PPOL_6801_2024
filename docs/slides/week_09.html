@@ -328,7 +328,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">PPOL 6801 - Text as Data - Computational Linguistics</h1>
-  <p class="subtitle"><span style="font-size: 140%;"> <br> Week 9: Word Embeddings II</span></p>
+  <p class="subtitle"><span style="font-size: 140%;"> <br> Week 10: Scaling Models for Text</span></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -342,256 +342,165 @@
 <section id="plans-for-today" class="slide level2">
 <h2>Plans for Today:</h2>
 <ul>
-<li><p>A quick quizz (as a review exercise) about Word Embeddings</p></li>
-<li><p>Text as Data applications using Word Embeddings</p></li>
-<li><p>Coding</p></li>
-<li><p>Problem set 2!</p></li>
-</ul>
-</section>
-<section id="word-embeddings-quiz" class="slide level2">
-<h2>Word Embeddings Quiz</h2>
-<div>
+<li><p>Overview of scaling models</p></li>
+<li><p>Scaling models using text</p>
 <ul>
-<li class="fragment"><p>Explain these three concepts: <span class="red">Self-Supervision</span>, <span class="red">Distributional Hypothesis</span>, <span class="red">Dense Representation</span>.</p></li>
-<li class="fragment"><p>Put these three concepts together to explain how word vectors can capture meaning of words.</p></li>
-<li class="fragment"><p>What are the two main strategies to estimate word embeddings? One is named Glove, and the other is named Word2Vec</p></li>
-<li class="fragment"><p>Are word embeddings still a bag-of-word representation model?</p></li>
-<li class="fragment"><p>Are word2vec algorithms deep learning?</p></li>
-<li class="fragment"><p>Are word2vec algorithms unsupervised or supervised learning?</p></li>
+<li><p>supervised models: wordscore</p></li>
+<li><p>unsupervised models:</p>
+<ul>
+<li><p>wordfish</p></li>
+<li><p>Doc2vec</p></li>
+</ul></li>
+</ul></li>
+<li><p>Scaling models with network data</p></li>
 </ul>
-</div>
 </section>
-<section>
-<section id="applications" class="title-slide slide level1 center">
-<h1>Applications</h1>
+<section id="section" class="slide level2">
+<h2></h2>
 
+<img data-src="./week10_figs/plot_dw_example.png" style="width:100.0%" class="r-stretch"></section>
+<section id="many-questions-depends-on-policy-positions" class="slide level2">
+<h2>Many questions depends on policy positions</h2>
+<p><strong>Many substantive questions in policy and politics depends on estimating ideological preferences</strong>:</p>
+<ul>
+<li>Is polarization increasing over time?
+<ul>
+<li>are parties moving together over time?</li>
+</ul></li>
+<li>Do governments/coalitions last longer conditional on:
+<ul>
+<li>how homogeneous coalition is?</li>
+<li>distance between coalition and congress ideal points?</li>
+<li>distance between coalition and median voter?</li>
+</ul></li>
+<li>Does ideology affect policy decisions?
+<ul>
+<li>Economic Cycles and elections?</li>
+<li>globalization and the social welfare state?</li>
+</ul></li>
+</ul>
+<p>Many more examples ….</p>
 </section>
-<section id="decisions-when-using-embeddings-rodriguez-and-spirling-2022" class="slide level2">
-<h2>Decisions when using embeddings, Rodriguez and Spirling, 2022</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="cell" data-hash="week_09_cache/revealjs/unnamed-chunk-1_e23af81d5686f362ccf39864bb883345">
-<div class="cell-output-display">
-<p><img data-src="./week9_figs/rodriguez.png" style="width:100.0%"></p>
+<section id="scaling-with-without-computational-text-analysis" class="slide level2">
+<h2>Scaling with without computational text analysis</h2>
+<ul>
+<li><strong>Surveys</strong>
+<ul>
+<li>Ask elites or regular voters about policy preference, and scale them in some sort of political continuum.</li>
+<li>Challenges:
+<ul>
+<li>Expensive</li>
+<li>Sources of bias: non-response, social desirebility, strategic responses, to name a few</li>
+<li>Cannot be used for historical data</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="scaling-with-without-computational-text-analysis-1" class="slide level2">
+<h2>Scaling with without computational text analysis</h2>
+<ul>
+<li><strong>Behavioral data</strong> (for example, roll-call voting):
+<ul>
+<li>Politicians vote on proposals (or judges make decisions) that are close to their ideal points
+<ul>
+<li>Use statistical methods (mostly matrix factorization) to estimate orthogonal dimensions</li>
+<li>Nominate Scores</li>
+<li>Challenge
+<ul>
+<li>Most times politicians vote for many things other than ideology</li>
+<li>Face-Validity: AOC for example often place as a centrist (not always voting with democrats)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="scaling-with-without-computational-text-analysis-2" class="slide level2">
+<h2>Scaling with without computational text analysis</h2>
+<ul>
+<li><strong>Text Data</strong>
+<ul>
+<li>Manually label content of political manifestos (Comparative Manifestos Project)</li>
+<li>Challenges:
+<ul>
+<li>Really expensive</li>
+<li>Costly to translate to other languages</li>
+<li>Heavily dependent on substantive knowledge</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="scaling-models-with-computational-text-analysis" class="slide level2">
+<h2>Scaling models with computational text analysis</h2>
+<p>In the past 20 years, computational text analysis has been widely used for building scaling models.</p>
+<ul>
+<li><p>Advantages: fast, reliable, deals with large volumes of text, and easy to translate to other domains/language.</p></li>
+<li><p><strong>Wordscore:</strong> supervised approach, mimic naive bayesian models, start with reference, and score virgin texts.</p></li>
+<li><p><strong>Wordfish:</strong> unsupervised approach, learn word occurrence from the documents using a ideal points models.</p></li>
+<li><p><strong>Doc2Vec:</strong> unsupervised approach, maps documents in the embedding vector space, use PCA to reduce dimensionality.</p></li>
+</ul>
+</section>
+<section id="wordscore" class="slide level2">
+<h2>Wordscore</h2>
+<p><span class="red">Step 1</span>: Begin with a reference set (training set) of texts that have known positions.</p>
+<ul>
+<li>get a speech by AOC , give it -1 score.</li>
+<li>get a speech by MTG, give it a +1 score.</li>
+</ul>
+<p><span class="red">Step 2</span>: Generate word scores from these reference texts</p>
+<ul>
+<li>Pretty much like a NB</li>
+</ul>
+<p><span class="red">Step 3</span>: Score the virgin texts (test set) of texts using those word scores</p>
+<ul>
+<li>scale virgin score to the same original metric (-1 to +1)<br>
+</li>
+<li>calculate confidence intervals</li>
+</ul>
+</section>
+<section id="scoring-words" class="slide level2">
+<h2>Scoring Words</h2>
+<div class="fragment">
+<!-- -->
+<h4 id="learning-words">Learning Words</h4>
+<p><span class="math display">\[ P_{wr} = \frac{F_{wr}}{\sum_r F_{wr}}\]</span> - <span class="math inline">\(P_{wr}\)</span>: Probability of word <span class="math inline">\(w\)</span> being from reference document <span class="math inline">\(r\)</span></p>
+<ul>
+<li><span class="math inline">\(F_{wr}\)</span>: Frequency of word <span class="math inline">\(w\)</span> in reference text <span class="math inline">\(r\)</span></li>
+</ul>
 </div>
-</div>
-</div><div class="column" style="width:40%;">
-<p><br> <br></p>
-<p>When using/training embeddings, we face four key decisions:</p>
+<div class="fragment">
+<!-- -->
+<h4 id="scoring-words-1">Scoring Words</h4>
+<p><span class="math display">\[S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) \]</span> - <span class="math inline">\(S_{wd}\)</span>: Score of word <span class="math inline">\(w\)</span> in dimension <span class="math inline">\(d\)</span></p>
 <ul>
-<li><p>Window size</p></li>
-<li><p>Number of dimensions for the embedding matrix</p></li>
-<li><p>Pre-trained versus locally fit variants</p></li>
-<li><p>Which algorithm to use?</p></li>
+<li><p><span class="math inline">\(A_{rd}\)</span>: Pre-defined position of reference text <span class="math inline">\(r\)</span> in dimension <span class="math inline">\(d\)</span></p></li>
+<li><p><span class="math inline">\(A_{rd}\)</span> will be -1 for liberal and +1 for conservative documents, for example.</p></li>
 </ul>
 </div>
+<div class="fragment">
+<!-- -->
+<h4 id="scoring-virgin-texts">Scoring virgin texts</h4>
+<p><span class="math display">\[ S_{vd} = \sum_w (F_{wv} · S_{wd}) \]</span></p>
 </div>
 </section>
-<section id="findings" class="slide level2">
-<h2>Findings</h2>
-
-<img data-src="./week7_figs/rodriguez.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
-<li><p>popular, easily available pretrained embeddings perform at a level close to—or surpassing—both human coders andmore complicated locally fit models.</p></li>
-<li><p>GloVe pretrained word embeddings achieve on average—for the set of political queries—80% of human performance and are generally preferred to locally trained embeddings</p></li>
-<li><p>Larger window size and embeddings are often preferred.</p></li>
-</ul>
-</section>
-<section id="applications-1" class="slide level2">
-<h2>Applications</h2>
-<p>Let’s discuss now several applications of embeddings on social science papers. These paper show:</p>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>Republican manifesto uses `wall’ 25 times in 1000 words, while Democrat use it only 5 times. Assume 1 for republican and -1 for democrat</p>
+<p><span class="math display">\[P_{wr} = 0.83\]</span></p>
+<p><span class="math display">\[P_{wl} =  0.16 \]</span> <span class="math display">\[ S_w = 0.83*1 + -1*.16 = 0.66\]</span></p>
 <ul>
-<li><p>How to use embeddings to track semantic changes over time</p></li>
-<li><p>How to use embeddings to measure emotion in political language.</p></li>
-<li><p>How to use embeddings to measure gender and ethnic stereotypes</p></li>
-<li><p>And a favorite of political scientists, how to use embeddings to measure ideology.</p></li>
+<li><p>Virgin text 1 mentions wall 200 times in 1000 words ~ <span class="math inline">\(0.2 * 0.66 = 0.132\)</span></p></li>
+<li><p>Virgin text 2 mentions wall 1 times in 1000 words ~ <span class="math inline">\(0.001 * 0:66 = 0.0066\)</span></p></li>
 </ul>
-</section>
-<section id="how-will-we-make-this-discussion-fun" class="slide level2">
-<h2>How will we make this discussion fun?</h2>
-<ul>
-<li><p><span class="red">I</span>: introduce the paper and the main goals</p></li>
-<li><p><span class="red">You</span>: will explain to me how the author use the word embeddings to do so.</p></li>
-</ul>
-</section>
-<section id="capturing-cultural-dimensions-with-embeddings" class="slide level2">
-<h2>Capturing cultural dimensions with embeddings</h2>
-<blockquote>
-<p>Austin C. Kozlowski, Austin C., Matt Taddy, and James A. Evans. 2019. “The Geometry of Culture: Analyzing the Meanings of Class through Word Embeddings.” American Sociological Review 84, no. 5: 905–49. https://doi.org/10.1177/0003122419877135.</p>
-</blockquote>
-<ul>
-<li><p>Word Embeddings can be use to capture cultural dimensions</p></li>
-<li><p>Dimensions of word embedding vector space models closely correspond to meaningful “cultural dimensions,” such as rich-poor, moral-immoral, and masculine-feminine.</p></li>
-<li><p>a word vector’s position on these dimensions reflects the word’s respective cultural associations</p></li>
-</ul>
-</section>
-<section id="your-turn-how" class="slide level2">
-<h2>Your turn: How?</h2>
-<ul>
-<li><p>How are the cultural dimensions built?</p></li>
-<li><p>How associations between words and dimensions are calculated?</p></li>
-<li><p>How are the result validated?</p></li>
-</ul>
+<h4 id="repeat-for-all-words">Repeat for all words!</h4>
 </section>
 <section id="results" class="slide level2">
 <h2>Results</h2>
 
-<img data-src="./week9_figs/culture_1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="results-1" class="slide level2">
-<h2>Results</h2>
 
-<img data-src="./week9_figs/culture_2.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="semantic-changes-over-time" class="slide level2">
-<h2>Semantic changes over time</h2>
-<blockquote>
-<p>Rodman, E., 2020. A Timely Intervention: Tracking the Changing Meanings of Political Concepts with Word Vectors. Political Analysis, 28(1), pp.87-111.</p>
-</blockquote>
-<ul>
-<li><p>Word Vectors allow us to capture semantic meaning</p></li>
-<li><p>Interesting social science questions hinge on the recognition that meaning changes over time</p></li>
-<li><p>How can we properly use word to vectors to track changes over time?</p></li>
-<li><p>Three challenges:</p>
-<ul>
-<li>Arbitrary Cut Points</li>
-<li>Language Instability (same concept != words)</li>
-<li>Spatial Noncomparability (latent spaces are not constants)</li>
-</ul></li>
-<li><p>Solutions:</p>
-<ul>
-<li>naive time series model (just cut)</li>
-<li>overlapping time series model (just cut and add a t-1)</li>
-<li>chronologically trained model (initialize with global parameters)</li>
-<li>aligned time series method (post-modelling adjustments)</li>
-</ul></li>
-</ul>
-</section>
-<section id="results-2" class="slide level2">
-<h2>Results</h2>
-
-<img data-src="./week9_figs/rodman.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="your-turn-how-1" class="slide level2">
-<h2>Your turn: How?</h2>
-<ul>
-<li><p>How does she uses word2vec?</p></li>
-<li><p>What is there pipeline to build a golden set?</p></li>
-<li><p>What is her outcome measure and how she builds it?</p></li>
-</ul>
-</section>
-<section id="ideological-scaling" class="slide level2">
-<h2>Ideological Scaling</h2>
-<blockquote>
-<p>Rheault, Ludovic, and Christopher Cochrane. “Word embeddings for the analysis of ideological placement in parliamentary corpora.” Political Analysis 28, no. 1 (2020): 112-133.</p>
-</blockquote>
-<ul>
-<li><p>Can word vectors be used to produce scaling estimates of ideological placement on political text?</p>
-<ul>
-<li><p>Yes, and word vectors are even better</p>
-<ul>
-<li><p>It captures semantics</p></li>
-<li><p>No need of training data (self-supervision)</p></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="your-turn-how-with-a-little-help." class="slide level2">
-<h2>Your turn: How? With a little help.</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-hash="week_09_cache/revealjs/unnamed-chunk-6_6ac77d684e180985982d9943d0472966">
-<div class="cell-output-display">
-<p><img data-src="./week9_figs/scaling_00.png" style="width:100.0%"></p>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><p>Other than the a vector for the covariate, what are the other things this model gives you?</p></li>
-<li><p>Can you get these vectors without having to re-estimate the model?</p></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="results-3" class="slide level2">
-<h2>Results</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-hash="week_09_cache/revealjs/unnamed-chunk-7_c5d9f4b94acda1ab92234ac43d0066a8">
-<div class="cell-output-display">
-<p><img data-src="./week9_figs/scaling_01.png" style="width:100.0%"></p>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-hash="week_09_cache/revealjs/unnamed-chunk-8_c9a2fdea8a40777f850c85c0ae8fc3dd">
-<div class="cell-output-display">
-<p><img data-src="./week9_figs/scaling_02.png" style="width:100.0%"></p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="measuring-emotion" class="slide level2">
-<h2>Measuring Emotion</h2>
-<blockquote>
-<p>Gennaro, Gloria, and Elliott Ash. “Emotion and reason in political language.” The Economic Journal 132, no. 643 (2022): 1037-1059.</p>
-</blockquote>
-
-<img data-src="./week9_figs/emotion.png" style="width:90.0%" class="r-stretch"></section>
-<section id="you-turn-how" class="slide level2">
-<h2>You turn: How?</h2>
-<ul>
-<li><p>What are the seed words for emotion and cognition?</p></li>
-<li><p>How are word vectors for speech aggregated?</p></li>
-<li><p>How are word vectors for seed words aggregated?</p></li>
-<li><p>How do the authors measure emotionality in text?</p></li>
-</ul>
-</section>
-<section id="gender-and-ethnic-stereotypes" class="slide level2">
-<h2>Gender and ethnic stereotypes</h2>
-<blockquote>
-<p>Garg, Nikhil, Londa Schiebinger, Dan Jurafsky and James Zou. 2018. “Word embeddings quantify 100 years of gender and ethnic stereotypes.” Proceedings of the National Academy of Sciences 115(16):E3635–E3644.</p>
-</blockquote>
-<ul>
-<li><p>Word Embeddings are trained in huge volumes of data</p></li>
-<li><p>Training data contain stereotypes, for example, in gender and ethnic dimensions.</p></li>
-<li><p>How can we use word vectors to understand these stereotypes?</p></li>
-</ul>
-</section>
-<section id="your-turn-how-2" class="slide level2">
-<h2>Your turn: how?</h2>
-<ul>
-<li><p>What are the measures of biases proposed by the author?</p></li>
-<li><p>What the input here? And the variation over time?</p></li>
-</ul>
-</section>
-<section id="results-4" class="slide level2">
-<h2>Results</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-hash="week_09_cache/revealjs/unnamed-chunk-10_789f5143c25ec95871f6a0c0cf88d902">
-<div class="cell-output-display">
-<p><img data-src="./week9_figs/bias_01.png" style="width:100.0%"></p>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-hash="week_09_cache/revealjs/unnamed-chunk-11_79231dbc8effe4aedc1e0a88b6d4344a">
-<div class="cell-output-display">
-<p><img data-src="./week9_figs/bias_02.png" style="width:100.0%"></p>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="coding" class="title-slide slide level1 center">
-<h1><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg> Coding!</h1>
-
-</section>
-<section id="problem-set-2" class="slide level2">
-<h2>Problem set 2</h2>
-<h4 id="click-here-httpsclassroom.github.comawcrffili">Click here: https://classroom.github.com/a/WcrFfilI</h4>
-
-<div class="footer footer-default">
+<img data-src="./week10_figs/wordscores.png" style="width:100.0%" class="r-stretch"><div class="footer footer-default">
 <p>Text-as-Data</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
