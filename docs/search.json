@@ -1299,7 +1299,7 @@
     "href": "slides/week_10.html#many-questions-depends-on-policy-positions",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Many questions depends on policy positions",
-    "text": "Many questions depends on policy positions\nMany substantive questions in policy and politics depends on estimating ideological preferences:\n\nIs polarization increasing over time?\n\nare parties moving together over time?\n\nDo governments/coalitions last longer conditional on:\n\nhow homogeneous coalition is?\ndistance between coalition and congress ideal points?\ndistance between coalition and median voter?\n\nDoes ideology affect policy decisions?\n\nEconomic Cycles and elections?\nglobalization and the social welfare state?\n\n\nMany more examples …."
+    "text": "Many questions depends on policy positions\nMany substantive questions in policy and politics depends on estimating ideological preferences:\n\nIs polarization increasing over time?\n\nare parties moving together over time?\n\nDo governments/coalitions last longer conditional on:\n\nhow homogeneous coalition is?\ndistance between coalition and congress ideal points?\ndistance between coalition and median voter?\n\nDoes ideology affect policy decisions?\n\nEconomic cycles and elections?\nGlobalization and the social welfare state?\n\nDoes motivated reasoning affects beliefs/sharing of online misinformation?\n\nMany more examples …."
   },
   {
     "objectID": "slides/week_10.html#scaling-with-without-computational-text-analysis",
@@ -1327,14 +1327,14 @@
     "href": "slides/week_10.html#scaling-models-with-computational-text-analysis",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Scaling models with computational text analysis",
-    "text": "Scaling models with computational text analysis\nIn the past 20 years, computational text analysis has been widely used for building scaling models.\n\nAdvantages: fast, reliable, deals with large volumes of text, and easy to translate to other domains/language.\nWordscore: supervised approach, mimic naive bayesian models, start with reference, and score virgin texts.\nWordfish: unsupervised approach, learn word occurrence from the documents using a ideal points models."
+    "text": "Scaling models with computational text analysis\nIn the past 20 years, computational text analysis has been widely used for building scaling models.\n\nAdvantages: fast, reliable, deals with large volumes of text, and easy to translate to other domains/language.\nWordscore: supervised approach, mimic naive bayesian models, start with reference, and score virgin texts.\nWordfish: unsupervised approach, learn word occurrence from the documents using a ideal-points model."
   },
   {
     "objectID": "slides/week_10.html#wordscore-laver-benoit-garry-2003-apsr",
     "href": "slides/week_10.html#wordscore-laver-benoit-garry-2003-apsr",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Wordscore (Laver, Benoit, Garry, 2003, APSR)",
-    "text": "Wordscore (Laver, Benoit, Garry, 2003, APSR)\nStep 1: Begin with a reference set (training set) of texts that have known positions.\n\nget a speech by AOC , give it -1 score.\nget a speech by MTG, give it a +1 score.\n\nStep 2: Generate word scores from these reference texts\n\nPretty much like a NB\n\nStep 3: Score the virgin texts (test set) of texts using those word scores\n\nscale virgin score to the same original metric (-1 to +1)\n\ncalculate confidence intervals"
+    "text": "Wordscore (Laver, Benoit, Garry, 2003, APSR)\n\nStep 1: Begin with a reference set (training set) of texts that have known positions.\n\nGet a speech by AOC , give it -1 score.\nGet a speech by MTG, give it a +1 score.\n\n\n\nStep 2: Generate word scores from these reference texts\n\nPretty much like a Naive Bayes\n\n\n\nStep 3: Score the virgin texts (test set) of texts using those word scores\n\nscale virgin score to the same original metric (-1 to +1)\n\ncalculate confidence intervals"
   },
   {
     "objectID": "slides/week_10.html#scoring-words",
@@ -1362,7 +1362,7 @@
     "href": "slides/week_10.html#wordfish-slapin-and-proksch-2008-ajps",
     "title": "PPOL 6801 - Text as Data - Computational Linguistics",
     "section": "Wordfish, (Slapin and Proksch, 2008, AJPS)",
-    "text": "Wordfish, (Slapin and Proksch, 2008, AJPS)\nSame assumptions as in Wordscore (word usage provides information about policy placement), but in an unsupervised setting and with fully specified language model.\nThe count of word \\(j\\) from party \\(i\\) , in year \\(t\\):\n\\[ y_{ijt}   \\sim  Pois(\\lambda)\\]\n\\[ \\lambda_{ijt}=\\exp({\\alpha_{it} + \\psi_j + \\beta_j\\times\\omega_{it}}) \\]\n\n\\(\\alpha_{it}\\): fixed effect(s) for party \\(i\\) in time \\(t\\) ~ deal with parties that write too much\n\\(\\psi_j\\): word fixed effect: some parties just use certain words more (e.g. their own name)\n\\(\\beta_j\\): word specific weights (discrimination parameter, adds more information than simple usage)\n\\(\\omega_{it}\\) estimate of party’s position in a given year."
+    "text": "Wordfish, (Slapin and Proksch, 2008, AJPS)\nSame assumptions as in Wordscore (word usage provides information about policy placement), but in an unsupervised setting and with fully specified language model.\n\n\nThe count of word \\(j\\) from party \\(i\\) , in year \\(t\\):\n\\[ y_{ijt}   \\sim  Pois(\\lambda)\\]\n\\[ \\lambda_{ijt}=\\exp({\\alpha_{it} + \\psi_j + \\beta_j\\times\\omega_{it}}) \\]\n\n\\(\\alpha_{it}\\): fixed effect(s) for party \\(i\\) in time \\(t\\) ~ deal with parties that write too much\n\\(\\psi_j\\): word fixed effect: some parties just use certain words more (e.g. their own name)\n\\(\\beta_j\\): word specific weights (discrimination parameter, adds more information than simple usage)\n\\(\\omega_{it}\\) estimate of party’s position in a given year."
   },
   {
     "objectID": "slides/week_10.html#estimation",
@@ -1720,5 +1720,40 @@
     "title": "Syllabus: PPOL 6801 - Text as Data: Computational Linguistics",
     "section": "Georgetown Policies",
     "text": "Georgetown Policies\n\nDisability\nIf you believe you have a disability, then you should contact the Academic Resource Center (arc@georgetown.edu) for further information. The Center is located in the Leavey Center, Suite 335 (202-687-8354). The Academic Resource Center is the campus office responsible for reviewing documentation provided by students with disabilities and for determining reasonable accommodations in accordance with the Americans with Disabilities Act (ASA) and University policies. For more information, go to http://academicsupport.georgetown.edu/disability/\n\n\nImportant Academic Policies and Academic Integrity\nMcCourt School students are expected to uphold the academic policies set forth by Georgetown University and the Graduate School of Arts and Sciences. Students should therefore familiarize themselves with all the rules, regulations, and procedures relevant to their pursuit of a Graduate School degree. The policies are located at: http://grad.georgetown.edu/academics/policies/\nApplied to this course, while I encourage collaboration on assignments and use of resources like StackOverflow, the problem sets will ask you to list who you worked on the problem set with and cite StackOverflow if it is the direct source of a code snippet.\n\nChatGPT\nIn the last year, the world was inundated with popularization of Large Language Models, particularly the easy use of ChatGPT. I see ChatGPT as Google on steroids, so I assume ChatGPT will be part of your daily work in this course, and it is part of my work as a researcher.\nThat being said, ChatGPT does not replace your training as a data scientist. If you are using ChatGPT instead of learning, I consider you are cheating in the course. And most importantly, you are wasting your time and resources. So that’s our policy for using LLMs models in class:\n\nDo not copy the responses from chatgpt – a lot of them are wrong or will just not run on your computer.\nUse chatgpt as a auxiliary source.\nIf your entire homework comes straight from chatgpt, I will consider it plagiarism.\nIf you use chatgpt, I ask you to mention on your code how chatgpt worked for you.\n\n\n\n\nStatement on Sexual Misconduct\nGeorgetown University and its faculty are committed to supporting survivors and those impacted by sexual misconduct, which includes sexual assault, sexual harassment, relationship violence, and stalking. Georgetown requires faculty members, unless otherwise designated as confidential, to report all disclosures of sexual misconduct to the University Title IX Coordinator or a Deputy Title IX Coordinator. If you disclose an incident of sexual misconduct to a professor in or outside of the classroom (with the exception of disclosures in papers), that faculty member must report the incident to the Title IX Coordinator, or Deputy Title IX Coordinator. The coordinator will, in turn, reach out to the student to provide support, resources, and the option to meet. [Please note that the student is not required to meet with the Title IX coordinator.]. More information about reporting options and resources can be found on the Sexual Misconduct\nWebsite: https://sexualassault.georgetown.edu/resourcecenter\nIf you would prefer to speak to someone confidentially, Georgetown has a number of fully confidential professional resources that can provide support and assistance. These resources include: Health Education Services for Sexual Assault Response and Prevention: confidential email: sarp[at]georgetown.edu\nCounseling and Psychiatric Services (CAPS): 202.687.6985 or after hours, call (833) 960-3006 to reach Fonemed, a telehealth service; individuals may ask for the on-call CAPS clinician\nMore information about reporting options and resources can be found on the Sexual Misconduct Website.\n\n\nProvost’s Policy on Religious Observances\nGeorgetown University promotes respect for all religions. Any student who is unable to attend classes or to participate in any examination, presentation, or assignment on a given day because of the observance of a major religious holiday or related travel shall be excused and provided with the opportunity to make up, without unreasonable burden, any work that has been missed for this reason and shall not in any other way be penalized for the absence or rescheduled work. Students will remain responsible for all assigned work. Students should notify professors in writing at the beginning of the semester of religious observances that conflict with their classes. The Office of the Provost, in consultation with Campus Ministry and the Registrar, will publish, before classes begin for a given term, a list of major religious holidays likely to affect Georgetown students. The Provost and the Main Campus Executive Faculty encourage faculty to accommodate students whose bona fide religious observances in other ways impede normal participation in a course. Students who cannot be accommodated should discuss the matter with an advising dean."
+  },
+  {
+    "objectID": "slides/week_10.html#surveys",
+    "href": "slides/week_10.html#surveys",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Surveys",
+    "text": "Surveys\n\nAsk elites or regular voters about policy preference, and scale them in some sort of political continuum.\nChallenges:\n\nExpensive\nSources of bias: non-response, social desirebility, strategic responses, to name a few\nCannot be used for historical data"
+  },
+  {
+    "objectID": "slides/week_10.html#behavioral-data-for-example-roll-call-voting",
+    "href": "slides/week_10.html#behavioral-data-for-example-roll-call-voting",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Behavioral data (for example, roll-call voting):",
+    "text": "Behavioral data (for example, roll-call voting):\n\nPoliticians vote on proposals (or judges make decisions) that are close to their ideal points\n\nUse statistical methods (mostly matrix factorization) to estimate orthogonal dimensions\nNominate Scores\nChallenge\n\nMost times politicians vote for many things other than ideology\nFace-Validity: AOC for example often place as a centrist (not always voting with democrats)"
+  },
+  {
+    "objectID": "slides/week_10.html#content-analysis-using-text",
+    "href": "slides/week_10.html#content-analysis-using-text",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Content Analysis using Text",
+    "text": "Content Analysis using Text\n\nManually label content of political manifestos (Comparative Manifestos Project)\nChallenges:\n\nReally expensive\nCostly to translate to other languages\nHeavily dependent on substantive knowledge"
+  },
+  {
+    "objectID": "slides/week_10.html#wordscore-calculation",
+    "href": "slides/week_10.html#wordscore-calculation",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "WordScore Calculation",
+    "text": "WordScore Calculation\n\n\nLearning Words\n\\[ P_{wr} = \\frac{F_{wr}}{\\sum_r F_{wr}}\\] - \\(P_{wr}\\): Probability of word \\(w\\) being from reference document \\(r\\)\n\n\\(F_{wr}\\): Frequency of word \\(w\\) in reference text \\(r\\)\n\n\n\n\nScoring Words\n\\[S_{wd} = \\sum_r (P_{wr} \\cdot A_{rd}) \\]\n\n\\(S_{wd}\\): Score of word \\(w\\) in dimension \\(d\\)\n\\(A_{rd}\\): Pre-defined position of reference text \\(r\\) in dimension \\(d\\)\n\\(A_{rd}\\) will be -1 for liberal and +1 for conservative documents, for example."
+  },
+  {
+    "objectID": "slides/week_10.html#scoring-virgin-texts",
+    "href": "slides/week_10.html#scoring-virgin-texts",
+    "title": "PPOL 6801 - Text as Data - Computational Linguistics",
+    "section": "Scoring virgin texts",
+    "text": "Scoring virgin texts\n\\[ S_{vd} = \\sum_w (F_{wv} · S_{wd}) \\] - \\(S_{vd}\\) weighted average of the scores by word frequency."
   }
 ]

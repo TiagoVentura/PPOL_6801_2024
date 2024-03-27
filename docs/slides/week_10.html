@@ -374,15 +374,20 @@
 </ul></li>
 <li>Does ideology affect policy decisions?
 <ul>
-<li>Economic Cycles and elections?</li>
-<li>globalization and the social welfare state?</li>
+<li>Economic cycles and elections?</li>
+<li>Globalization and the social welfare state?</li>
 </ul></li>
+<li>Does motivated reasoning affects beliefs/sharing of online misinformation?</li>
 </ul>
 <p>Many more examples ….</p>
 </section>
-<section id="scaling-with-without-computational-text-analysis" class="slide level2">
-<h2>Scaling with without computational text analysis</h2>
-<h4 id="surveys">Surveys</h4>
+<section>
+<section id="scaling-with-without-computational-text-analysis" class="title-slide slide level1 center">
+<h1>Scaling with without computational text analysis</h1>
+
+</section>
+<section id="surveys" class="slide level2">
+<h2>Surveys</h2>
 <ul>
 <li>Ask elites or regular voters about policy preference, and scale them in some sort of political continuum.</li>
 <li>Challenges:
@@ -393,9 +398,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="scaling-with-without-computational-text-analysis-1" class="slide level2">
-<h2>Scaling with without computational text analysis</h2>
-<h4 id="behavioral-data-for-example-roll-call-voting">Behavioral data (for example, roll-call voting):</h4>
+<section id="behavioral-data-for-example-roll-call-voting" class="slide level2">
+<h2>Behavioral data (for example, roll-call voting):</h2>
 <ul>
 <li>Politicians vote on proposals (or judges make decisions) that are close to their ideal points
 <ul>
@@ -409,9 +413,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="scaling-with-without-computational-text-analysis-2" class="slide level2">
-<h2>Scaling with without computational text analysis</h2>
-<h4 id="text-data">Text Data</h4>
+<section id="content-analysis-using-text" class="slide level2">
+<h2>Content Analysis using Text</h2>
 <ul>
 <li>Manually label content of political manifestos (Comparative Manifestos Project)</li>
 <li>Challenges:
@@ -428,29 +431,35 @@
 <ul>
 <li><p>Advantages: fast, reliable, deals with large volumes of text, and easy to translate to other domains/language.</p></li>
 <li><p><strong>Wordscore:</strong> supervised approach, mimic naive bayesian models, start with reference, and score virgin texts.</p></li>
-<li><p><strong>Wordfish:</strong> unsupervised approach, learn word occurrence from the documents using a ideal points models.</p></li>
+<li><p><strong>Wordfish:</strong> unsupervised approach, learn word occurrence from the documents using a ideal-points model.</p></li>
 </ul>
 </section>
 <section id="wordscore-laver-benoit-garry-2003-apsr" class="slide level2">
 <h2>Wordscore (Laver, Benoit, Garry, 2003, APSR)</h2>
+<div class="fragment">
 <p><span class="red">Step 1</span>: Begin with a reference set (training set) of texts that have known positions.</p>
 <ul>
-<li>get a speech by AOC , give it -1 score.</li>
-<li>get a speech by MTG, give it a +1 score.</li>
+<li>Get a speech by AOC , give it -1 score.</li>
+<li>Get a speech by MTG, give it a +1 score.</li>
 </ul>
+</div>
+<div class="fragment">
 <p><span class="red">Step 2</span>: Generate word scores from these reference texts</p>
 <ul>
-<li>Pretty much like a NB</li>
+<li>Pretty much like a Naive Bayes</li>
 </ul>
+</div>
+<div class="fragment">
 <p><span class="red">Step 3</span>: Score the virgin texts (test set) of texts using those word scores</p>
 <ul>
 <li>scale virgin score to the same original metric (-1 to +1)<br>
 </li>
 <li>calculate confidence intervals</li>
 </ul>
+</div>
 </section>
-<section id="scoring-words" class="slide level2">
-<h2>Scoring Words</h2>
+<section id="wordscore-calculation" class="slide level2">
+<h2>WordScore Calculation</h2>
 <div class="fragment">
 <!-- -->
 <h4 id="learning-words">Learning Words</h4>
@@ -461,18 +470,18 @@
 </div>
 <div class="fragment">
 <!-- -->
-<h4 id="scoring-words-1">Scoring Words</h4>
-<p><span class="math display">\[S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) \]</span> - <span class="math inline">\(S_{wd}\)</span>: Score of word <span class="math inline">\(w\)</span> in dimension <span class="math inline">\(d\)</span></p>
+<h4 id="scoring-words">Scoring Words</h4>
+<p><span class="math display">\[S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) \]</span></p>
 <ul>
+<li><p><span class="math inline">\(S_{wd}\)</span>: Score of word <span class="math inline">\(w\)</span> in dimension <span class="math inline">\(d\)</span></p></li>
 <li><p><span class="math inline">\(A_{rd}\)</span>: Pre-defined position of reference text <span class="math inline">\(r\)</span> in dimension <span class="math inline">\(d\)</span></p></li>
 <li><p><span class="math inline">\(A_{rd}\)</span> will be -1 for liberal and +1 for conservative documents, for example.</p></li>
 </ul>
 </div>
-<div class="fragment">
-<!-- -->
-<h4 id="scoring-virgin-texts">Scoring virgin texts</h4>
-<p><span class="math display">\[ S_{vd} = \sum_w (F_{wv} · S_{wd}) \]</span></p>
-</div>
+</section>
+<section id="scoring-virgin-texts" class="slide level2">
+<h2>Scoring virgin texts</h2>
+<p><span class="math display">\[ S_{vd} = \sum_w (F_{wv} · S_{wd}) \]</span> - <span class="math inline">\(S_{vd}\)</span> weighted average of the scores by word frequency.</p>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
@@ -492,6 +501,8 @@
 <section id="wordfish-slapin-and-proksch-2008-ajps" class="slide level2">
 <h2>Wordfish, (Slapin and Proksch, 2008, AJPS)</h2>
 <p>Same assumptions as in <strong>Wordscore</strong> (<span class="midgray">word usage provides information about policy placement</span>), but in an <span class="red">unsupervised setting</span> and with <span class="red">fully specified language model</span>.</p>
+<div class="fragment">
+<!-- -->
 <h4 id="the-count-of-word-j-from-party-i-in-year-t">The count of word <span class="math inline">\(j\)</span> from party <span class="math inline">\(i\)</span> , in year <span class="math inline">\(t\)</span>:</h4>
 <p><span class="math display">\[ y_{ijt}   \sim  Pois(\lambda)\]</span></p>
 <p><span class="math display">\[ \lambda_{ijt}=\exp({\alpha_{it} + \psi_j + \beta_j\times\omega_{it}}) \]</span></p>
@@ -501,6 +512,7 @@
 <li><p><span class="math inline">\(\beta_j\)</span>: <span class="red">word specific weights</span> (discrimination parameter, adds more information than simple usage)</p></li>
 <li><p><span class="math inline">\(\omega_{it}\)</span> estimate of <span class="red">party’s position</span> in a given year.</p></li>
 </ul>
+</div>
 </section>
 <section id="estimation" class="slide level2">
 <h2>Estimation</h2>
@@ -524,7 +536,7 @@
 <section id="results-ii" class="slide level2">
 <h2>Results II</h2>
 
-<img data-src="./week10_figs/wordfish_ii.png" style="width:100.0%" class="r-stretch"></section>
+<img data-src="./week10_figs/wordfish_ii.png" style="width:100.0%" class="r-stretch"></section></section>
 <section>
 <section id="scaling-models-with-network-data" class="title-slide slide level1 center">
 <h1>Scaling models with network data</h1>

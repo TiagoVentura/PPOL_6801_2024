@@ -51,19 +51,23 @@ knitr::include_graphics("./week10_figs/plot_dw_example.png")
 
 -   Is polarization increasing over time?
     -   are parties moving together over time?
+    
 -   Do governments/coalitions last longer conditional on:
     -   how homogeneous coalition is?
     -   distance between coalition and congress ideal points?
     -   distance between coalition and median voter?
+    
 -   Does ideology affect policy decisions?
-    -   Economic Cycles and elections?
-    -   globalization and the social welfare state?
+    -   Economic cycles and elections?
+    -   Globalization and the social welfare state?
+    
+-   Does motivated reasoning affects beliefs/sharing of online misinformation?    
 
 Many more examples ....
 
-## Scaling with without computational text analysis
+# Scaling with without computational text analysis
 
-#### Surveys
+## Surveys
 
 -   Ask elites or regular voters about policy preference, and scale them in some sort of political continuum.
 -   Challenges:
@@ -71,9 +75,8 @@ Many more examples ....
     -   Sources of bias: non-response, social desirebility, strategic responses, to name a few
     -   Cannot be used for historical data
 
-## Scaling with without computational text analysis
 
-#### Behavioral data (for example, roll-call voting):
+## Behavioral data (for example, roll-call voting):
 
 -   Politicians vote on proposals (or judges make decisions) that are close to their ideal points
     -   Use statistical methods (mostly matrix factorization) to estimate orthogonal dimensions
@@ -82,9 +85,7 @@ Many more examples ....
         -   Most times politicians vote for many things other than ideology
         -   Face-Validity: AOC for example often place as a centrist (not always voting with democrats)
 
-## Scaling with without computational text analysis
-
-#### Text Data
+## Content Analysis using Text
 
 -   Manually label content of political manifestos (Comparative Manifestos Project)
 -   Challenges:
@@ -100,25 +101,31 @@ In the past 20 years, computational text analysis has been widely used for build
 
 -   **Wordscore:** supervised approach, mimic naive bayesian models, start with reference, and score virgin texts.
 
--   **Wordfish:** unsupervised approach, learn word occurrence from the documents using a ideal points models.
+-   **Wordfish:** unsupervised approach, learn word occurrence from the documents using a ideal-points model.
 
 ## Wordscore (Laver, Benoit, Garry, 2003, APSR)
 
+:::fragment
 [Step 1]{.red}: Begin with a reference set (training set) of texts that have known positions.
 
--   get a speech by AOC , give it -1 score.
--   get a speech by MTG, give it a +1 score.
+-   Get a speech by AOC , give it -1 score.
+-   Get a speech by MTG, give it a +1 score.
+:::
 
+:::fragment
 [Step 2]{.red}: Generate word scores from these reference texts
 
--   Pretty much like a NB
+-   Pretty much like a Naive Bayes
+:::
 
+:::fragment
 [Step 3]{.red}: Score the virgin texts (test set) of texts using those word scores
 
 -   scale virgin score to the same original metric (-1 to +1)\
 -   calculate confidence intervals
+:::
 
-## Scoring Words
+## WordScore Calculation
 
 ::: fragment
 #### Learning Words
@@ -131,18 +138,20 @@ $$ P_{wr} = \frac{F_{wr}}{\sum_r F_{wr}}$$ - $P_{wr}$: Probability of word $w$ b
 ::: fragment
 #### Scoring Words
 
-$$S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) $$ - $S_{wd}$: Score of word $w$ in dimension $d$
+$$S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) $$ 
+
+
+- $S_{wd}$: Score of word $w$ in dimension $d$
 
 -   $A_{rd}$: Pre-defined position of reference text $r$ in dimension $d$
 
 -   $A_{rd}$ will be -1 for liberal and +1 for conservative documents, for example.
 :::
 
-::: fragment
-#### Scoring virgin texts
+## Scoring virgin texts
 
 $$ S_{vd} = \sum_w (F_{wv} · S_{wd}) $$
-:::
+- $S_{vd}$ weighted average of the scores by word frequency.
 
 ## Example
 
@@ -168,6 +177,8 @@ knitr::include_graphics("./week10_figs/wordscores.png")
 
 Same assumptions as in **Wordscore** ([word usage provides information about policy placement]{.midgray}), but in an [unsupervised setting]{.red} and with [fully specified language model]{.red}.
 
+:::fragment
+
 #### The count of word $j$ from party $i$ , in year $t$:
 
 $$ y_{ijt}   \sim  Pois(\lambda)$$
@@ -181,6 +192,9 @@ $$ \lambda_{ijt}=\exp({\alpha_{it} + \psi_j + \beta_j\times\omega_{it}}) $$
 -   $\beta_j$: [word specific weights]{.red} (discrimination parameter, adds more information than simple usage)
 
 -   $\omega_{it}$ estimate of [party's position]{.red} in a given year.
+
+:::
+
 
 ## Estimation
 
