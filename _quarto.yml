@@ -50,10 +50,10 @@ website:
             text: "Week 10: Scaling"
           - href: weeks/week-11.qmd
             text: "Week 11: Replication Class II"
-          #- href: weeks/week-12.qmd
-          #  text: "Week 12: Text as Data II"
-          #- href: weeks/week-13.qmd
-          #  text: "Week 13: SQL"
+          - href: weeks/week-12.qmd
+            text: "Week 12: Transformers"
+          - href: weeks/week-13.qmd
+            text: "Week 13: LLMs - Applications"
           #- href: weeks/week-14.qmd
           #  text: "Week 14: Project Presentation"
           

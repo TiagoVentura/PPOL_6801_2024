@@ -155,7 +155,7 @@ Or one of the three below:
 
 -   \[SLP\] Chapter 6, "Vector Semantics and Embeddings."
 
--  [Jay Alanmar, The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)
+-   [Jay Alanmar, The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)
 
 -   Spirling and Rodriguez, Word embeddings: What works, what doesn't, and how to tell the difference for applied research.
 

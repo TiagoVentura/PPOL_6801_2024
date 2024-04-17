@@ -40,19 +40,19 @@ tbl-colwidths: [10,50,40]
 
 **Required Readings**
 
-   - [Wu, Patrick Y., Joshua A. Tucker, Jonathan Nagler, and Solomon Messing. "Large language models can be used to estimate the ideologies of politicians in a zero-shot learning setting." arXiv preprint arXiv:2303.12057 (2023)](https://arxiv.org/abs/2303.12057).
+-   [Wu, Patrick Y., Joshua A. Tucker, Jonathan Nagler, and Solomon Messing. "Large language models can be used to estimate the ideologies of politicians in a zero-shot learning setting." arXiv preprint arXiv:2303.12057 (2023)](https://arxiv.org/abs/2303.12057).
 
-    - [Rathje, Steve, Dan-Mircea Mirea, Ilia Sucholutsky, Raja Marjieh, Claire Robertson, and Jay J. Van Bavel. GPT is an effective tool for multilingual psychological text analysis. (2023)](https://osf.io/preprints/psyarxiv/sekf5).
+- [Rathje, Steve, Dan-Mircea Mirea, Ilia Sucholutsky, Raja Marjieh, Claire Robertson, and Jay J. Van Bavel. GPT is an effective tool for multilingual psychological text analysis. (2023)](https://osf.io/preprints/psyarxiv/sekf5).
 
-    - [Davidson, Thomas: Start Generating: Harnessing Generative Artificial Intelligence for Sociological Research, PrePrint](https://osf.io/preprints/socarxiv/u9nft)
-    
-    - [Bisbee, James, Joshua Clinton, Cassy Dorff, Brenton Kenkel, and Jennifer Larson. 2023. “Synthetic Replacements for Human Survey Data? the Perils of Large Language Models.” SocArXiv. May 4.](https://osf.io/preprints/socarxiv/5ecfa) 
-  
+- [Davidson, Thomas: Start Generating: Harnessing Generative Artificial Intelligence for Sociological Research, PrePrint](https://osf.io/preprints/socarxiv/u9nft)
+
+- [Bisbee, James, Joshua Clinton, Cassy Dorff, Brenton Kenkel, and Jennifer Larson. 2023. “Synthetic Replacements for Human Survey Data? the Perils of Large Language Models.” SocArXiv. May 4.](https://osf.io/preprints/socarxiv/5ecfa) 
 
 **Coding Materials**
 
-- [TBD]()
+-   <a href="/code/_week13_llms.ipynb" download> Week 13 - Large Language Models - Applications </a>
 
 # Slides
 
-- [TBD]()
+-  [Week 13 -Large Language Models](/slides/week_13.html)
+

@@ -260,6 +260,7 @@ stm_m <- stm(documents=dfm_stm$documents,
 
 #save(stm_m, file="data/stm_model.rdata")
 # download here: https://www.dropbox.com/scl/fi/29qmppum357oa0snnejyt/stm_model.rdata?rlkey=yjf548fvd6z4eoz0dmos3ezil&dl=0
+library(tidytext)
 
 load("data/stm_model.rdata")
 # STM offers a series of pre-built functions to analyze results. 
@@ -284,6 +285,7 @@ plotQuote(thoughts3, width = 30, main = "Topic 14")
 mod.out.corr <- topicCorr(stm_m)$cor
 
 # Let's now try a more tidy approach to this.
+stm_m$theta
 
 # Topics and words
 td_beta <- tidy(stm_m)

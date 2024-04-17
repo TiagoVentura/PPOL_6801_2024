@@ -51,17 +51,14 @@ knitr::include_graphics("./week10_figs/plot_dw_example.png")
 
 -   Is polarization increasing over time?
     -   are parties moving together over time?
-    
 -   Do governments/coalitions last longer conditional on:
     -   how homogeneous coalition is?
     -   distance between coalition and congress ideal points?
     -   distance between coalition and median voter?
-    
 -   Does ideology affect policy decisions?
     -   Economic cycles and elections?
     -   Globalization and the social welfare state?
-    
--   Does motivated reasoning affects beliefs/sharing of online misinformation?    
+-   Does motivated reasoning affects beliefs/sharing of online misinformation?
 
 Many more examples ....
 
@@ -74,7 +71,6 @@ Many more examples ....
     -   Expensive
     -   Sources of bias: non-response, social desirebility, strategic responses, to name a few
     -   Cannot be used for historical data
-
 
 ## Behavioral data (for example, roll-call voting):
 
@@ -105,20 +101,20 @@ In the past 20 years, computational text analysis has been widely used for build
 
 ## Wordscore (Laver, Benoit, Garry, 2003, APSR)
 
-:::fragment
+::: fragment
 [Step 1]{.red}: Begin with a reference set (training set) of texts that have known positions.
 
 -   Get a speech by AOC , give it -1 score.
 -   Get a speech by MTG, give it a +1 score.
 :::
 
-:::fragment
+::: fragment
 [Step 2]{.red}: Generate word scores from these reference texts
 
 -   Pretty much like a Naive Bayes
 :::
 
-:::fragment
+::: fragment
 [Step 3]{.red}: Score the virgin texts (test set) of texts using those word scores
 
 -   scale virgin score to the same original metric (-1 to +1)\
@@ -138,10 +134,9 @@ $$ P_{wr} = \frac{F_{wr}}{\sum_r F_{wr}}$$ - $P_{wr}$: Probability of word $w$ b
 ::: fragment
 #### Scoring Words
 
-$$S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) $$ 
+$$S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) $$
 
-
-- $S_{wd}$: Score of word $w$ in dimension $d$
+-   $S_{wd}$: Score of word $w$ in dimension $d$
 
 -   $A_{rd}$: Pre-defined position of reference text $r$ in dimension $d$
 
@@ -150,8 +145,7 @@ $$S_{wd} = \sum_r (P_{wr} \cdot A_{rd}) $$
 
 ## Scoring virgin texts
 
-$$ S_{vd} = \sum_w (F_{wv} · S_{wd}) $$
-- $S_{vd}$ weighted average of the scores by word frequency.
+$$ S_{vd} = \sum_w (F_{wv} · S_{wd}) $$ - $S_{vd}$ weighted average of the scores by word frequency.
 
 ## Example
 
@@ -177,8 +171,7 @@ knitr::include_graphics("./week10_figs/wordscores.png")
 
 Same assumptions as in **Wordscore** ([word usage provides information about policy placement]{.midgray}), but in an [unsupervised setting]{.red} and with [fully specified language model]{.red}.
 
-:::fragment
-
+::: fragment
 #### The count of word $j$ from party $i$ , in year $t$:
 
 $$ y_{ijt}   \sim  Pois(\lambda)$$
@@ -192,9 +185,7 @@ $$ \lambda_{ijt}=\exp({\alpha_{it} + \psi_j + \beta_j\times\omega_{it}}) $$
 -   $\beta_j$: [word specific weights]{.red} (discrimination parameter, adds more information than simple usage)
 
 -   $\omega_{it}$ estimate of [party's position]{.red} in a given year.
-
 :::
-
 
 ## Estimation
 
@@ -256,9 +247,15 @@ knitr::include_graphics("./week10_figs/dfm.png")
 
 $$P(y_{ij} = 1) = logit^{-1} (\alpha_j + \beta_i - \zeta(\theta_i - \phi_j)^2)$$
 
-with latent variables: - $\theta_i$ measures ideology of user i - $\phi_j$ measures ideology of political account j
+with latent variables:
 
-And: - $\alpha_j$ measures popularity of political account j - $\beta_i$ measures political interest of user i
+-   $\theta_i$ measures ideology of user i
+
+-   $\phi_j$ measures ideology of political account j
+
+-   $\alpha_j$ measures popularity of political account j
+
+-   $\beta_i$ measures political interest of user i
 
 ## Ventura et al' News Sharing Model
 
