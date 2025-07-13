@@ -5,9 +5,9 @@ subtitle: "Data Science and Public Policy, McCourt School for Public Polcy, Geor
 
 ## General Instructions
 
-Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments. 
+Data science is an applied field and the DSPP is particularly geared towards providing students the tools to make policy and substantive contributions using data and recent computational developments.
 
-In this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings. 
+In this sense, it is fundamental that you understand how to conduct a complete analysis from collecting data, to cleaning and analyzing it, to presenting your findings.
 
 For this reason, a considerable part of your grade (40%) will come from a an independent data science project, *applying concepts learned throughout the course*.
 
@@ -25,39 +25,37 @@ Due dates and breakdowns for the project are as follows:
 | Presentation     | Week 14           | 10-15 minutes | 10%            |
 | Project Report   | Wednesday Week 15 | 10 pages      | 25%            |
 
-
-## All components of the project: 
+## All components of the project:
 
 ### Project Proposal
 
 The project proposal asks that you sketch out a general 2 page (single-spaced; 12pt font) project proposal. The proposal should offer the following information:
 
-- A high-level statement of the problem you intend to address or the analysis you aim
-to generate
+-   A high-level statement of the problem you intend to address or the analysis you aim to generate
 
-- The data source(s) you intend to use
+-   The data source(s) you intend to use
 
-- Your plan to obtain that data
+-   Your plan to obtain that data
 
-- The text as data method you plan to use. 
+-   The text as data method you plan to use.
 
-- A definition for what “success” means with respect to your project.
+-   A definition for what “success” means with respect to your project.
 
-  - In your words, what would a successful project look like? What is the results you want to show? What would be a surprising finding for you?
-  
+    -   In your words, what would a successful project look like? What is the results you want to show? What would be a surprising finding for you?
+
 ### Presentation
 
-You will have the opportunity to present you final project in class. As a Data scientists, your presentation skills are as important as your data skills. You should prepare a 10-12 minutes presentation. It should cover: 
+You will have the opportunity to present you final project in class. As a Data scientists, your presentation skills are as important as your data skills. You should prepare a 10-12 minutes presentation. It should cover:
 
-- Motivation or problem statement
+-   Motivation or problem statement
 
-- Data collection
+-   Data collection
 
-- Methods
+-   Methods
 
-- Results
+-   Results
 
-- Lessons learned and next steps
+-   Lessons learned and next steps
 
 ### Project Report
 
@@ -65,38 +63,31 @@ The report is a complete description of the project’s analysis and results. Th
 
 Below I’ve outlined points that one should aim to discuss in each section. Note that paper should read as a cohesive report:
 
-- Introduction
-  
-  - summarize your motivation, present some previous work related to your question
-  - present your research question
-  - summarize your report
-  
-- Data and Methods
+-   Introduction
 
-  - Where does the data come from?
-  – What is the unit of observation?
-  – What are the variables of interest?
-  – What steps did you take to wrangle the data?
-  
-- Analysis  
+    -   summarize your motivation, present some previous work related to your question
+    -   present your research question
+    -   summarize your report
 
-  - Describe the methods/tools you explored in your project.
-  
-- Results
+-   Data and Methods
 
-  - Give a detailed summary of your results.
-  – Present your results clearly and concisely.
-  – Please use visualizations instead of tables whenever possible.
-  
-- Discussion
+    -   Where does the data come from? – What is the unit of observation? – What are the variables of interest? – What steps did you take to wrangle the data?
 
-  - Re-introduce your main results
-  - State your contributions
-  - Where do you want take this project next?
-  
-  
-**IMPORTANT:**  There is not literature review section. You can use the literature to motivate your work. But you don't need to have a full section on literature review. Read for example, papers at main general interest journals, like [here](https://www.pnas.org/doi/10.1073/pnas.1804840115), [here](https://www.nature.com/articles/s41562-023-01600-1) and [here](https://www.science.org/doi/10.1126/sciadv.aau4586). All these super accomplished articles do not have long literature reviews. 
+-   Analysis
 
+    -   Describe the methods/tools you explored in your project.
+
+-   Results
+
+    -   Give a detailed summary of your results. – Present your results clearly and concisely. – Please use visualizations instead of tables whenever possible.
+
+-   Discussion
+
+    -   Re-introduce your main results
+    -   State your contributions
+    -   Where do you want take this project next?
+
+**IMPORTANT:** There is not literature review section. You can use the literature to motivate your work. But you don't need to have a full section on literature review. Read for example, papers at main general interest journals, like [here](https://www.pnas.org/doi/10.1073/pnas.1804840115), [here](https://www.nature.com/articles/s41562-023-01600-1) and [here](https://www.science.org/doi/10.1126/sciadv.aau4586). All these super accomplished articles do not have long literature reviews.
 
 ## Submission of the Final Project
 
@@ -122,16 +113,16 @@ Of course, no commits after the due date will be considered in the assessment.
 
 ## Templates for writing
 
-Here, I suggest you with a few templates for writing your reports. In my experience, writing data science reports using [LaTeX](https://towardsdatascience.com/latex-for-data-scientists-in-under-6-minutes-3815d973c05c) is an gain in productivity in the long-run. 
+Here, I suggest you with a few templates for writing your reports. In my experience, writing data science reports using [LaTeX](https://towardsdatascience.com/latex-for-data-scientists-in-under-6-minutes-3815d973c05c) is an gain in productivity in the long-run.
 
-If you want to experiment with LaTeX via overleaf, you should use this template from PNAS (Just remember to switch to a one-column template): 
+If you want to experiment with LaTeX via overleaf, you should use this template from PNAS (Just remember to switch to a one-column template):
 
-- [PNAS Template](https://www.overleaf.com/latex/templates/template-for-preparing-your-research-report-submission-to-pnas-using-overleaf-2023/whbdryzwztnd)
+-   [PNAS Template](https://www.overleaf.com/latex/templates/template-for-preparing-your-research-report-submission-to-pnas-using-overleaf-2023/whbdryzwztnd)
 
 You can also use the [Journal of Quantitative Description templates](https://journalqd.org/jqdtemplate) in Word Doc or LaTeX:
 
-- [JQD Word](https://kmunger.github.io/pdfs/JQDWordTemplate2023.docx)
+-   [JQD Word](https://kmunger.github.io/pdfs/JQDWordTemplate2023.docx)
 
-- [JQD LaTeX](https://kmunger.github.io/pdfs/main.tex)
+-   [JQD LaTeX](https://kmunger.github.io/pdfs/main.tex)
 
 Or, you can use [templates from Quarto](https://quarto.org/docs/journals/) and write you entire project using quarto or markdown files

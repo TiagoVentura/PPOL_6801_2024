@@ -5,15 +5,13 @@ subtitle: "McCourt School for Public Policy, Georgetown University"
 
 ## Course Description
 
-In recent years, the surge in the availability of textual data, ranging from the digitalization of archival documents, political speeches, social media posts, and online news articles, has led to a growing demand for statistical analysis using large volumes of text data. In this course, we will teach students how to analyze and somewhat collect this data from a social science viewpoint. The focus is on understanding the real-world use of text as data rather than just the theory behind it. Students will learn how to acquire text, turn text into data, and analyze it to answer important policy-relevant questions. Each week, we'll go over different methods, like building and using dictionaries, understanding sentiment in text, scaling texts on ideological and policy dimensions, and using machine learning to classify text. Lectures will include hands-on activities, letting students work directly with actual texts, and I strongly encourage students to bring their own data to class. The course aims to equip students with a variety of text analysis techniques that will be valuable for their future work as policy experts and computational social scientists.
+This course introduces students to the quantitative analysis of text as data. With the increasing availability of large-scale textual data – from government documents and political speeches to social media and online news – the potential to extract meaningful insights from text has expanded greatly. In this course, students will learn to transform text into data and apply it to social science questions and theories. Key topics include text representation, sentiment analysis, scaling text on ideological and policy dimensions, using machine learning for text classification, word embeddings and using Large Language Models (GPT, Bert, Llama, Gemini, etc..) for social science research. Although we will cover LLMs, the focus will be on applied methods and transfer learning rather than an in-depth coverage of building LLMs from scratch. 
 
-While the course covers an interdisciplinary topic, and many of the techniques we discuss have their origins in computer science or statistics, we will spend relatively little time on traditional Natural Language Processing techniques, such as machine translation, optical character recognition, and parts of speech tagging, etc. Although we will touch on Large Language Models (ChatGPT) at the end of the course, we will focus mostly on the practical use of these models through their APIs instead of building up and providing an in-depth understanding of their architecture.
-
-I assume students taking this class have taken, at minimum, an introductory class in statistics and have basic knowledge of probability, distributions, hypothesis testing, and linear models. The core language and software environment of this course is R. If you are not familiar with R, you will struggle with the assigned exercises. We will also provide some code in Python, but no prior knowledge here is assumed since this will be additional material.
+The course includes hands-on exercises using real-world data to reinforce lecture content. By the end, students will have a toolkit for text analysis useful in roles as policy experts and computational social scientists. Students should have completed at least an introductory statistics course and have a basic understanding of probability, distributions, hypothesis testing, and linear models. Students are also expected to have experience working with R, the programming language and software environment of this course, and Python for the LLM's components of the course.
 
 ## Class Website
 
-<https://tiagoventura.github.io/PPOL_6801_2024/>
+<https://tiagoventura.github.io/PPOL_6801/>
 
 ## Instructor
 
@@ -21,8 +19,8 @@ I assume students taking this class have taken, at minimum, an introductory clas
 
 -   Pronouns: He/Him
 -   Email: [tv186\@georgetown.edu](mailto:tv186@georgetown.edu)
--   Office hours: Every Tuesday, 4pm - 6pm
--   Location: Old north, 312
+-   Office hours: Every Tuesday, 9am - 12pm
+-   Location: McCourt Building, 766
 
 ::: callout-note
 ### When should I go to your office hours?
@@ -30,13 +28,16 @@ I assume students taking this class have taken, at minimum, an introductory clas
 
 **You are all welcome to the office hours.** You can come to the office hours to:
 
--   drink some coffee;
+-  Drink some coffee;
 
--   talk about soccer;
+-  Ask what I am doing research at;
 
--   Ask what I am doing research at;
+-  Tell me about your research;
 
--   Ask any question about our class.
+-  Ask any question about our class;
+
+-  Or just talk about soccer.
+
 
 All are valid options! And no need to schedule time with me!
 
@@ -44,7 +45,7 @@ All are valid options! And no need to schedule time with me!
 
 **Class Website:** This class website will be used throughout the course and should be checked on a regular basis for lecture materials and required readings.
 
-**Class Slack Channel:** The class also has a dedicated [slack channel](https://join.slack.com/t/ppol68012024/shared_invite/zt-2a4ofec2d-KH8YDtoiJ3gHRWTNhuBPcQ). The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor the means of answering the question so that all can see the response. If you're unfamiliar with, please consult the following start-up tutorial <https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members>. Please follow the [invite link](https://join.slack.com/t/ppol5203fall2023/shared_invite/zt-2159njh4n-S4u1yonz4dA7Zxyo2n3bjA) to be added to the Slack channel.
+**Class Slack Channel:** The class also has a dedicated [slack channel](XXXXXXXXXX). The channel serves as an open forum to discuss, collaborate, pose problems/questions, and offer solutions. Students are encouraged to pose any questions they have there as this will provide the professor the means of answering the question so that all can see the response. If you're unfamiliar with, please consult the following start-up tutorial <https://get.slack.help/hc/en-us/articles/218080037-Getting-started-for-new-members>. Please follow the [invite link](https://join.slack.com/t/ppol5203fall2023/shared_invite/zt-2159njh4n-S4u1yonz4dA7Zxyo2n3bjA) to be added to the Slack channel.
 
 **Canvas:** A Canvas site <http://canvas.georgetown.edu> will be used throughout the course and should be checked on a regular basis for announcements. Materials will be posted here, and not on canvas, or distributed in class or by e-mail. Support for Canvas is available at (202) 687-4949
 

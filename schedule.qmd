@@ -1,24 +1,27 @@
 ---
-title: "Schedule"
-listing:
-  - id: schedule
-    contents:
-      - weeks/week-*.qmd
-    type: table
-    fields: [title, subtitle, date]
-    field-display-names:
-      title: "Week"
-      description: "Dates"
-      subtitle: "Topic"
-    date-format: "MMMM DD, YYYY"
-    sort: [filename]
-    sort-ui: false
-    filter-ui: false
- #tbl-colwidths: [10,50,50,25]
-editor: visual
+title: "Instructions for PPOL 6801 - Final Project"
+subtitle: "Data Science and Public Policy, McCourt School for Public Polcy, Georgetown University"
 ---
 
-## Weekly Schedule
+## Weekly Schedule & Readings
 
-::: {#schedule}
-:::
+### Week 1: Introduction
+
+**Slides**
+
+- [Week 1 Slides](/slides/week_01_intro.html)
+
+
+**Required Readings**
+
+-   Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. Text as data: A new framework for machine learning and the social sciences. Princeton University Press, 2022 - Chapter 2.
+
+Or one of the three below:
+
+-   Political Science Perspective: [Wilkerson, J. and Casas, A. (2017). Large-Scale Computerized Text Analysis in Political Science: Opportunities and Challenges. Annual Review of Political Science, 20, 529:544.](https://www.annualreviews.org/doi/abs/10.1146/annurev-polisci-052615-025542?journalCode=polisci)
+
+-   Economics Perspective: [Gentzkow, Matthew, Bryan Kelly, and Matt Taddy. "Text as data." Journal of Economic Literature 57, no. 3 (2019): 535-574.](https://web.stanford.edu/~gentzkow/research/text-as-data.pdf)
+
+-   Sociology Perspective: <https://www.sciencedirect.com/science/article/pii/S0049089X22000904>
+
+

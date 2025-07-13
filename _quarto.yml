@@ -30,31 +30,31 @@ website:
         contents: 
           - href: weeks/week-01.qmd
             text: "Week 1: Intro"
-          - href: weeks/week-02.qmd
-            text: "Week 2: Text to Matrices"
-          - href: weeks/week-03.qmd
-            text: "Week 3: Text Similarity, Text re-use and Complexity"
-          - href: weeks/week-04.qmd
-            text: "Week 4: Dictionaries & Pre-Trained Models"
-          - href: weeks/week-05.qmd
-            text: "Week 5: Supervised Learning"
-          - href: weeks/week-06.qmd
-            text: "Week 6: Replication Class"
-          - href: weeks/week-07.qmd
-            text: "Week 7: Unsupervised Learning"
-          - href: weeks/week-08.qmd
-            text: "Week 8: Word Embeddings"
-          - href: weeks/week-09.qmd
-            text: "Week 9: Word Embeddings II"
-          - href: weeks/week-10.qmd
-            text: "Week 10: Scaling"
-          - href: weeks/week-11.qmd
-            text: "Week 11: Replication Class II"
-          - href: weeks/week-12.qmd
-            text: "Week 12: Transformers"
-          - href: weeks/week-13.qmd
-            text: "Week 13: LLMs - Applications"
-          #- href: weeks/week-14.qmd
+          #- href: weeks/week-02.qmd
+          #  text: "Week 2: Text to Matrices"
+          #- href: weeks/week-03.qmd
+          #  text: "Week 3: Text Similarity, Text re-use and Complexity"
+          #- href: weeks/week-04.qmd
+          #  text: "Week 4: Dictionaries & Pre-Trained Models"
+          #- href: weeks/week-05.qmd
+          #  text: "Week 5: Supervised Learning"
+          #- href: weeks/week-06.qmd
+          #  text: "Week 6: Replication Class"
+          #- href: weeks/week-07.qmd
+          #  text: "Week 7: Unsupervised Learning"
+          #- href: weeks/week-08.qmd
+          #  text: "Week 8: Word Embeddings"
+          #- href: weeks/week-09.qmd
+          #  text: "Week 9: Word Embeddings II"
+          #- href: weeks/week-10.qmd
+          #  text: "Week 10: Scaling"
+          #- href: weeks/week-11.qmd
+          #  text: "Week 11: Replication Class II"
+          #- href: weeks/week-12.qmd
+          #  text: "Week 12: Transformers"
+          #- href: weeks/week-13.qmd
+          #  text: "Week 13: LLMs - Applications"
+          # #- href: weeks/week-14.qmd
           #  text: "Week 14: Project Presentation"
           
           
